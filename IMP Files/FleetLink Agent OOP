@@ -1,0 +1,299 @@
+// OOP version of FleetLink agent code
+// Randy King 3/2/16
+
+
+//////////////////////  ROCKY WEB HANDLER SETUP  //////////////////////////////
+
+    #require "Rocky.class.nut:1.1.1"
+
+    rockySettings <- {
+        timeout = 30
+    };
+
+    app <- Rocky(rockySettings);
+
+
+class Interest {
+
+    static lifetime = 20 // global lifetime of interests in seconds
+    static type = "i"
+    name = array(20, null) // up to 20 name components
+    nonce = null // random number to identify interest unambiguously
+    trace = null // in a wireless network we have to track who sent the interest within the interest itself
+
+    function fromTable (iTable) {
+        name = iTable.name
+        nonce = iTable.nonce
+        trace = iTable.trace
+    }
+
+    function toTable () {
+        local iTable = { "name": name, "nonce": nonce, "trace": trace} //
+        return iTable
+    }
+
+    function toString () {
+        local iString = type + "/"
+        for (local i=0; i<name.len(); i++) {
+            if (name[i] != null) {
+                iString += name[i]
+                iString += "/"
+            }
+        }
+        iString += nonce + "/"
+        iString += trace
+        return iString
+    }
+
+    function toModbusCommand(iInterest) {
+        // Form a valid Modbus query to write to local equipment
+        local hexModbusID = hexConvert(iInterest.name[2].tointeger(), 1);
+        local hexModbusFC = hexConvert(iInterest.name[3].tointeger(), 1);
+        local hexModbusRegister = hexConvert(iInterest.name[4].tointeger(), 2);
+        local hexModbusNumberRegisters = hexConvert(iInterest.name[5].tointeger(), 2);
+        local modbusCommandString = hexModbusID + hexModbusFC + hexModbusRegister + hexModbusNumberRegisters;
+        //server.log("modbus command formed: " + modbusCommandString);
+        return modbusCommandString
+    }
+}
+
+
+class AgentFace {
+
+    pendingInterestTable = array(10, {"interest" : null, "interface" : null, "httpContext" : null, "timer" : null , "satisfied": null} )
+    nextEntryId = 0 // pointer to next place to put a PIT entry
+
+    function addToPIT(sourceFace, httpContext, aInterest) {
+        this.pendingInterestTable[nextEntryId] = {"interest" : aInterest, "interface" : sourceFace, "httpContext" : httpContext, "timer" : time() + aInterest.lifetime}         // store this in the pending interest table
+        /*
+        server.log(" PIT interest.name[1]= " +  pendingInterestTable[nextEntryId].interest.name[1] )
+        server.log(" PIT interface= " +  pendingInterestTable[nextEntryId].interface )
+        server.log(" PIT httpContext= " +  pendingInterestTable[nextEntryId].httpContext )
+        server.log(" PIT timer= " +  pendingInterestTable[nextEntryId].timer )
+        */
+        // don't overfill the PIT; recycle pointer at end
+        if (nextEntryId < pendingInterestTable.len()-1) {
+            nextEntryId++;
+            //server.log("incrementing nextEntryId to " + nextEntryId)
+        } else {
+            nextEntryId = 0; // start again at 0 if you've filled up the PIT
+        }
+    }
+
+    function cleanPIT(entryId){
+        // clears the specific entry
+        if (entryId != null) {
+            pendingInterestTable[entryId].clear()
+        }
+        // and any expired timer entries as well
+        for (local i=0; i <pendingInterestTable.len(); i++) { //
+            if (pendingInterestTable[i].rawin("timer")) { // if there is a timer entry
+            //server.log("checking PIT[" + i + "]for expired entries..." );
+                if (pendingInterestTable[i].timer < time()) {
+                   // server.log("PIT[" + i + "] has an expired entry" );
+                    pendingInterestTable[i].clear()
+                }
+            }
+        }
+    }
+
+    function findMatchingPIT (dObject){
+        local matchingPITIndex = null
+        for (local i=0; i<pendingInterestTable.len(); i++) {  // look through every interest object in the PIT
+            local matchFlag = true   // set a boolean flag that the string match
+            if (pendingInterestTable[i].rawin("interest") ){ // can't check without a interest entry
+                // server.log("checking PIT Entry = " + i)
+                 if (pendingInterestTable[i].interest.name.len() != dObject.name.len()) { // check if the Names have the same number of components, if not they are  not equal
+                     matchFlag = false;
+                    // server.log("no PIT match because number of name components not equal")
+                 } else {  // if they ARE the same length, compare each name component
+                    for (local j=0; j<10; j++) {
+                       // if (pendingInterestTable[i].interest.name[j] != null) {
+                            if (pendingInterestTable[i].interest.name[j] != dObject.name[j]) {
+                                //server.log(pendingInterestTable[i].interest.name[j] + " equals? " +dObject.name[j])
+                                    //server.log("match failed at name " + j)
+                                     matchFlag = false // if any of the name components don't match, clear the flag
+                        //    }
+                        }
+                         //server.log("checking name component " + j + " with values " + pendingInterestTable[i].interest.name[j] + " and " + dObject.name[j]);
+                    }
+
+                    // server.log("checking PIT entry nonce " + pendingInterestTable[i].interest.nonce + " equals object nonce " + dObject.nonce)
+                    if (pendingInterestTable[i].interest.nonce.tostring() != dObject.nonce.tostring()) {  // the nonces must match as well, seems like one was an integer?
+                       //server.log("match failed at nonce")
+                        matchFlag = false
+                    }
+                 }
+                if (matchFlag == true) {
+                    matchingPITIndex = i
+                } else {
+                    matchingPITIndex = null
+                 //   server.log("no matching PIT found")
+                }
+            }
+         }
+    return matchingPITIndex // send back the index of the matching PIT entry
+    }
+
+
+    function send(transportChoice,  iContext, itemToSend,) {
+        //Transport function sends objects as requested; format is implicit in transport choice
+        switch (transportChoice) {
+            case "device":
+                device.send("agentToDevice", itemToSend.toTable())  //send the table version of the item to the device
+            break
+            case "app":
+                iContext.send(200, { "returnData" : itemToSend });     // send the received data as a string to the saved context
+            break
+            default:
+               // server.log("error: unrecognized transport");
+        }
+    }
+}
+
+
+class Data {
+
+    static type = "d"
+    name = array(20, null)
+    nonce = null
+    contents = null
+    trace = null // in a wireless network we have to track who sent the interest within the interest itself
+
+    function fromTable (dTable) {
+        name = dTable.name
+        nonce = dTable.nonce
+        contents = dTable.contents
+        trace = dTable.trace
+    }
+
+    function toTable () {
+        local dTable = { "name": name, "nonce": nonce, "contents": contents, "trace": trace} //
+        return dTable
+    }
+
+     function toString () {
+        local dString = type + "/"
+        for (local i=0; i<name.len(); i++) {
+            if (name[i] != null) {
+                dString += name[i]
+                dString += "/"
+            }
+        }
+        dString += nonce + "/"
+        dString += contents + "/"
+        dString += trace
+        return dString
+    }
+
+    function fromModbusResponse(dInterest, mString) {
+        //server.log("forming data object from " + mString)
+        name = dInterest.name
+        nonce = dInterest.nonce
+        contents = mString.slice(4, mString.len()-6)  // throw away first four and last six characters of modbus response
+    }
+}
+
+
+class FleetLink {
+
+    // space for a fleet of 20 units
+    settings = array(20, {"serialNumber" : null, "macAddress" : null, "agentURL" : null, "onlineStatus" : null, "position" : {"lat" : null, "lon" : null}})
+
+  function initialize() {
+        settings[0] = {"serialNumber" : "A", "macAddress" : "0c2a6909795a",  "position" : {"lat" : 38.490, "lon" : -122.7226}}
+        settings[1] = {"serialNumber" : "B", "macAddress" : "0c2a6908cd7e",  "position" : {"lat" : 38.492, "lon" :  -122.721}}
+        settings[2] = {"serialNumber" : "C", "macAddress" : "0c2a690a2732",  "position" : {"lat" : 38.491, "lon" :  -122.7135}}
+        settings[3] = {"serialNumber" : "D", "macAddress" : "0c2a6904f367",  "position" : {"lat" : 38.4898, "lon" :  -122.7181}}
+        settings[4] = {"serialNumber" : "E", "macAddress" : "0c2a690a24e3",  "position" : {"lat" : 38.4882, "lon" :  -122.716}}
+        settings[5] = {"serialNumber" : "F", "macAddress" : "0c2a690a2d54",  "position" : {"lat" : 38.495, "lon" :  -122.706}}
+
+    }
+
+    function saveToServer() {
+        local err = server.save(settings);
+            if (err == 0) {
+                server.log("New settings saved to server ");
+            }   else {
+                server.log("ERROR: Settings not saved to server. Error code: " + err.tostring());
+            }
+    }
+
+    function loadFromServer() {
+        local tStorage = server.load() ;
+        // if the stored settings have the same number of slots as the current settings, use them
+        if (tStorage.len() == settings.len()) {
+            settings = tStorage;
+            //server.log("Settings loaded from server ");
+        } else {
+            server.log("ERROR: No settings available from server");
+        }
+    }
+
+}
+
+
+
+
+////////////////////// INSTANTIATE AND LOAD THIS FLEETLINK  //////////////////////////
+
+    local aFleetLink = FleetLink() // instantiate this FleetLink object
+
+    //aFleetLink.saveToServer() // save it to server
+   //aFleetLink.loadFromServer() // load it from server
+
+    function sendSettingsToDevice(dummy) {
+        device.send("sendSettings", aFleetLink.settings)
+    }
+    device.on("requestSettings", sendSettingsToDevice); // when requested
+
+    //device.onconnect(function() {aFleetLink.settings.deviceOnline = true;});
+    //device.ondisconnect(function() {aFleetLink.settings.deviceOnline = false; });
+
+
+////////////////////// INSTANTIATE THE FACE  //////////////////////////
+
+    local aFace = AgentFace()
+
+    function checkExpiredPIT() {
+        aFace.cleanPIT(null);        // only clear expired timers
+        imp.wakeup(5, checkExpiredPIT) ;   // remove expire interests from PIT
+    }
+
+     checkExpiredPIT(); // start PIT cleaner running
+
+
+//////////////////////  APP  HANDLER  ///////////////////////////////////
+
+    app.post("/expressInterest", function(context) {
+        // interests come from app as JSON encoded tables
+        local aInterest = Interest()
+        //server.log("interest received from app: " + context.req.body)
+        aInterest.fromTable(http.jsondecode(context.req.body))
+        // Place in the agent PIT, store the source interface and http contxt
+        aFace.addToPIT("app", context, aInterest)
+        // send it to the device
+        aFace.send("device", null, aInterest)
+    });
+
+
+//////////////////////  DEVICE HANDLER  ///////////////////////////////////
+
+
+    function receiveDeviceData(dTable){
+        //server.log("agent received data packet " + dTable.contents)
+        local aData = Data();
+        aData.fromTable(dTable)
+
+        // check for PIT match
+        local matchingPITEntryId = aFace.findMatchingPIT(aData)
+        if (matchingPITEntryId != null) {
+            //server.log("Matching PIT Entry at ID " + matchingPITEntryId)
+            aFace.send("app", aFace.pendingInterestTable[matchingPITEntryId].httpContext , http.jsonencode(dTable))
+            aFace.cleanPIT(matchingPITEntryId) // remove the matching PIT entry
+        }
+    }
+
+    device.on("deviceToAgent", receiveDeviceData); // handle the reception of a data packet from the device
+
+    device.on("agentToDevice", receiveDeviceData )
