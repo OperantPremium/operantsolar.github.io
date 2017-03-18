@@ -476,6 +476,7 @@ var fleetLink = {
           updatewifiOn();
           initGateway();
           drawImages();
+          console.log("done drawing");
           buildInterestPacket();
           updateMarkers();
           document.getElementById("expressInterestPacket").disabled = "disabled";
