@@ -474,8 +474,6 @@ var fleetLink = {
 
       $( document ).ready(function() {
           updatewifiOn();
-          initGateway();
-          drawImages();
           console.log("done drawing");
           buildInterestPacket();
           updateMarkers();
