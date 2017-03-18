@@ -473,10 +473,12 @@ var fleetLink = {
       }
 
       $( document ).ready(function() {
-          updatewifiOn();
-          console.log("done drawing");
-          buildInterestPacket();
-          updateMarkers();
-          document.getElementById("expressInterestPacket").disabled = "disabled";
-          setTimeout(function(){document.getElementById("expressInterestPacket").disabled = false;}, 100 );
-          });
+      });
+        
+      $( window ).on( "load", function() {
+        updatewifiOn();
+        buildInterestPacket();
+        updateMarkers();
+        document.getElementById("expressInterestPacket").disabled = "disabled";
+        setTimeout(function(){document.getElementById("expressInterestPacket").disabled = false;}, 100 );
+      });
