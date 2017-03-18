@@ -14,12 +14,16 @@ var routeCoordinates1 = [];
 var routeCoordinates2 = [];
 var routeColor1 = '#33FF66'; //'rgb(0,128,255)'
 var routeColor2 = '#33FF66'; //'rgb(0,128,255)'
-var wifiOn;
 var targetCoordinates;
 var targetColor = '#33FF66';
 
 var targetUnitKey;
 var accessUnitKey;
+var edgeDist = 30;
+var imgSize = 70;
+var targetGatewaySize = 40;
+var wifiImgSize = 40;
+var targetGatewayOffset = 2;
 
 var fleetLink = {
           1: {
@@ -27,8 +31,9 @@ var fleetLink = {
             'macAddress': '56dc4c',
             'agentURL': '/oHMQMg_lcxsT',
             'geoLoc': '18SUJ22850705',
-            'modbusCmd' : '010300320002',
+            'modbusCmd' : '010300240002',
             'onlineStatus': true,
+            'sensorScale' : 1.0,
             'position' : {lat: 38.490,lon: -122.7226}
               },
           2: {
@@ -36,8 +41,9 @@ var fleetLink = {
             'macAddress': '56dd24',
             'agentURL': '/wXqOLIl3KiLB',
             'geoLoc': '18SUJ22850705',
-            'modbusCmd' : '010300320002',
+            'modbusCmd' : '010300240002',
             'onlineStatus': true,
+            'sensorScale' : 1.0,
             'position' : {lat: 38.492, lon: -122.721}
               },
           3: {
@@ -45,8 +51,9 @@ var fleetLink = {
             'macAddress': '56ddc8',
             'agentURL': '/QGO7JQAzyiev',
             'geoLoc': '18SUJ22850705',
-            'modbusCmd' : '010300320002',
+            'modbusCmd' : '010300240002',
             'onlineStatus': true,
+            'sensorScale' : 0.956,
             'position' : {lat: 38.491, lon: -122.7135}
           },
 
@@ -55,34 +62,72 @@ var fleetLink = {
             'macAddress': '56ddb2',
             'agentURL': '/CyPoe3l9E5Od',
             'geoLoc': '18SUJ22850705',
-            'modbusCmd' : '010300320002',
+            'modbusCmd' : '010300240002',
             'onlineStatus': true,
+            'sensorScale' : 0.979,
             'position' : {lat: 38.4898, lon: -122.7181}
           },
 
-            5: {
+          5: {
             'serialNumber': '407',
             'macAddress': '56ddde',
             'agentURL': '/VifAbahCX8ux',
             'geoLoc': '18SUJ22850705',
-            'modbusCmd' : '010300320002',
-            'onlineStatus': false,
-            'position' : {lat: 38.4882, lon: -122.716}
-          } /*,
-          6: {
-            'serialNumber': 'F',
-            'macAddress': '0c2a690a2d54',
-            'agentURL': '/uEIDmJoynW-o',
+            'modbusCmd' : '010300960002',
             'onlineStatus': true,
-            'position' : {lat: 38.495, lon: -122.706}
-          }*/
+            'sensorScale' : -1.089,
+            'position' : {lat: 38.4882, lon: -122.716}
+          }, 
 
+          6: {
+            'serialNumber': '406',
+            'macAddress': '56dd18',
+            'agentURL': '/hxsSiYETEEpd',
+            'geoLoc': '18SUJ22850705',
+            'modbusCmd' : '010300240002',
+            'onlineStatus': true,
+            'sensorScale' : 1.0,
+            'position' : {lat: 38.4882, lon: -122.716}
+          } 
     };
 
     var interestPacket = {
           'GeoLoc': "18SUJ22850705",
           'DeviceIdHash' : "123456",
           'ModbusCmd' : "010300240002"
+    }
+
+    function getTargetKey() {
+      var targetKey = null;
+      targetUnitSerialNumber = document.getElementById("selectedUnit").value;
+      Object.keys(fleetLink).forEach(function(key,index){
+            // key: the name of the object key
+            // index: the ordinal position of the key within the object
+            if (fleetLink[key].serialNumber == targetUnitSerialNumber) {
+              targetKey = key; // This is a global variable I use throughout: the site we want data from
+            }
+      });
+      return targetKey;
+    }
+
+    function getGatewayKey() {
+      var gatewayKey = null;
+      accessUnitSerialNumber = document.getElementById("selectedAccessPoint").value ;
+      Object.keys(fleetLink).forEach(function(key,index){
+            // key: the name of the object key
+            // index: the ordinal position of the key within the object
+            if (fleetLink[key].serialNumber == accessUnitSerialNumber) {
+              gatewayKey = key;// This is a global variable I use throughout: the site we're sending the interest packet to first
+            }
+      }); 
+      return gatewayKey;     
+    }
+
+    function setGateway (selGateway) {
+      //console.log("gateway: " + selGateway);
+      var serial = fleetLink[selGateway].serialNumber;
+      ccessUnitSerialNumber = document.getElementById("selectedAccessPoint").value = serial;
+      accessUnitKey = selGateway;
     }
 
     function updateAccessPointAndTargetKeys()
@@ -117,37 +162,16 @@ var fleetLink = {
               accessUnitKey = key;// This is a global variable I use throughout: the site we're sending the interest packet to first
             }
       });
-      switch (document.getElementById("dataModel").value) {
-        case "c":
-        break;
-        case "s":
-        break;
-        case "m":
-          interestPacket.GeoLoc = fleetLink[targetUnitKey].geoLoc;
-          interestPacket.DeviceIdHash = fleetLink[targetUnitKey].macAddress;
-          interestPacket.ModbusCmd = fleetLink[targetUnitKey].modbusCmd;
-        break;
-        case "f":
-        break;
-        default:
-          console.log("data model not recognized")
-      }
-      interestPacket.name ;
+      interestPacket.GeoLoc = fleetLink[targetUnitKey].geoLoc;
+      interestPacket.DeviceIdHash = fleetLink[targetUnitKey].macAddress;
+      interestPacket.ModbusCmd = fleetLink[targetUnitKey].modbusCmd;
+      interestPacket.name;
     }
-
-
-    function clearDisplay() {
-        routePath1.setMap(null);
-        routePath2.setMap(null);
-        targetCircle.setMap(null);
-        document.getElementById("stringDataRepresentation").textContent = "--";
-    }
-
 
     function expressInterestPacket() {
+      clearResult();
       // disable the Go button
       document.getElementById("expressInterestPacket").disabled = "disabled";
-      //clearDisplay();
       // play a swoosh
       new Audio("img/swoosh.mp3").play();
       buildInterestPacket();
@@ -157,214 +181,89 @@ var fleetLink = {
           url: baseURL + fleetLink[accessUnitKey].agentURL,
           timeout: 15000,
           data: JSON.stringify(interestPacket), // convert interest packet string to JSON
-          //dataType: 'json',
-          //contentType: "application/json",
           type: 'POST',
           success : function(response) {
-              //document.getElementById("expressInterestPacket").disabled = false; // re-enable the Go button
-              console.log("response: " + response);
-                //if ('data' in response) {
-                  //console.log(dataTable);
-                  //var dataTable = JSON.parse(response.data);
-                  displayData(response);
-
-                  //traceRoute(dataTable.trace); //display the route trace
-                  new Audio("img/smallBell2.wav").play();  // sound chime to indicate successful data packet reception
-                  setTimeout(function(){document.getElementById("expressInterestPacket").disabled = false;}, 10000 );
-                //}
+            //console.log("response: " + response);
+            displayData(response);
+            new Audio("img/smallBell2.wav").play();  // sound chime to indicate successful data packet reception
+            setTimeout(function(){document.getElementById("expressInterestPacket").disabled = false;}, 10000 );
           },
           error : function(jqXHR, textStatus, err) {
-
-              var errorResponse = jqXHR.status + ' ' + textStatus + ': ' + err + ' - ' + jqXHR.responseText;
-//               document.getElementById("returnedDataPacket").textContent = errorResponse;
-              setTimeout(function(){document.getElementById("expressInterestPacket").disabled = false;}, 10000 );
+            var errorResponse = jqXHR.status + ' ' + textStatus + ': ' + err + ' - ' + jqXHR.responseText;
+//          document.getElementById("returnedDataPacket").textContent = errorResponse;
+            setTimeout(function(){document.getElementById("expressInterestPacket").disabled = false;}, 10000 );
           }
         });
       }
 
+      // Display the result fetched after sending the modbus command.
       function displayData(response) {
-        document.getElementById("stringDataRepresentation").value = response;
+        if (response != null) {
+          //get substring of hex chars.
+          var hexStr = response.substring(10,14) + response.substring(6,10);
+          var output = parseFloat("0x" + hexStr);
+          var result = fleetLink[targetUnitKey].sensorScale * output;
+          document.getElementById("stringDataRepresentation").value = result.toFixed(2) + " A";
+        }
       }
 
-      function drawMarker(fleetLinkKey) {
-        var markerLat = fleetLink[fleetLinkKey].position.lat;
-        var markerLng = fleetLink[fleetLinkKey].position.lon;
-        //console.log("At DrawMarker " + markerLat + "  " + markerLng + " online? " + fleetLink[fleetLinkKey].onlineStatus)
-        var markerLatLng = {lat: markerLat, lng: markerLng};
-        var iconImage;
+      // Clear the result from the result display text box
+      function clearResult() {
+        document.getElementById("stringDataRepresentation").value = "";
+      }
 
-        // choose marker based on online status and whether access point
-        if (fleetLink[fleetLinkKey].onlineStatus) {
-            if(fleetLinkKey == accessUnitKey) {
-              iconImage = "img/iconOnlineAccess.png";
-            } else {
-              iconImage = "img/iconOnlineHouse.png";
-            }
-        } else {
-              iconImage = "img/iconOfflineHouse.png";
-        }
+      function parseFloat(str) {
+          var float = 0, sign, order, mantiss,exp,
+          int = 0, multi = 1;
+          if (/^0x/.exec(str)) {
+              int = parseInt(str,16);
+          }else{
+              for (var i = str.length -1; i >=0; i -= 1) {
+                  if (str.charCodeAt(i)>255) {
+                      console.log('Wrong string parametr'); 
+                      return false;
+                  }
+                  int += str.charCodeAt(i) * multi;
+                  multi *= 256;
+              }
+          }
+          sign = (int>>>31)?-1:1;
+          exp = (int >>> 23 & 0xff) - 127;
+          mantissa = ((int & 0x7fffff) + 0x800000).toString(2);
+          for (i=0; i<mantissa.length; i+=1){
+              float += parseInt(mantissa[i])? Math.pow(2,exp):0;
+              exp--;
+          }
+          return float*sign;
       }
 
       function updateMarkers() {
-           //console.log("updating map..");
-           //clearDisplay();
-           buildInterestPacket();
-           // for (var key in fleetLink) {
-           //     drawMarker(key);
-           // }
+        clearResult();
+        initGateway();
+        drawImages();
+        buildInterestPacket();
       }
 
-      function updatewifiOn()
-      {
-         wifiOn = [null];
-         var wifiItems = document.getElementsByName("chk_group[]");
-         for(var i = 0; i < wifiItems.length; i++)
-         {
-            if (wifiItems[i].checked) {
-              wifiOn[i] = wifiItems[i];
+      function updatewifiOn(){
+        var wifiItems = document.getElementsByName("chk_group[]");
+        for(var i = 0; i < wifiItems.length; i++) {
+          Object.keys(fleetLink).forEach(function(key,index){
+            if (wifiItems[i].value == fleetLink[key].serialNumber) {
+              if (wifiItems[i].checked) {
+                fleetLink[key].onlineStatus = true;
+              }
+              else {
+                fleetLink[key].onlineStatus = false;
+              }
             }
+          });
          }
+         initGateway();
          //update the display area show devices that have wifi on..
-         //alert("wifiOn; " + wifiOn.length);
+         drawImages();
       }
 
-      function traceRoute(trace)   {
-
-            routeCoordinates1 = [null];
-            var lineSymbol = {
-                path: google.maps.SymbolPath.FORWARD_CLOSED_ARROW
-            };
-
-            for (var i=0; i<= Math.floor(trace.length/2); i++) {
-                var thisSerialNumber = trace.slice(i,i+1);
-                for (var key in fleetLink) {
-                    if (fleetLink[key].serialNumber == thisSerialNumber) {
-                        routeCoordinates1[i] = new google.maps.LatLng({lat: fleetLink[key].position.lat, lng: fleetLink[key].position.lon});
-                    }
-                }
-            }
-
-            routePath1 = new google.maps.Polyline({
-            path: routeCoordinates1,
-            icons: [{
-                icon: lineSymbol,
-                offset: '100%'
-            }],
-            geodesic: true,
-            strokeColor: routeColor1,
-            strokeOpacity: 0.8,
-            strokeWeight: 2
-            });
-            routePath1.setMap(mapFleetLink);
-
-            routeCoordinates2 = [null];
-
-            for (var i= 0; i<= Math.floor(trace.length/2); i++) {
-                var thisSerialNumber = trace.slice(i + Math.floor(trace.length/2),i + Math.floor(trace.length/2) +1);
-                for (var key in fleetLink) {
-                    if (fleetLink[key].serialNumber == thisSerialNumber) {
-                        routeCoordinates2[i] = new google.maps.LatLng({lat: fleetLink[key].position.lat, lng: fleetLink[key].position.lon});
-                    }
-                }
-            }
-
-            routePath2 = new google.maps.Polyline({
-            path: routeCoordinates2,
-            icons: [{
-                icon: lineSymbol,
-                offset: '100%'
-            }],
-            geodesic: true,
-            strokeColor: routeColor2,
-            strokeOpacity: 0.8,
-            strokeWeight: 2
-            });
-            routePath2.setMap(mapFleetLink);
-
-            targetCoordinates = new google.maps.LatLng({lat: fleetLink[targetUnitKey].position.lat, lng: fleetLink[targetUnitKey].position.lon});
-
-            targetCircle = new google.maps.Circle({
-              strokeColor: targetColor,
-              strokeOpacity: 1.0,
-              strokeWeight: 3,
-              fillColor: "white",
-              fillOpacity: 0.0,
-              map: mapFleetLink,
-              center: targetCoordinates,
-              radius: 50
-            });
-
-
-      }
-
-      function initMap() {
-        // Draw default map
-          mapFleetLink = new google.maps.Map(document.getElementById('map'), {
-            zoom: 16,
-           mapTypeId: google.maps.MapTypeId.SATELLITE,
-            center: myLatLng
-          });
-
-
-          routePath1 = new google.maps.Polyline({
-          path: routeCoordinates1,
-          geodesic: true,
-          strokeColor: routeColor1,
-          strokeOpacity: 0.7,
-          strokeWeight: 4
-          });
-
-          routePath1.setMap(mapFleetLink);
-
-          routePath2 = new google.maps.Polyline({
-          path: routeCoordinates2,
-          geodesic: true,
-          strokeColor: routeColor2,
-          strokeOpacity: 0.7,
-          strokeWeight: 4
-          });
-
-          routePath2.setMap(mapFleetLink);
-
-            targetCircle = new google.maps.Circle({
-            strokeColor: targetColor,
-            strokeOpacity: 0.8,
-            strokeWeight: 2,
-            fillColor: "white",
-            fillOpacity: 0.15,
-            map: mapFleetLink,
-            center: targetCoordinates,
-            radius: 20
-          });
-
-      }
-
-      function showHideControls(){
-        var selectedDataModel = document.getElementById("dataModel").value;
-        switch(selectedDataModel){
-          case "c": // choose
-          document.getElementById("sunSpecPanelContainer").style.visibility="hidden";
-          document.getElementById("modbusPanelContainer").style.visibility="hidden";
-          document.getElementById("fleetlinkPanelContainer").style.visibility="hidden";
-          break;
-          case "s": // sunspec
-          document.getElementById("sunSpecPanelContainer").style.visibility="visible";
-          document.getElementById("modbusPanelContainer").style.visibility="hidden";
-          document.getElementById("fleetlinkPanelContainer").style.visibility="hidden";
-          break;
-          case "m": // modbus
-          document.getElementById("sunSpecPanelContainer").style.visibility="hidden";
-          document.getElementById("modbusPanelContainer").style.visibility="visible";
-          document.getElementById("fleetlinkPanelContainer").style.visibility="hidden";
-          break;
-          case "f": // fleetlink
-          document.getElementById("sunSpecPanelContainer").style.visibility="hidden";
-          document.getElementById("modbusPanelContainer").style.visibility="hidden";
-          document.getElementById("fleetlinkPanelContainer").style.visibility="visible";
-          break;
-        }
-      }
-
+      // Fetch all the Wifi Enabled checkboxes..
       function getCheckedBoxes(chkboxName) {
         var checkboxes = document.getElementsByName(chkboxName);
         var checkboxesChecked = [];
@@ -379,19 +278,34 @@ var fleetLink = {
         return checkboxesChecked.length > 0 ? checkboxesChecked : null;
       }
 
+      // Draw the images of the devices, wifi enabled state in the canvas.
       function drawImages() {
         var drawing = document.getElementById("_deviceIndicators");
         var con = drawing.getContext("2d");
+        con.fillStyle = "#f3efe0";
+        var width = drawing.width;
+        var height = drawing.height;
+        var hCent = height/2;
+        var wCent = width/2;
+        var leftOffset = edgeDist;
+        var rightOffset = width - edgeDist;
+        var topOffset = edgeDist;
+        var bottomOffset = height - edgeDist;
+        con.fillRect(0, 0, drawing.width, drawing.height);
+
+        //draw imp devices..
         var item404 = document.getElementById("404Img");
-        con.drawImage(item404, 10, 170, 60, 60);
+        con.drawImage(item404, edgeDist, hCent - imgSize/2, imgSize, imgSize);
         var item405 = document.getElementById("405Img");
-        con.drawImage(item405, 530, 170, 60, 60);
+        con.drawImage(item405, rightOffset - imgSize, hCent - imgSize/2, imgSize, imgSize);
         var item402 = document.getElementById("402Img");
-        con.drawImage(item402, 270, 10, 60, 60);
-        var item403 = document.getElementById("403Img");
-        con.drawImage(item403, 270, 170, 60, 60);
-        var item407 = document.getElementById("403Img");
-        con.drawImage(item407, 270, 330, 60, 60);
+        con.drawImage(item402, wCent - imgSize/2, topOffset, imgSize, imgSize);
+        // var item403 = document.getElementById("403Img");
+        // con.drawImage(item403, wCent - imgSize/2, hCent - imgSize/2, imgSize, imgSize);
+        var item406 = document.getElementById("406Img");
+        con.drawImage(item406, wCent - imgSize/2, hCent - imgSize/2, imgSize, imgSize);
+        var item407 = document.getElementById("407Img");
+        con.drawImage(item407, wCent - imgSize/2, bottomOffset - 2*imgSize, imgSize, imgSize);
 
         //get selected Unit
         updateAccessPointAndTargetKeys();
@@ -399,72 +313,169 @@ var fleetLink = {
         var targetImg = document.getElementById("_targetIcon");
         var x = 0;
         var y = 0;
-        //console.log("AccessPointKey: " + accessUnitKey);
+        console.log("AccessPointKey: " + accessUnitKey);
         switch(fleetLink[accessUnitKey].serialNumber) {
           case "402":
-            x = 270;
-            y = 80;
+            x = wCent - imgSize/2;
+            y = edgeDist + imgSize + targetGatewayOffset;
           break;
           case "403":
-            x = 270;
-            y = 240;
+          case "406":
+            x = wCent - imgSize/2;
+            y = hCent + imgSize/2 + targetGatewayOffset;
           break;
           case "404":
-            x = 10;
-            y = 240
+            x = edgeDist;
+            y = hCent + imgSize/2 + targetGatewayOffset;
           break;
           case "405":
-            x = 530;
-            y = 240;
+            x = width - imgSize - edgeDist - targetGatewayOffset;
+            y = hCent + imgSize/2 + targetGatewayOffset;
           break;
           case "407":
-            x = 270;
-            y = 260;
+            x = wCent - imgSize/2;
+            y = height - edgeDist - imgSize;
           break;
         }
-        con.drawImage(accPointImg, x, y, 60, 60);
+        con.drawImage(accPointImg, x, y, targetGatewaySize, targetGatewaySize);
         x = 0;
         y = 0;
         //console.log("TargetKey: " + targetUnitKey);
         switch(fleetLink[targetUnitKey].serialNumber) {
           case "402":
-            x = 270;
-            y = 80;
+            x = wCent - imgSize/2;
+            y = edgeDist + imgSize + targetGatewayOffset;
           break;
           case "403":
-            x = 270;
-            y = 240;
+          case "406":
+            x = wCent - imgSize/2;
+            y = hCent + imgSize/2 + targetGatewayOffset;
           break;
           case "404":
-            x = 10;
-            y = 240
+            x = edgeDist;
+            y = hCent + imgSize/2 + targetGatewayOffset;
           break;
           case "405":
-            x = 530;
-            y = 240;
+            x = width - imgSize - edgeDist - targetGatewayOffset;
+            y = hCent + imgSize/2 + targetGatewayOffset;
           break;
           case "407":
-            x = 270;
-            y = 260;
+            x = wCent - imgSize/2;
+            y = height - edgeDist - imgSize;
           break;
         }
-        con.drawImage(targetImg, x, y, 60, 60);
+        con.drawImage(targetImg, x, y, targetGatewaySize, targetGatewaySize);
+        drawWifi();
+      }
 
-        //get checked checkboxesvar 
-        var checkedBoxes = getCheckedBoxes("chk_group[]");
-        for (var i = 0; i < checkedBoxes.length; i++) {
-          //draw wifi red or green
-          //console.log(checkedBoxes[i].value); 
+      function drawWifi() {
+        var drawing = document.getElementById("_deviceIndicators");
+        var con = drawing.getContext("2d");
+        var greenImg = document.getElementById("_greenWifi");
+        var redImg = document.getElementById("_redWifi");
+        var width = drawing.width;
+        var height = drawing.height;
+        var hCent = height/2;
+        var wCent = width/2;
+        var leftOffset = edgeDist;
+        var rightOffset = width - edgeDist;
+        var topOffset = edgeDist;
+        var bottomOffset = height - edgeDist;
+
+        Object.keys(fleetLink).forEach(function(key,index){
+          if (fleetLink[key].onlineStatus) {
+            //console.log("SNo: " + fleetLink[key].serialNumber + " wifi: " + fleetLink[key].onlineStatus);
+            switch(fleetLink[key].serialNumber) {
+              case "402":
+                x = hCent - imgSize/2 - wifiImgSize/2;
+                y = edgeDist - wifiImgSize/2;
+              break;
+              case "403":
+              case "406":
+                x = hCent - imgSize/2 - wifiImgSize/2;
+                y = hCent - imgSize/2 - wifiImgSize/2;
+              break;
+              case "404":
+                x = edgeDist - wifiImgSize/2;
+                y = hCent - imgSize/2 - wifiImgSize/2;
+              break;
+              case "405":
+                x = rightOffset - imgSize - wifiImgSize/2;
+                y = hCent - imgSize/2 - wifiImgSize/2;
+              break;
+              case "407":
+                x = hCent - imgSize/2 - wifiImgSize/2;
+                y = bottomOffset - 2*imgSize - wifiImgSize/2;
+              break;
+            }
+            con.drawImage(greenImg, x, y, wifiImgSize, wifiImgSize);          
+          }
+          else {
+            switch(fleetLink[key].serialNumber) {
+              case "402":
+                x = hCent - imgSize/2 - wifiImgSize/2;
+                y = edgeDist - wifiImgSize/2;
+              break;
+              case "403":
+              case "406":
+                x = hCent - imgSize/2 - wifiImgSize/2;
+                y = hCent - imgSize/2 - wifiImgSize/2;
+              break;
+              case "404":
+                x = edgeDist - wifiImgSize/2;
+                y = hCent - imgSize/2 - wifiImgSize/2;
+              break;
+              case "405":
+                x = rightOffset - imgSize - wifiImgSize/2;
+                y = hCent - imgSize/2 - wifiImgSize/2;
+              break;
+              case "407":
+                x = hCent - imgSize/2 - wifiImgSize/2;
+                y = bottomOffset - 2*imgSize - wifiImgSize/2;
+              break;
+            }
+            con.drawImage(redImg, x, y, wifiImgSize, wifiImgSize);          
+          }
+        });
+      }
+
+      function initGateway() {
+        //if the target is online the gateway is the target.
+        var targetKey = getTargetKey();
+        if (targetKey != null) {
+          targetUnitKey = targetKey;
+          if (fleetLink[targetKey].onlineStatus) {
+            setGateway(targetKey);
+            accessUnitKey = targetKey;
+          }
+          else {
+          //if it is not then
+          //make the listof units that are online.
+          //select on at random.
+            var wifilist = [null];
+            var i = 0;
+            Object.keys(fleetLink).forEach(function(key,index) {
+              if (fleetLink[key].onlineStatus) {
+                if (fleetLink[key].serialNumber != "403") wifilist[i]= key;
+                i++;
+              }
+            });
+            if (wifilist.length == 0) {
+              alert("WiFi has to be enabled on atleast one unit");
+            }
+            else {
+              var entry = wifilist[Math.floor(Math.random()*wifilist.length)];
+              if (entry != null) setGateway(entry);
+              //document.getElementById("selectedAccessPoint").value = accessUnitKey;
+            }
+          }
         }
       }
 
       $( document ).ready(function() {
-          // Do the following after the page is ready
-          //console.log( "Initializing..." );
-          //initMap();
+          updatewifiOn();
+          initGateway();
           drawImages();
-          document.getElementById("dataModel").value = "m" ; // default to Modbus data model
-          showHideControls();
           buildInterestPacket();
           updateMarkers();
           document.getElementById("expressInterestPacket").disabled = "disabled";
