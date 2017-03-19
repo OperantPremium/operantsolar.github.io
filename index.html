@@ -52,7 +52,7 @@
 				</canvas>								
 				<div data-role="main" style="float:right; width:35%; ">
 					<div data-role="main" class=container>
-						<label id="targetLabel" style="color= black; float:left; margin-right:5%; width:100%; margin-bottom:25px; font-size:1.2em">Select Target</label>
+						<label id="targetLabel" style="color= black; float:left; margin-right:5%; width:100%; margin-bottom:5px; font-size:1.2em">Select Target</label>
 						<!--<img  id="targetIcon"  src="img/targetIcon3.png" style="float:right; margin-top:20px; margin-left:10%; margin-right:10%"  height="15%" width="15%">-->
 						<select   id="selectedUnit"   data-native-menu="false"  onchange="updateMarkers()">
 							<option value="402">2</option>
@@ -75,7 +75,7 @@
 						<input type="text" id="stringDataRepresentation" name="result" style="height=5%; width=60%"/>
 					</div>
 						<div data-role="main" class = 'container'  hidden>
-							<label id="gatewayLabel" style="color=black; float:left; margin-left:5%; margin-bottom:25px; width:60%; font-size:1.2em">Select Gateway</label>
+							<label id="gatewayLabel" style="color=black; float:left; margin-left:5%; margin-bottom:5px; width:60%; font-size:1.2em">Select Gateway</label>
 							<!--<img  id="gatewayIcon"  src="img/gatewayIcon2.png" style="float:right; margin-top:20px; margin-left:10%; margin-right:10%"  height="15%" width="15%">-->
 							<select   id="selectedAccessPoint"   data-native-menu="false"  onchange="updateMarkers()"; >
 								<option value="402">2</option>
@@ -88,28 +88,19 @@
 						</div>
 					<div data-role="main" class=container>
 						<fieldset>
-							<legend style="float:left; margin-left:5%; margin-bottom:25px; width:100%; font-size:1.2em">WiFi Enabled</legend>
-							<p>
+							<legend style="float:left; margin-bottom:5px; width:100%; font-size:1.2em">WiFi Enabled</legend>
 									<input type="checkbox" id="402" value="402" name="chk_group[]" onclick="updatewifiOn()" checked>
 									<label for="402">2</label>
-							</p>
 							<!--<p>
 									<input type="checkbox" id="403" value="403" name="chk_group[]" onclick="updatewifiOn()">
 									<label for="403">3</label>	
 							</p>												-->
-							<p>
 									<input type="checkbox" id="404" value="404" name="chk_group[]" onclick="updatewifiOn()"  checked>
 									<label for="404">4</label>	
-							</p>												
-							<p>
 									<input type="checkbox" id="405" value="405" name="chk_group[]" onclick="updatewifiOn()" checked>
 									<label for="405">5</label>	
-							</p>												
-							<p>
 									<input type="checkbox" id="406" value="406" name="chk_group[]" onclick="updatewifiOn()" checked>
 									<label for="406">6</label>	
-							</p>												
-							<p>
 									<input type="checkbox" id="407" value="407" name="chk_group[]" onclick="updatewifiOn()"  checked>
 									<label for="407">7</label>	
 							</p>		
