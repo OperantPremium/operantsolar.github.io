@@ -337,6 +337,7 @@ var fleetLink = {
             y = height - edgeDist - imgSize;
           break;
         }
+        console.log("x=" + x + ", y=" + y);
         con.drawImage(accPointImg, x, y, targetGatewaySize, targetGatewaySize);
         x = 0;
         y = 0;
@@ -439,6 +440,10 @@ var fleetLink = {
         });
       }
 
+      function getRandomInt(min, max) {
+        return Math.floor(Math.random() * (max - min + 1) + min);
+      }
+
       function initGateway() {
         //if the target is online the gateway is the target.
         var targetKey = getTargetKey();
@@ -456,17 +461,26 @@ var fleetLink = {
             var i = 0;
             Object.keys(fleetLink).forEach(function(key,index) {
               if (fleetLink[key].onlineStatus) {
-                if (fleetLink[key].serialNumber != "403") wifilist[i]= key;
-                i++;
+                if (fleetLink[key].serialNumber != "403") {
+                  //console.log("key added to keylist for next gateway: " + key);
+                  wifilist[i]= key;
+                  i++;
+                }
               }
             });
             if (wifilist.length == 0) {
               alert("WiFi has to be enabled on atleast one unit");
             }
             else {
-              var entry = wifilist[Math.floor(Math.random()*wifilist.length)];
-              if (entry != null) setGateway(entry);
-              //document.getElementById("selectedAccessPoint").value = accessUnitKey;
+              var randIndex = getRandomInt(0, wifilist.length);
+              //console.log("random index: " + randIndex + " list length: " + wifilist.length);
+              if (randIndex < 0 || randIndex >= wifilist.length) randIndex = 0;
+              var entry = wifilist[randIndex];
+              //console.log("selected gateway: " + entry);
+              if (entry != null) 
+                setGateway(entry);
+              else
+                entry = wifilist[0];
             }
           }
         }
