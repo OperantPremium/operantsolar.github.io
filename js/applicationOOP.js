@@ -186,7 +186,7 @@ var fleetLink = {
             //console.log("response: " + response);
             displayData(response);
             new Audio("img/smallBell2.wav").play();  // sound chime to indicate successful data packet reception
-            setTimeout(function(){document.getElementById("expressInterestPacket").disabled = false;}, 15000 );
+            setTimeout(function(){document.getElementById("expressInterestPacket").disabled = false;}, 14000 );
           },
           error : function(jqXHR, textStatus, err) {
             var errorResponse = jqXHR.status + ' ' + textStatus + ': ' + err + ' - ' + jqXHR.responseText;
