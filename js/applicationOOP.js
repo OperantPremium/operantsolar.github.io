@@ -64,7 +64,7 @@ var fleetLink = {
             'geoLoc': '18SUJ22850705',
             'modbusCmd' : '010300240002',
             'onlineStatus': true,
-            'sensorScale' : 0.979,
+            'sensorScale' : 1.008,
             'position' : {lat: 38.4898, lon: -122.7181}
           },
 
@@ -246,11 +246,15 @@ var fleetLink = {
 
       function updatewifiOn(){
         var wifiItems = document.getElementsByName("chk_group[]");
+
+        var numCheckBoxesChecked = 0;
+
         for(var i = 0; i < wifiItems.length; i++) {
           Object.keys(fleetLink).forEach(function(key,index){
             if (wifiItems[i].value == fleetLink[key].serialNumber) {
               if (wifiItems[i].checked) {
                 fleetLink[key].onlineStatus = true;
+                numCheckBoxesChecked ++;
               }
               else {
                 fleetLink[key].onlineStatus = false;
@@ -258,6 +262,17 @@ var fleetLink = {
             }
           });
          }
+
+        // RK change to disable Go button if no units are WiFi enabled
+        console.log("checking number of checkboxes checked...");
+        if (numCheckBoxesChecked == 0 ) {
+            document.getElementById("expressInterestPacket").disabled = true;
+            console.log("all check boxes unchecked, GO button disabled!");
+        } else  {
+            document.getElementById("expressInterestPacket").disabled = false;
+             console.log("a check box checked, GO button enabled");
+        }
+
          initGateway();
          //update the display area show devices that have wifi on..
          drawImages();
@@ -274,6 +289,7 @@ var fleetLink = {
               checkboxesChecked.push(checkboxes[i]);
           }
         }
+
         // Return the array if it is non-empty, or null
         return checkboxesChecked.length > 0 ? checkboxesChecked : null;
       }
