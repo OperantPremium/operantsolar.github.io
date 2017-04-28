@@ -251,9 +251,9 @@ var fleetLink = {
           data: JSON.stringify(interestPacket), // convert interest packet string to JSON
           type: 'POST',
           success : function(response) {
-            console.log("response: " + response);
+            //console.log("response: " + response);
+            new Audio("img/smallBell2.wav").play();  // sound chime to indicate successful data packet reception
             displayData(response);
-            new Audio("img/swoosh.mp3").play();  // sound chime to indicate successful data packet reception
             setTimeout(function(){document.getElementById("expressInterestPacket").disabled = false;}, 14000 );
           },
           error : function(jqXHR, textStatus, err) {
