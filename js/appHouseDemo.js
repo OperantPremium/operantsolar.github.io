@@ -262,6 +262,7 @@ var fleetLink = {
             setTimeout(function(){document.getElementById("expressInterestPacket").disabled = false;}, 10000 );
           }
         });
+                    new Audio("img/smallBell2.wav").play();  // sound chime to indicate successful data packet reception
       }
 
       // Display the result fetched after sending the modbus command.
