@@ -253,7 +253,7 @@ var fleetLink = {
           success : function(response) {
             //console.log("response: " + response);
             displayData(response);
-            setTimeout(function(){document.getElementById("expressInterestPacket").disabled = false;}, 14000 );
+            setTimeout(function(){document.getElementById("expressInterestPacket").disabled = false;}, 10000 );
           },
           error : function(jqXHR, textStatus, err) {
             var errorResponse = jqXHR.status + ' ' + textStatus + ': ' + err + ' - ' + jqXHR.responseText;
@@ -261,7 +261,6 @@ var fleetLink = {
             setTimeout(function(){document.getElementById("expressInterestPacket").disabled = false;}, 10000 );
           }
         });
-        //new Audio("img/smallBell2.wav").play();  // sound chime to indicate successful data packet reception
       }
 
       // Display the result fetched after sending the modbus command.
@@ -273,6 +272,7 @@ var fleetLink = {
           var output = parseInt("0x" + hexStr, 16);
           var result = fleetLink[targetUnitKey].sensorScale * output;
           document.getElementById("stringDataRepresentation").value = result.toFixed(0) + "  W/m^2";
+          new Audio("img/swoosh.mp3").play();
         }
       }
 
