@@ -15,75 +15,148 @@ var targetGatewayOffset = -5;
 
 // Data struvture to hold unit specific values for fleet
 var fleetLink = {
+          /*
+          // Proto 4
           1: {
-            'serialNumber': '402',  
+            'serialNumber': '402',  // only use last 8 digits of MAC to save packet characters
+            'macAddress': '56dc4c',
             'agentURL': '/oHMQMg_lcxsT',
-            'usng': '28475668',
-            'deviceIdHash': 'D85F6461EB91',
-            'category': 'modbus',
-            'task': 'fc03',
-            'parameters' : '01_00000001_9600_8_1',
+            'geoLoc': '18SUJ22850705',
+            'modbusCmd' : '010300240002',
             'onlineStatus': true,
-            'sensorScale' : 1.0
+            'sensorScale' : 1.0,
+            'position' : {lat: 38.490,lon: -122.7226}
               },
-          2: {
+          // Proto 4
+            2: {
             'serialNumber': '403',
+            'macAddress': '56dd24',
             'agentURL': '/wXqOLIl3KiLB',
+            'geoLoc': '18SUJ22850705',
+            'modbusCmd' : '010300240002',
+            'onlineStatus': true,
+            'sensorScale' : 1.0,
+            'position' : {lat: 38.492, lon: -122.721}
+              },
+          // Proto 4
+            3: {
+            'serialNumber': '404',
+            'macAddress': '56ddc8',
+            'agentURL': '/QGO7JQAzyiev',
+            'geoLoc': '18SUJ22850705',
+            'modbusCmd' : '010300240002',
+            'onlineStatus': true,
+            'sensorScale' : 0.956,
+            'position' : {lat: 38.491, lon: -122.7135}
+              },
+          // Proto 4
+           4: {
+            'serialNumber': '405',
+            'macAddress': '56ddb2',
+            'agentURL': '/CyPoe3l9E5Od',
+            'geoLoc': '18SUJ22850705',
+            'modbusCmd' : '010300240002',
+            'onlineStatus': true,
+            'sensorScale' : 1.008,
+            'position' : {lat: 38.4898, lon: -122.7181}
+          },
+          // Proto 4
+           5: {
+            'serialNumber': '406',
+            'macAddress': '56ddde',
+            'agentURL': '/VifAbahCX8ux',
+            'geoLoc': '18SUJ22850705',
+            'modbusCmd' : '010300960002',
+            'onlineStatus': true,
+            'sensorScale' : -1.089,
+            'position' : {lat: 38.4882, lon: -122.716}
+          }, 
+          // Proto 4
+           6: {
+            'serialNumber': '407',
+            'macAddress': '56dd18',
+            'agentURL': '/hxsSiYETEEpd',
+            'geoLoc': '18SUJ22850705',
+            'modbusCmd' : '010300240002',
+            'onlineStatus': true,
+            'sensorScale' : 1.0,
+            'position' : {lat: 38.4882, lon: -122.716}
+          }, 
+          */
+          // Proto 5 Blue House
+          7: {
+            'serialNumber': '506',  
+            'agentURL': '/oGQ_PBSAUppO ',
             'usng': '28475668',
-            'deviceIdHash': '018C268ECB5B',
+            'deviceIdHash': 'C3B996B9F76C',
+            'category': 'modbus',
+            'task': 'fc03',
+            'parameters' : '01_00000001_9600_8_1',
+            'onlineStatus': true,
+            'sensorScale' : 0.01221001221 // = (20 mA / 4095 counts) [WellPro modbus cal factor] / (400 mA/1000 W/m^2) [solar panel cal]
+              },
+          // Proto 5 Orange House
+          8: {
+            'serialNumber': '508',
+            'agentURL': '/2866vQYBgUpC',
+            'usng': '28475668',
+            'deviceIdHash': '730D72A6E22F',
             'category': 'modbus',
             'task': 'fc03',
             'parameters' : '01_00000001_9600_8_1',
             'onlineStatus': true,
             'sensorScale' : 1.0
               },
-          3: {
-            'serialNumber': '404',
-            'agentURL': '/QGO7JQAzyiev',
+          // Proto 5 Green House          
+          9: {
+            'serialNumber': '509',
+            'agentURL': '/D1PRYwJmmHAi',
             'usng': '28475668',
-            'deviceIdHash': '2BF6EF3EFD90',
+            'deviceIdHash': '16240A06C1FC',
+            'category': 'modbus',
+            'task': 'fc03',
+            'parameters' : '01_00000001_9600_8_1',
+            'onlineStatus': true,
+            'sensorScale' : 3.25
+          },
+          // Proto 5 Black House
+          10: {
+            'serialNumber': '513',
+            'agentURL': '/ZT8GBL-7RrgD',
+            'usng': '28475668',
+            'deviceIdHash': 'DF04146F1DF0',
             'category': 'modbus',
             'task': 'fc03',
             'parameters' : '01_00000001_9600_8_1',
             'onlineStatus': true,
             'sensorScale' : 0.01221001221 // = (20 mA / 4095 counts) [WellPro modbus cal factor] / (400 mA/1000 W/m^2) [solar panel cal]
           },
-
-          4: {
-            'serialNumber': '405',
-            'agentURL': '/CyPoe3l9E5Od',
+          // Proto 5 Yellow House
+          11: {
+            'serialNumber': '514',
+            'agentURL': '/609atPXTxkX7',
             'usng': '28475668',
-            'deviceIdHash': '718A34D8423A',
+            'deviceIdHash': '00E329B56259',
             'category': 'modbus',
             'task': 'fc03',
             'parameters' : '01_00000001_9600_8_1',
             'onlineStatus': true,
-            'sensorScale' : 1.0
-          },
-
-          5: {
-            'serialNumber': '407',
-            'agentURL': '/VifAbahCX8ux',
-            'usng': '28475668',
-            'deviceIdHash': 'C5F6371C8A03',
-            'category': 'modbus',
-            'task': 'fc03',
-            'parameters' : '01_00000001_9600_8_1',
-            'onlineStatus': true,
-            'sensorScale' : 1.0
-          }, 
-
-          6: {
-            'serialNumber': '406',
-            'agentURL': '/hxsSiYETEEpd',
-            'usng': '28475668',
-            'deviceIdHash': '4CA33E88EDAA',
-            'category': 'modbus',
-            'task': 'fc03',
-            'parameters' : '01_00000001_9600_8_1',
-            'onlineStatus': true,
-            'sensorScale' : 1.0
+            'sensorScale' : 0.01221001221 // = (20 mA / 4095 counts) [WellPro modbus cal factor] / (400 mA/1000 W/m^2) [solar panel cal]
           } 
+          // Bad PCB
+          /*
+          12: {
+            'serialNumber': '515',
+            'agentURL': '/VRa-gimZfDGJ',
+            'usng': '28475668',
+            'deviceIdHash': '4E44238D7110',
+            'category': 'modbus',
+            'task': 'fc03',
+            'parameters' : '01_00000001_9600_8_1',
+            'onlineStatus': true,
+            'sensorScale' : 0.01221001221 // = (20 mA / 4095 counts) [WellPro modbus cal factor] / (400 mA/1000 W/m^2) [solar panel cal]
+          } 
+          */
     };
 
 // default Interest with reasonable values for SN404
@@ -198,7 +271,7 @@ var fleetLink = {
           var hexStr = response.substring(6,10);
           var output = parseInt("0x" + hexStr, 16);
           var result = fleetLink[targetUnitKey].sensorScale * output;
-          document.getElementById("stringDataRepresentation").value = result.toFixed(2) + " W/m^2";
+          document.getElementById("stringDataRepresentation").value = result.toFixed(0) + "  W/m^2";
         }
       }
 
@@ -206,7 +279,7 @@ var fleetLink = {
       function clearResult() {
         document.getElementById("stringDataRepresentation").value = "";
       }
-
+/*
       function parseFloat(str) {
           var float = 0, sign, order, mantiss,exp,
           int = 0, multi = 1;
@@ -231,7 +304,7 @@ var fleetLink = {
           }
           return float*sign;
       }
-
+*/
       function updateMarkers() {
         clearResult();
         initGateway();
@@ -285,23 +358,26 @@ var fleetLink = {
         var wCent = width/2;
         var leftOffset = edgeDist;
         var rightOffset = width - edgeDist;
-        var topOffset = edgeDist;
-        var bottomOffset = height - edgeDist;
+        var topOffset = 2.5*edgeDist;
+        var bottomOffset = height - 1.5*edgeDist;
         con.fillRect(0, 0, drawing.width, drawing.height);
 
-        //draw imp devices..
-        var item404 = document.getElementById("404Img");
-        con.drawImage(item404, edgeDist, hCent - imgSize/2, imgSize, imgSize);
-        var item405 = document.getElementById("405Img");
-        con.drawImage(item405, rightOffset - imgSize, hCent - imgSize/2, imgSize, imgSize);
-        var item402 = document.getElementById("402Img");
-        con.drawImage(item402, wCent - imgSize/2, topOffset, imgSize, imgSize);
-        // var item403 = document.getElementById("403Img");
-        // con.drawImage(item403, wCent - imgSize/2, hCent - imgSize/2, imgSize, imgSize);
-        var item406 = document.getElementById("406Img");
-        con.drawImage(item406, wCent - imgSize/2, hCent - imgSize/2, imgSize, imgSize);
-        var item407 = document.getElementById("407Img");
-        con.drawImage(item407, wCent - imgSize/2, bottomOffset - 1.2*imgSize, imgSize, imgSize);
+        //draw  FleetLink units
+        // Left Side
+        var item509 = document.getElementById("509Img");
+        con.drawImage(item509, edgeDist, hCent - imgSize/2, imgSize, imgSize);
+        // Right Side
+        var item506 = document.getElementById("506Img");
+        con.drawImage(item506, rightOffset - imgSize, hCent - imgSize/2, imgSize, imgSize);
+        // Top
+        var item513 = document.getElementById("513Img");
+        con.drawImage(item513, wCent - imgSize/2, topOffset, imgSize, imgSize);
+        // Center
+        var item514 = document.getElementById("514Img");
+        con.drawImage(item514, wCent - imgSize/2, hCent - imgSize/2, imgSize, imgSize);
+        // Bottom
+        var item508 = document.getElementById("508Img");
+        con.drawImage(item508, wCent - imgSize/2, bottomOffset - 1.4*imgSize, imgSize, imgSize);
 
         //get selected Unit
         updateAccessPointAndTargetKeys();
@@ -311,26 +387,30 @@ var fleetLink = {
         var y = 0;
         console.log("AccessPointKey: " + accessUnitKey);
         switch(fleetLink[accessUnitKey].serialNumber) {
-          case "402":
+          // Top
+          case "513":
             x = wCent - imgSize/4;
-            y = edgeDist + imgSize + targetGatewayOffset;
+            y = edgeDist + 1.45*imgSize + targetGatewayOffset;
           break;
-          case "403":
-          case "406":
+          // Center
+          case "514":
             x = wCent - imgSize/4;
             y = hCent + imgSize/2 + targetGatewayOffset;
           break;
-          case "404":
+          // Left
+          case "509":
             x = edgeDist + imgSize/4;;
             y = hCent + imgSize/2 + targetGatewayOffset;
           break;
-          case "405":
+          // Right
+          case "506":
             x = width - 3/4*imgSize - edgeDist - targetGatewayOffset;
             y = hCent + imgSize/2 + targetGatewayOffset;
           break;
-          case "407":
+          // Bottom
+          case "508":
             x = wCent - imgSize/4;
-            y = bottomOffset - edgeDist ;
+            y = bottomOffset - 1.5*edgeDist ;
           break;
         }
         console.log("x=" + x + ", y=" + y);
@@ -339,27 +419,30 @@ var fleetLink = {
         y = 0;
         //console.log("TargetKey: " + targetUnitKey);
         switch(fleetLink[targetUnitKey].serialNumber) {
-          case "402":
+          // Top
+          case "513":
             x = wCent - imgSize/4;
-            y = edgeDist + imgSize + targetGatewayOffset;
+            y = edgeDist + 1.45*imgSize + targetGatewayOffset;
           break;
-          case "403":
-          case "406":
+          // Center
+          case "514":
             x = wCent - imgSize/4;
             y = hCent + imgSize/2 + targetGatewayOffset;
           break;
-          case "404":
+          // Left
+          case "509":
             x = edgeDist + imgSize/4;
             y = hCent + imgSize/2 + targetGatewayOffset;
           break;
-          case "405":
+          // Right
+          case "506":
             x = width - 3/4*imgSize - edgeDist - targetGatewayOffset;
             y = hCent + imgSize/2 + targetGatewayOffset;
           break;
-          case "407":
+          // Bottom
+          case "508":
             x = wCent - imgSize/4;
-            //y = height - edgeDist - imgSize;
-            y = bottomOffset - edgeDist ;
+            y = bottomOffset - 1.5*edgeDist ;
           break;
         }
         con.drawImage(targetImg, x, y, targetGatewaySize, targetGatewaySize);
@@ -384,52 +467,60 @@ var fleetLink = {
           if (fleetLink[key].onlineStatus) {
             //console.log("SNo: " + fleetLink[key].serialNumber + " wifi: " + fleetLink[key].onlineStatus);
             switch(fleetLink[key].serialNumber) {
-              case "402":
+              // Top
+              case "513":
                 x = hCent - imgSize/2; 
-                y = edgeDist; 
+                y = edgeDist+ 0.45*imgSize; 
               break;
-              case "403":
-              case "406":
+              // Center
+              case "514":
                 x = hCent - imgSize/2;
                 y = hCent - imgSize/2;
               break;
-              case "404":
+              // Left
+              case "509":
                 x = edgeDist;
                 y = hCent - imgSize/2;
               break;
-              case "405":
+              // Right
+              case "506":
                 x = rightOffset - imgSize;
                 y = hCent - imgSize/2;
               break;
-              case "407":
+              // Bottom
+              case "508":
                 x = hCent - imgSize/2;
-                y = bottomOffset - 1.2*imgSize;
+                y = bottomOffset - 1.55*imgSize;
               break;
             }
             con.drawImage(greenImg, x, y, wifiImgSize, wifiImgSize);          
           }
           else {
             switch(fleetLink[key].serialNumber) {
-              case "402":
+              //Top
+              case "513":
                 x = hCent - imgSize/2;
-                y = edgeDist;
+                y = edgeDist + 0.45*imgSize;
               break;
-              case "403":
-              case "406":
+              // center
+              case "514":
                 x = hCent - imgSize/2;
                 y = hCent - imgSize/2;
               break;
-              case "404":
+              // Left
+              case "509":
                 x = edgeDist;
                 y = hCent - imgSize/2 ;
               break;
-              case "405":
+              // Right
+              case "506":
                 x = rightOffset - imgSize;
                 y = hCent - imgSize/2;
               break;
-              case "407":
+              // Bottom
+              case "508":
                 x = hCent - imgSize/2;
-                y = bottomOffset - 1.2*imgSize;
+                y = bottomOffset - 1.55*imgSize;
               break;
             }
             con.drawImage(redImg, x, y, wifiImgSize, wifiImgSize);          

@@ -25,21 +25,23 @@
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
 <!--  <script src="http://maps.google.com/maps/api/js"></script> -->
 	<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBJsI1UtulCg9DszKUeubxt6af44Xzi2AA"></script>
-  <script src="js/appHouseDemo.js"></script>
+  <script src="js/applicationOOP.js"></script>
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
 
 <body>
 
 <p>
-<img id = "402Img" src="img/yellowHouse.png" hidden="true">
-<img id = "404Img" src="img/greenHouse.png" hidden="true">
-<img id = "405Img" src="img/blueHouse.png" hidden="true">
-<img id = "406Img" src="img/blackHouse.png" hidden="true">
-<img id = "407Img" src="img/orangeHouse.png" hidden="true">
+
+<img id = "403Img" src="img/House SN403.png" hidden="true">
+<img id = "404Img" src="img/House SN404.png" hidden="true">
+<img id = "402Img" src="img/House SN402.png" hidden="true">
+<img id = "405Img" src="img/House SN405.png" hidden="true">
+<img id = "407Img" src="img/House SN407.png" hidden="true">
+<img id = "406Img" src="img/House SN406.png" hidden="true">
 <img id = "_greenWifi" src="img/Green WiFi.png" hidden="true">
 <img id = "_redWifi" src="img/Red WiFi.png" hidden="true">
-<img id="_gatewayIcon"  src="img/gateway.png" hidden="true">
-<img id="_targetIcon" src="img/solar_panel.png" hidden="true">
+<img id="_gatewayIcon"  src="img/gatewayIcon2.png" hidden="true">
+<img id="_targetIcon" src="img/targetIcon3.png" hidden="true">
 
 <div data-role="page" id="pageone" style="margin:auto width:100%;background-color: #262E33;" data-theme="b" >
 	<div data-role="main" class="ui-content" >
@@ -53,11 +55,12 @@
 						<label id="targetLabel" style="color= black; float:left; margin-right:5%; width:100%; margin-bottom:5px; font-size:1.2em">Select Target</label>
 						<!--<img  id="targetIcon"  src="img/targetIcon3.png" style="float:right; margin-top:20px; margin-left:10%; margin-right:10%"  height="15%" width="15%">-->
 						<select   id="selectedUnit"   data-native-menu="false"  onchange="updateMarkers()">
-							<option value="402">Yellow</option>
-							<option value="404" selected="selected">Green</option>
-							<option value="405">Blue</option>
-							<option value="406">Black</option>
-							<option value="407">Orange</option>
+							<option value="402">2</option>
+							<!--<option value="403">3</option>-->
+							<option value="404" selected="selected">4</option>
+							<option value="405">5</option>
+							<option value="406">6</option>
+							<option value="407">7</option>
 						</select>
 					</div>
 					<div data-role="main" class=container style="height:20%;">
@@ -75,26 +78,31 @@
 							<label id="gatewayLabel" style="color=black; float:left; margin-left:5%; margin-bottom:5px; width:60%; font-size:1.2em">Select Gateway</label>
 							<!--<img  id="gatewayIcon"  src="img/gatewayIcon2.png" style="float:right; margin-top:20px; margin-left:10%; margin-right:10%"  height="15%" width="15%">-->
 							<select   id="selectedAccessPoint"   data-native-menu="false"  onchange="updateMarkers()"; >
-								<option value="402">Yellow</option>
-								<option value="404" selected="selected" >Green</option>
-								<option value="405">Blue</option>
-								<option value="404">Black</option>
-								<option value="407">Orange</option>
+								<option value="402">2</option>
+								<!--<option value="403">3</option>-->
+								<option value="404">4</option>
+								<option value="405" selected="selected">5</option>
+								<option value="404">6</option>
+								<option value="407">7</option>
 							</select>
 						</div>
 					<div data-role="main" class=container>
 						<fieldset>
 							<legend style="float:left; margin-bottom:5px; width:100%; font-size:1.2em">WiFi Enabled</legend>
 									<input type="checkbox" id="402" value="402" name="chk_group[]" onclick="updatewifiOn()" checked>
-									<label for="402">Yellow</label>
+									<label for="402">2</label>
+							<!--<p>
+									<input type="checkbox" id="403" value="403" name="chk_group[]" onclick="updatewifiOn()">
+									<label for="403">3</label>	
+							</p>												-->
 									<input type="checkbox" id="404" value="404" name="chk_group[]" onclick="updatewifiOn()"  checked>
-									<label for="404">Green</label>	
+									<label for="404">4</label>	
 									<input type="checkbox" id="405" value="405" name="chk_group[]" onclick="updatewifiOn()" checked>
-									<label for="405">Blue</label>	
+									<label for="405">5</label>	
 									<input type="checkbox" id="406" value="406" name="chk_group[]" onclick="updatewifiOn()" checked>
-									<label for="406">Black</label>	
+									<label for="406">6</label>	
 									<input type="checkbox" id="407" value="407" name="chk_group[]" onclick="updatewifiOn()"  checked>
-									<label for="407">Orange</label>	
+									<label for="407">7</label>	
 							</p>		
 						</fieldset>		
 					</div>								
