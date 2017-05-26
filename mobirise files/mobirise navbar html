@@ -1,13 +1,13 @@
 <section>
 
-    <nav class="navbar navbar-dropdown navbar-fixed-top" style="background-color:#1474BF;">
-        <div class="container" style="background-color:#1474BF;">
+    <nav class="navbar navbar-dropdown bg-color transparent navbar-fixed-top">
+        <div class="container">
 
             <div class="mbr-table">
                 <div class="mbr-table-cell">
 
                     <div class="navbar-brand">
-                        <a href="https://operantsolar.com" target="_blank" class="navbar-logo"><img src="file:///Users/randy/Library/Application%20Support/Mobirise.com/Mobirise/projects/project-2017-05-24_103057/assets/images/operantlogo2-526x128.png" alt="Mobirise"></a>
+                        <a href="https://operantsolar.com" target="_blank" class="navbar-logo"><img src="file:///Users/randy/Library/Application%20Support/Mobirise.com/Mobirise/projects/project-2017-05-24_103057/assets/images/operantlogo4-338x128.png" alt="Mobirise"></a>
                         
                     </div>
 
