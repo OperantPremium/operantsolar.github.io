@@ -150,7 +150,7 @@
             "showText": false,
             "showButtons": true
           },
-          "title": "FleetLink<br><br><br><br><br>",
+          "title": "FleetLink<br><br><br><br>",
           "text": "",
           "buttons": "<a data-app-btn=\"true\" class=\"btn btn-lg btn-success\" href=\"https://mobirise.com\" data-toolbar=\"-mbrBtnMove\"><span class=\"mbri-logout mbr-iconfont mbr-iconfont-btn\" style=\"color: rgb(250, 250, 250);\"></span>GO</a> ",
           "_styles": {
