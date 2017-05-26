@@ -61,7 +61,7 @@ function setTarget(requestedTarget) {
 // read the web UI to determine the unit that is being targeted
     function getRSSI(context) {
 
-        var waitDisplay = "...waiting for " + target;
+        var waitDisplay = "...Scan WiFi of " + target;
         if (target != gateway){
             waitDisplay += " (via " + gateway + ")";
         }
