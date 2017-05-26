@@ -6,7 +6,7 @@
         <div class="container">
             <div class="row">
                 <div class="mbr-section col-md-10 col-md-offset-1 text-xs-center">
-                    <h1 class="mbr-section-title display-1 mbr-editable-content">FleetLink<br><br><br></h1>
+                    <h1 class="mbr-section-title display-1 mbr-editable-content">FleetLink<br><br></h1>
                         <div class="mbr-section-btn">
                             <a class="btn btn-lg btn-success mbr-editable-button" href="http://www.operantsolar.com" onclick="getRSSI(this); return false;">
                                 <span class="mbri-logout mbr-iconfont mbr-iconfont-btn" style="color: rgb(250, 250, 250);"></span>GO</a> 
