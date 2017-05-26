@@ -126,9 +126,7 @@ function setTarget(requestedTarget) {
             waitDisplay += " via " + gateway ;
         }
 
-        // Disable button during request
-        //buttonID.style.disabled = "disabled";
-       buttonID.style.background='#9AA78E';
+       buttonID.style.background='#1474BF';
 
         // actual web POST
         $.ajax({
@@ -146,7 +144,9 @@ function setTarget(requestedTarget) {
                     buttonID.style.background='#90A878';
               },
               error : function(jqXHR, textStatus, err) {
-                    var errorResponse = jqXHR.status + ' ' + textStatus + ': ' + err + ' - ' + jqXHR.responseText;
+                    //var errorResponse = jqXHR.status + ' ' + textStatus + ': ' + err + ' - ' + jqXHR.responseText;
+                    var errorResponse = err + ' - ' + jqXHR.responseText;
+
                     console.log(errorResponse);
                     buttonID.innerHTML = errorResponse;
                     buttonID.style.background='#90A878';

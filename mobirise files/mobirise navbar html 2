@@ -1,7 +1,7 @@
 <section>
 
-    <nav class="navbar navbar-dropdown navbar-fixed-top">
-        <div class="container">
+    <nav class="navbar navbar-dropdown navbar-fixed-top" style="background-color:#1474BF;">
+        <div class="container" style="background-color:#1474BF;">
 
             <div class="mbr-table">
                 <div class="mbr-table-cell">
@@ -18,9 +18,9 @@
                         <div class="hamburger-icon"></div>
                     </button>
 
-    <ul class="nav-dropdown collapse pull-xs-right nav navbar-nav navbar-toggleable-sm" id="exCollapsingNavbar"><li class="nav-item dropdown open">
+    <ul class="nav-dropdown collapse pull-xs-right nav navbar-nav navbar-toggleable-sm" id="exCollapsingNavbar"><li class="nav-item dropdown">
         
-        <a class="nav-link link dropdown-toggle mbr-editable-menu-item" href="https://mobirise.com/" data-toggle="dropdown-submenu" aria-expanded="true">EQUIPMENT</a>
+        <a class="nav-link link dropdown-toggle mbr-editable-menu-item" href="https://mobirise.com/" data-toggle="dropdown-submenu" aria-expanded="false">EQUIPMENT</a>
             <div class="dropdown-menu">
                 <div class="dropdown">
                     <a class="dropdown-item dropdown-toggle mbr-editable-menu-item" href="#" data-toggle="dropdown-submenu" aria-expanded="false">FLEETLINK</a>

@@ -690,7 +690,7 @@ h6,
 }
 #header1-x .btn {
   font-family: 'Open Sans', sans-serif;
-  font-size: 24px;
+  font-size: 32px;
   font-weight: bold;
 }
 #ext_menu-y .hide-buttons .nav-btn {
@@ -726,7 +726,7 @@ h6,
 }
 #ext_menu-y .link[aria-expanded="true"],
 #ext_menu-y .dropdown-menu {
-  background: #77905d;
+  background: #144E76;
 }
 #ext_menu-y .nav-dropdown-sm .link:focus,
 #ext_menu-y .nav-dropdown-sm .link:hover,
