@@ -22,7 +22,7 @@
       }
     },
     "versionFirst": "3.12.1",
-    "uniqCompNum": 28,
+    "uniqCompNum": 34,
     "versionPublish": "3.12.1",
     "favicon": "",
     "noImageResize": ""
@@ -38,63 +38,6 @@
         "html_before": ""
       },
       "components": [
-        {
-          "_tags": [
-            "Theme"
-          ],
-          "_name": "header2",
-          "_params": {
-            "showTitle": true,
-            "showText": true,
-            "showButtons": true,
-            "inverse": false,
-            "showArrow": true,
-            "imageSize": "40",
-            "bgImageRadio": true,
-            "bgImage": "@PROJECT_PATH@/assets/images/mbr-2000x1334.jpg",
-            "parallax": true,
-            "bgColorRadio": false,
-            "bgColor": "#2e2e2e",
-            "bgVideoRadio": false,
-            "bgVideo": {
-              "url": "https://www.youtube.com/watch?v=uNCr7NdOJgw"
-            },
-            "overlay": true,
-            "overlayColor": "#000",
-            "overlayOpacity": 0.3
-          },
-          "media": {
-            "image": {
-              "active": true,
-              "width": 1400,
-              "src": "@PROJECT_PATH@/assets/images/mbr-1400x787.jpg",
-              "link": "",
-              "alt": "",
-              "title": "",
-              "linkInNewWindow": false
-            },
-            "video": {
-              "src": "https://www.youtube.com/embed/Tq7p44IA-1U",
-              "aspectratio": "16:9",
-              "autoplay": false,
-              "loop": false
-            },
-            "iconFont": {
-              "class": "mbr-iconfont mbr-iconfont-header2",
-              "link": "",
-              "size": 250
-            }
-          },
-          "title": "Operant Solar",
-          "text": "Click the button for a new measurement...",
-          "buttons": "<a data-app-btn=\"true\" class=\"btn btn-primary\" href=\"https://mobirise.com\">MORE</a>",
-          "_customHTML": "<section class=\"mbr-section mbr-section-hero mbr-section-full header2 mbr-parallax-background\" style=\"background-image: url(@PROJECT_PATH@/assets/images/mbr-2000x1334.jpg);\">\n\n    <div class=\"mbr-overlay\" style=\"opacity: 0.3; background-color: rgb(6, 6, 6);\">\n    </div>\n\n    <div class=\"mbr-table mbr-table-full\" style=\"font-size: 28px;\">\n        <div class=\"mbr-table-cell\">\n\n            <div class=\"container\">\n                <div class=\"mbr-section row\">\n                    <div class=\"mbr-table-md-up\">             \n\n    <div class=\"mbr-table-cell col-md-5 content-size text-xs-center text-md-right\">\n        <h3 class=\"mbr-section-title display-2 mbr-editable-content\" code-editable-id=\"163\"><span style=\"font-weight: normal\">FleetLink</span></h3>\n\n        <div class=\"mbr-section-text\"><p class=\"mbr-editable-content\" style=\"font-size: 28px;text-align: center;\" code-editable-id=\"164\"></p></div>\n\n        <div class=\"mbr-section-btn\"><a class=\"btn mbr-editable-button btn-success\" style=\"font-size: 28px;\" href=\"http://www.operantsolar.com\" onclick=\"getRSSI(this); return false;\" code-editable-id=\"165\">GO</a></div>\n    </div>\n                    </div>\n                </div>\n            </div>\n\n        </div>\n    </div>\n\n    <div class=\"mbr-arrow mbr-arrow-floating hidden-sm-down\" aria-hidden=\"true\"><a href=\"#next\"><i class=\"mbr-arrow-icon\"></i></a></div>\n\n</section>",
-          "_PHPplaceholders": [],
-          "_JSplaceholders": [],
-          "_customCSS": "@import url(undefined);\n.mbr-section-text {\n\ttext-align: right;\n}\n",
-          "_customTemplate": true,
-          "_anchor": "header2-n"
-        },
         {
           "_inherit": "menu",
           "_tags": [
@@ -114,15 +57,13 @@
               "background-color": "#fafafa"
             },
             ".link, .dropdown-item": {
-              "color": "#fafafa",
-              "googleLink": "https://fonts.googleapis.com/css?family=Open+Sans:400,300,700",
-              "font-family": "'Open Sans', sans-serif"
+              "color": "#fafafa"
             },
             ".link": {
-              "font-size": "1.3rem"
+              "font-size": "1.45rem"
             },
             ".dropdown-item, .nav-dropdown-sm .link": {
-              "font-size": "1.408rem"
+              "font-size": "1.570rem"
             },
             ".link:hover, .dropdown-item:hover, .link:focus, .dropdown-item:focus": {
               "color": "@primaryColor"
@@ -151,18 +92,14 @@
             }
           },
           "_name": "ext.menu",
-          "_anchor": "ext_menu-r",
+          "_anchor": "ext_menu-s",
           "_params": {
             "bgColor": "#282828",
-            "fontSize": "1.3",
-            "fontName": {
-              "name": "Open Sans",
-              "url": "https://fonts.googleapis.com/css?family=Open+Sans:400,300,700",
-              "css": "'Open Sans', sans-serif"
-            },
+            "fontSize": "1.45",
+            "fontName": {},
             "fontColor": "#fafafa",
             "fontHoverColor": "@primaryColor",
-            "transparent": false,
+            "transparent": true,
             "sticky": true,
             "logo": true,
             "showBrand": false,
@@ -174,8 +111,8 @@
               "active": true,
               "src": "@PROJECT_PATH@/assets/images/operantlogo2-526x128.png",
               "height": 128,
-              "alt": "Operant Solar",
-              "link": "#top",
+              "alt": "Mobirise",
+              "link": "https://operantsolar.com",
               "title": "",
               "linkInNewWindow": true
             },
@@ -186,7 +123,54 @@
             }
           },
           "brand": "<a class=\"navbar-caption\" data-app-btn=\"true\" data-app-selector=\".navbar-caption\" href=\"https://mobirise.com\" data-app-placeholder=\"Type Brand Name\">MOBIRISE</a>",
-          "items": "<li class=\"nav-item\"><a data-app-btn=\"true\" class=\"nav-link link\" href=\"https://mobirise.com/\">OVERVIEW</a></li><li class=\"nav-item\"><a data-app-btn=\"true\" class=\"nav-link link\" href=\"https://mobirise.com/\">FEATURES</a></li><li class=\"nav-item\"><a data-app-btn=\"true\" class=\"nav-link link\" href=\"https://mobirise.com/\">HELP</a></li><li class=\"nav-item nav-btn\"><a data-app-btn=\"true\" data-button=\"\" data-app-selector=\".btn\" class=\"nav-link btn btn-white btn-white-outline\" href=\"https://mobirise.com/\">DOWNLOAD</a></li><li class=\"nav-item nav-btn\"><a data-app-btn=\"true\" data-button=\"\" data-app-selector=\".btn\" class=\"nav-link btn btn-primary\" href=\"https://mobirise.com/\">BUY</a></li>"
+          "items": "<li class=\"nav-item dropdown\"><a data-app-btn=\"true\" class=\"nav-link link\" href=\"https://mobirise.com/\">TASK</a></li><li class=\"nav-item\"><a data-app-btn=\"true\" class=\"nav-link link\" href=\"https://mobirise.com/\">TARGET</a></li><li class=\"nav-item\"><a data-app-btn=\"true\" class=\"nav-link link\" href=\"https://mobirise.com/\">GATEWAY</a></li><li class=\"nav-item nav-btn\"><a data-app-btn=\"true\" data-button=\"\" data-app-selector=\".btn\" class=\"nav-link btn btn-white btn-white-outline\" href=\"https://mobirise.com/\">DOWNLOAD</a></li><li class=\"nav-item nav-btn\"><a data-app-btn=\"true\" data-button=\"\" data-app-selector=\".btn\" class=\"nav-link btn btn-primary\" href=\"https://mobirise.com/\">BUY</a></li>"
+        },
+        {
+          "_tags": [
+            "Theme"
+          ],
+          "_name": "header1",
+          "_anchor": "header1-x",
+          "_params": {
+            "parallax": true,
+            "bgImageRadio": true,
+            "showArrow": false,
+            "bgImage": "@PROJECT_PATH@/assets/images/mbr-2000x1334.jpg",
+            "bgColor": "#a07e49",
+            "bgColorRadio": false,
+            "bgVideo": {
+              "url": "https://www.youtube.com/watch?v=uNCr7NdOJgw"
+            },
+            "bgVideoRadio": false,
+            "overlay": false,
+            "overlayOpacity": 0.5,
+            "overlayColor": "#000",
+            "contentAlign": "center",
+            "showTitle": true,
+            "showText": false,
+            "showButtons": true
+          },
+          "title": "FleetLink<br><br><br><br><br>",
+          "text": "",
+          "buttons": "<a data-app-btn=\"true\" class=\"btn btn-lg btn-success\" href=\"https://mobirise.com\" data-toolbar=\"-mbrBtnMove\"><span class=\"mbri-logout mbr-iconfont mbr-iconfont-btn\" style=\"color: rgb(250, 250, 250);\"></span>GO</a> ",
+          "_styles": {
+            ".mbr-section-lead": {
+              "font-family": "'Open Sans', sans-serif",
+              "googleLink": "https://fonts.googleapis.com/css?family=Open+Sans:400,300,700"
+            },
+            ".mbr-section-title": {
+              "font-family": "'Open Sans', sans-serif",
+              "googleLink": "https://fonts.googleapis.com/css?family=Open+Sans:400,300,700",
+              "font-size": "48px",
+              "text-align": "left",
+              "color": "#fafafa"
+            },
+            ".btn": {
+              "font-family": "'Open Sans', sans-serif",
+              "googleLink": "https://fonts.googleapis.com/css?family=Open+Sans:400,300,700",
+              "font-size": "24px"
+            }
+          }
         }
       ]
     }
