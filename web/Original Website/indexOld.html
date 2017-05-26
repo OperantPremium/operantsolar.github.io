@@ -1,0 +1,116 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Operant Solar FleetLink</title>
+<!-- <meta name="viewport" content="width=device-width, initial-scale=1">-->
+<meta name="viewport" content="height=device-height,width=device-width,initial-scale=1.0,maximum-scale=1.0" >
+
+  <link rel="stylesheet" href="css/styleOOP.css" type="text/css"></link>
+
+	<link rel="stylesheet" href="https://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css" />
+	<script src="https://code.jquery.com/jquery-1.11.1.min.js"></script>
+	<script src="https://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
+
+
+  <script>
+  <!-- http://stackoverflow.com/questions/32453806/uncaught-securityerror-failed-to-execute-replacestate-on-history-cannot-be-->
+    $(document).bind('mobileinit',function(){
+        $.mobile.changePage.defaults.changeHash = false;
+        $.mobile.hashListeningEnabled = false;
+        $.mobile.pushStateEnabled = false;
+    });
+  </script>
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+<!--  <script src="http://maps.google.com/maps/api/js"></script> -->
+	<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBJsI1UtulCg9DszKUeubxt6af44Xzi2AA"></script>
+  <script src="js/applicationOOP.js"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
+
+<body>
+
+<p>
+
+<img id = "403Img" src="img/House SN403.png" hidden="true">
+<img id = "404Img" src="img/House SN404.png" hidden="true">
+<img id = "402Img" src="img/House SN402.png" hidden="true">
+<img id = "405Img" src="img/House SN405.png" hidden="true">
+<img id = "407Img" src="img/House SN407.png" hidden="true">
+<img id = "406Img" src="img/House SN406.png" hidden="true">
+<img id = "_greenWifi" src="img/Green WiFi.png" hidden="true">
+<img id = "_redWifi" src="img/Red WiFi.png" hidden="true">
+<img id="_gatewayIcon"  src="img/gatewayIcon2.png" hidden="true">
+<img id="_targetIcon" src="img/targetIcon3.png" hidden="true">
+
+<div data-role="page" id="pageone" style="margin:auto width:100%;background-color: #262E33;" data-theme="b" >
+	<div data-role="main" class="ui-content" >
+		<div data-role="main"  style="width:95%; margin-top:5%; ">
+			<div data-role="main"  style="  background-color: #394C49;float: left; width:100%; border: 2px solid gray;border-radius: 10px; padding:15px;">
+				<canvas id="_deviceIndicators" width="600" height="600" style="border:1px solid #f3c3c3;">
+				Your browser does not support the HTML5 canvas tag.
+				</canvas>								
+				<div data-role="main" style="float:right; width:35%; ">
+					<div data-role="main" class=container>
+						<label id="targetLabel" style="color= black; float:left; margin-right:5%; width:100%; margin-bottom:5px; font-size:1.2em">Select Target</label>
+						<!--<img  id="targetIcon"  src="img/targetIcon3.png" style="float:right; margin-top:20px; margin-left:10%; margin-right:10%"  height="15%" width="15%">-->
+						<select   id="selectedUnit"   data-native-menu="false"  onchange="updateMarkers()">
+							<option value="402">2</option>
+							<!--<option value="403">3</option>-->
+							<option value="404" selected="selected">4</option>
+							<option value="405">5</option>
+							<option value="406">6</option>
+							<option value="407">7</option>
+						</select>
+					</div>
+					<div data-role="main" class=container style="height:20%;">
+						<button id="expressInterestPacket"
+							onclick= "expressInterestPacket()"
+							textalign= "center"  
+							style="float:left; width:65%;  margin-left: 17%;  margin-top:1%; margin-bottom:1%; border: 1px solid gray; background:#1EB303">
+							GO
+						</button>
+					</div>
+					<div data-role="main" class=container>
+						<input type="text" id="stringDataRepresentation" name="result" style="height=5%; width=60%"/>
+					</div>
+						<div data-role="main" class = 'container'  hidden>
+							<label id="gatewayLabel" style="color=black; float:left; margin-left:5%; margin-bottom:5px; width:60%; font-size:1.2em">Select Gateway</label>
+							<!--<img  id="gatewayIcon"  src="img/gatewayIcon2.png" style="float:right; margin-top:20px; margin-left:10%; margin-right:10%"  height="15%" width="15%">-->
+							<select   id="selectedAccessPoint"   data-native-menu="false"  onchange="updateMarkers()"; >
+								<option value="402">2</option>
+								<!--<option value="403">3</option>-->
+								<option value="404">4</option>
+								<option value="405" selected="selected">5</option>
+								<option value="404">6</option>
+								<option value="407">7</option>
+							</select>
+						</div>
+					<div data-role="main" class=container>
+						<fieldset>
+							<legend style="float:left; margin-bottom:5px; width:100%; font-size:1.2em">WiFi Enabled</legend>
+									<input type="checkbox" id="402" value="402" name="chk_group[]" onclick="updatewifiOn()" checked>
+									<label for="402">2</label>
+							<!--<p>
+									<input type="checkbox" id="403" value="403" name="chk_group[]" onclick="updatewifiOn()">
+									<label for="403">3</label>	
+							</p>												-->
+									<input type="checkbox" id="404" value="404" name="chk_group[]" onclick="updatewifiOn()"  checked>
+									<label for="404">4</label>	
+									<input type="checkbox" id="405" value="405" name="chk_group[]" onclick="updatewifiOn()" checked>
+									<label for="405">5</label>	
+									<input type="checkbox" id="406" value="406" name="chk_group[]" onclick="updatewifiOn()" checked>
+									<label for="406">6</label>	
+									<input type="checkbox" id="407" value="407" name="chk_group[]" onclick="updatewifiOn()"  checked>
+									<label for="407">7</label>	
+							</p>		
+						</fieldset>		
+					</div>								
+				</div>
+			</div>
+    </div>
+	</div>
+</div>
+
+</body>
+</html>
