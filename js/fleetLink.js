@@ -125,8 +125,8 @@ function setTarget(requestedTarget) {
         if (target != gateway){
             waitDisplay += " via " + gateway ;
         }
-
-       buttonID.style.background='#1474BF';
+        buttonID.style.background='#1474BF';
+        buttonID.innerHTML = waitDisplay;
 
         // actual web POST
         $.ajax({
@@ -145,13 +145,13 @@ function setTarget(requestedTarget) {
               },
               error : function(jqXHR, textStatus, err) {
                     //var errorResponse = jqXHR.status + ' ' + textStatus + ': ' + err + ' - ' + jqXHR.responseText;
-                    var errorResponse = err + ' - ' + jqXHR.responseText;
+                    var errorResponse = err ;
 
                     console.log(errorResponse);
                     buttonID.innerHTML = errorResponse;
-                    buttonID.style.background='#90A878';
+                    buttonID.style.background='#D7AB4B';
               }
         });
 
-        buttonID.innerHTML = waitDisplay;
+
       }
