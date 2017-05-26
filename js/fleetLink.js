@@ -3,13 +3,15 @@
 // default Interest with reasonable values for SN404
 var target = "SN404";
 var gateway = "SN404";
+var wiFiSSID = "";
+
 var interest = {
     'usng': "28475668",
     'deviceIdHash' : "2BF6EF3EFD90",
     'rw': 'read',
     'category': 'wiFi',
     'task': 'scan',
-    'parameters' : '',
+    'parameters': '',
     'url' : "https://agent.electricimp.com/QGO7JQAzyiev"
 }
 
@@ -35,6 +37,19 @@ function setGateway(requestedGateway) {
     }
   }
 
+
+// Choose the SSID of the network to scane
+function chooseNetwork(){
+    wiFiSSID = prompt("Desired SSID?", "");
+    //console.log("User chose SSID: " + wiFiSSID);
+
+    interest.rw = 'read';
+    interest.category = 'wiFi';
+    interest.task = 'scan';
+    interest.parameters = wiFiSSID;
+}
+
+
 // Choose target unit
 function setTarget(requestedTarget) {
     target = requestedTarget;
@@ -59,9 +74,12 @@ function setTarget(requestedTarget) {
 
 
 // read the web UI to determine the unit that is being targeted
-    function getRSSI(context) {
+    function getRSSI(buttonID) {
+        // Add the SSID as a parameter
+        //interest.parameters = wiFiSSID;
+        console.log(interest);
 
-        var waitDisplay = "...Scan WiFi of " + target;
+        var waitDisplay = "Scanning WiFi of " + target;
         if (target != gateway){
             waitDisplay += " (via " + gateway + ")";
         }
@@ -69,6 +87,9 @@ function setTarget(requestedTarget) {
             waitDisplay += " (direct)"
         }
 
+        // Disable button during request
+        //buttonID.style.disabled = "disabled";
+       buttonID.style.background='#9AA78E';
 
         // actual web POST
         $.ajax({
@@ -77,22 +98,28 @@ function setTarget(requestedTarget) {
             data: JSON.stringify(interest), // convert interest string to JSON
             type: 'POST',
               success : function(response) {
-                  var successDisplay = target + ": " + response;
-                  if (target != gateway){
-                      successDisplay += " (via " + gateway + ")";
-                  }
-                  else {
+                    var successDisplay = target + ": " + response;
+                    if (target != gateway){
+                        successDisplay += " (via " + gateway + ")";
+                    }
+                    else {
                     successDisplay += " (direct)"
-                  }
-                  console.log(successDisplay);
-                  context.innerHTML = successDisplay;
+                    }
+                    console.log(successDisplay);
+                    buttonID.innerHTML = successDisplay;
+                    // Enable button after response
+                    //buttonID.disabled = false;
+                    buttonID.style.background='#90A878';
               },
               error : function(jqXHR, textStatus, err) {
-                  var errorResponse = jqXHR.status + ' ' + textStatus + ': ' + err + ' - ' + jqXHR.responseText;
-                  console.log(errorResponse);
-                  context.innerHTML = "Error";
+                    var errorResponse = jqXHR.status + ' ' + textStatus + ': ' + err + ' - ' + jqXHR.responseText;
+                    console.log(errorResponse);
+                    buttonID.innerHTML = errorResponse;
+                    // Enable button after response
+                    //buttonID.disabled = false;
+                    buttonID.style.background='#90A878';
               }
         });
 
-        context.innerHTML = waitDisplay;
+        buttonID.innerHTML = waitDisplay;
       }

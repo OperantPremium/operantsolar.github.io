@@ -1,7 +1,7 @@
 {
   "settings": {
     "currentPage": "index.html",
-    "name": "My Site",
+    "name": "Operant FleetLink",
     "theme": {
       "name": "mobirise3",
       "title": "Mobirise 3",
@@ -23,15 +23,17 @@
     },
     "versionFirst": "3.12.1",
     "uniqCompNum": 26,
-    "versionPublish": "3.12.1"
+    "versionPublish": "3.12.1",
+    "favicon": "",
+    "noImageResize": ""
   },
   "pages": {
     "index.html": {
       "settings": {
         "main": true,
-        "title": "",
+        "title": "Operant FleetLink",
         "meta_descr": "",
-        "header_custom": "<script src=\"js/getRSSI.js\"></script>",
+        "header_custom": "<script src=\"js/fleetLink.js\"></script>",
         "footer_custom": "",
         "html_before": ""
       },
@@ -41,26 +43,25 @@
             "Theme"
           ],
           "_name": "header2",
-          "_anchor": "header2-n",
           "_params": {
-            "imageSize": "40",
-            "parallax": true,
-            "bgImageRadio": true,
-            "bgImage": "@PROJECT_PATH@/assets/images/mbr-2000x1334.jpg",
-            "bgColor": "#2e2e2e",
-            "bgColorRadio": false,
-            "bgVideo": {
-              "url": "https://www.youtube.com/watch?v=uNCr7NdOJgw"
-            },
-            "bgVideoRadio": false,
-            "overlay": true,
-            "overlayOpacity": 0.3,
-            "overlayColor": "#000",
-            "inverse": false,
             "showTitle": true,
             "showText": true,
             "showButtons": true,
-            "showArrow": true
+            "inverse": false,
+            "showArrow": true,
+            "imageSize": "40",
+            "bgImageRadio": true,
+            "bgImage": "@PROJECT_PATH@/assets/images/mbr-2000x1334.jpg",
+            "parallax": true,
+            "bgColorRadio": false,
+            "bgColor": "#2e2e2e",
+            "bgVideoRadio": false,
+            "bgVideo": {
+              "url": "https://www.youtube.com/watch?v=uNCr7NdOJgw"
+            },
+            "overlay": true,
+            "overlayColor": "#000",
+            "overlayOpacity": 0.3
           },
           "media": {
             "image": {
@@ -87,11 +88,12 @@
           "title": "Operant Solar",
           "text": "Click the button for a new measurement...",
           "buttons": "<a data-app-btn=\"true\" class=\"btn btn-primary\" href=\"https://mobirise.com\">MORE</a>",
-          "_customHTML": "<section class=\"mbr-section mbr-section-hero mbr-section-full header2 mbr-parallax-background\" style=\"background-image: url(@PROJECT_PATH@/assets/images/mbr-2000x1334.jpg);\">\n\n    <div class=\"mbr-overlay\" style=\"opacity: 0.3; background-color: rgb(0, 0, 0);\">\n    </div>\n\n    <div class=\"mbr-table mbr-table-full\">\n        <div class=\"mbr-table-cell\">\n\n            <div class=\"container\">\n                <div class=\"mbr-section row\">\n                    <div class=\"mbr-table-md-up\">\n                        \n                        \n                        \n\n                        <div class=\"mbr-table-cell col-md-5 content-size text-xs-center text-md-right\">\n\n                            <h3 class=\"mbr-section-title display-2 mbr-editable-content\" style=\"font-size: 32px;\" code-editable-id=\"587\"><span style=\"font-weight: normal;\">FleetLink</span></h3>\n\n                            <div class=\"mbr-section-text\"> \n                                <p class=\"mbr-editable-content\" style=\"text-align: center;\" code-editable-id=\"588\">Click the button for a new measurement...</p>\n                            </div>\n\n                            <div class=\"mbr-section-btn\"><a class=\"btn mbr-editable-button btn-info\" href=\"www.operantsolar.com\" onclick=\"getRSSI(this); return false;\" code-editable-id=\"589\">GO</a></div>\n\n                        </div>\n                        \n\n                    </div>\n                </div>\n            </div>\n\n        </div>\n    </div>\n\n    <div class=\"mbr-arrow mbr-arrow-floating hidden-sm-down\" aria-hidden=\"true\"><a href=\"#next\"><i class=\"mbr-arrow-icon\"></i></a></div>\n\n</section>",
+          "_customHTML": "<section class=\"mbr-section mbr-section-hero mbr-section-full header2 mbr-parallax-background\" style=\"background-image: url(@PROJECT_PATH@/assets/images/mbr-2000x1334.jpg);\">\n\n    <div class=\"mbr-overlay\" style=\"opacity: 0.3; background-color: rgb(0, 0, 0);\">\n    </div>\n\n    <div class=\"mbr-table mbr-table-full\" style=\"font-size: 28px;\">\n        <div class=\"mbr-table-cell\">\n\n            <div class=\"container\">\n                <div class=\"mbr-section row\">\n                    <div class=\"mbr-table-md-up\">             \n\n    <div class=\"mbr-table-cell col-md-5 content-size text-xs-center text-md-right\">\n        <h3 class=\"mbr-section-title display-2 mbr-editable-content\" style=\"font-size: 48px;\" code-editable-id=\"329\"><span style=\"font-weight: normal;\">FleetLink</span></h3>\n\n        <div class=\"mbr-section-text\"><p class=\"mbr-editable-content\" style=\"font-size: 28px;text-align: center;\" code-editable-id=\"330\"></p></div>\n\n        <div class=\"mbr-section-btn\"><a class=\"btn mbr-editable-button btn-success\" style=\"font-size: 28px;\" href=\"http://www.operantsolar.com\" onclick=\"getRSSI(this); return false;\" code-editable-id=\"331\">GO</a></div>\n    </div>\n                    </div>\n                </div>\n            </div>\n\n        </div>\n    </div>\n\n    <div class=\"mbr-arrow mbr-arrow-floating hidden-sm-down\" aria-hidden=\"true\"><a href=\"#next\"><i class=\"mbr-arrow-icon\"></i></a></div>\n\n</section>",
           "_PHPplaceholders": [],
           "_JSplaceholders": [],
           "_customCSS": "@import url(undefined);\n.mbr-section-text {\n\ttext-align: right;\n}\n",
-          "_customTemplate": true
+          "_customTemplate": true,
+          "_anchor": "header2-n"
         },
         {
           "_inherit": "menu",
@@ -99,19 +101,18 @@
             "Theme"
           ],
           "_name": "ext.menu",
-          "_anchor": "ext_menu-p",
           "_params": {
+            "logo": true,
+            "showBrand": false,
+            "hideButtons": false,
+            "sticky": true,
+            "collapsed": true,
+            "transparent": false,
             "bgColor": "#282828",
             "fontSize": "0.9",
             "fontName": {},
             "fontColor": "#ffffff",
-            "fontHoverColor": "@primaryColor",
-            "transparent": false,
-            "sticky": true,
-            "logo": true,
-            "showBrand": false,
-            "collapsed": true,
-            "hideButtons": false
+            "fontHoverColor": "@primaryColor"
           },
           "logo": {
             "image": {
@@ -131,11 +132,12 @@
           },
           "brand": "<a class=\"navbar-caption\" data-app-btn=\"true\" data-app-selector=\".navbar-caption\" href=\"https://mobirise.com\" data-app-placeholder=\"Type Brand Name\" data-toolbar=\"-mbrBtnMove,-mbrBtnAdd,-mbrBtnRemove,mbrColor\">FLEETLINK</a>",
           "items": "<li class=\"nav-item dropdown\"><a data-app-btn=\"true\" class=\"nav-link link dropdown-toggle\" href=\"https://mobirise.com/\" data-toggle=\"dropdown-submenu\" aria-expanded=\"false\">MEASUREMENT</a><div class=\"dropdown-menu\"><a data-app-btn=\"true\" class=\"dropdown-item\" href=\"#\">SCAN WIFI</a></div></li><li class=\"nav-item dropdown\"><a data-app-btn=\"true\" class=\"nav-link link dropdown-toggle\" href=\"https://mobirise.com/\" data-toggle=\"dropdown-submenu\" aria-expanded=\"false\">TARGET</a><div class=\"dropdown-menu\"><a data-app-btn=\"true\" class=\"dropdown-item\" href=\"#\">SN404</a></div></li><li class=\"nav-item dropdown\"><a data-app-btn=\"true\" class=\"nav-link link dropdown-toggle\" href=\"https://mobirise.com/\" aria-expanded=\"false\" data-toggle=\"dropdown-submenu\">GATEWAY</a><div class=\"dropdown-menu\"><a data-app-btn=\"true\" class=\"dropdown-item\" href=\"#\">SN404</a></div></li><li class=\"nav-item nav-btn\"><a data-app-btn=\"true\" data-button=\"\" data-app-selector=\".btn\" class=\"nav-link btn btn-info-outline btn-info\" href=\"https://mobirise.com/\">GO</a></li>",
-          "_customHTML": "<section>\n\n    <nav class=\"navbar navbar-dropdown navbar-fixed-top\">\n        <div class=\"container\">\n\n            <div class=\"mbr-table\">\n                <div class=\"mbr-table-cell\">\n\n                    <div class=\"navbar-brand\">\n                        <a href=\"https://mobirise.com\" class=\"navbar-logo\"><img src=\"@PROJECT_PATH@/assets/images/operant-logo-black-469x128.png\" alt=\"Mobirise\"></a>\n                        \n                    </div>\n\n                </div>\n                <div class=\"mbr-table-cell\">\n\n                    <button class=\"navbar-toggler pull-xs-right hidden-md-up\" type=\"button\" data-toggle=\"collapse\" data-target=\"#exCollapsingNavbar\">\n                        <div class=\"hamburger-icon\"></div>\n                    </button>\n\n                    <ul class=\"nav-dropdown collapse pull-xs-right nav navbar-nav navbar-toggleable-sm\" id=\"exCollapsingNavbar\"><li class=\"nav-item dropdown\"><a class=\"nav-link link dropdown-toggle mbr-editable-menu-item\" href=\"https://mobirise.com/\" data-toggle=\"dropdown-submenu\" aria-expanded=\"false\" code-editable-id=\"563\">TASK</a><div class=\"dropdown-menu\"><a class=\"dropdown-item mbr-editable-menu-item\" href=\"#\" code-editable-id=\"564\">SCAN WIFI</a></div></li><li class=\"nav-item dropdown\"><a class=\"nav-link link dropdown-toggle mbr-editable-menu-item\" href=\"https://mobirise.com/\" data-toggle=\"dropdown-submenu\" aria-expanded=\"false\" code-editable-id=\"565\">TARGET</a>\n<div class=\"dropdown-menu\"><a class=\"dropdown-item mbr-editable-menu-item\" href=\"http://www.operantsolar.com\" onclick=\"setTarget('SN403'); return false;\" code-editable-id=\"566\">SN403</a><a class=\"dropdown-item\" href=\"http://www.operantsolar.com\" onclick=\"setTarget('SN404'); return false;\">SN404</a><a class=\"dropdown-item\" href=\"http://www.operantsolar.com\" onclick=\"setTarget('SN406'); return false;\">SN406</a></div></li><li class=\"nav-item dropdown open\"><a class=\"nav-link link dropdown-toggle mbr-editable-menu-item\" href=\"https://mobirise.com/\" aria-expanded=\"true\" data-toggle=\"dropdown-submenu\" code-editable-id=\"567\">GATEWAY</a><div class=\"dropdown-menu\"><a class=\"dropdown-item mbr-editable-menu-item\" href=\"http://www.operantsolar.com\" onclick=\"setGateway('SN403'); return false;\" code-editable-id=\"568\">SN403</a><a class=\"dropdown-item\" href=\"http://www.operantsolar.com\" onclick=\"setGateway('SN404'); return false;\">SN404</a><a class=\"dropdown-item\" href=\"http://www.operantsolar.com\" onclick=\"setGateway('SN406'); return false;\">SN406</a></div></li></ul>\n                    <button hidden=\"\" class=\"navbar-toggler navbar-close\" type=\"button\" data-toggle=\"collapse\" data-target=\"#exCollapsingNavbar\">\n                        <div class=\"close-icon\"></div>\n                    </button>\n\n                </div>\n            </div>\n\n        </div>\n    </nav>\n\n</section>",
+          "_customHTML": "<section>\n\n    <nav class=\"navbar navbar-dropdown navbar-fixed-top\">\n        <div class=\"container\">\n\n            <div class=\"mbr-table\">\n                <div class=\"mbr-table-cell\">\n\n                    <div class=\"navbar-brand\">\n                        <a href=\"https://mobirise.com\" class=\"navbar-logo\"><img src=\"@PROJECT_PATH@/assets/images/operantlogo2.png\" alt=\"Mobirise\"></a>\n                        \n                    </div>\n\n                </div>\n                <div class=\"mbr-table-cell\">\n\n                    <button class=\"navbar-toggler pull-xs-right hidden-md-up\" type=\"button\" data-toggle=\"collapse\" data-target=\"#exCollapsingNavbar\">\n                        <div class=\"hamburger-icon\"></div>\n                    </button>\n\n                    <ul class=\"nav-dropdown collapse pull-xs-right nav navbar-nav navbar-toggleable-sm\" id=\"exCollapsingNavbar\"><li class=\"nav-item dropdown open\"><a class=\"nav-link link dropdown-toggle mbr-editable-menu-item\" href=\"https://mobirise.com/\" data-toggle=\"dropdown-submenu\" aria-expanded=\"true\" code-editable-id=\"332\">TASK</a><div class=\"dropdown-menu\"><div class=\"dropdown open\"><a class=\"dropdown-item mbr-editable-menu-item dropdown-toggle\" href=\"#\" data-toggle=\"dropdown-submenu\" aria-expanded=\"true\" code-editable-id=\"333\">SCAN WIFI</a><div class=\"dropdown-menu dropdown-submenu\"><a class=\"dropdown-item\" href=\"http://www.operantsolar.com\" onclick=\"chooseNetwork(); return false;\">SSID...</a></div></div><div class=\"dropdown\"><a class=\"dropdown-item dropdown-toggle\" href=\"#\" data-toggle=\"dropdown-submenu\" aria-expanded=\"false\">MODBUS READ</a><div class=\"dropdown-menu dropdown-submenu\"><a class=\"dropdown-item\" href=\"#\">COMMAND...</a></div></div></div></li><li class=\"nav-item dropdown\"><a class=\"nav-link link dropdown-toggle mbr-editable-menu-item\" href=\"https://mobirise.com/\" data-toggle=\"dropdown-submenu\" aria-expanded=\"false\" code-editable-id=\"334\">TARGET</a>\n<div class=\"dropdown-menu\"><a class=\"dropdown-item mbr-editable-menu-item\" href=\"http://www.operantsolar.com\" onclick=\"setTarget('SN403'); return false;\" code-editable-id=\"335\">SN403</a><a class=\"dropdown-item\" href=\"http://www.operantsolar.com\" onclick=\"setTarget('SN404'); return false;\">SN404</a><a class=\"dropdown-item\" href=\"http://www.operantsolar.com\" onclick=\"setTarget('SN406'); return false;\">SN406</a></div></li><li class=\"nav-item dropdown\"><a class=\"nav-link link dropdown-toggle mbr-editable-menu-item\" href=\"https://mobirise.com/\" aria-expanded=\"false\" data-toggle=\"dropdown-submenu\" code-editable-id=\"336\">GATEWAY</a><div class=\"dropdown-menu\"><a class=\"dropdown-item mbr-editable-menu-item\" href=\"http://www.operantsolar.com\" onclick=\"setGateway('SN403'); return false;\" code-editable-id=\"337\">SN403</a><a class=\"dropdown-item\" href=\"http://www.operantsolar.com\" onclick=\"setGateway('SN404'); return false;\">SN404</a><a class=\"dropdown-item\" href=\"http://www.operantsolar.com\" onclick=\"setGateway('SN406'); return false;\">SN406</a></div></li></ul>\n                    <button hidden=\"\" class=\"navbar-toggler navbar-close\" type=\"button\" data-toggle=\"collapse\" data-target=\"#exCollapsingNavbar\">\n                        <div class=\"close-icon\"></div>\n                    </button>\n\n                </div>\n            </div>\n\n        </div>\n    </nav>\n\n</section>",
           "_PHPplaceholders": [],
           "_JSplaceholders": [],
           "_customCSS": ".hide-buttons .nav-btn {\n\tdisplay: none !important;\n}\n.navbar-caption {\n\tcolor: #ffffff;\n}\n.navbar-toggler {\n\tcolor: #ffffff;\n}\n.close-icon::before, .close-icon::after {\n\tbackground-color: #ffffff;\n}\n.link, .dropdown-item {\n\tcolor: #ffffff;\n}\n.link {\n\tfont-size: 0.9rem;\n}\n.dropdown-item, .nav-dropdown-sm .link {\n\tfont-size: 0.975rem;\n}\n.link:hover, .dropdown-item:hover, .link:focus, .dropdown-item:focus {\n\tcolor: #c0a375;\n}\n.link[aria-expanded=\"true\"], .dropdown-menu {\n\tbackground: #0e0e0e;\n}\n.nav-dropdown-sm .link:focus, .nav-dropdown-sm .link:hover, .nav-dropdown-sm .dropdown-item:focus, .nav-dropdown-sm .dropdown-item:hover {\n\tbackground: #202020!important;\n}\n.navbar, .nav-dropdown-sm, .nav-dropdown-sm .link[aria-expanded=\"true\"], .nav-dropdown-sm .dropdown-menu {\n\tbackground: #282828;\n}\n.bg-color.transparent .link {\n\tcolor: #ffffff;\n\ttransition: none;\n}\n.bg-color.transparent.opened .link {\n\ttransition: color .2s ease-in-out;\n}\n.bg-color.transparent.opened .link:hover, .bg-color.transparent.opened .link:focus {\n\tcolor: #c0a375;\n}\n.link[aria-expanded=\"true\"], .dropdown-item[aria-expanded=\"true\"] {\n\tcolor: #c0a375!important;\n}\n.btn {\n\tfont-size: 24px;\n}\n",
-          "_customTemplate": true
+          "_customTemplate": true,
+          "_anchor": "ext_menu-p"
         }
       ]
     }
