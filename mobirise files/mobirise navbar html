@@ -18,8 +18,9 @@
                         <div class="hamburger-icon"></div>
                     </button>
 
-    <ul class="nav-dropdown collapse pull-xs-right nav navbar-nav navbar-toggleable-sm" id="exCollapsingNavbar"><li class="nav-item dropdown">
-        
+    <ul class="nav-dropdown collapse pull-xs-right nav navbar-nav navbar-toggleable-sm" id="exCollapsingNavbar">
+    
+    <li class="nav-item dropdown">   
         <a class="nav-link link dropdown-toggle mbr-editable-menu-item" href="https://mobirise.com/" data-toggle="dropdown-submenu" aria-expanded="false">EQUIPMENT</a>
             <div class="dropdown-menu">
                 <div class="dropdown">
@@ -35,6 +36,7 @@
                 <div class="dropdown">
                     <a class="dropdown-item dropdown-toggle mbr-editable-menu-item" href="#" data-toggle="dropdown-submenu" aria-expanded="false">NEIGHBORHOOD</a>
                         <div class="dropdown-menu dropdown-submenu">
+                            <a class="dropdown-item mbr-editable-menu-item" href="http://www.operantsolar.com" onclick="setTarget('SN503'); return false;">Shirlee</a>
                             <a class="dropdown-item mbr-editable-menu-item" href="http://www.operantsolar.com" onclick="setTarget('SN505'); return false;">Sugi Outdoor</a>
                             <a class="dropdown-item mbr-editable-menu-item" href="http://www.operantsolar.com" onclick="setTarget('SN507'); return false;">Gibson</a>
                             <a class="dropdown-item mbr-editable-menu-item" href="http://www.operantsolar.com" onclick="setTarget('SN509'); return false;">Sugi Indoor</a>
@@ -43,7 +45,7 @@
                 </div>
 
                 <div class="dropdown">
-                    <a class="dropdown-item dropdown-toggle mbr-editable-menu-item" href="#" data-toggle="dropdown-submenu" aria-expanded="false">RD</a>
+                    <a class="dropdown-item dropdown-toggle mbr-editable-menu-item" href="#" data-toggle="dropdown-submenu" aria-expanded="false">DEV</a>
                         <div class="dropdown-menu dropdown-submenu">
                             <a class="dropdown-item mbr-editable-menu-item" href="http://www.operantsolar.com" onclick="setTarget('SN402'); return false;">SN402</a>
                             <a class="dropdown-item mbr-editable-menu-item" href="http://www.operantsolar.com" onclick="setTarget('SN403'); return false;">SN403</a>
@@ -52,40 +54,35 @@
                             <a class="dropdown-item mbr-editable-menu-item" href="http://www.operantsolar.com" onclick="setTarget('SN406'); return false;">SN406</a>
                             <a class="dropdown-item mbr-editable-menu-item" href="http://www.operantsolar.com" onclick="setTarget('SN407'); return false;">SN407</a>
                         </div>
-                </div>
-            
+                </div>  
             </div>
     </li>
         
     <li class="nav-item dropdown">
         <a class="nav-link link dropdown-toggle mbr-editable-menu-item" href="https://mobirise.com/" data-toggle="dropdown-submenu" aria-expanded="false">TASK</a>
             <div class="dropdown-menu">
-
                 <div class="dropdown">
-                    <a class="dropdown-item dropdown-toggle mbr-editable-menu-item" href="#" data-toggle="dropdown-submenu" aria-expanded="false">WIFI SCAN</a>
-                    <div class="dropdown-menu dropdown-submenu">
-                        <a class="dropdown-item mbr-editable-menu-item" href="http://www.operantsolar.com" onclick="chooseNetwork(); return false;">SSID...</a>
-                    </div>
+                    <a class="dropdown-item dropdown-toggle mbr-editable-menu-item" href="#" aria-expanded="false" data-toggle="dropdown-submenu">SUNSPEC METER</a>
+                        <div class="dropdown-menu dropdown-submenu">
+                            <a class="dropdown-item mbr-editable-menu-item" href="#">AC_PWR</a>
+                        </div>
                 </div>
-
-
                 <div class="dropdown">
-                    <a class="dropdown-item dropdown-toggle mbr-editable-menu-item" href="#" aria-expanded="false" data-toggle="dropdown-submenu">MODBUS READ</a>
-                    <div class="dropdown-menu dropdown-submenu">
-                        <a class="dropdown-item mbr-editable-menu-item" href="#">COMMAND...</a>
-                    </div>
+                    <a class="dropdown-item dropdown-toggle mbr-editable-menu-item" href="#" data-toggle="dropdown-submenu" aria-expanded="false">WIFI</a>
+                        <div class="dropdown-menu dropdown-submenu">
+                            <a class="dropdown-item mbr-editable-menu-item" href="http://www.operantsolar.com" onclick="scanWiFi(); return false;">SCAN...</a>
+                        </div>
                 </div>
-                        <a class="dropdown-item mbr-editable-menu-item" href="#" aria-expanded="false">MODBUS WRITE</a>
-    </div>
-
-
+                <div class="dropdown">
+                    <a class="dropdown-item dropdown-toggle mbr-editable-menu-item" href="#" aria-expanded="false" data-toggle="dropdown-submenu">MODBUS</a>
+                        <div class="dropdown-menu dropdown-submenu">
+                            <a class="dropdown-item mbr-editable-menu-item" href="http://www.operantsolar.com" onclick="readModbus(); return false;">READ...</a>                        </div>
+                </div>
+            </div>
     </li>
     
     <li class="nav-item dropdown">
-
         <a class="nav-link link dropdown-toggle mbr-editable-menu-item" href="https://mobirise.com/" data-toggle="dropdown-submenu" aria-expanded="false">GATEWAY</a>
-
-
             <div class="dropdown-menu">
                 <div class="dropdown">
                     <a class="dropdown-item dropdown-toggle mbr-editable-menu-item" href="#" data-toggle="dropdown-submenu" aria-expanded="false">SOLMETRIC</a>
@@ -96,19 +93,18 @@
                             <a class="dropdown-item mbr-editable-menu-item" href="http://www.operantsolar.com" onclick="setGateway('SN514'); return false;">SN514</a>
                         </div>
                 </div>
-                           
                 <div class="dropdown">
                     <a class="dropdown-item dropdown-toggle mbr-editable-menu-item" href="#" data-toggle="dropdown-submenu" aria-expanded="false">NEIGHBORHOOD</a>
                         <div class="dropdown-menu dropdown-submenu">
+                            <a class="dropdown-item mbr-editable-menu-item" href="http://www.operantsolar.com" onclick="setGateway('SN503'); return false;">Shirlee</a>
                             <a class="dropdown-item mbr-editable-menu-item" href="http://www.operantsolar.com" onclick="setGateway('SN505'); return false;">Sugi Outdoor</a>
                             <a class="dropdown-item mbr-editable-menu-item" href="http://www.operantsolar.com" onclick="setGateway('SN507'); return false;">Gibson</a>
                             <a class="dropdown-item mbr-editable-menu-item" href="http://www.operantsolar.com" onclick="setGateway('SN509'); return false;">Sugi Indoor</a>
                             <a class="dropdown-item mbr-editable-menu-item" href="http://www.operantsolar.com" onclick="setGateway('SN512'); return false;">Beckman</a>
                         </div>
                 </div>
-
                 <div class="dropdown">
-                    <a class="dropdown-item dropdown-toggle mbr-editable-menu-item" href="#" data-toggle="dropdown-submenu" aria-expanded="false">RD</a>
+                    <a class="dropdown-item dropdown-toggle mbr-editable-menu-item" href="#" data-toggle="dropdown-submenu" aria-expanded="false">DEV</a>
                         <div class="dropdown-menu dropdown-submenu">
                             <a class="dropdown-item mbr-editable-menu-item" href="http://www.operantsolar.com" onclick="setGateway('SN402'); return false;">SN402</a>
                             <a class="dropdown-item mbr-editable-menu-item" href="http://www.operantsolar.com" onclick="setGateway('SN403'); return false;">SN403</a>
@@ -118,9 +114,7 @@
                             <a class="dropdown-item mbr-editable-menu-item" href="http://www.operantsolar.com" onclick="setGateway('SN407'); return false;">SN407</a>
                         </div>
                 </div>
-            
             </div>
-    
     </li>
     
     </ul>

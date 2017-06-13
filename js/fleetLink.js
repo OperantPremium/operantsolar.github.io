@@ -32,7 +32,6 @@ var interest = {
 
 // Customer demo houses - 917 MHz
 //----------------------------------------------------
-//SN503  No House        4E562573DBA0    /tRNE2WbS2CGw
 //SN506  Blue House      C3B996B9F76C    /oGQ_PBSAUppO
 //SN508  Orange House    730D72A6E22F    /2866vQYBgUpC
 //SN513  Black House     DF04146F1DF0    /ZT8GBL-7RrgD
@@ -47,6 +46,7 @@ var interest = {
 
 // Field demo - 915.5 MHz
 //----------------------------------------------------
+//SN503  Shirlee         4E562573DBA0    /tRNE2WbS2CGw
 //SN505  Sugiyama        BA48D077C2A8    /RVKEMRdCLmKj
 //SN507  Gibson          67AE0AAFD4E2    /S6QExe1f2KTi
 //SN509  Green House     16240A06C1FC    /D1PRYwJmmHAi
@@ -138,16 +138,6 @@ function setGateway(requestedGateway) {
   }
 
 
-// Choose the SSID of the network to scane
-function chooseNetwork(){
-    wiFiSSID = prompt("Desired SSID?", "");
-    //console.log("User chose SSID: " + wiFiSSID);
-
-    interest.rw = 'read';
-    interest.category = 'wiFi';
-    interest.task = 'scan';
-    interest.parameters = wiFiSSID;
-}
 
 
 // Choose target unit
@@ -227,14 +217,32 @@ function setTarget(requestedTarget) {
 
 }
 
+// Scan the WiFi environment, optionally choose the SSID of the network to scane
+function scanWiFi(){
+    wiFiSSID = prompt("Desired SSID?", "Operant");
+    interest.rw = 'read';
+    interest.category = 'wiFi';
+    interest.task = 'scan';
+    interest.parameters = wiFiSSID;
+}
+
+// Read the Modbus,must know detailed Modbus command
+function readModbus(){
+    modbusCommand = prompt("Modbus Read Command?", "01_00240002_9600_8_1");
+    interest.rw = 'read';
+    interest.category = 'modbus';
+    interest.task = 'fc03';
+    interest.parameters = modbusCommand;
+}
+
+
 
 // read the web UI to determine the unit that is being targeted
-    function getRSSI(buttonID) {
-        // Add the SSID as a parameter
-        //interest.parameters = wiFiSSID;
+    function expressInterest(buttonID) {
+
         console.log(interest);
 
-        var waitDisplay = "Scanning " + target;
+        var waitDisplay = "Sending " + target;
         if (target != gateway){
             waitDisplay += " via " + gateway ;
         }
