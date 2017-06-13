@@ -236,6 +236,20 @@ function readModbus(){
 }
 
 
+// Read the Modbus, built from SunSpec register map
+function readSunSpec(){
+    sunSpecName = prompt("Read SunSpec Parameter?", "M_AC_Current");
+    interest.rw = 'read';
+    interest.category = 'modbus';
+    interest.task = 'fc03';
+    switch(sunSpecName) {
+        case "M_AC_Current":
+            interest.parameters = '01_00240002_9600_8_1';
+            break;
+        default:
+            interest.parameters =  "";
+    } 
+}
 
 // read the web UI to determine the unit that is being targeted
     function expressInterest(buttonID) {

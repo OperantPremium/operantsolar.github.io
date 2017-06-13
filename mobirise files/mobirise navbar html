@@ -64,7 +64,7 @@
                 <div class="dropdown">
                     <a class="dropdown-item dropdown-toggle mbr-editable-menu-item" href="#" aria-expanded="false" data-toggle="dropdown-submenu">SUNSPEC METER</a>
                         <div class="dropdown-menu dropdown-submenu">
-                            <a class="dropdown-item mbr-editable-menu-item" href="#">AC_PWR</a>
+                            <a class="dropdown-item mbr-editable-menu-item" href="http://www.operantsolar.com" onclick="readSunSpec(); return false;">READ...</a>     
                         </div>
                 </div>
                 <div class="dropdown">
