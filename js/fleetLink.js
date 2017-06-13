@@ -1,18 +1,18 @@
 // FleetLink Mobirise Javascript 
 //Randy King 5/25/2017
 // default Interest with reasonable values for SN404
-var target = "SN404";
-var gateway = "SN404";
+var target = "SN509";
+var gateway = "SN509";
 var wiFiSSID = "";
 
 var interest = {
     'usng': "28475668",
-    'deviceIdHash' : "2BF6EF3EFD90",
+    'deviceIdHash' : "16240A06C1FC",
     'rw': 'read',
-    'category': 'wiFi',
-    'task': 'scan',
-    'parameters': '',
-    'url' : "https://agent.electricimp.com/QGO7JQAzyiev"
+    'category': 'modbus',
+    'task': 'fc03',
+    'parameters': '01_00000001_9600_8_1',
+    'url' : "https://agent.electricimp.com/D1PRYwJmmHAi"
 }
 
 
@@ -228,7 +228,7 @@ function scanWiFi(){
 
 // Read the Modbus,must know detailed Modbus command
 function readModbus(){
-    modbusCommand = prompt("Modbus Read Command?", "01_00240002_9600_8_1");
+    modbusCommand = prompt("Modbus Read Command?", "01_00000001_9600_8_1");
     interest.rw = 'read';
     interest.category = 'modbus';
     interest.task = 'fc03';
@@ -256,7 +256,7 @@ function readSunSpec(){
 
         console.log(interest);
 
-        var waitDisplay = "Sending " + target;
+        var waitDisplay = "Sending to " + target;
         if (target != gateway){
             waitDisplay += " via " + gateway ;
         }
