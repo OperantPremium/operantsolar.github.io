@@ -17,7 +17,7 @@
 	font-size: 1.0rem;
 }
 .dropdown-item, .nav-dropdown-sm .link {
-	font-size: 1.0rem;
+	font-size: 0.9rem;
 	font-weight: bold;
 }
 .link:hover, .dropdown-item:hover, .link:focus, .dropdown-item:focus {

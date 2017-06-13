@@ -1,18 +1,18 @@
 // FleetLink Mobirise Javascript 
 //Randy King 5/25/2017
 // default Interest with reasonable values for SN404
-var target = "SN509";
-var gateway = "SN509";
+var target = "SN403";
+var gateway = "SN403";
 var wiFiSSID = "";
 
 var interest = {
     'usng': "28475668",
-    'deviceIdHash' : "16240A06C1FC",
+    'deviceIdHash' : "018C268ECB5B",
     'rw': 'read',
     'category': 'modbus',
     'task': 'fc03',
-    'parameters': '01_00000001_9600_8_1',
-    'url' : "https://agent.electricimp.com/D1PRYwJmmHAi"
+    'parameters': '64_C3A50001_9600_8_1',
+    'url' : "https://agent.electricimp.com/wXqOLIl3KiLB"
 }
 
 
