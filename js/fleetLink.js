@@ -237,14 +237,28 @@ function readModbus(){
 
 
 // Read the Modbus, built from SunSpec register map
-function readSunSpec(){
-    sunSpecName = prompt("Read SunSpec Parameter?", "M_AC_Current");
+function readSunSpec(sunSpecName){
     interest.rw = 'read';
     interest.category = 'modbus';
     interest.task = 'fc03';
     switch(sunSpecName) {
+        case "Mn":
+            interest.parameters = '64_C3540008_9600_8_1';
+            break;
         case "M_AC_Current":
-            interest.parameters = '01_00240002_9600_8_1';
+            interest.parameters = '64_C3970001_9600_8_1';
+            break;
+        case "M_AC_Voltage_LN":
+            interest.parameters = '64_C39C0001_9600_8_1';
+            break;
+        case "M_AC_Freq":
+            interest.parameters = '64_C3A50001_9600_8_1';
+            break;
+        case "M_AC_Power":
+            interest.parameters = '64_C3A70001_9600_8_1';
+            break;
+        case "M_Imported":
+            interest.parameters = '64_C3C30002_9600_8_1';
             break;
         default:
             interest.parameters =  "";
