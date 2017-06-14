@@ -125,7 +125,7 @@ function setGateway(requestedGateway) {
             interest.url = "";
             break; 
          case "SN511":
-            interest.url = "";
+            interest.url = "https://agent.electricimp.com/4R2NSeUUtys8";
             break;      
          case "SN512":
             interest.url = "https://agent.electricimp.com/kRQMPFuKmzDM";
