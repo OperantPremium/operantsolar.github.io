@@ -696,6 +696,22 @@ h6,
   font-weight: bold;
   border: none;
 }
+#header1-x #paramTable {
+  margin: auto;
+  padding: 50px;
+}
+#header1-x table,
+#header1-x th,
+#header1-x td {
+  font-family: 'Open Sans', sans-serif;
+  font-size: 20px;
+  font-weight: bold;
+  background-color: #859B6E;
+  color: #fafafa;
+  border: 1px solid #fafafa;
+  text-align: center;
+  padding: 10px;
+}
 #ext_menu-10 .hide-buttons .nav-btn {
   display: none !important;
 }

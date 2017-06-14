@@ -12,7 +12,15 @@ var interest = {
     'category': 'modbus',
     'task': 'fc03',
     'parameters': '64_C3A50001_9600_8_1',
-    'url' : "https://agent.electricimp.com/wXqOLIl3KiLB"
+    'url' : "https://agent.electricimp.com/wXqOLIl3KiLB",
+    // the following parameters are used to pretty up data returns, particularly from modbus
+    'firstDataChar' : 6, // position of the FIRST data character in whatever the interest returns (0 based)
+    'lastDataChar' : 9,  // position of the LAST data character in whatever the interest returns (0 based)
+    'dataFormat' : 'hex', // defines format of returned data (can be hex | dec | ascii | string)
+    'scaleFactor' : 0.01, // Scale numeric data when necessary
+    'offsetFactor' : 0, // similarly apply any numeric offset
+    'unitString' : "Hz", // append units string to communicate result better
+    'displayName' : "AC Frequency" // nice human readble display name for user
 }
 
 
@@ -134,7 +142,9 @@ function setGateway(requestedGateway) {
         default:
             interest.url = "";
     }
-    console.log("Setting gateway to " + requestedGateway);
+    //console.log("Setting gateway to " + requestedGateway);
+    updateParamTable(target,interest,gateway);
+
   }
 
 
@@ -213,7 +223,8 @@ function setTarget(requestedTarget) {
             interest.deviceIdHash = "";
             console.log("Setting target to default");
     }
-    console.log("Setting target to " + requestedTarget); 
+    //console.log("Setting target to " + requestedTarget); 
+    updateParamTable(target,interest,gateway);
 
 }
 
@@ -224,6 +235,10 @@ function scanWiFi(){
     interest.category = 'wiFi';
     interest.task = 'scan';
     interest.parameters = wiFiSSID;
+    interest.dataFormat = 'string';
+    interest.displayName = "Scan WiFi for SSID " + interest.parameters;
+    updateParamTable(target,interest,gateway);
+
 }
 
 // Read the Modbus,must know detailed Modbus command
@@ -233,6 +248,10 @@ function readModbus(){
     interest.category = 'modbus';
     interest.task = 'fc03';
     interest.parameters = modbusCommand;
+    interest.dataFormat = 'string';
+    interest.displayName = "Read Modbus: " + interest.parameters;
+    updateParamTable(target,interest,gateway);
+ 
 }
 
 
@@ -243,64 +262,150 @@ function readSunSpec(sunSpecName){
     interest.task = 'fc03';
     switch(sunSpecName) {
         case "Mn":
-            interest.parameters = '64_C3540008_9600_8_1';
+            interest.parameters = '64_C3540010_9600_8_1';
+            interest.firstDataChar = 6;
+            interest.lastDataChar = 37;
+            interest.dataFormat = 'ascii';
+            interest.scaleFactor = 0;
+            interest.offsetFactor = 0;
+            interest.unitString = '';
+            interest.displayName = "Manufacturer";
             break;
         case "M_AC_Current":
             interest.parameters = '64_C3970001_9600_8_1';
+            interest.firstDataChar = 6;
+            interest.lastDataChar = 9;
+            interest.dataFormat = 'hex';
+            interest.scaleFactor = 0.01;
+            interest.offsetFactor = 0;
+            interest.unitString = 'A';
+            interest.displayName = "AC Current (sum of active phases)";
             break;
         case "M_AC_Voltage_LN":
             interest.parameters = '64_C39C0001_9600_8_1';
+            interest.firstDataChar = 6;
+            interest.lastDataChar = 9;
+            interest.dataFormat = 'hex';
+            interest.scaleFactor = 0.1;
+            interest.offsetFactor = 0;
+            interest.unitString = 'V';
+            interest.displayName = "Line to Neutral AC Voltage (average of active phases)";
             break;
         case "M_AC_Freq":
             interest.parameters = '64_C3A50001_9600_8_1';
+            interest.firstDataChar = 6;
+            interest.lastDataChar = 9;
+            interest.dataFormat = 'hex';
+            interest.scaleFactor = 0.01;
+            interest.offsetFactor = 0;
+            interest.unitString = 'Hz';
+            interest.displayName = "AC Frequency";
             break;
         case "M_AC_Power":
             interest.parameters = '64_C3A70001_9600_8_1';
+            interest.firstDataChar = 6;
+            interest.lastDataChar = 9;
+            interest.dataFormat = 'hex';
+            interest.scaleFactor = 10;
+            interest.offsetFactor = 0;
+            interest.unitString = 'W';
+            interest.displayName = "Total Real Power(sum of active phases)";
             break;
         case "M_Imported":
             interest.parameters = '64_C3C30002_9600_8_1';
+            interest.firstDataChar = 6;
+            interest.lastDataChar = 13;
+            interest.dataFormat = 'hex';
+            interest.scaleFactor = 0.001;
+            interest.offsetFactor = 0;
+            interest.unitString = 'kWh';
+            interest.displayName = "Total Imported Real Energy";
             break;
         default:
             interest.parameters =  "";
     } 
+    updateParamTable(target,interest,gateway);
+}
+
+// Format the data for pretty display
+function formatData(rawData, interest){
+    var returnDataString = "";
+
+    // remove any leading or trailing numbers (esp Modbus)    
+    var cleanData = rawData.substring(interest.firstDataChar, interest.lastDataChar + 1);
+
+    // convert to decimal if hex
+    switch(interest.dataFormat){
+        case 'hex':
+            var numericData = 0;
+            numericData = parseInt(cleanData, 16); 
+            // apply scale factor and offset
+            numericData = numericData * interest.scaleFactor + interest.offsetFactor;
+            // Add units string at end of data
+            returnDataString = numericData + " " + interest.unitString;
+        break;
+        case 'ascii':
+            var asciiCode = 0;
+            for (i = 0; i < cleanData.length; i+=2) { 
+                asciiCode = parseInt(cleanData.substring(i,i+2), 16);
+                returnDataString += String.fromCharCode(asciiCode);
+            }
+        break;
+        default:
+            returnDataString = rawData;
+        }
+        console.log("data: " + returnDataString);
+
+return returnDataString
+}
+
+
+
+function updateParamTable(targetID, interest, gatewayID){
+    var x = document.getElementById("paramTable").rows[1].cells;
+    x[0].innerHTML = targetID;
+    x[1].innerHTML = interest.displayName;
+    x[2].innerHTML = gatewayID;
 }
 
 // read the web UI to determine the unit that is being targeted
-    function expressInterest(buttonID) {
+function expressInterest(buttonID) {
 
-        console.log(interest);
+    console.log(interest);
 
-        var waitDisplay = "Sending to " + target;
-        if (target != gateway){
-            waitDisplay += " via " + gateway ;
-        }
-        buttonID.style.background='#1474BF';
-        buttonID.innerHTML = waitDisplay;
+    var waitDisplay = "Sending to " + target;
+    if (target != gateway){
+        waitDisplay += " via " + gateway ;
+    }
+    buttonID.style.background='#1474BF';
+    buttonID.innerHTML = waitDisplay;
 
-        // actual web POST
-        $.ajax({
-            url: interest.url,
-            timeout: 15000,
-            data: JSON.stringify(interest), // convert interest string to JSON
-            type: 'POST',
-              success : function(response) {
-                    var successDisplay = target + ": " + response;
-                    if (target != gateway){
-                        successDisplay += " via " + gateway;
-                    }
-                    console.log(successDisplay);
-                    buttonID.innerHTML = successDisplay;
-                    buttonID.style.background='#90A878';
-              },
-              error : function(jqXHR, textStatus, err) {
-                    //var errorResponse = jqXHR.status + ' ' + textStatus + ': ' + err + ' - ' + jqXHR.responseText;
-                    var errorResponse = err ;
+    // actual web POST
+    $.ajax({
+        url: interest.url,
+        timeout: 15000,
+        data: JSON.stringify(interest), // convert interest string to JSON
+        type: 'POST',
+            success : function(response) {
+                presentableData = formatData(response, interest);
+                var successDisplay = target + " | " + presentableData;
+                buttonID.innerHTML = successDisplay;
+                buttonID.style.background='#90A878';
+            },
+            error : function(jqXHR, textStatus, err) {
+                //var errorResponse = jqXHR.status + ' ' + textStatus + ': ' + err + ' - ' + jqXHR.responseText;
+                var errorResponse = err ;
 
-                    console.log(errorResponse);
-                    buttonID.innerHTML = errorResponse;
-                    buttonID.style.background='#D7AB4B';
-              }
-        });
+                console.log(errorResponse);
+                buttonID.innerHTML = errorResponse;
+                buttonID.style.background='#D7AB4B';
+            }
+    });
 
 
-      }
+    }
+
+      $( window ).on( "load", function() {
+        updateParamTable(target,interest,gateway);
+        console.log("page loaded");
+    });
