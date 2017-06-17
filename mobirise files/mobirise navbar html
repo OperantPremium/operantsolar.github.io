@@ -80,6 +80,13 @@
                             <a class="dropdown-item mbr-editable-menu-item" href="http://www.operantsolar.com" onclick="scanWiFi(); return false;">SCAN...</a>
                         </div>
                 </div>
+                <div class="dropdown">
+                    <a class="dropdown-item dropdown-toggle mbr-editable-menu-item" href="#" data-toggle="dropdown-submenu" aria-expanded="false">GEOLOCATION</a>
+                        <div class="dropdown-menu dropdown-submenu">
+                            <a class="dropdown-item mbr-editable-menu-item" href="http://www.operantsolar.com" onclick="readGeoSelf(); return false;">READ...</a>
+                            <a class="dropdown-item mbr-editable-menu-item" href="http://www.operantsolar.com" onclick="writeGeoSelf(); return false;">WRITE...</a>
+                        </div>
+                </div>
 
             </div>
     </li>

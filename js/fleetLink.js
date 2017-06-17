@@ -6,7 +6,7 @@ var gateway = "SN403";
 var wiFiSSID = "";
 
 var interest = {
-    'usng': "28475668",
+    'usng': "21746221",
     'deviceIdHash' : "018C268ECB5B",
     'rw': 'read',
     'category': 'modbus',
@@ -91,7 +91,7 @@ function setGateway(requestedGateway) {
             interest.url = "https://agent.electricimp.com/hxsSiYETEEpd";
             break;
         case "SN407":
-            interest.url = "https://agent.electricimp.com/hxsSiYETEEpd";
+            interest.url = "https://agent.electricimp.com/VifAbahCX8ux";
             break;      
 // PROTO 5'S
          case "SN501":
@@ -157,21 +157,27 @@ function setTarget(requestedTarget) {
 // PROTO 4'S
         case "SN402":
             interest.deviceIdHash = "D85F6461EB91";
+            interest.usng = "21016306";
              break;
         case "SN403":
             interest.deviceIdHash = "018C268ECB5B";
+            interest.usng = "21746221";
             break;
         case "SN404":
             interest.deviceIdHash = "2BF6EF3EFD90";
+            interest.usng = "21236282";
             break;
         case "SN405":
             interest.deviceIdHash = "718A34D8423A";
+            interest.usng = "21426258";
             break;
         case "SN406":
             interest.deviceIdHash = "C5F6371C8A03";
+            interest.usng = "21896255";
             break;
         case "SN407":
             interest.deviceIdHash = "4CA33E88EDAA";
+            interest.usng = "21226282";
             break;
 // PROTO 5'S
         case "SN501":
@@ -226,6 +232,29 @@ function setTarget(requestedTarget) {
     //console.log("Setting target to " + requestedTarget); 
     updateParamTable(target,interest,gateway);
 
+}
+
+// Set a specific unit's geolocation
+function writeGeoSelf(){
+    geoSelf = prompt("Desired GeoLocation?", "21706200");
+    interest.rw = 'write';
+    interest.category = 'flash';
+    interest.task = 'geoSelf';
+    interest.parameters = geoSelf;
+    interest.dataFormat = 'string';
+    interest.displayName = "Setting Geolocation to " + interest.parameters;
+    updateParamTable(target,interest,gateway);
+}
+
+// Set a specific unit's geolocation
+function readGeoSelf(){
+    interest.rw = 'read';
+    interest.category = 'flash';
+    interest.task = 'geoSelf';
+    interest.parameters = "";
+    interest.dataFormat = 'string';
+    interest.displayName = "Reading Geolocation... " + interest.parameters;
+    updateParamTable(target,interest,gateway);
 }
 
 // Scan the WiFi environment, optionally choose the SSID of the network to scane
