@@ -13,6 +13,9 @@ var interest = {
     'task': 'fc03',
     'parameters': '64_C3A50001_9600_8_1',
     'url' : "https://agent.electricimp.com/wXqOLIl3KiLB",
+}
+
+var displayFactors = {
     // the following parameters are used to pretty up data returns, particularly from modbus
     'firstDataChar' : 6, // position of the FIRST data character in whatever the interest returns (0 based)
     'lastDataChar' : 9,  // position of the LAST data character in whatever the interest returns (0 based)
@@ -22,7 +25,6 @@ var interest = {
     'unitString' : "Hz", // append units string to communicate result better
     'displayName' : "AC Frequency" // nice human readble display name for user
 }
-
 
 // Device ID hashes as reference for TARGET
 // Agent URLs as reference for GATEWAY
@@ -143,7 +145,7 @@ function setGateway(requestedGateway) {
             interest.url = "";
     }
     //console.log("Setting gateway to " + requestedGateway);
-    updateParamTable(target,interest,gateway);
+    updateParamTable(target,interest,displayFactors,gateway);
 
   }
 
@@ -230,20 +232,20 @@ function setTarget(requestedTarget) {
             console.log("Setting target to default");
     }
     //console.log("Setting target to " + requestedTarget); 
-    updateParamTable(target,interest,gateway);
+    updateParamTable(target,interest,displayFactors,gateway);
 
 }
 
 // Set a specific unit's geolocation
 function writeGeoSelf(){
-    geoSelf = prompt("Desired GeoLocation?", "21706200");
+    geoSelf = prompt("Desired GeoLocation to Write?", "21706200");
     interest.rw = 'write';
     interest.category = 'flash';
     interest.task = 'geoSelf';
     interest.parameters = geoSelf;
-    interest.dataFormat = 'string';
-    interest.displayName = "Setting Geolocation to " + interest.parameters;
-    updateParamTable(target,interest,gateway);
+    displayFactors.dataFormat = 'string';
+    displayFactors.displayName = "Set Geolocation to " + interest.parameters;
+    updateParamTable(target,interest,displayFactors,gateway);
 }
 
 // Set a specific unit's geolocation
@@ -252,9 +254,9 @@ function readGeoSelf(){
     interest.category = 'flash';
     interest.task = 'geoSelf';
     interest.parameters = "";
-    interest.dataFormat = 'string';
-    interest.displayName = "Reading Geolocation... " + interest.parameters;
-    updateParamTable(target,interest,gateway);
+    displayFactors.dataFormat = 'string';
+    interest.displayName = "Read Geolocation" + interest.parameters;
+    updateParamTable(target,interest,displayFactors,gateway);
 }
 
 // Scan the WiFi environment, optionally choose the SSID of the network to scane
@@ -264,9 +266,9 @@ function scanWiFi(){
     interest.category = 'wiFi';
     interest.task = 'scan';
     interest.parameters = wiFiSSID;
-    interest.dataFormat = 'string';
-    interest.displayName = "Scan WiFi for SSID " + interest.parameters;
-    updateParamTable(target,interest,gateway);
+    displayFactors.dataFormat = 'string';
+    displayFactors.displayName = "Scan WiFi for SSID " + interest.parameters;
+    updateParamTable(target,interest,displayFactors,gateway);
 
 }
 
@@ -277,9 +279,9 @@ function readModbus(){
     interest.category = 'modbus';
     interest.task = 'fc03';
     interest.parameters = modbusCommand;
-    interest.dataFormat = 'string';
-    interest.displayName = "Read Modbus: " + interest.parameters;
-    updateParamTable(target,interest,gateway);
+    displayFactors.dataFormat = 'string';
+    displayFactors.displayName = "Read Modbus: " + interest.parameters;
+    updateParamTable(target,interest,displayFactors,gateway);
  
 }
 
@@ -292,68 +294,68 @@ function readSunSpec(sunSpecName){
     switch(sunSpecName) {
         case "Mn":
             interest.parameters = '64_C3540010_9600_8_1';
-            interest.firstDataChar = 6;
-            interest.lastDataChar = 37;
-            interest.dataFormat = 'ascii';
-            interest.scaleFactor = 0;
-            interest.offsetFactor = 0;
-            interest.unitString = '';
-            interest.displayName = "Manufacturer";
+            displayFactors.firstDataChar = 6;
+            displayFactors.lastDataChar = 37;
+            displayFactors.dataFormat = 'ascii';
+            displayFactors.scaleFactor = 0;
+            displayFactors.offsetFactor = 0;
+            displayFactors.unitString = '';
+            displayFactors.displayName = "Manufacturer";
             break;
         case "M_AC_Current":
             interest.parameters = '64_C3970001_9600_8_1';
-            interest.firstDataChar = 6;
-            interest.lastDataChar = 9;
-            interest.dataFormat = 'hex';
-            interest.scaleFactor = 0.01;
-            interest.offsetFactor = 0;
-            interest.unitString = 'A';
-            interest.displayName = "AC Current (sum of active phases)";
+            displayFactors.firstDataChar = 6;
+            displayFactors.lastDataChar = 9;
+            displayFactors.dataFormat = 'hex';
+            displayFactors.scaleFactor = 0.01;
+            displayFactors.offsetFactor = 0;
+            displayFactors.unitString = 'A';
+            displayFactors.displayName = "AC Current (sum of active phases)";
             break;
         case "M_AC_Voltage_LN":
             interest.parameters = '64_C39C0001_9600_8_1';
-            interest.firstDataChar = 6;
-            interest.lastDataChar = 9;
-            interest.dataFormat = 'hex';
-            interest.scaleFactor = 0.1;
-            interest.offsetFactor = 0;
-            interest.unitString = 'V';
-            interest.displayName = "Line to Neutral AC Voltage (average of active phases)";
+            displayFactors.firstDataChar = 6;
+            displayFactors.lastDataChar = 9;
+            displayFactors.dataFormat = 'hex';
+            displayFactors.scaleFactor = 0.1;
+            displayFactors.offsetFactor = 0;
+            displayFactors.unitString = 'V';
+            displayFactors.displayName = "Line to Neutral AC Voltage (average of active phases)";
             break;
         case "M_AC_Freq":
             interest.parameters = '64_C3A50001_9600_8_1';
-            interest.firstDataChar = 6;
-            interest.lastDataChar = 9;
-            interest.dataFormat = 'hex';
-            interest.scaleFactor = 0.01;
-            interest.offsetFactor = 0;
-            interest.unitString = 'Hz';
-            interest.displayName = "AC Frequency";
+            displayFactors.firstDataChar = 6;
+            displayFactors.lastDataChar = 9;
+            displayFactors.dataFormat = 'hex';
+            displayFactors.scaleFactor = 0.01;
+            displayFactors.offsetFactor = 0;
+            displayFactors.unitString = 'Hz';
+            displayFactors.displayName = "AC Frequency";
             break;
         case "M_AC_Power":
             interest.parameters = '64_C3A70001_9600_8_1';
-            interest.firstDataChar = 6;
-            interest.lastDataChar = 9;
-            interest.dataFormat = 'hex';
-            interest.scaleFactor = 10;
-            interest.offsetFactor = 0;
-            interest.unitString = 'W';
-            interest.displayName = "Total Real Power(sum of active phases)";
+            displayFactors.firstDataChar = 6;
+            displayFactors.lastDataChar = 9;
+            displayFactors.dataFormat = 'hex';
+            displayFactors.scaleFactor = 10;
+            displayFactors.offsetFactor = 0;
+            displayFactors.unitString = 'W';
+            displayFactors.displayName = "Total Real Power(sum of active phases)";
             break;
         case "M_Imported":
             interest.parameters = '64_C3C30002_9600_8_1';
-            interest.firstDataChar = 6;
-            interest.lastDataChar = 13;
-            interest.dataFormat = 'hex';
-            interest.scaleFactor = 0.001;
-            interest.offsetFactor = 0;
-            interest.unitString = 'kWh';
-            interest.displayName = "Total Imported Real Energy";
+            displayFactors.firstDataChar = 6;
+            displayFactors.lastDataChar = 13;
+            displayFactors.dataFormat = 'hex';
+            displayFactors.scaleFactor = 0.001;
+            displayFactors.offsetFactor = 0;
+            displayFactors.unitString = 'kWh';
+            displayFactors.displayName = "Total Imported Real Energy";
             break;
         default:
             interest.parameters =  "";
     } 
-    updateParamTable(target,interest,gateway);
+    updateParamTable(target,interest,displayFactors,gateway);
 }
 
 // Format the data for pretty display
@@ -361,17 +363,17 @@ function formatData(rawData, interest){
     var returnDataString = "";
 
     // remove any leading or trailing numbers (esp Modbus)    
-    var cleanData = rawData.substring(interest.firstDataChar, interest.lastDataChar + 1);
+    var cleanData = rawData.substring(displayFactors.firstDataChar, displayFactors.lastDataChar + 1);
 
     // convert to decimal if hex
-    switch(interest.dataFormat){
+    switch(displayFactors.dataFormat){
         case 'hex':
             var numericData = 0;
             numericData = parseInt(cleanData, 16); 
             // apply scale factor and offset
-            numericData = numericData * interest.scaleFactor + interest.offsetFactor;
+            numericData = numericData * displayFactors.scaleFactor + displayFactors.offsetFactor;
             // Add units string at end of data
-            returnDataString = numericData + " " + interest.unitString;
+            returnDataString = numericData + " " + displayFactors.unitString;
         break;
         case 'ascii':
             var asciiCode = 0;
@@ -390,15 +392,22 @@ return returnDataString
 
 
 
-function updateParamTable(targetID, interest, gatewayID){
+function updateParamTable(target, interest, displayFactors, gatewayID){
     var x = document.getElementById("paramTable").rows[1].cells;
-    x[0].innerHTML = targetID;
-    x[1].innerHTML = interest.displayName;
+    x[0].innerHTML = target;
+    x[1].innerHTML = displayFactors.displayName;
     x[2].innerHTML = gatewayID;
 }
 
 // read the web UI to determine the unit that is being targeted
 function expressInterest(buttonID) {
+
+// Trap the special case of write the geolocation to a unit, which uses fixed predefined geolocation in the Interest
+// Until you write a unit's geolocation into flash, you wouldn;t know what usng to use to address it, otherwise
+var tempUSNG = interest.usng; // First save the unit's expected geolocation temporarily (will put back after Express Interest below)
+if (interest.rw == 'write'&& interest.category == 'flash' && interest.task == 'geoSelf'){
+    interest.usng = '45898592'; // predefined geolocation used for writing actual geolocation to flash
+}
 
     console.log(interest);
 
@@ -429,8 +438,9 @@ function expressInterest(buttonID) {
                 buttonID.innerHTML = errorResponse;
                 buttonID.style.background='#D7AB4B';
             }
+        
     });
-
+    interest.usng = tempUSNG ; // Return the unit's expected geolcation 
 
     }
 
