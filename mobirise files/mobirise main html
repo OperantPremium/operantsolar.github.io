@@ -23,12 +23,12 @@
                         
                             <table id="paramTable" >
                             <tr>
-                                <th>Target</th>
-                                <th>Interest</th> 
                                 <th>Gateway</th>
+                                <th>Interest</th> 
+                                <th>Target</th>
                             </tr>
                             <tr>
-                                <td>402</td>
+                                <td>403</td>
                                 <td>/Interest/</td> 
                                 <td>403</td>
                             </tr>

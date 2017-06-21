@@ -190,24 +190,28 @@ function setTarget(requestedTarget) {
             break;
         case "SN503":
             interest.deviceIdHash = "4E562573DBA0";
+            interest.usng = "21016306";
             break;
         case "SN504":
             interest.deviceIdHash = "B930FA057CB6";
             break;
         case "SN505":
             interest.deviceIdHash = "BA48D077C2A8";
+            interest.usng = "21226282";
             break;
         case "SN506":
             interest.deviceIdHash = "C3B996B9F76C";
             break;
         case "SN507":
             interest.deviceIdHash = "67AE0AAFD4E2";
+            interest.usng = "21426258";
             break;
         case "SN508":
             interest.deviceIdHash = "730D72A6E22F";
             break;
         case "SN509":
             interest.deviceIdHash = "16240A06C1FC";
+            interest.usng = "21236282";
             break;
         case "SN510":
             interest.deviceIdHash = "";
@@ -217,6 +221,7 @@ function setTarget(requestedTarget) {
             break;
         case "SN512":
             interest.deviceIdHash = "6917511534FD";
+            interest.usng = "21896255";
             break;
         case "SN513":
             interest.deviceIdHash = "DF04146F1DF0";
@@ -248,14 +253,14 @@ function writeGeoSelf(){
     updateParamTable(target,interest,displayFactors,gateway);
 }
 
-// Set a specific unit's geolocation
+// Read a specific unit's geolocation
 function readGeoSelf(){
     interest.rw = 'read';
     interest.category = 'flash';
     interest.task = 'geoSelf';
     interest.parameters = "";
     displayFactors.dataFormat = 'string';
-    interest.displayName = "Read Geolocation" + interest.parameters;
+    displayFactors.displayName = "Read Geolocation" + interest.parameters;
     updateParamTable(target,interest,displayFactors,gateway);
 }
 
@@ -302,6 +307,57 @@ function readSunSpec(sunSpecName){
             displayFactors.unitString = '';
             displayFactors.displayName = "Manufacturer";
             break;
+        case "Md":
+            interest.parameters = '64_C3640010_9600_8_1';
+            displayFactors.firstDataChar = 6;
+            displayFactors.lastDataChar = 37;
+            displayFactors.dataFormat = 'ascii';
+            displayFactors.scaleFactor = 0;
+            displayFactors.offsetFactor = 0;
+            displayFactors.unitString = '';
+            displayFactors.displayName = "Model";
+            break;
+        case "Opt":
+            interest.parameters = '64_C3740008_9600_8_1';
+            displayFactors.firstDataChar = 6;
+            displayFactors.lastDataChar = 21;
+            displayFactors.dataFormat = 'ascii';
+            displayFactors.scaleFactor = 0;
+            displayFactors.offsetFactor = 0;
+            displayFactors.unitString = '';
+            displayFactors.displayName = "Option";
+            break;    
+        case "Vr":
+            interest.parameters = '64_C37C0008_9600_8_1';
+            displayFactors.firstDataChar = 6;
+            displayFactors.lastDataChar = 21;
+            displayFactors.dataFormat = 'ascii';
+            displayFactors.scaleFactor = 0;
+            displayFactors.offsetFactor = 0;
+            displayFactors.unitString = '';
+            displayFactors.displayName = "Version";
+            break;    
+        case "SN":
+            interest.parameters = '64_C3840010_9600_8_1';
+            displayFactors.firstDataChar = 6;
+            displayFactors.lastDataChar = 37;
+            displayFactors.dataFormat = 'ascii';
+            displayFactors.scaleFactor = 0;
+            displayFactors.offsetFactor = 0;
+            displayFactors.unitString = '';
+            displayFactors.displayName = "Serial Number";
+            break;    
+        case "DA":
+            interest.parameters = '64_C3940001_9600_8_1';
+            displayFactors.firstDataChar = 6;
+            displayFactors.lastDataChar = 9;
+            displayFactors.dataFormat = 'hex';
+            displayFactors.scaleFactor = 0;
+            displayFactors.offsetFactor = 0;
+            displayFactors.unitString = '';
+            displayFactors.displayName = "Device Address";
+            break;                                 
+        // CURRENT
         case "M_AC_Current":
             interest.parameters = '64_C3970001_9600_8_1';
             displayFactors.firstDataChar = 6;
@@ -312,6 +368,37 @@ function readSunSpec(sunSpecName){
             displayFactors.unitString = 'A';
             displayFactors.displayName = "AC Current (sum of active phases)";
             break;
+        case "M_AC_Current_A":
+            interest.parameters = '64_C3980001_9600_8_1';
+            displayFactors.firstDataChar = 6;
+            displayFactors.lastDataChar = 9;
+            displayFactors.dataFormat = 'hex';
+            displayFactors.scaleFactor = 0.01;
+            displayFactors.offsetFactor = 0;
+            displayFactors.unitString = 'A';
+            displayFactors.displayName = "Phase A AC Current";
+            break;
+        case "M_AC_Current_B":
+            interest.parameters = '64_C3A80001_9600_8_1';
+            displayFactors.firstDataChar = 6;
+            displayFactors.lastDataChar = 9;
+            displayFactors.dataFormat = 'hex';
+            displayFactors.scaleFactor = 0.01;
+            displayFactors.offsetFactor = 0;
+            displayFactors.unitString = 'A';
+            displayFactors.displayName = "Phase B AC Current";
+            break;            
+        case "M_AC_Current_C":
+            interest.parameters = '64_C3B80001_9600_8_1';
+            displayFactors.firstDataChar = 6;
+            displayFactors.lastDataChar = 9;
+            displayFactors.dataFormat = 'hex';
+            displayFactors.scaleFactor = 0.01;
+            displayFactors.offsetFactor = 0;
+            displayFactors.unitString = 'A';
+            displayFactors.displayName = "Phase C AC Current)";
+            break;     
+// VOLTAGE                    
         case "M_AC_Voltage_LN":
             interest.parameters = '64_C39C0001_9600_8_1';
             displayFactors.firstDataChar = 6;
@@ -322,6 +409,77 @@ function readSunSpec(sunSpecName){
             displayFactors.unitString = 'V';
             displayFactors.displayName = "Line to Neutral AC Voltage (average of active phases)";
             break;
+        case "M_AC_Voltage_AN":
+            interest.parameters = '64_C39D0001_9600_8_1';
+            displayFactors.firstDataChar = 6;
+            displayFactors.lastDataChar = 9;
+            displayFactors.dataFormat = 'hex';
+            displayFactors.scaleFactor = 0.1;
+            displayFactors.offsetFactor = 0;
+            displayFactors.unitString = 'V';
+            displayFactors.displayName = "Phase A to Neutral AC Voltage";
+            break;
+        case "M_AC_Voltage_BN":
+            interest.parameters = '64_C39E0001_9600_8_1';
+            displayFactors.firstDataChar = 6;
+            displayFactors.lastDataChar = 9;
+            displayFactors.dataFormat = 'hex';
+            displayFactors.scaleFactor = 0.1;
+            displayFactors.offsetFactor = 0;
+            displayFactors.unitString = 'V';
+            displayFactors.displayName = "Phase B to Neutral AC Voltage";
+            break;                        
+        case "M_AC_Voltage_CN":
+            interest.parameters = '64_C39F0001_9600_8_1';
+            displayFactors.firstDataChar = 6;
+            displayFactors.lastDataChar = 9;
+            displayFactors.dataFormat = 'hex';
+            displayFactors.scaleFactor = 0.1;
+            displayFactors.offsetFactor = 0;
+            displayFactors.unitString = 'V';
+            displayFactors.displayName = "Phase C to Neutral AC Voltage";
+            break;
+        case "M_AC_Voltage_LL":
+            interest.parameters = '64_C3A00001_9600_8_1';
+            displayFactors.firstDataChar = 6;
+            displayFactors.lastDataChar = 9;
+            displayFactors.dataFormat = 'hex';
+            displayFactors.scaleFactor = 0.1;
+            displayFactors.offsetFactor = 0;
+            displayFactors.unitString = 'V';
+            displayFactors.displayName = "Line to Line AC Voltage (average of active phases)";
+            break;
+        case "M_AC_Voltage_AB":
+            interest.parameters = '64_C3A10001_9600_8_1';
+            displayFactors.firstDataChar = 6;
+            displayFactors.lastDataChar = 9;
+            displayFactors.dataFormat = 'hex';
+            displayFactors.scaleFactor = 0.1;
+            displayFactors.offsetFactor = 0;
+            displayFactors.unitString = 'V';
+            displayFactors.displayName = "Phase A to Phase B AC Voltage";
+            break;
+        case "M_AC_Voltage_BC":
+            interest.parameters = '64_C3A20001_9600_8_1';
+            displayFactors.firstDataChar = 6;
+            displayFactors.lastDataChar = 9;
+            displayFactors.dataFormat = 'hex';
+            displayFactors.scaleFactor = 0.1;
+            displayFactors.offsetFactor = 0;
+            displayFactors.unitString = 'V';
+            displayFactors.displayName = "Phase B to Phase C AC Voltage";
+            break;     
+        case "M_AC_Voltage_CA":
+            interest.parameters = '64_C3A30001_9600_8_1';
+            displayFactors.firstDataChar = 6;
+            displayFactors.lastDataChar = 9;
+            displayFactors.dataFormat = 'hex';
+            displayFactors.scaleFactor = 0.1;
+            displayFactors.offsetFactor = 0;
+            displayFactors.unitString = 'V';
+            displayFactors.displayName = "Phase C to Phase A AC Voltage)";
+            break;                                                         
+// FREQUENCY            
         case "M_AC_Freq":
             interest.parameters = '64_C3A50001_9600_8_1';
             displayFactors.firstDataChar = 6;
@@ -332,6 +490,7 @@ function readSunSpec(sunSpecName){
             displayFactors.unitString = 'Hz';
             displayFactors.displayName = "AC Frequency";
             break;
+// POWER            
         case "M_AC_Power":
             interest.parameters = '64_C3A70001_9600_8_1';
             displayFactors.firstDataChar = 6;
@@ -342,6 +501,38 @@ function readSunSpec(sunSpecName){
             displayFactors.unitString = 'W';
             displayFactors.displayName = "Total Real Power(sum of active phases)";
             break;
+        case "M_AC_Power_A":
+            interest.parameters = '64_C3A80001_9600_8_1';
+            displayFactors.firstDataChar = 6;
+            displayFactors.lastDataChar = 9;
+            displayFactors.dataFormat = 'hex';
+            displayFactors.scaleFactor = 10;
+            displayFactors.offsetFactor = 0;
+            displayFactors.unitString = 'W';
+            displayFactors.displayName = "Phase A AC Real Power";
+            break;
+        case "M_AC_Power_B":
+            interest.parameters = '64_C3A90001_9600_8_1';
+            displayFactors.firstDataChar = 6;
+            displayFactors.lastDataChar = 9;
+            displayFactors.dataFormat = 'hex';
+            displayFactors.scaleFactor = 10;
+            displayFactors.offsetFactor = 0;
+            displayFactors.unitString = 'W';
+            displayFactors.displayName = "Phase B AC Real Power";
+            break;
+        case "M_AC_Power_C":
+            interest.parameters = '64_C3AA0001_9600_8_1';
+            displayFactors.firstDataChar = 6;
+            displayFactors.lastDataChar = 9;
+            displayFactors.dataFormat = 'hex';
+            displayFactors.scaleFactor = 10;
+            displayFactors.offsetFactor = 0;
+            displayFactors.unitString = 'W';
+            displayFactors.displayName = "Phase C AC Real Power";
+            break;
+
+// ACCUMULATED ENERGY            
         case "M_Imported":
             interest.parameters = '64_C3C30002_9600_8_1';
             displayFactors.firstDataChar = 6;
@@ -394,9 +585,9 @@ return returnDataString
 
 function updateParamTable(target, interest, displayFactors, gatewayID){
     var x = document.getElementById("paramTable").rows[1].cells;
-    x[0].innerHTML = target;
+    x[0].innerHTML = gateway;
     x[1].innerHTML = displayFactors.displayName;
-    x[2].innerHTML = gatewayID;
+    x[2].innerHTML = target;
 }
 
 // read the web UI to determine the unit that is being targeted
@@ -445,6 +636,6 @@ if (interest.rw == 'write'&& interest.category == 'flash' && interest.task == 'g
     }
 
       $( window ).on( "load", function() {
-        updateParamTable(target,interest,gateway);
+        updateParamTable(target,interest,displayFactors,gateway);
         console.log("page loaded");
     });
