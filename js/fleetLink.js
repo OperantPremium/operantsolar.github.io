@@ -612,7 +612,7 @@ if (interest.rw == 'write'&& interest.category == 'flash' && interest.task == 'g
     // actual web POST
     $.ajax({
         url: interest.url,
-        timeout: 15000,
+        timeout: 35000,
         data: JSON.stringify(interest), // convert interest string to JSON
         type: 'POST',
             success : function(response) {
