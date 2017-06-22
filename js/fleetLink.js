@@ -297,6 +297,9 @@ function readSunSpec(sunSpecName){
     interest.category = 'modbus';
     interest.task = 'fc03';
     switch(sunSpecName) {
+    //================================================================================
+    // COMMON
+    //================================================================================
         case "Mn":
             interest.parameters = '64_C3540010_9600_8_1';
             displayFactors.firstDataChar = 6;
@@ -356,8 +359,10 @@ function readSunSpec(sunSpecName){
             displayFactors.offsetFactor = 0;
             displayFactors.unitString = '';
             displayFactors.displayName = "Device Address";
-            break;                                 
-        // CURRENT
+            break;  
+    //================================================================================
+    // CURRENT
+    //================================================================================
         case "M_AC_Current":
             interest.parameters = '64_C3970001_9600_8_1';
             displayFactors.firstDataChar = 6;
@@ -396,9 +401,53 @@ function readSunSpec(sunSpecName){
             displayFactors.scaleFactor = 0.01;
             displayFactors.offsetFactor = 0;
             displayFactors.unitString = 'A';
-            displayFactors.displayName = "Phase C AC Current)";
-            break;     
-// VOLTAGE                    
+            displayFactors.displayName = "Phase C AC Current";
+            break;    
+        case "M_AC_Current":
+            interest.parameters = '64_C3970001_9600_8_1';
+            displayFactors.firstDataChar = 6;
+            displayFactors.lastDataChar = 9;
+            displayFactors.dataFormat = 'hex';
+            displayFactors.scaleFactor = 0.01;
+            displayFactors.offsetFactor = 0;
+            displayFactors.unitString = 'A';
+            displayFactors.displayName = "AC Current (sum of active phases)";
+            break;
+        case "M_AC_Current_A":
+            interest.parameters = '64_C3980001_9600_8_1';
+            displayFactors.firstDataChar = 6;
+            displayFactors.lastDataChar = 9;
+            displayFactors.dataFormat = 'hex';
+            displayFactors.scaleFactor = 0.01;
+            displayFactors.offsetFactor = 0;
+            displayFactors.unitString = 'A';
+            displayFactors.displayName = "Phase A AC Current";
+            break;
+        case "M_AC_Current_B":
+            interest.parameters = '64_C3A80001_9600_8_1';
+            displayFactors.firstDataChar = 6;
+            displayFactors.lastDataChar = 9;
+            displayFactors.dataFormat = 'hex';
+            displayFactors.scaleFactor = 0.01;
+            displayFactors.offsetFactor = 0;
+            displayFactors.unitString = 'A';
+            displayFactors.displayName = "Phase B AC Current";
+            break;            
+        case "M_AC_Current_C":
+            interest.parameters = '64_C3B80001_9600_8_1';
+            displayFactors.firstDataChar = 6;
+            displayFactors.lastDataChar = 9;
+            displayFactors.dataFormat = 'hex';
+            displayFactors.scaleFactor = 0.01;
+            displayFactors.offsetFactor = 0;
+            displayFactors.unitString = 'A';
+            displayFactors.displayName = "Phase C AC Current";
+            break;               
+    //================================================================================
+    // VOLTAGE
+    //================================================================================
+    // LINE TO NEUTRAL
+    //================================================================================        
         case "M_AC_Voltage_LN":
             interest.parameters = '64_C39C0001_9600_8_1';
             displayFactors.firstDataChar = 6;
@@ -439,6 +488,11 @@ function readSunSpec(sunSpecName){
             displayFactors.unitString = 'V';
             displayFactors.displayName = "Phase C to Neutral AC Voltage";
             break;
+//================================================================================
+// VOLTAGE
+//================================================================================
+// LINE TO LINE
+//================================================================================               
         case "M_AC_Voltage_LL":
             interest.parameters = '64_C3A00001_9600_8_1';
             displayFactors.firstDataChar = 6;
@@ -477,9 +531,11 @@ function readSunSpec(sunSpecName){
             displayFactors.scaleFactor = 0.1;
             displayFactors.offsetFactor = 0;
             displayFactors.unitString = 'V';
-            displayFactors.displayName = "Phase C to Phase A AC Voltage)";
+            displayFactors.displayName = "Phase C to Phase A AC Voltage";
             break;                                                         
-// FREQUENCY            
+    //================================================================================
+    // FREQUENCY
+    //================================================================================
         case "M_AC_Freq":
             interest.parameters = '64_C3A50001_9600_8_1';
             displayFactors.firstDataChar = 6;
@@ -490,7 +546,11 @@ function readSunSpec(sunSpecName){
             displayFactors.unitString = 'Hz';
             displayFactors.displayName = "AC Frequency";
             break;
-// POWER            
+    //================================================================================
+    // POWER
+    //================================================================================
+    // REAL
+    //================================================================================             
         case "M_AC_Power":
             interest.parameters = '64_C3A70001_9600_8_1';
             displayFactors.firstDataChar = 6;
@@ -531,18 +591,505 @@ function readSunSpec(sunSpecName){
             displayFactors.unitString = 'W';
             displayFactors.displayName = "Phase C AC Real Power";
             break;
-
-// ACCUMULATED ENERGY            
+    //================================================================================
+    // POWER
+    //================================================================================
+    // APPARENT
+    //================================================================================  
+        case "M_AC_VA":
+            interest.parameters = '64_C3AC0001_9600_8_1';
+            displayFactors.firstDataChar = 6;
+            displayFactors.lastDataChar = 9;
+            displayFactors.dataFormat = 'hex';
+            displayFactors.scaleFactor = 10;
+            displayFactors.offsetFactor = 0;
+            displayFactors.unitString = 'VA';
+            displayFactors.displayName = "Total AC Apparent Power(sum of active phases)";
+            break;
+        case "M_AC_VA_A":
+            interest.parameters = '64_C3AD0001_9600_8_1';
+            displayFactors.firstDataChar = 6;
+            displayFactors.lastDataChar = 9;
+            displayFactors.dataFormat = 'hex';
+            displayFactors.scaleFactor = 10;
+            displayFactors.offsetFactor = 0;
+            displayFactors.unitString = 'VA';
+            displayFactors.displayName = "Phase A AC Apparent Power";
+            break;
+        case "M_AC_VA_B":
+            interest.parameters = '64_C3AE0001_9600_8_1';
+            displayFactors.firstDataChar = 6;
+            displayFactors.lastDataChar = 9;
+            displayFactors.dataFormat = 'hex';
+            displayFactors.scaleFactor = 10;
+            displayFactors.offsetFactor = 0;
+            displayFactors.unitString = 'VA';
+            displayFactors.displayName = "Phase B AC Apparent Power";
+            break;
+        case "M_AC_VA_C":
+            interest.parameters = '64_C3AF0001_9600_8_1';
+            displayFactors.firstDataChar = 6;
+            displayFactors.lastDataChar = 9;
+            displayFactors.dataFormat = 'hex';
+            displayFactors.scaleFactor = 10;
+            displayFactors.offsetFactor = 0;
+            displayFactors.unitString = 'VA';
+            displayFactors.displayName = "Phase C AC Apparent Power";
+            break;
+    //================================================================================
+    // POWER
+    //================================================================================
+    // REACTIVE
+    //================================================================================     
+        case "M_AC_VAR":
+            interest.parameters = '64_C3B10001_9600_8_1';
+            displayFactors.firstDataChar = 6;
+            displayFactors.lastDataChar = 9;
+            displayFactors.dataFormat = 'hex';
+            displayFactors.scaleFactor = 10;
+            displayFactors.offsetFactor = 0;
+            displayFactors.unitString = 'VAR';
+            displayFactors.displayName = "Total AC Reactive Power(sum of active phases)";
+            break;
+        case "M_AC_VAR_A":
+            interest.parameters = '64_C3B20001_9600_8_1';
+            displayFactors.firstDataChar = 6;
+            displayFactors.lastDataChar = 9;
+            displayFactors.dataFormat = 'hex';
+            displayFactors.scaleFactor = 10;
+            displayFactors.offsetFactor = 0;
+            displayFactors.unitString = 'VAR';
+            displayFactors.displayName = "Phase A AC Reactive Power";
+            break;
+        case "M_AC_VAR_B":
+            interest.parameters = '64_C3B30001_9600_8_1';
+            displayFactors.firstDataChar = 6;
+            displayFactors.lastDataChar = 9;
+            displayFactors.dataFormat = 'hex';
+            displayFactors.scaleFactor = 10;
+            displayFactors.offsetFactor = 0;
+            displayFactors.unitString = 'VAR';
+            displayFactors.displayName = "Phase B AC Reactive Power";
+            break;
+        case "M_AC_VAR_C":
+            interest.parameters = '64_C3B40001_9600_8_1';
+            displayFactors.firstDataChar = 6;
+            displayFactors.lastDataChar = 9;
+            displayFactors.dataFormat = 'hex';
+            displayFactors.scaleFactor = 10;
+            displayFactors.offsetFactor = 0;
+            displayFactors.unitString = 'VAR';
+            displayFactors.displayName = "Phase C AC Reactive Power";
+            break;
+    //================================================================================
+    // POWER FACTOR
+    //================================================================================
+        case "M_AC_PF":
+            interest.parameters = '64_C3B60001_9600_8_1';
+            displayFactors.firstDataChar = 6;
+            displayFactors.lastDataChar = 9;
+            displayFactors.dataFormat = 'hex';
+            displayFactors.scaleFactor = 1;
+            displayFactors.offsetFactor = 0;
+            displayFactors.unitString = '';
+            displayFactors.displayName = "Average Power Factor(average of active phases)";
+            break;
+        case "M_AC_PF_A":
+            interest.parameters = '64_C3B70001_9600_8_1';
+            displayFactors.firstDataChar = 6;
+            displayFactors.lastDataChar = 9;
+            displayFactors.dataFormat = 'hex';
+            displayFactors.scaleFactor = 1;
+            displayFactors.offsetFactor = 0;
+            displayFactors.unitString = '';
+            displayFactors.displayName = "Phase A Power Factor";
+            break;
+        case "M_AC_PF_B":
+            interest.parameters = '64_C3B80001_9600_8_1';
+            displayFactors.firstDataChar = 6;
+            displayFactors.lastDataChar = 9;
+            displayFactors.dataFormat = 'hex';
+            displayFactors.scaleFactor = 1;
+            displayFactors.offsetFactor = 0;
+            displayFactors.unitString = '';
+            displayFactors.displayName = "Phase B Power Factor";
+            break;
+        case "M_AC_PF_C":
+            interest.parameters = '64_C3B90001_9600_8_1';
+            displayFactors.firstDataChar = 6;
+            displayFactors.lastDataChar = 9;
+            displayFactors.dataFormat = 'hex';
+            displayFactors.scaleFactor = 1;
+            displayFactors.offsetFactor = 0;
+            displayFactors.unitString = '';
+            displayFactors.displayName = "Phase C Power Factor";
+            break;
+    //================================================================================
+    // ACCUMULATED REAL ENERGY
+    //================================================================================
+    // EXPORTED
+    //================================================================================ 
+        case "M_Exported":
+            interest.parameters = '64_C3BB0002_9600_8_1';
+            displayFactors.firstDataChar = 6;
+            displayFactors.lastDataChar = 13;
+            displayFactors.dataFormat = 'hex';
+            displayFactors.scaleFactor = 1;
+            displayFactors.offsetFactor = 0;
+            displayFactors.unitString = 'Wh';
+            displayFactors.displayName = "Total Exported Real Energy";
+            break;
+        case "M_Exported_A":
+            interest.parameters = '64_C3BD0002_9600_8_1';
+            displayFactors.firstDataChar = 6;
+            displayFactors.lastDataChar = 13;
+            displayFactors.dataFormat = 'hex';
+            displayFactors.scaleFactor = 1;
+            displayFactors.offsetFactor = 0;
+            displayFactors.unitString = 'Wh';
+            displayFactors.displayName = "Phase A Exported Real Energy";
+            break;
+        case "M_Exported_B":
+            interest.parameters = '64_C3BF0002_9600_8_1';
+            displayFactors.firstDataChar = 6;
+            displayFactors.lastDataChar = 13;
+            displayFactors.dataFormat = 'hex';
+            displayFactors.scaleFactor = 1;
+            displayFactors.offsetFactor = 0;
+            displayFactors.unitString = 'Wh';
+            displayFactors.displayName = "Phase B Exported Real Energy";
+            break;
+        case "M_Exported_C":
+            interest.parameters = '64_C3C10002_9600_8_1';
+            displayFactors.firstDataChar = 6;
+            displayFactors.lastDataChar = 13;
+            displayFactors.dataFormat = 'hex';
+            displayFactors.scaleFactor = 1;
+            displayFactors.offsetFactor = 0;
+            displayFactors.unitString = 'Wh';
+            displayFactors.displayName = "Phase C Exported Real Energyy";
+            break; 
+    //================================================================================
+    // ACCUMULATED REAL ENERGY
+    //================================================================================
+    // IMPORTED
+    //================================================================================     
         case "M_Imported":
             interest.parameters = '64_C3C30002_9600_8_1';
             displayFactors.firstDataChar = 6;
             displayFactors.lastDataChar = 13;
             displayFactors.dataFormat = 'hex';
-            displayFactors.scaleFactor = 0.001;
+            displayFactors.scaleFactor = 1;
             displayFactors.offsetFactor = 0;
-            displayFactors.unitString = 'kWh';
+            displayFactors.unitString = 'Wh';
             displayFactors.displayName = "Total Imported Real Energy";
             break;
+        case "M_Imported_A":
+            interest.parameters = '64_C3C50002_9600_8_1';
+            displayFactors.firstDataChar = 6;
+            displayFactors.lastDataChar = 13;
+            displayFactors.dataFormat = 'hex';
+            displayFactors.scaleFactor = 1;
+            displayFactors.offsetFactor = 0;
+            displayFactors.unitString = 'Wh';
+            displayFactors.displayName = "Phase A Imported Real Energy";
+            break;
+        case "M_Imported_B":
+            interest.parameters = '64_C3C70002_9600_8_1';
+            displayFactors.firstDataChar = 6;
+            displayFactors.lastDataChar = 13;
+            displayFactors.dataFormat = 'hex';
+            displayFactors.scaleFactor = 1;
+            displayFactors.offsetFactor = 0;
+            displayFactors.unitString = 'Wh';
+            displayFactors.displayName = "Phase B Imported Real Energy";
+            break;
+        case "M_Imported_C":
+            interest.parameters = '64_C3C90002_9600_8_1';
+            displayFactors.firstDataChar = 6;
+            displayFactors.lastDataChar = 13;
+            displayFactors.dataFormat = 'hex';
+            displayFactors.scaleFactor = 1;
+            displayFactors.offsetFactor = 0;
+            displayFactors.unitString = 'Wh';
+            displayFactors.displayName = "Phase C Imported Real Energy";
+            break;  
+    //================================================================================
+    // ACCUMULATED APPARENT ENERGY
+    //================================================================================
+    // EXPORTED
+    //================================================================================      
+        case "M_Exported_VA":
+            interest.parameters = '64_C3CC0002_9600_8_1';
+            displayFactors.firstDataChar = 6;
+            displayFactors.lastDataChar = 13;
+            displayFactors.dataFormat = 'hex';
+            displayFactors.scaleFactor = 1;
+            displayFactors.offsetFactor = 0;
+            displayFactors.unitString = 'VAh';
+            displayFactors.displayName = "Total Imported Real Energy";
+            break;
+        case "M_Exported_VA_A":
+            interest.parameters = '64_C3CE0002_9600_8_1';
+            displayFactors.firstDataChar = 6;
+            displayFactors.lastDataChar = 13;
+            displayFactors.dataFormat = 'hex';
+            displayFactors.scaleFactor = 1;
+            displayFactors.offsetFactor = 0;
+            displayFactors.unitString = 'VAh';
+            displayFactors.displayName = "Phase A Exported Apparent Energy";
+            break;
+        case "M_Exported_VA_B":
+            interest.parameters = '64_C3D00002_9600_8_1';
+            displayFactors.firstDataChar = 6;
+            displayFactors.lastDataChar = 13;
+            displayFactors.dataFormat = 'hex';
+            displayFactors.scaleFactor = 1;
+            displayFactors.offsetFactor = 0;
+            displayFactors.unitString = 'VAh';
+            displayFactors.displayName = "Phase B Exported Apparent Energy";
+            break;
+        case "M_Exported_VA_C":
+            interest.parameters = '64_C3D20002_9600_8_1';
+            displayFactors.firstDataChar = 6;
+            displayFactors.lastDataChar = 13;
+            displayFactors.dataFormat = 'hex';
+            displayFactors.scaleFactor = 1;
+            displayFactors.offsetFactor = 0;
+            displayFactors.unitString = 'VAh';
+            displayFactors.displayName = "Phase C Exported Apparent Energy";
+            break;                                   
+    //================================================================================
+    // ACCUMULATED APPARENT ENERGY
+    //================================================================================
+    // IMPORTED
+    //================================================================================      
+        case "M_Imported_VA":
+            interest.parameters = '64_C3D40002_9600_8_1';
+            displayFactors.firstDataChar = 6;
+            displayFactors.lastDataChar = 13;
+            displayFactors.dataFormat = 'hex';
+            displayFactors.scaleFactor = 1;
+            displayFactors.offsetFactor = 0;
+            displayFactors.unitString = 'VAh';
+            displayFactors.displayName = "Total Imported Apparent Energy";
+            break;
+        case "M_Imported_VA_A":
+            interest.parameters = '64_C3D60002_9600_8_1';
+            displayFactors.firstDataChar = 6;
+            displayFactors.lastDataChar = 13;
+            displayFactors.dataFormat = 'hex';
+            displayFactors.scaleFactor = 1;
+            displayFactors.offsetFactor = 0;
+            displayFactors.unitString = 'VAh';
+            displayFactors.displayName = "Phase A Imported Apparent Energy";
+            break;
+        case "M_Imported_VA_B":
+            interest.parameters = '64_C3D80002_9600_8_1';
+            displayFactors.firstDataChar = 6;
+            displayFactors.lastDataChar = 13;
+            displayFactors.dataFormat = 'hex';
+            displayFactors.scaleFactor = 1;
+            displayFactors.offsetFactor = 0;
+            displayFactors.unitString = 'VAh';
+            displayFactors.displayName = "Phase B Imported Apparent Energy";
+            break;
+        case "M_Imported_VA_C":
+            interest.parameters = '64_C3DA0002_9600_8_1';
+            displayFactors.firstDataChar = 6;
+            displayFactors.lastDataChar = 13;
+            displayFactors.dataFormat = 'hex';
+            displayFactors.scaleFactor = 1;
+            displayFactors.offsetFactor = 0;
+            displayFactors.unitString = 'VAh';
+            displayFactors.displayName = "Phase C Imported Apparent Energy";
+            break; 
+
+    //================================================================================
+    // ACCUMULATED REACTIVE ENERGY
+    //================================================================================
+    // IMPORTED
+    //================================================================================      
+        case "M_Import_VARh_Q1":
+            interest.parameters = '64_C3DD0002_9600_8_1';
+            displayFactors.firstDataChar = 6;
+            displayFactors.lastDataChar = 13;
+            displayFactors.dataFormat = 'hex';
+            displayFactors.scaleFactor = 1;
+            displayFactors.offsetFactor = 0;
+            displayFactors.unitString = 'VARh';
+            displayFactors.displayName = "Quadrant 1: Total Imported Reactive Energyy";
+            break;
+        case "M_Import_VARh_Q1A":
+            interest.parameters = '64_C3DF0002_9600_8_1';
+            displayFactors.firstDataChar = 6;
+            displayFactors.lastDataChar = 13;
+            displayFactors.dataFormat = 'hex';
+            displayFactors.scaleFactor = 1;
+            displayFactors.offsetFactor = 0;
+            displayFactors.unitString = 'VARh';
+            displayFactors.displayName = "Phase A - Quadrant 1: Imported Reactive Energy";
+            break;
+        case "M_Import_VARh_Q1B":
+            interest.parameters = '64_C3E10002_9600_8_1';
+            displayFactors.firstDataChar = 6;
+            displayFactors.lastDataChar = 13;
+            displayFactors.dataFormat = 'hex';
+            displayFactors.scaleFactor = 1;
+            displayFactors.offsetFactor = 0;
+            displayFactors.unitString = 'VARh';
+            displayFactors.displayName = "Phase B - Quadrant 1: Imported Reactive Energyy";
+            break;
+        case "M_Import_VARh_Q1C":
+            interest.parameters = '64_C3E30002_9600_8_1';
+            displayFactors.firstDataChar = 6;
+            displayFactors.lastDataChar = 13;
+            displayFactors.dataFormat = 'hex';
+            displayFactors.scaleFactor = 1;
+            displayFactors.offsetFactor = 0;
+            displayFactors.unitString = 'VARh';
+            displayFactors.displayName = "Phase C - Quadrant 1: Imported Reactive Energy";
+            break; 
+        case "M_Import_VARh_Q2":
+            interest.parameters = '64_C3E50002_9600_8_1';
+            displayFactors.firstDataChar = 6;
+            displayFactors.lastDataChar = 13;
+            displayFactors.dataFormat = 'hex';
+            displayFactors.scaleFactor = 1;
+            displayFactors.offsetFactor = 0;
+            displayFactors.unitString = 'VARh';
+            displayFactors.displayName = "Quadrant 2: Total Imported Reactive Energy";
+            break;
+        case "M_Import_VARh_Q2A":
+            interest.parameters = '64_C3E70002_9600_8_1';
+            displayFactors.firstDataChar = 6;
+            displayFactors.lastDataChar = 13;
+            displayFactors.dataFormat = 'hex';
+            displayFactors.scaleFactor = 1;
+            displayFactors.offsetFactor = 0;
+            displayFactors.unitString = 'VARh';
+            displayFactors.displayName = "Phase A - Quadrant 2: Imported Reactive Energy";
+            break;
+        case "M_Import_VARh_Q2B":
+            interest.parameters = '64_C3E90002_9600_8_1';
+            displayFactors.firstDataChar = 6;
+            displayFactors.lastDataChar = 13;
+            displayFactors.dataFormat = 'hex';
+            displayFactors.scaleFactor = 1;
+            displayFactors.offsetFactor = 0;
+            displayFactors.unitString = 'VARh';
+            displayFactors.displayName = "Phase B - Quadrant 2: Imported Reactive Energy";
+            break;
+        case "M_Import_VARh_Q2C":
+            interest.parameters = '64_C3EB0002_9600_8_1';
+            displayFactors.firstDataChar = 6;
+            displayFactors.lastDataChar = 13;
+            displayFactors.dataFormat = 'hex';
+            displayFactors.scaleFactor = 1;
+            displayFactors.offsetFactor = 0;
+            displayFactors.unitString = 'VARh';
+            displayFactors.displayName = "Phase C - Quadrant 2: Imported Reactive Energy";
+            break;             
+    //================================================================================
+    // ACCUMULATED REACTIVE ENERGY
+    //================================================================================
+    // EXPORTED
+    //================================================================================   
+        case "M_Export_VARh_Q3":
+            interest.parameters = '64_C3ED0002_9600_8_1';
+            displayFactors.firstDataChar = 6;
+            displayFactors.lastDataChar = 13;
+            displayFactors.dataFormat = 'hex';
+            displayFactors.scaleFactor = 1;
+            displayFactors.offsetFactor = 0;
+            displayFactors.unitString = 'VARh';
+            displayFactors.displayName = "Quadrant 3: Total Exported Reactive Energy";
+            break;
+        case "M_Export_VARh_Q3A":
+            interest.parameters = '64_C3EF0002_9600_8_1';
+            displayFactors.firstDataChar = 6;
+            displayFactors.lastDataChar = 13;
+            displayFactors.dataFormat = 'hex';
+            displayFactors.scaleFactor = 1;
+            displayFactors.offsetFactor = 0;
+            displayFactors.unitString = 'VARh';
+            displayFactors.displayName = "Phase A - Quadrant 3: Exported Reactive Energy";
+            break;
+        case "M_Export_VARh_Q3B":
+            interest.parameters = '64_C3F10002_9600_8_1';
+            displayFactors.firstDataChar = 6;
+            displayFactors.lastDataChar = 13;
+            displayFactors.dataFormat = 'hex';
+            displayFactors.scaleFactor = 1;
+            displayFactors.offsetFactor = 0;
+            displayFactors.unitString = 'VARh';
+            displayFactors.displayName = "Phase B - Quadrant 3: Exported Reactive Energy";
+            break;
+        case "M_Export_VARh_Q3C":
+            interest.parameters = '64_C3F30002_9600_8_1';
+            displayFactors.firstDataChar = 6;
+            displayFactors.lastDataChar = 13;
+            displayFactors.dataFormat = 'hex';
+            displayFactors.scaleFactor = 1;
+            displayFactors.offsetFactor = 0;
+            displayFactors.unitString = 'VARh';
+            displayFactors.displayName = "Phase C - Quadrant 3: Exported Reactive Energy";
+            break; 
+            case "M_Export_VARh_Q4":
+            interest.parameters = '64_C3F50002_9600_8_1';
+            displayFactors.firstDataChar = 6;
+            displayFactors.lastDataChar = 13;
+            displayFactors.dataFormat = 'hex';
+            displayFactors.scaleFactor = 1;
+            displayFactors.offsetFactor = 0;
+            displayFactors.unitString = 'VARh';
+            displayFactors.displayName = "Quadrant 4: Total Exported Reactive Energyy";
+            break;
+        case "M_Export_VARh_Q4A":
+            interest.parameters = '64_C3F70002_9600_8_1';
+            displayFactors.firstDataChar = 6;
+            displayFactors.lastDataChar = 13;
+            displayFactors.dataFormat = 'hex';
+            displayFactors.scaleFactor = 1;
+            displayFactors.offsetFactor = 0;
+            displayFactors.unitString = 'VARh';
+            displayFactors.displayName = "Phase A - Quadrant 4: Exported Reactive Energy";
+            break;
+        case "M_Export_VARh_Q4B":
+            interest.parameters = '64_C3F90002_9600_8_1';
+            displayFactors.firstDataChar = 6;
+            displayFactors.lastDataChar = 13;
+            displayFactors.dataFormat = 'hex';
+            displayFactors.scaleFactor = 1;
+            displayFactors.offsetFactor = 0;
+            displayFactors.unitString = 'VARh';
+            displayFactors.displayName = "Phase B - Quadrant 4: Exported Reactive Energy";
+            break;
+        case "M_Export_VARh_Q4C":
+            interest.parameters = '64_C3FB0002_9600_8_1';
+            displayFactors.firstDataChar = 6;
+            displayFactors.lastDataChar = 13;
+            displayFactors.dataFormat = 'VARh';
+            displayFactors.scaleFactor = 1;
+            displayFactors.offsetFactor = 0;
+            displayFactors.unitString = 'VARh';
+            displayFactors.displayName = "Phase C - Quadrant 4: Exported Reactive Energy";
+            break; 
+    //================================================================================
+    // EVENTS
+    //================================================================================       
+        case "M_Events":
+            interest.parameters = '64_C3FE0002_9600_8_1';
+            displayFactors.firstDataChar = 6;
+            displayFactors.lastDataChar = 13;
+            displayFactors.dataFormat = 'hex';
+            displayFactors.scaleFactor =  1;
+            displayFactors.offsetFactor = 0;
+            displayFactors.unitString = '';
+            displayFactors.displayName = "M_EVENT_ flags";
+            break; 
+
+
         default:
             interest.parameters =  "";
     } 

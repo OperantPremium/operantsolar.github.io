@@ -161,7 +161,7 @@
                 <div class="dropdown ">
                 <a class="dropdown-item dropdown-toggle mbr-editable-menu-item" href="#" data-toggle="dropdown-submenu" aria-expanded="true">IMPORTED</a>
                     <div class="dropdown-menu dropdown-submenu">                
-                    <a class="dropdown-item mbr-editable-menu-item" href="http://www.operantsolar.com" onclick="readSunSpec('M_Imported'); return false;">M_Imported</a>     
+                    <a class="dropdown-item mbr-editable-menu-item" href="http://www.operantsolar.com" onclick="readSunSpec('M_Imported_VA'); return false;">M_Imported_VA</a>     
                     <a class="dropdown-item mbr-editable-menu-item" href="http://www.operantsolar.com" onclick="readSunSpec('M_Imported_VA_A'); return false;">M_Imported_VA_A</a>     
                     <a class="dropdown-item mbr-editable-menu-item" href="http://www.operantsolar.com" onclick="readSunSpec('M_Imported_VA_B'); return false;">M_Imported_VA_B</a>     
                     <a class="dropdown-item mbr-editable-menu-item" href="http://www.operantsolar.com" onclick="readSunSpec('M_Imported_VA_C'); return false;">M_Imported_VA_C</a>                               
@@ -217,7 +217,7 @@
             <div class="dropdown ">
             <a class="dropdown-item dropdown-toggle mbr-editable-menu-item" href="#" data-toggle="dropdown-submenu" aria-expanded="true">EVENTS</a>
                 <div class="dropdown-menu dropdown-submenu">
-                    <a class="dropdown-item mbr-editable-menu-item" href="http://www.operantsolar.com" onclick="readSunSpec('READ'); return false;">READ</a>     
+                    <a class="dropdown-item mbr-editable-menu-item" href="http://www.operantsolar.com" onclick="readSunSpec('M_Events'); return false;">M_Events</a>     
                 </div>                            
             </div>  
 
