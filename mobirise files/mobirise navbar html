@@ -282,6 +282,8 @@
                             <a class="dropdown-item mbr-editable-menu-item" href="http://www.operantsolar.com" onclick="setGateway('SN405'); return false;">SN405</a>
                             <a class="dropdown-item mbr-editable-menu-item" href="http://www.operantsolar.com" onclick="setGateway('SN406'); return false;">SN406</a>
                             <a class="dropdown-item mbr-editable-menu-item" href="http://www.operantsolar.com" onclick="setGateway('SN407'); return false;">SN407</a>
+                            <a class="dropdown-item mbr-editable-menu-item" href="http://www.operantsolar.com" onclick="setGateway('SN504'); return false;">SN504</a>       
+                            <a class="dropdown-item mbr-editable-menu-item" href="http://www.operantsolar.com" onclick="setGateway('SN508'); return false;">SN508</a>                                                 
                         </div>
                 </div>
             </div>
@@ -322,6 +324,8 @@
                             <a class="dropdown-item mbr-editable-menu-item" href="http://www.operantsolar.com" onclick="setTarget('SN405'); return false;">SN405</a>
                             <a class="dropdown-item mbr-editable-menu-item" href="http://www.operantsolar.com" onclick="setTarget('SN406'); return false;">SN406</a>
                             <a class="dropdown-item mbr-editable-menu-item" href="http://www.operantsolar.com" onclick="setTarget('SN407'); return false;">SN407</a>
+                            <a class="dropdown-item mbr-editable-menu-item" href="http://www.operantsolar.com" onclick="setTarget('SN504'); return false;">SN504</a>
+                            <a class="dropdown-item mbr-editable-menu-item" href="http://www.operantsolar.com" onclick="setTarget('SN508'); return false;">SN508</a>                            
                         </div>
                 </div>  
             </div>

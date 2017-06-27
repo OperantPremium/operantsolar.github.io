@@ -194,6 +194,7 @@ function setTarget(requestedTarget) {
             break;
         case "SN504":
             interest.deviceIdHash = "B930FA057CB6";
+            interest.usng = "20706278";
             break;
         case "SN505":
             interest.deviceIdHash = "BA48D077C2A8";
@@ -208,6 +209,7 @@ function setTarget(requestedTarget) {
             break;
         case "SN508":
             interest.deviceIdHash = "730D72A6E22F";
+            interest.usng = "21036285";
             break;
         case "SN509":
             interest.deviceIdHash = "16240A06C1FC";
