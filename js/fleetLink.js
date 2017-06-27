@@ -1088,13 +1088,23 @@ function readSunSpec(sunSpecName){
             displayFactors.scaleFactor =  1;
             displayFactors.offsetFactor = 0;
             displayFactors.unitString = '';
-            displayFactors.displayName = "M_EVENT_ flags";
+            displayFactors.displayName = 'M_EVENT_ flags';
             break; 
-
-
+    //================================================================================
+    // EVENTS
+    // If command not implemented, display requested name but return Manufacturer's name
+    // This is something any SunSpec equipment can do
+    //================================================================================   
         default:
-            interest.parameters =  "";
-    } 
+            interest.parameters = '64_C3540010_9600_8_1';
+            displayFactors.firstDataChar = 6;
+            displayFactors.lastDataChar = 37;
+            displayFactors.dataFormat = 'ascii';
+            displayFactors.scaleFactor = 0;
+            displayFactors.offsetFactor = 0;
+            displayFactors.unitString = '';
+            displayFactors.displayName = sunSpecName;    } 
+
     updateParamTable(target,interest,displayFactors,gateway);
 }
 

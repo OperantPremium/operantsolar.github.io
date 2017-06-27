@@ -1,26 +1,24 @@
-    <section>
+<section>
 
-    <nav class="navbar navbar-dropdown bg-color transparent navbar-fixed-top">
-        <div class="container">
-
-            <div class="mbr-table">
-                <div class="mbr-table-cell">
-                    <div class="navbar-brand">
-                        <a href="https://operantsolar.com" target="_blank" class="navbar-logo"><img src="file:///Users/randy/Library/Application%20Support/Mobirise.com/Mobirise/projects/project-2017-05-24_103057/assets/images/operantlogo4-338x128.png" alt="Mobirise"></a>
-                    </div>
+<nav class="navbar navbar-dropdown bg-color transparent navbar-fixed-top">
+    <div class="container">
+        <div class="mbr-table">
+            <div class="mbr-table-cell">
+                <div class="navbar-brand">
+                    <a href="https://operantsolar.com" target="_blank" class="navbar-logo"><img src="file:///Users/randy/Library/Application%20Support/Mobirise.com/Mobirise/projects/project-2017-05-24_103057/assets/images/operantlogo4-338x128.png" alt="Mobirise"></a>
                 </div>
-                <div class="mbr-table-cell">
-                    <button class="navbar-toggler pull-xs-right hidden-md-up" type="button" data-toggle="collapse" data-target="#exCollapsingNavbar">
-                        <div class="hamburger-icon"></div>
-                    </button>
-                <div class="mbr-table-cell">
+            </div>
+            <div class="mbr-table-cell">
+                <button class="navbar-toggler pull-xs-right hidden-md-up" type="button" data-toggle="collapse" data-target="#exCollapsingNavbar">
+                    <div class="hamburger-icon"></div>
+                </button>
+            <div class="mbr-table-cell">
 
 <ul class="nav-dropdown collapse pull-xs-right nav navbar-nav navbar-toggleable-sm" id="exCollapsingNavbar">
     <li class="nav-item dropdown ">
         <a class="nav-link link dropdown-toggle mbr-editable-menu-item" href="https://mobirise.com/" data-toggle="dropdown-submenu" aria-expanded="false">TASK</a>
         <div class="dropdown-menu">  
- 
-        <!------------------------------------------------------------------->
+         <!------------------------------------------------------------------->
         <div class="dropdown ">
         <a class="dropdown-item dropdown-toggle mbr-editable-menu-item" href="#" data-toggle="dropdown-submenu" aria-expanded="true">SUNSPEC METER</a>
             <div class="dropdown-menu dropdown-submenu">
@@ -220,34 +218,131 @@
                     <a class="dropdown-item mbr-editable-menu-item" href="http://www.operantsolar.com" onclick="readSunSpec('M_Events'); return false;">M_Events</a>     
                 </div>                            
             </div>  
-
         </div>
-        
+        <!------------------------------------------------------------------->
+        <div class="dropdown ">
+        <a class="dropdown-item dropdown-toggle mbr-editable-menu-item" href="#" data-toggle="dropdown-submenu" aria-expanded="true">SUNSPEC INVERTER</a>
+            <div class="dropdown-menu dropdown-submenu">
             <!------------------------------------------------------------------->
-            <a class="dropdown-item mbr-editable-menu-item" href="#">SUNSPEC INVERTER</a>
-            
-            <!------------------------------------------------------------------->
-
-            <!------------------------------------------------------------------->
-            <div class="dropdown">                
-            <a class="dropdown-item dropdown-toggle mbr-editable-menu-item" href="#" data-toggle="dropdown-submenu" aria-expanded="false">MODBUS</a>
+            <div class="dropdown ">
+                <a class="dropdown-item dropdown-toggle mbr-editable-menu-item" href="#" data-toggle="dropdown-submenu" aria-expanded="true">COMMON</a>
                 <div class="dropdown-menu dropdown-submenu">
-                    <a class="dropdown-item mbr-editable-menu-item" href="http://www.operantsolar.com" onclick="readModbus(); return false;">READ...</a>                        
+                    <a class="dropdown-item mbr-editable-menu-item" href="http://www.operantsolar.com" onclick="readSunSpec('Mn'); return false;">Mn</a> 
+                    <a class="dropdown-item mbr-editable-menu-item" href="http://www.operantsolar.com" onclick="readSunSpec('Md'); return false;">Md</a> 
+                    <a class="dropdown-item mbr-editable-menu-item" href="http://www.operantsolar.com" onclick="readSunSpec('Opt'); return false;">Opt</a> 
+                    <a class="dropdown-item mbr-editable-menu-item" href="http://www.operantsolar.com" onclick="readSunSpec('Vr'); return false;">Vr</a> 
+                    <a class="dropdown-item mbr-editable-menu-item" href="http://www.operantsolar.com" onclick="readSunSpec('SN'); return false;">SN</a> 
+                    <a class="dropdown-item mbr-editable-menu-item" href="http://www.operantsolar.com" onclick="readSunSpec('DA'); return false;">DA</a>                             
+                </div>
+            </div>                 
+            <!------------------------------------------------------------------->
+            <div class="dropdown ">
+            <a class="dropdown-item dropdown-toggle mbr-editable-menu-item" href="#" data-toggle="dropdown-submenu" aria-expanded="true">AC</a>
+                <div class="dropdown-menu dropdown-submenu">
+                <!------------------------------------------------------------------->
+                <div class="dropdown ">
+                    <a class="dropdown-item dropdown-toggle mbr-editable-menu-item" href="#" data-toggle="dropdown-submenu" aria-expanded="true">CURRENT</a>
+                    <div class="dropdown-menu dropdown-submenu">
+                        <a class="dropdown-item mbr-editable-menu-item" href="http://www.operantsolar.com" onclick="readSunSpec('I_AC_Current'); return false;">I_AC_Current</a>     
+                        <a class="dropdown-item mbr-editable-menu-item" href="http://www.operantsolar.com" onclick="readSunSpec('I_AC_CurrentA'); return false;">I_AC_CurrentA</a>     
+                        <a class="dropdown-item mbr-editable-menu-item" href="http://www.operantsolar.com" onclick="readSunSpec('I_AC_CurrentB'); return false;">I_AC_CurrentB</a>     
+                        <a class="dropdown-item mbr-editable-menu-item" href="http://www.operantsolar.com" onclick="readSunSpec('I_AC_CurrentC'); return false;">I_AC_CurrentC</a>     
+                    </div>
+                </div>
+                <!------------------------------------------------------------------->
+                <div class="dropdown ">
+                    <a class="dropdown-item dropdown-toggle mbr-editable-menu-item" href="#" data-toggle="dropdown-submenu" aria-expanded="true">VOLTAGE</a>
+                    <div class="dropdown-menu dropdown-submenu">
+                        <a class="dropdown-item mbr-editable-menu-item" href="http://www.operantsolar.com" onclick="readSunSpec('I_AC_VoltageAN'); return false;">I_AC_VoltageAN</a>     
+                        <a class="dropdown-item mbr-editable-menu-item" href="http://www.operantsolar.com" onclick="readSunSpec('I_AC_VoltageBN'); return false;">I_AC_VoltageBN</a>     
+                        <a class="dropdown-item mbr-editable-menu-item" href="http://www.operantsolar.com" onclick="readSunSpec('I_AC_VoltageCN'); return false;">I_AC_VoltageCN</a> 
+                        <a class="dropdown-item mbr-editable-menu-item" href="http://www.operantsolar.com" onclick="readSunSpec('I_AC_VoltageAB'); return false;">I_AC_VoltageAB</a>     
+                        <a class="dropdown-item mbr-editable-menu-item" href="http://www.operantsolar.com" onclick="readSunSpec('I_AC_VoltageBC'); return false;">I_AC_VoltageBC</a>     
+                        <a class="dropdown-item mbr-editable-menu-item" href="http://www.operantsolar.com" onclick="readSunSpec('I_AC_VoltageCA'); return false;">I_AC_VoltageCA</a>      
+                    </div>  
+                </div>
+                <!------------------------------------------------------------------->       
+                <div class="dropdown ">
+                    <a class="dropdown-item dropdown-toggle mbr-editable-menu-item" href="#" data-toggle="dropdown-submenu" aria-expanded="true">FREQUENCY</a>
+                    <div class="dropdown-menu dropdown-submenu">
+                        <a class="dropdown-item mbr-editable-menu-item" href="http://www.operantsolar.com" onclick="readSunSpec('I_AC_Frequency'); return false;">I_AC_Frequency</a>     
+                    </div>
+                </div>
+                <!------------------------------------------------------------------->
+                <div class="dropdown ">
+                    <a class="dropdown-item dropdown-toggle mbr-editable-menu-item" href="#" data-toggle="dropdown-submenu" aria-expanded="true">POWER</a>
+                    <div class="dropdown-menu dropdown-submenu">             
+                        <a class="dropdown-item mbr-editable-menu-item" href="http://www.operantsolar.com" onclick="readSunSpec('I_AC_Power'); return false;">I_AC_Power</a>  
+                        <a class="dropdown-item mbr-editable-menu-item" href="http://www.operantsolar.com" onclick="readSunSpec('I_AC_VA'); return false;">I_AC_VA</a>  
+                        <a class="dropdown-item mbr-editable-menu-item" href="http://www.operantsolar.com" onclick="readSunSpec('I_AC_VAR'); return false;">I_AC_VAR</a>  
+                        <a class="dropdown-item mbr-editable-menu-item" href="http://www.operantsolar.com" onclick="readSunSpec('I_AC_PF'); return false;">I_AC_PF</a>  
+                    </div>
+                </div>
+                <!------------------------------------------------------------------->
+                <div class="dropdown ">
+                    <a class="dropdown-item dropdown-toggle mbr-editable-menu-item" href="#" data-toggle="dropdown-submenu" aria-expanded="true">ACCUMULATED ENERGY</a>
+                    <div class="dropdown-menu dropdown-submenu">
+                        <a class="dropdown-item mbr-editable-menu-item" href="http://www.operantsolar.com" onclick="readSunSpec('I_AC_Energy_WH'); return false;">I_AC_Energy_WH</a>     
+                    </div>
+                </div>
+                <!------------------------------------------------------------------->
+                </div>
+            </div>                         
+            <!------------------------------------------------------------------->
+            <div class="dropdown ">
+                <a class="dropdown-item dropdown-toggle mbr-editable-menu-item" href="#" data-toggle="dropdown-submenu" aria-expanded="true">DC</a>
+                <div class="dropdown-menu dropdown-submenu">
+                    <a class="dropdown-item mbr-editable-menu-item" href="http://www.operantsolar.com" onclick="readSunSpec('I_DC_Current'); return false;">I_DC_Current</a>     
+                    <a class="dropdown-item mbr-editable-menu-item" href="http://www.operantsolar.com" onclick="readSunSpec('I_DC_Voltage'); return false;">I_DC_Voltage</a>     
+                    <a class="dropdown-item mbr-editable-menu-item" href="http://www.operantsolar.com" onclick="readSunSpec('I_DC_Power'); return false;">I_DC_Power</a>     
                 </div>
             </div>
             <!------------------------------------------------------------------->
-            <div class="dropdown">                
-            <a class="dropdown-item dropdown-toggle mbr-editable-menu-item" href="#" data-toggle="dropdown-submenu" aria-expanded="false">SERVICE</a>
+            <div class="dropdown ">
+                <a class="dropdown-item dropdown-toggle mbr-editable-menu-item" href="#" data-toggle="dropdown-submenu" aria-expanded="true">TEMPERATURE</a>
                 <div class="dropdown-menu dropdown-submenu">
-                    <a class="dropdown-item mbr-editable-menu-item" href="http://www.operantsolar.com" onclick="readGeoSelf(); return false;">READ GEO</a>
-                    <a class="dropdown-item mbr-editable-menu-item" href="http://www.operantsolar.com" onclick="writeGeoSelf(); return false;">WRITE GEO</a>
-                    <a class="dropdown-item mbr-editable-menu-item" href="http://www.operantsolar.com" onclick="scanWiFi(); return false;">SCAN WIFI</a>                
+                    <a class="dropdown-item mbr-editable-menu-item" href="http://www.operantsolar.com" onclick="readSunSpec('I_Temp_Cab'); return false;">I_Temp_Cab</a>     
+                    <a class="dropdown-item mbr-editable-menu-item" href="http://www.operantsolar.com" onclick="readSunSpec('I_Temp_Sink'); return false;">I_Temp_Sink</a>     
+                    <a class="dropdown-item mbr-editable-menu-item" href="http://www.operantsolar.com" onclick="readSunSpec('I_Temp_Trans'); return false;">I_Temp_Trans</a>     
+                    <a class="dropdown-item mbr-editable-menu-item" href="http://www.operantsolar.com" onclick="readSunSpec('I_Temp_Other'); return false;">I_Temp_Other</a> 
                 </div>
             </div>
-            <!------------------------------------------------------------------->
-        </div>
+            <!------------------------------------------------------------------->            
+            <div class="dropdown ">
+                <a class="dropdown-item dropdown-toggle mbr-editable-menu-item" href="#" data-toggle="dropdown-submenu" aria-expanded="true">STATUS/EVENTS</a>
+                <div class="dropdown-menu dropdown-submenu">
+                    <a class="dropdown-item mbr-editable-menu-item" href="http://www.operantsolar.com" onclick="readSunSpec('I_Status'); return false;">I_Status</a>     
+                    <a class="dropdown-item mbr-editable-menu-item" href="http://www.operantsolar.com" onclick="readSunSpec('I_Status_Vendor'); return false;">I_Status_Vendor</a>     
+                    <a class="dropdown-item mbr-editable-menu-item" href="http://www.operantsolar.com" onclick="readSunSpec('I_Event_1'); return false;">I_Event_1</a>     
+                    <a class="dropdown-item mbr-editable-menu-item" href="http://www.operantsolar.com" onclick="readSunSpec('I_Event_2'); return false;">I_Event_2</a> 
+                    <a class="dropdown-item mbr-editable-menu-item" href="http://www.operantsolar.com" onclick="readSunSpec('I_Event_1_Vendor'); return false;">I_Event_1_Vendor</a>     
+                    <a class="dropdown-item mbr-editable-menu-item" href="http://www.operantsolar.com" onclick="readSunSpec('I_Event_1_Vendor'); return false;">I_Event_1_Vendor</a> 
+                    <a class="dropdown-item mbr-editable-menu-item" href="http://www.operantsolar.com" onclick="readSunSpec('I_Event_3_Vendor'); return false;">I_Event_3_Vendor</a>     
+                    <a class="dropdown-item mbr-editable-menu-item" href="http://www.operantsolar.com" onclick="readSunSpec('I_Event_4_Vendor'); return false;">I_Event_4_Vendor</a>                                         
                 </div>
-
+            </div>
+            <!------------------------------------------------------------------->                               
+            </div>     
+        </div>
+        <!------------------------------------------------------------------->
+        <div class="dropdown">                
+        <a class="dropdown-item dropdown-toggle mbr-editable-menu-item" href="#" data-toggle="dropdown-submenu" aria-expanded="false">MODBUS</a>
+            <div class="dropdown-menu dropdown-submenu">
+                <a class="dropdown-item mbr-editable-menu-item" href="http://www.operantsolar.com" onclick="readModbus(); return false;">READ...</a>                        
+            </div>
+        </div>
+        <!------------------------------------------------------------------->
+        <div class="dropdown">                
+        <a class="dropdown-item dropdown-toggle mbr-editable-menu-item" href="#" data-toggle="dropdown-submenu" aria-expanded="false">SERVICE</a>
+            <div class="dropdown-menu dropdown-submenu">
+                <a class="dropdown-item mbr-editable-menu-item" href="http://www.operantsolar.com" onclick="readGeoSelf(); return false;">READ GEO</a>
+                <a class="dropdown-item mbr-editable-menu-item" href="http://www.operantsolar.com" onclick="writeGeoSelf(); return false;">WRITE GEO</a>
+                <a class="dropdown-item mbr-editable-menu-item" href="http://www.operantsolar.com" onclick="scanWiFi(); return false;">SCAN WIFI</a>                
+            </div>
+        </div>
+        <!------------------------------------------------------------------->
+        </div>
+        </div>
     </li>
 
     
