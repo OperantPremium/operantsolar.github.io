@@ -3,16 +3,18 @@
 <nav class="navbar navbar-dropdown bg-color transparent navbar-fixed-top">
     <div class="container">
         <div class="mbr-table">
-            <div class="mbr-table-cell">
-                <div class="navbar-brand">
-                    <a href="https://operantsolar.com" target="_blank" class="navbar-logo"><img src="file:///Users/randy/Library/Application%20Support/Mobirise.com/Mobirise/projects/project-2017-05-24_103057/assets/images/operantlogo4-338x128.png" alt="Mobirise"></a>
-                </div>
-            </div>
+            
             <div class="mbr-table-cell">
                 <button class="navbar-toggler pull-xs-right hidden-md-up" type="button" data-toggle="collapse" data-target="#exCollapsingNavbar">
                     <div class="hamburger-icon"></div>
                 </button>
             <div class="mbr-table-cell">
+
+            <div class="mbr-table-cell">
+                <div class="navbar-brand">
+                    <a href="https://operantsolar.com" target="_blank" class="navbar-logo"><img src="file:///Users/randy/Library/Application%20Support/Mobirise.com/Mobirise/projects/project-2017-05-24_103057/assets/images/operantlogo4-338x128.png" alt="Mobirise"></a>
+                </div>
+            </div>
 
 <ul class="nav-dropdown collapse pull-xs-right nav navbar-nav navbar-toggleable-sm" id="exCollapsingNavbar">
     <li class="nav-item dropdown ">
