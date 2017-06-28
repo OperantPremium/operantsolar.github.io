@@ -3,26 +3,19 @@
 <nav class="navbar navbar-dropdown bg-color transparent navbar-fixed-top">
     <div class="container">
         <div class="mbr-table">
-            
-            <div class="mbr-table-cell">
-                <button class="navbar-toggler pull-xs-right hidden-md-up" type="button" data-toggle="collapse" data-target="#exCollapsingNavbar">
-                    <div class="hamburger-icon"></div>
-                </button>
-            <div class="mbr-table-cell">
 
-            <div class="mbr-table-cell">
-                <div class="navbar-brand">
-                    <a href="https://operantsolar.com" target="_blank" class="navbar-logo"><img src="file:///Users/randy/Library/Application%20Support/Mobirise.com/Mobirise/projects/project-2017-05-24_103057/assets/images/operantlogo4-338x128.png" alt="Mobirise"></a>
-                </div>
-            </div>
 
-<ul class="nav-dropdown collapse pull-xs-right nav navbar-nav navbar-toggleable-sm" id="exCollapsingNavbar">
+
+
+
+
+<ul class="nav-dropdown collapse pull-xs-left nav navbar-nav navbar-toggleable-sm" id="exCollapsingNavbar">
     <li class="nav-item dropdown ">
         <a class="nav-link link dropdown-toggle mbr-editable-menu-item" href="https://mobirise.com/" data-toggle="dropdown-submenu" aria-expanded="false">TASK</a>
         <div class="dropdown-menu">  
          <!------------------------------------------------------------------->
         <div class="dropdown ">
-        <a class="dropdown-item dropdown-toggle mbr-editable-menu-item" href="#" data-toggle="dropdown-submenu" aria-expanded="true">SUNSPEC METER</a>
+        <a class="dropdown-item dropdown-toggle mbr-editable-menu-item" href="#" data-toggle="dropdown-submenu" aria-expanded="true">METER</a>
             <div class="dropdown-menu dropdown-submenu">
             <!------------------------------------------------------------------->
             <div class="dropdown ">
@@ -54,7 +47,7 @@
                 <div class="dropdown-menu dropdown-submenu">
                 <!------------------------------------------------------------------->
                 <div class="dropdown ">
-                <a class="dropdown-item dropdown-toggle mbr-editable-menu-item" href="#" data-toggle="dropdown-submenu" aria-expanded="true">LINE TO NEUTRAL</a>
+                <a class="dropdown-item dropdown-toggle mbr-editable-menu-item" href="#" data-toggle="dropdown-submenu" aria-expanded="true">LINE-NEUTRAL</a>
                     <div class="dropdown-menu dropdown-submenu">                   
                     <a class="dropdown-item mbr-editable-menu-item" href="http://www.operantsolar.com" onclick="readSunSpec('M_AC_Voltage_LN'); return false;">M_AC_Voltage_LN</a>     
                     <a class="dropdown-item mbr-editable-menu-item" href="http://www.operantsolar.com" onclick="readSunSpec('M_AC_Voltage_AN'); return false;">M_AC_Voltage_AN</a>     
@@ -64,7 +57,7 @@
                 </div>
                 <!-------------------------------------------------------------------> 
                 <div class="dropdown ">
-                <a class="dropdown-item dropdown-toggle mbr-editable-menu-item" href="#" data-toggle="dropdown-submenu" aria-expanded="true">LINE TO LINE</a>
+                <a class="dropdown-item dropdown-toggle mbr-editable-menu-item" href="#" data-toggle="dropdown-submenu" aria-expanded="true">LINE-LINE</a>
                     <div class="dropdown-menu dropdown-submenu">                                          
                     <a class="dropdown-item mbr-editable-menu-item" href="http://www.operantsolar.com" onclick="readSunSpec('M_AC_Voltage_LL'); return false;">M_AC_Voltage_LL</a>     
                     <a class="dropdown-item mbr-editable-menu-item" href="http://www.operantsolar.com" onclick="readSunSpec('M_AC_Voltage_AB'); return false;">M_AC_Voltage_AB</a>     
@@ -119,7 +112,7 @@
             </div>                         
             <!------------------------------------------------------------------->
             <div class="dropdown ">
-            <a class="dropdown-item dropdown-toggle mbr-editable-menu-item" href="#" data-toggle="dropdown-submenu" aria-expanded="true">POWER FACTOR</a>
+            <a class="dropdown-item dropdown-toggle mbr-editable-menu-item" href="#" data-toggle="dropdown-submenu" aria-expanded="true">PWR FACTOR</a>
                 <div class="dropdown-menu dropdown-submenu">
                     <a class="dropdown-item mbr-editable-menu-item" href="http://www.operantsolar.com" onclick="readSunSpec('M_AC_PF'); return false;">M_AC_PF</a>
                     <a class="dropdown-item mbr-editable-menu-item" href="http://www.operantsolar.com" onclick="readSunSpec('M_AC_PF_A'); return false;">M_AC_PF_A</a> 
@@ -129,7 +122,7 @@
             </div>
             <!------------------------------------------------------------------->
             <div class="dropdown ">
-            <a class="dropdown-item dropdown-toggle mbr-editable-menu-item" href="#" data-toggle="dropdown-submenu" aria-expanded="true">ACCUMULATED REAL ENERGY</a>
+            <a class="dropdown-item dropdown-toggle mbr-editable-menu-item" href="#" data-toggle="dropdown-submenu" aria-expanded="true">REAL W-Hr</a>
                 <div class="dropdown-menu dropdown-submenu">
                 <!------------------------------------------------------------------->
                 <div class="dropdown ">
@@ -155,7 +148,7 @@
             </div>
             <!------------------------------------------------------------------->
             <div class="dropdown ">
-            <a class="dropdown-item dropdown-toggle mbr-editable-menu-item" href="#" data-toggle="dropdown-submenu" aria-expanded="true">ACCUMULATED APPARENT ENERGY</a>
+            <a class="dropdown-item dropdown-toggle mbr-editable-menu-item" href="#" data-toggle="dropdown-submenu" aria-expanded="true">APPARENT VA</a>
                 <div class="dropdown-menu dropdown-submenu">
                 <!------------------------------------------------------------------->
                 <div class="dropdown ">
@@ -181,7 +174,7 @@
             </div>
             <!------------------------------------------------------------------->
             <div class="dropdown ">
-            <a class="dropdown-item dropdown-toggle mbr-editable-menu-item" href="#" data-toggle="dropdown-submenu" aria-expanded="true">ACCUMULATED REACTIVE ENERGY</a>
+            <a class="dropdown-item dropdown-toggle mbr-editable-menu-item" href="#" data-toggle="dropdown-submenu" aria-expanded="true">REACTIVE VAR</a>
                 <div class="dropdown-menu dropdown-submenu">
                 <!------------------------------------------------------------------->
                 <div class="dropdown ">
@@ -223,7 +216,7 @@
         </div>
         <!------------------------------------------------------------------->
         <div class="dropdown ">
-        <a class="dropdown-item dropdown-toggle mbr-editable-menu-item" href="#" data-toggle="dropdown-submenu" aria-expanded="true">SUNSPEC INVERTER</a>
+        <a class="dropdown-item dropdown-toggle mbr-editable-menu-item" href="#" data-toggle="dropdown-submenu" aria-expanded="true">INVERTER</a>
             <div class="dropdown-menu dropdown-submenu">
             <!------------------------------------------------------------------->
             <div class="dropdown ">
@@ -282,7 +275,7 @@
                 </div>
                 <!------------------------------------------------------------------->
                 <div class="dropdown ">
-                    <a class="dropdown-item dropdown-toggle mbr-editable-menu-item" href="#" data-toggle="dropdown-submenu" aria-expanded="true">ACCUMULATED ENERGY</a>
+                    <a class="dropdown-item dropdown-toggle mbr-editable-menu-item" href="#" data-toggle="dropdown-submenu" aria-expanded="true">ENERGY</a>
                     <div class="dropdown-menu dropdown-submenu">
                         <a class="dropdown-item mbr-editable-menu-item" href="http://www.operantsolar.com" onclick="readSunSpec('I_AC_Energy_WH'); return false;">I_AC_Energy_WH</a>     
                     </div>
@@ -430,11 +423,29 @@
     
 </ul>
 
+
+            <div class="mbr-table-cell">
+                <div class="navbar-brand">
+                    <a href="https://operantsolar.com" target="_blank" class="navbar-logo"><img src="file:///Users/randy/Library/Application%20Support/Mobirise.com/Mobirise/projects/project-2017-05-24_103057/assets/images/operantlogo4-338x128.png" alt="Mobirise"></a>
+                </div>
+            </div>
+            <div class="mbr-table-cell">
+                <button class="navbar-toggler pull-xs-right hidden-md-up" type="button" data-toggle="collapse" data-target="#exCollapsingNavbar">
+                    <div class="hamburger-icon"></div>
+                </button>
+            <div class="mbr-table-cell">
+
+
+
+
         <button hidden="" class="navbar-toggler navbar-close" type="button" data-toggle="collapse" data-target="#exCollapsingNavbar">
             <div class="close-icon"></div>
         </button>
     </div>
     </div>
+
+
+
     </div>
     </div>
     </nav>
