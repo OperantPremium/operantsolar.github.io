@@ -28,45 +28,47 @@ var displayFactors = {
 
 // Device ID hashes as reference for TARGET
 // Agent URLs as reference for GATEWAY
-//----------------------------------------------------
-
+//----------------------------------------------------------------------------------
 
 // R&D development units - 918.5 MHz
-//----------------------------------------------------
-//SN402                  D85F6461EB91    /oHMQMg_lcxsT
-//SN403                  018C268ECB5B    /wXqOLIl3KiLB
-//SN404                  2BF6EF3EFD90    /QGO7JQAzyiev
-//SN405                  718A34D8423A    /CyPoe3l9E5Od
-//SN406                  C5F6371C8A03    /hxsSiYETEEpd
-//SN407                  4CA33E88EDAA    /VifAbahCX8ux
+//----------------------------------------------------------------------------------
+//SN                     DeviceIdHash    Agent URL       USNG Location   DeviceID
+//----------------------------------------------------------------------------------
+
+//SN402 [Shirlie]        D85F6461EB91    /oHMQMg_lcxsT   21016306        56dc4c
+//SN403 [Carriage Ln]    018C268ECB5B    /wXqOLIl3KiLB   21566247        56dd24
+//SN404 [Sugi Outside]   2BF6EF3EFD90    /QGO7JQAzyiev   21236282        56ddc8
+//SN405 [Gibson]         718A34D8423A    /CyPoe3l9E5Od   21426258        56ddb2
+//SN406 [Beckman]        C5F6371C8A03    /hxsSiYETEEpd   21896255        56dd18
+//SN407 [Sugi Inside]    4CA33E88EDAA    /VifAbahCX8ux   21226282        56ddde
+//SN504 [Corbett Cir]    B930FA057CB6    /w8Bdk3n0iWt3   20706278        5728d2
+//SN508 [Kiva Pl]        730D72A6E22F    /2866vQYBgUpC   20916258        572874
+
+// Larkfield demo - 915.5 MHz
+//----------------------------------------------------------------------------------
+//SN                     DeviceId        Agent URL       USNG Location
+//----------------------------------------------------------------------------------
+//SN503  Shirlie         4E562573DBA0    /tRNE2WbS2CGw   21016306
+//SN505  Sugi Outside    BA48D077C2A8    /RVKEMRdCLmKj   21226282
+//SN507  Gibson          67AE0AAFD4E2    /S6QExe1f2KTi   21426258
+//SN509  Sugi Inside     16240A06C1FC    /D1PRYwJmmHAi   21236282
+//SN512  Beckman         6917511534FD    /kRQMPFuKmzDM   21896255
 
 // Customer demo houses - 917 MHz
-//----------------------------------------------------
-//SN506  Blue House      C3B996B9F76C    /oGQ_PBSAUppO
-//SN508  Orange House    730D72A6E22F    /2866vQYBgUpC
+//----------------------------------------------------------------------------------
+//SN                     DeviceId        Agent URL       USNG Location
+//----------------------------------------------------------------------------------
+//SN506  Blue House      C3B996B9F76C    /oGQ_PBSAUppO   
 //SN513  Black House     DF04146F1DF0    /ZT8GBL-7RrgD
 //SN514  Yellow House    00E329B56259    /609atPXTxkX7
 
-// Solmetric - 917 MHz
-//----------------------------------------------------
-//SN506                   C3B996B9F76C    /oGQ_PBSAUppO
-//SN511                   C1B16ADC8E57    /4R2NSeUUtys8
-//SN513                   DF04146F1DF0    /ZT8GBL-7RrgD
-//SN514                   00E329B56259    /609atPXTxkX7
-
-// Field demo - 915.5 MHz
-//----------------------------------------------------
-//SN503  Shirlee         4E562573DBA0    /tRNE2WbS2CGw
-//SN505  Sugiyama        BA48D077C2A8    /RVKEMRdCLmKj
-//SN507  Gibson          67AE0AAFD4E2    /S6QExe1f2KTi
-//SN509  Green House     16240A06C1FC    /D1PRYwJmmHAi
-//SN512  Beckman         6917511534FD    /kRQMPFuKmzDM
 
 // Manufacturing - 915.5 MHz
-//----------------------------------------------------
+//----------------------------------------------------------------------------------
+//SN                     DeviceId        Agent URL       USNG Location
+//----------------------------------------------------------------------------------
 //SN501
 //SN502
-//SN504                  B930FA057CB6    /w8Bdk3n0iWt3
 //SN510 
 //SN511
 //SN515  Bad LoRa        4E44238D7110    /VRa-gimZfDGJ
@@ -163,7 +165,7 @@ function setTarget(requestedTarget) {
              break;
         case "SN403":
             interest.deviceIdHash = "018C268ECB5B";
-            interest.usng = "21746221";
+            interest.usng = "21566247";
             break;
         case "SN404":
             interest.deviceIdHash = "2BF6EF3EFD90";
@@ -209,7 +211,7 @@ function setTarget(requestedTarget) {
             break;
         case "SN508":
             interest.deviceIdHash = "730D72A6E22F";
-            interest.usng = "21036285";
+            interest.usng = "20916258";
             break;
         case "SN509":
             interest.deviceIdHash = "16240A06C1FC";
