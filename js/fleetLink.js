@@ -6,7 +6,7 @@ var gateway = "SN403";
 var wiFiSSID = "";
 
 var interest = {
-    'usng': "21746221",
+    'usng': "21566247",
     'deviceIdHash' : "018C268ECB5B",
     'rw': 'read',
     'category': 'modbus',
