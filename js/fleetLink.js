@@ -1170,104 +1170,104 @@ function readSunSpec(sunSpecName){
     // INVERTER CURRENT
     //================================================================================
         case "I_AC_Current":
-            interest.parameters = '01_9C880001_9600_8_1';
+            interest.parameters = '01_9C870001_9600_8_1';
             displayFactors.firstDataChar = 6;
             displayFactors.lastDataChar = 9;
             displayFactors.dataFormat = 'hex';
-            displayFactors.scaleFactor = 1;
+            displayFactors.scaleFactor = 0.01;
             displayFactors.offsetFactor = 0;
             displayFactors.unitString = 'A';
             displayFactors.displayName = "AC Total Current value";
             break;
         case "I_AC_CurrentA":
-            interest.parameters = '01_9C890001_9600_8_1';
+            interest.parameters = '01_9C880001_9600_8_1';
             displayFactors.firstDataChar = 6;
             displayFactors.lastDataChar = 9;
             displayFactors.dataFormat = 'hex';
-            displayFactors.scaleFactor = 1;
+            displayFactors.scaleFactor = 0.01;
             displayFactors.offsetFactor = 0;
             displayFactors.unitString = 'A';
             displayFactors.displayName = "AC Phase-A Current value";
             break;
         case "I_AC_CurrentB":
-            interest.parameters = '01_9C8A0001_9600_8_1';
+            interest.parameters = '01_9C890001_9600_8_1';
             displayFactors.firstDataChar = 6;
             displayFactors.lastDataChar = 9;
             displayFactors.dataFormat = 'hex';
-            displayFactors.scaleFactor = 1;
+            displayFactors.scaleFactor = 0.01;
             displayFactors.offsetFactor = 0;
             displayFactors.unitString = 'A';
             displayFactors.displayName = "AC Phase-B Current value";
             break;
         case "I_AC_CurrentC":
-            interest.parameters = '01_9C8B0001_9600_8_1';
+            interest.parameters = '01_9C8A0001_9600_8_1';
             displayFactors.firstDataChar = 6;
             displayFactors.lastDataChar = 9;
             displayFactors.dataFormat = 'hex';
-            displayFactors.scaleFactor = 1;
+            displayFactors.scaleFactor = 0.01;
             displayFactors.offsetFactor = 0;
             displayFactors.unitString = 'A';
             displayFactors.displayName = "AC Phase-C Current value";
             break;
     //================================================================================
-    // INVERTER VOlTAGE
+    // INVERTER VOLTAGE
     //================================================================================
         case "I_AC_VoltageAN":
-            interest.parameters = '01_9C900001_9600_8_1';
+            interest.parameters = '01_9C8F0001_9600_8_1';
             displayFactors.firstDataChar = 6;
             displayFactors.lastDataChar = 9;
             displayFactors.dataFormat = 'hex';
-            displayFactors.scaleFactor = 1;
+            displayFactors.scaleFactor = 0.1;
             displayFactors.offsetFactor = 0;
             displayFactors.unitString = 'V';
             displayFactors.displayName = "AC Voltage Phase-A-to-neutral value";
             break;
         case "I_AC_VoltageBN":
-            interest.parameters = '01_9C910001_9600_8_1';
+            interest.parameters = '01_9C900001_9600_8_1';
             displayFactors.firstDataChar = 6;
             displayFactors.lastDataChar = 9;
             displayFactors.dataFormat = 'hex';
-            displayFactors.scaleFactor = 1;
+            displayFactors.scaleFactor = 0.1;
             displayFactors.offsetFactor = 0;
             displayFactors.unitString = 'V';
             displayFactors.displayName = "AC Voltage Phase-B-to-neutral value";
             break;
         case "I_AC_VoltageCN":
-            interest.parameters = '01_9C920001_9600_8_1';
+            interest.parameters = '01_9C910001_9600_8_1';
             displayFactors.firstDataChar = 6;
             displayFactors.lastDataChar = 9;
             displayFactors.dataFormat = 'hex';
-            displayFactors.scaleFactor = 1;
+            displayFactors.scaleFactor = 0.1;
             displayFactors.offsetFactor = 0;
             displayFactors.unitString = 'V';
             displayFactors.displayName = "AC Voltage Phase-C-to-neutral value";
             break;
         case "I_AC_VoltageAB":
-            interest.parameters = '01_9C8D0001_9600_8_1';
+            interest.parameters = '01_9C8C0001_9600_8_1';
             displayFactors.firstDataChar = 6;
             displayFactors.lastDataChar = 9;
             displayFactors.dataFormat = 'hex';
-            displayFactors.scaleFactor = 1;
+            displayFactors.scaleFactor = 0.1;
             displayFactors.offsetFactor = 0;
             displayFactors.unitString = 'V';
             displayFactors.displayName = "AC Voltage Phase-AB value";
             break;
         case "I_AC_VoltageBC":
-            interest.parameters = '01_9C8E0001_9600_8_1';
+            interest.parameters = '01_9C8D0001_9600_8_1';
             displayFactors.firstDataChar = 6;
             displayFactors.lastDataChar = 9;
             displayFactors.dataFormat = 'hex';
-            displayFactors.scaleFactor = 1;
+            displayFactors.scaleFactor = 0.1;
             displayFactors.offsetFactor = 0;
             displayFactors.unitString = 'V';
             displayFactors.displayName = "AC Voltage Phase-BC value";
             break;
         case "I_AC_VoltageCA":
-            interest.parameters = '01_9C8F0001_9600_8_1';
+            interest.parameters = '01_9C8E0001_9600_8_1';
             displayFactors.firstDataChar = 6;
             displayFactors.lastDataChar = 9;
             displayFactors.dataFormat = 'hex';
-            displayFactors.scaleFactor = 1;
+            displayFactors.scaleFactor = 0.1;
             displayFactors.offsetFactor = 0;
             displayFactors.unitString = 'V';
             displayFactors.displayName = "AC Voltage Phase-CA value";
@@ -1276,11 +1276,11 @@ function readSunSpec(sunSpecName){
     // INVERTER FREQUENCY
     //================================================================================
         case "I_AC_Frequency":
-            interest.parameters = '01_9C960001_9600_8_1';
+            interest.parameters = '01_9C950001_9600_8_1';
             displayFactors.firstDataChar = 6;
             displayFactors.lastDataChar = 9;
             displayFactors.dataFormat = 'hex';
-            displayFactors.scaleFactor = 1;
+            displayFactors.scaleFactor = 0.01;
             displayFactors.offsetFactor = 0;
             displayFactors.unitString = 'Hz';
             displayFactors.displayName = "AC Frequency value";
@@ -1289,41 +1289,41 @@ function readSunSpec(sunSpecName){
     // INVERTER POWER
     //================================================================================
         case "I_AC_Power":
-            interest.parameters = '01_9C940001_9600_8_1';
+            interest.parameters = '01_9C930001_9600_8_1';
             displayFactors.firstDataChar = 6;
             displayFactors.lastDataChar = 9;
             displayFactors.dataFormat = 'hex';
-            displayFactors.scaleFactor = 1;
+            displayFactors.scaleFactor = 0.1;
             displayFactors.offsetFactor = 0;
             displayFactors.unitString = 'W';
             displayFactors.displayName = "AC Power value";
             break;
         case "I_AC_VA":
-            interest.parameters = '01_9C980001_9600_8_1';
+            interest.parameters = '01_9C970001_9600_8_1';
             displayFactors.firstDataChar = 6;
             displayFactors.lastDataChar = 9;
             displayFactors.dataFormat = 'hex';
-            displayFactors.scaleFactor = 1;
+            displayFactors.scaleFactor = 0.1;
             displayFactors.offsetFactor = 0;
             displayFactors.unitString = 'VA';
             displayFactors.displayName = "Apparent Power";
             break;
         case "I_AC_VAR":
-            interest.parameters = '01_9C9A0001_9600_8_1';
+            interest.parameters = '01_9C990001_9600_8_1';
             displayFactors.firstDataChar = 6;
             displayFactors.lastDataChar = 9;
             displayFactors.dataFormat = 'hex';
-            displayFactors.scaleFactor = 1;
+            displayFactors.scaleFactor = 0.1;
             displayFactors.offsetFactor = 0;
             displayFactors.unitString = 'VAR';
             displayFactors.displayName = "Reactive Power";
             break;
         case "I_AC_PF":
-            interest.parameters = '01_9C9C0001_9600_8_1';
+            interest.parameters = '01_9C9B0001_9600_8_1';
             displayFactors.firstDataChar = 6;
             displayFactors.lastDataChar = 9;
             displayFactors.dataFormat = 'hex';
-            displayFactors.scaleFactor = 1;
+            displayFactors.scaleFactor = 0.0001;
             displayFactors.offsetFactor = 0;
             displayFactors.unitString = '';
             displayFactors.displayName = "Power Factor";
@@ -1332,7 +1332,7 @@ function readSunSpec(sunSpecName){
     // INVERTER ENERGY
     //================================================================================
         case "I_AC_Energy_WH":
-            interest.parameters = '01_9C9E0002_9600_8_1';
+            interest.parameters = '01_9C9D0002_9600_8_1';
             displayFactors.firstDataChar = 6;
             displayFactors.lastDataChar = 13;
             displayFactors.dataFormat = 'hex';
@@ -1345,7 +1345,7 @@ function readSunSpec(sunSpecName){
     // INVERTER DC
     //================================================================================
         case "I_DC_Current":
-            interest.parameters = '01_9CA10001_9600_8_1';
+            interest.parameters = '01_9CA00001_9600_8_1';
             displayFactors.firstDataChar = 6;
             displayFactors.lastDataChar = 9;
             displayFactors.dataFormat = 'hex';
@@ -1355,7 +1355,7 @@ function readSunSpec(sunSpecName){
             displayFactors.displayName = "DC Current value";
             break;
         case "I_DC_Voltage":
-            interest.parameters = '01_9CA30001_9600_8_1';
+            interest.parameters = '01_9CA20001_9600_8_1';
             displayFactors.firstDataChar = 6;
             displayFactors.lastDataChar = 9;
             displayFactors.dataFormat = 'hex';
@@ -1365,7 +1365,7 @@ function readSunSpec(sunSpecName){
             displayFactors.displayName = "DC Voltage value";
             break;
         case "I_DC_Power":
-            interest.parameters = '01_9CA50001_9600_8_1';
+            interest.parameters = '01_9CA40001_9600_8_1';
             displayFactors.firstDataChar = 6;
             displayFactors.lastDataChar = 9;
             displayFactors.dataFormat = 'hex';
@@ -1378,41 +1378,41 @@ function readSunSpec(sunSpecName){
     // INVERTER TEMPERATURE
     //================================================================================
         case "I_Temp_Cab":
-            interest.parameters = '01_9CA70001_9600_8_1'; // could be wrong
+            interest.parameters = '01_9CA60001_9600_8_1'; // could be wrong
             displayFactors.firstDataChar = 6;
             displayFactors.lastDataChar = 9;
             displayFactors.dataFormat = 'hex';
-            displayFactors.scaleFactor = 1;
+            displayFactors.scaleFactor = 0.01;
             displayFactors.offsetFactor = 0;
             displayFactors.unitString = 'C';
             displayFactors.displayName = "Cabinet Temperature";
             break;
         case "I_Temp_Sink":
-            interest.parameters = '01_9CA80001_9600_8_1';
+            interest.parameters = '01_9CA70001_9600_8_1';
             displayFactors.firstDataChar = 6;
             displayFactors.lastDataChar = 9;
             displayFactors.dataFormat = 'hex';
-            displayFactors.scaleFactor = 1;
+            displayFactors.scaleFactor = 0.01;
             displayFactors.offsetFactor = 0;
             displayFactors.unitString = 'C';
             displayFactors.displayName = "Coolant or Heat Sink Temperature";
             break;
         case "I_Temp_Trans":
-            interest.parameters = '01_9CA90001_9600_8_1'; // could be wrong
+            interest.parameters = '01_9CA80001_9600_8_1'; // could be wrong
             displayFactors.firstDataChar = 6;
             displayFactors.lastDataChar = 9;
             displayFactors.dataFormat = 'hex';
-            displayFactors.scaleFactor = 1;
+            displayFactors.scaleFactor = 0.01;
             displayFactors.offsetFactor = 0;
             displayFactors.unitString = 'C';
             displayFactors.displayName = "Transformer Temperature";
             break;
         case "I_Temp_Other":
-            interest.parameters = '01_9CAA0001_9600_8_1'; // could be wrong
+            interest.parameters = '01_9CA90001_9600_8_1'; // could be wrong
             displayFactors.firstDataChar = 6;
             displayFactors.lastDataChar = 9;
             displayFactors.dataFormat = 'hex';
-            displayFactors.scaleFactor = 1;
+            displayFactors.scaleFactor = 0.01;
             displayFactors.offsetFactor = 0;
             displayFactors.unitString = 'C';
             displayFactors.displayName = "Other Temperature";
@@ -1421,7 +1421,7 @@ function readSunSpec(sunSpecName){
     // INVERTER STATUS/EVENTS
     //================================================================================
         case "I_Status":
-            interest.parameters = '01_9CAC0001_9600_8_1';
+            interest.parameters = '01_9CAB0001_9600_8_1';
             displayFactors.firstDataChar = 6;
             displayFactors.lastDataChar = 9;
             displayFactors.dataFormat = 'hex';
@@ -1431,7 +1431,7 @@ function readSunSpec(sunSpecName){
             displayFactors.displayName = "Operating State";
             break;
         case "I_Status_Vendor":
-            interest.parameters = '01_9CAD0001_9600_8_1';
+            interest.parameters = '01_9CAC0001_9600_8_1';
             displayFactors.firstDataChar = 6;
             displayFactors.lastDataChar = 9;
             displayFactors.dataFormat = 'hex';
@@ -1441,7 +1441,7 @@ function readSunSpec(sunSpecName){
             displayFactors.displayName = "Vendor Defined Operating State";
             break;
         case "I_Event_1":
-            interest.parameters = '01_9CAE0002_9600_8_1';
+            interest.parameters = '01_9CAD0002_9600_8_1';
             displayFactors.firstDataChar = 6;
             displayFactors.lastDataChar = 13;
             displayFactors.dataFormat = 'hex';
@@ -1451,7 +1451,7 @@ function readSunSpec(sunSpecName){
             displayFactors.displayName = "Event Flags (bits 0-31)";
             break;
         case "I_Event_2":
-            interest.parameters = '01_9CB00002_9600_8_1';
+            interest.parameters = '01_9CAF0002_9600_8_1';
             displayFactors.firstDataChar = 6;
             displayFactors.lastDataChar = 13;
             displayFactors.dataFormat = 'hex';
@@ -1461,7 +1461,7 @@ function readSunSpec(sunSpecName){
             displayFactors.displayName = "Event Flags (bits 32-63)";
             break;
         case "I_Event_1_Vendor":
-            interest.parameters = '01_9CB20002_9600_8_1';
+            interest.parameters = '01_9CB10002_9600_8_1';
             displayFactors.firstDataChar = 6;
             displayFactors.lastDataChar = 13;
             displayFactors.dataFormat = 'hex';
@@ -1471,7 +1471,7 @@ function readSunSpec(sunSpecName){
             displayFactors.displayName = "Vendor Defined Event Flags (bits 0-31)";
             break;
         case "I_Event_2_Vendor":
-            interest.parameters = '01_9CB40002_9600_8_1';
+            interest.parameters = '01_9CB30002_9600_8_1';
             displayFactors.firstDataChar = 6;
             displayFactors.lastDataChar = 13;
             displayFactors.dataFormat = 'hex';
@@ -1481,7 +1481,7 @@ function readSunSpec(sunSpecName){
             displayFactors.displayName = "Vendor Defined Event Flags (bits 32-63)";
             break;
         case "I_Event_3_Vendor":
-            interest.parameters = '01_9CB60002_9600_8_1';
+            interest.parameters = '01_9CB50002_9600_8_1';
             displayFactors.firstDataChar = 6;
             displayFactors.lastDataChar = 13;
             displayFactors.dataFormat = 'hex';
@@ -1491,7 +1491,7 @@ function readSunSpec(sunSpecName){
             displayFactors.displayName = "Vendor Defined Event Flags (bits 64-95)";
             break;
         case "I_Event_4_Vendor":
-            interest.parameters = '01_9CB80002_9600_8_1';
+            interest.parameters = '01_9CB70002_9600_8_1';
             displayFactors.firstDataChar = 6;
             displayFactors.lastDataChar = 13;
             displayFactors.dataFormat = 'hex';
