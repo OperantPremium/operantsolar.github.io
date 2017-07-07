@@ -1349,7 +1349,7 @@ function readSunSpec(sunSpecName){
             displayFactors.firstDataChar = 6;
             displayFactors.lastDataChar = 9;
             displayFactors.dataFormat = 'hex';
-            displayFactors.scaleFactor = 1;
+            displayFactors.scaleFactor = 0.001;
             displayFactors.offsetFactor = 0;
             displayFactors.unitString = 'A';
             displayFactors.displayName = "DC Current value";
@@ -1359,7 +1359,7 @@ function readSunSpec(sunSpecName){
             displayFactors.firstDataChar = 6;
             displayFactors.lastDataChar = 9;
             displayFactors.dataFormat = 'hex';
-            displayFactors.scaleFactor = 1;
+            displayFactors.scaleFactor = 0.1;
             displayFactors.offsetFactor = 0;
             displayFactors.unitString = 'V';
             displayFactors.displayName = "DC Voltage value";
@@ -1369,7 +1369,7 @@ function readSunSpec(sunSpecName){
             displayFactors.firstDataChar = 6;
             displayFactors.lastDataChar = 9;
             displayFactors.dataFormat = 'hex';
-            displayFactors.scaleFactor = 1;
+            displayFactors.scaleFactor = 0.1;
             displayFactors.offsetFactor = 0;
             displayFactors.unitString = 'W';
             displayFactors.displayName = "DC Power value";
@@ -1534,7 +1534,7 @@ function formatData(rawData, interest){
             // apply scale factor and offset
             numericData = numericData * displayFactors.scaleFactor + displayFactors.offsetFactor;
             // Add units string at end of data
-            returnDataString = numericData + " " + displayFactors.unitString;
+            returnDataString = numericData.toFixed(2) + " " + displayFactors.unitString;
         break;
         case 'ascii':
             var asciiCode = 0;
