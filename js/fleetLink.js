@@ -204,6 +204,7 @@ function setTarget(requestedTarget) {
             break;
         case "SN506":
             interest.deviceIdHash = "C3B996B9F76C";
+            interest.usng = "15795070";
             break;
         case "SN507":
             interest.deviceIdHash = "67AE0AAFD4E2";
@@ -222,6 +223,7 @@ function setTarget(requestedTarget) {
             break;
         case "SN511":
             interest.deviceIdHash = "C1B16ADC8E57";
+            interest.usng = "15795070";
             break;
         case "SN512":
             interest.deviceIdHash = "6917511534FD";
@@ -229,9 +231,11 @@ function setTarget(requestedTarget) {
             break;
         case "SN513":
             interest.deviceIdHash = "DF04146F1DF0";
+            interest.usng = "15795070";            
             break;
         case "SN514":
             interest.deviceIdHash = "00E329B56259";
+            interest.usng = "15795070";            
             break;
         case "SN515":
             interest.deviceIdHash = "4E44238D7110";
