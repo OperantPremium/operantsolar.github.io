@@ -21,12 +21,12 @@
             <div class="dropdown ">
             <a class="dropdown-item dropdown-toggle mbr-editable-menu-item" href="#" data-toggle="dropdown-submenu" aria-expanded="true">COMMON</a>
                 <div class="dropdown-menu dropdown-submenu">
-                    <a class="dropdown-item mbr-editable-menu-item" href="http://www.operantsolar.com" onclick="readSunSpec('Mn'); return false;">Mn</a> 
-                    <a class="dropdown-item mbr-editable-menu-item" href="http://www.operantsolar.com" onclick="readSunSpec('Md'); return false;">Md</a> 
-                    <a class="dropdown-item mbr-editable-menu-item" href="http://www.operantsolar.com" onclick="readSunSpec('Opt'); return false;">Opt</a> 
-                    <a class="dropdown-item mbr-editable-menu-item" href="http://www.operantsolar.com" onclick="readSunSpec('Vr'); return false;">Vr</a> 
-                    <a class="dropdown-item mbr-editable-menu-item" href="http://www.operantsolar.com" onclick="readSunSpec('SN'); return false;">SN</a> 
-                    <a class="dropdown-item mbr-editable-menu-item" href="http://www.operantsolar.com" onclick="readSunSpec('DA'); return false;">DA</a>                             
+                    <a class="dropdown-item mbr-editable-menu-item" href="http://www.operantsolar.com" onclick="readSunSpec('M_Mn'); return false;">Mn</a> 
+                    <a class="dropdown-item mbr-editable-menu-item" href="http://www.operantsolar.com" onclick="readSunSpec('M_Md'); return false;">Md</a> 
+                    <a class="dropdown-item mbr-editable-menu-item" href="http://www.operantsolar.com" onclick="readSunSpec('M_Opt'); return false;">Opt</a> 
+                    <a class="dropdown-item mbr-editable-menu-item" href="http://www.operantsolar.com" onclick="readSunSpec('M_Vr'); return false;">Vr</a> 
+                    <a class="dropdown-item mbr-editable-menu-item" href="http://www.operantsolar.com" onclick="readSunSpec('M_SN'); return false;">SN</a> 
+                    <a class="dropdown-item mbr-editable-menu-item" href="http://www.operantsolar.com" onclick="readSunSpec('M_DA'); return false;">DA</a>                             
                 </div>
             </div>                 
             <!------------------------------------------------------------------->
@@ -222,12 +222,12 @@
             <div class="dropdown ">
                 <a class="dropdown-item dropdown-toggle mbr-editable-menu-item" href="#" data-toggle="dropdown-submenu" aria-expanded="true">COMMON</a>
                 <div class="dropdown-menu dropdown-submenu">
-                    <a class="dropdown-item mbr-editable-menu-item" href="http://www.operantsolar.com" onclick="readSunSpec('Mn'); return false;">Mn</a> 
-                    <a class="dropdown-item mbr-editable-menu-item" href="http://www.operantsolar.com" onclick="readSunSpec('Md'); return false;">Md</a> 
-                    <a class="dropdown-item mbr-editable-menu-item" href="http://www.operantsolar.com" onclick="readSunSpec('Opt'); return false;">Opt</a> 
-                    <a class="dropdown-item mbr-editable-menu-item" href="http://www.operantsolar.com" onclick="readSunSpec('Vr'); return false;">Vr</a> 
-                    <a class="dropdown-item mbr-editable-menu-item" href="http://www.operantsolar.com" onclick="readSunSpec('SN'); return false;">SN</a> 
-                    <a class="dropdown-item mbr-editable-menu-item" href="http://www.operantsolar.com" onclick="readSunSpec('DA'); return false;">DA</a>                             
+                    <a class="dropdown-item mbr-editable-menu-item" href="http://www.operantsolar.com" onclick="readSunSpec('I_Mn'); return false;">Mn</a> 
+                    <a class="dropdown-item mbr-editable-menu-item" href="http://www.operantsolar.com" onclick="readSunSpec('I_Md'); return false;">Md</a> 
+                    <a class="dropdown-item mbr-editable-menu-item" href="http://www.operantsolar.com" onclick="readSunSpec('I_Opt'); return false;">Opt</a> 
+                    <a class="dropdown-item mbr-editable-menu-item" href="http://www.operantsolar.com" onclick="readSunSpec('I_Vr'); return false;">Vr</a> 
+                    <a class="dropdown-item mbr-editable-menu-item" href="http://www.operantsolar.com" onclick="readSunSpec('I_SN'); return false;">SN</a> 
+                    <a class="dropdown-item mbr-editable-menu-item" href="http://www.operantsolar.com" onclick="readSunSpec('I_DA'); return false;">DA</a>                             
                 </div>
             </div>                 
             <!------------------------------------------------------------------->
@@ -311,7 +311,7 @@
                     <a class="dropdown-item mbr-editable-menu-item" href="http://www.operantsolar.com" onclick="readSunSpec('I_Event_1'); return false;">I_Event_1</a>     
                     <a class="dropdown-item mbr-editable-menu-item" href="http://www.operantsolar.com" onclick="readSunSpec('I_Event_2'); return false;">I_Event_2</a> 
                     <a class="dropdown-item mbr-editable-menu-item" href="http://www.operantsolar.com" onclick="readSunSpec('I_Event_1_Vendor'); return false;">I_Event_1_Vendor</a>     
-                    <a class="dropdown-item mbr-editable-menu-item" href="http://www.operantsolar.com" onclick="readSunSpec('I_Event_1_Vendor'); return false;">I_Event_1_Vendor</a> 
+                    <a class="dropdown-item mbr-editable-menu-item" href="http://www.operantsolar.com" onclick="readSunSpec('I_Event_2_Vendor'); return false;">I_Event_2_Vendor</a> 
                     <a class="dropdown-item mbr-editable-menu-item" href="http://www.operantsolar.com" onclick="readSunSpec('I_Event_3_Vendor'); return false;">I_Event_3_Vendor</a>     
                     <a class="dropdown-item mbr-editable-menu-item" href="http://www.operantsolar.com" onclick="readSunSpec('I_Event_4_Vendor'); return false;">I_Event_4_Vendor</a>                                         
                 </div>

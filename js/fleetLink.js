@@ -302,9 +302,9 @@ function readSunSpec(sunSpecName){
     interest.task = 'fc03';
     switch(sunSpecName) {
     //================================================================================
-    // COMMON
+    // METER COMMON
     //================================================================================
-        case "Mn":
+        case "M_Mn":
             interest.parameters = '64_C3540010_9600_8_1';
             displayFactors.firstDataChar = 6;
             displayFactors.lastDataChar = 37;
@@ -314,7 +314,7 @@ function readSunSpec(sunSpecName){
             displayFactors.unitString = '';
             displayFactors.displayName = "Manufacturer";
             break;
-        case "Md":
+        case "M_Md":
             interest.parameters = '64_C3640010_9600_8_1';
             displayFactors.firstDataChar = 6;
             displayFactors.lastDataChar = 37;
@@ -324,7 +324,7 @@ function readSunSpec(sunSpecName){
             displayFactors.unitString = '';
             displayFactors.displayName = "Model";
             break;
-        case "Opt":
+        case "M_Opt":
             interest.parameters = '64_C3740008_9600_8_1';
             displayFactors.firstDataChar = 6;
             displayFactors.lastDataChar = 21;
@@ -334,7 +334,7 @@ function readSunSpec(sunSpecName){
             displayFactors.unitString = '';
             displayFactors.displayName = "Option";
             break;    
-        case "Vr":
+        case "M_Vr":
             interest.parameters = '64_C37C0008_9600_8_1';
             displayFactors.firstDataChar = 6;
             displayFactors.lastDataChar = 21;
@@ -344,7 +344,7 @@ function readSunSpec(sunSpecName){
             displayFactors.unitString = '';
             displayFactors.displayName = "Version";
             break;    
-        case "SN":
+        case "M_SN":
             interest.parameters = '64_C3840010_9600_8_1';
             displayFactors.firstDataChar = 6;
             displayFactors.lastDataChar = 37;
@@ -354,7 +354,7 @@ function readSunSpec(sunSpecName){
             displayFactors.unitString = '';
             displayFactors.displayName = "Serial Number";
             break;    
-        case "DA":
+        case "M_DA":
             interest.parameters = '64_C3940001_9600_8_1';
             displayFactors.firstDataChar = 6;
             displayFactors.lastDataChar = 9;
@@ -364,8 +364,12 @@ function readSunSpec(sunSpecName){
             displayFactors.unitString = '';
             displayFactors.displayName = "Device Address";
             break;  
+
     //================================================================================
-    // CURRENT
+    // METER COMMANDS BELOW
+    //================================================================================            
+    //================================================================================
+    // METER CURRENT
     //================================================================================
         case "M_AC_Current":
             interest.parameters = '64_C3970001_9600_8_1';
@@ -448,7 +452,7 @@ function readSunSpec(sunSpecName){
             displayFactors.displayName = "Phase C AC Current";
             break;               
     //================================================================================
-    // VOLTAGE
+    // METER VOLTAGE
     //================================================================================
     // LINE TO NEUTRAL
     //================================================================================        
@@ -538,7 +542,7 @@ function readSunSpec(sunSpecName){
             displayFactors.displayName = "Phase C to Phase A AC Voltage";
             break;                                                         
     //================================================================================
-    // FREQUENCY
+    // METER FREQUENCY
     //================================================================================
         case "M_AC_Freq":
             interest.parameters = '64_C3A50001_9600_8_1';
@@ -551,7 +555,7 @@ function readSunSpec(sunSpecName){
             displayFactors.displayName = "AC Frequency";
             break;
     //================================================================================
-    // POWER
+    // METER POWER
     //================================================================================
     // REAL
     //================================================================================             
@@ -596,7 +600,7 @@ function readSunSpec(sunSpecName){
             displayFactors.displayName = "Phase C AC Real Power";
             break;
     //================================================================================
-    // POWER
+    // METER POWER
     //================================================================================
     // APPARENT
     //================================================================================  
@@ -641,7 +645,7 @@ function readSunSpec(sunSpecName){
             displayFactors.displayName = "Phase C AC Apparent Power";
             break;
     //================================================================================
-    // POWER
+    // METER POWER
     //================================================================================
     // REACTIVE
     //================================================================================     
@@ -686,7 +690,7 @@ function readSunSpec(sunSpecName){
             displayFactors.displayName = "Phase C AC Reactive Power";
             break;
     //================================================================================
-    // POWER FACTOR
+    // METER POWER FACTOR
     //================================================================================
         case "M_AC_PF":
             interest.parameters = '64_C3B60001_9600_8_1';
@@ -729,7 +733,7 @@ function readSunSpec(sunSpecName){
             displayFactors.displayName = "Phase C Power Factor";
             break;
     //================================================================================
-    // ACCUMULATED REAL ENERGY
+    // METER ACCUMULATED REAL ENERGY
     //================================================================================
     // EXPORTED
     //================================================================================ 
@@ -774,7 +778,7 @@ function readSunSpec(sunSpecName){
             displayFactors.displayName = "Phase C Exported Real Energyy";
             break; 
     //================================================================================
-    // ACCUMULATED REAL ENERGY
+    // METER ACCUMULATED REAL ENERGY
     //================================================================================
     // IMPORTED
     //================================================================================     
@@ -819,7 +823,7 @@ function readSunSpec(sunSpecName){
             displayFactors.displayName = "Phase C Imported Real Energy";
             break;  
     //================================================================================
-    // ACCUMULATED APPARENT ENERGY
+    // METER ACCUMULATED APPARENT ENERGY
     //================================================================================
     // EXPORTED
     //================================================================================      
@@ -864,7 +868,7 @@ function readSunSpec(sunSpecName){
             displayFactors.displayName = "Phase C Exported Apparent Energy";
             break;                                   
     //================================================================================
-    // ACCUMULATED APPARENT ENERGY
+    // METER ACCUMULATED APPARENT ENERGY
     //================================================================================
     // IMPORTED
     //================================================================================      
@@ -910,7 +914,7 @@ function readSunSpec(sunSpecName){
             break; 
 
     //================================================================================
-    // ACCUMULATED REACTIVE ENERGY
+    // METER ACCUMULATED REACTIVE ENERGY
     //================================================================================
     // IMPORTED
     //================================================================================      
@@ -995,7 +999,7 @@ function readSunSpec(sunSpecName){
             displayFactors.displayName = "Phase C - Quadrant 2: Imported Reactive Energy";
             break;             
     //================================================================================
-    // ACCUMULATED REACTIVE ENERGY
+    // METER ACCUMULATED REACTIVE ENERGY
     //================================================================================
     // EXPORTED
     //================================================================================   
@@ -1080,7 +1084,7 @@ function readSunSpec(sunSpecName){
             displayFactors.displayName = "Phase C - Quadrant 4: Exported Reactive Energy";
             break; 
     //================================================================================
-    // EVENTS
+    // METER EVENTS
     //================================================================================       
         case "M_Events":
             interest.parameters = '64_C3FE0002_9600_8_1';
@@ -1093,12 +1097,413 @@ function readSunSpec(sunSpecName){
             displayFactors.displayName = 'M_EVENT_ flags';
             break; 
     //================================================================================
-    // EVENTS
+    // INVERTER COMMANDS BELOW
+    //================================================================================
+    //================================================================================
+    // INVERTER COMMON
+    //================================================================================
+        case "I_Mn":
+            interest.parameters = '01_9C440010_9600_8_1';
+            displayFactors.firstDataChar = 6;
+            displayFactors.lastDataChar = 37;
+            displayFactors.dataFormat = 'ascii';
+            displayFactors.scaleFactor = 0;
+            displayFactors.offsetFactor = 0;
+            displayFactors.unitString = '';
+            displayFactors.displayName = "Manufacturer";
+            break;
+        case "I_Md":
+            interest.parameters = '01_9C540010_9600_8_1';
+            displayFactors.firstDataChar = 6;
+            displayFactors.lastDataChar = 37;
+            displayFactors.dataFormat = 'ascii';
+            displayFactors.scaleFactor = 0;
+            displayFactors.offsetFactor = 0;
+            displayFactors.unitString = '';
+            displayFactors.displayName = "Model";
+            break;
+        case "I_Opt":
+            interest.parameters = '01_9C640008_9600_8_1';
+            displayFactors.firstDataChar = 6;
+            displayFactors.lastDataChar = 21;
+            displayFactors.dataFormat = 'ascii';
+            displayFactors.scaleFactor = 0;
+            displayFactors.offsetFactor = 0;
+            displayFactors.unitString = '';
+            displayFactors.displayName = "Option";
+            break;    
+        case "I_Vr":
+            interest.parameters = '01_9C6C0008_9600_8_1';
+            displayFactors.firstDataChar = 6;
+            displayFactors.lastDataChar = 21;
+            displayFactors.dataFormat = 'ascii';
+            displayFactors.scaleFactor = 0;
+            displayFactors.offsetFactor = 0;
+            displayFactors.unitString = '';
+            displayFactors.displayName = "Version";
+            break;    
+        case "I_SN":
+            interest.parameters = '01_9C740010_9600_8_1';
+            displayFactors.firstDataChar = 6;
+            displayFactors.lastDataChar = 37;
+            displayFactors.dataFormat = 'ascii';
+            displayFactors.scaleFactor = 0;
+            displayFactors.offsetFactor = 0;
+            displayFactors.unitString = '';
+            displayFactors.displayName = "Serial Number";
+            break;    
+        case "I_DA":
+            interest.parameters = '01_9C840001_9600_8_1';
+            displayFactors.firstDataChar = 6;
+            displayFactors.lastDataChar = 9;
+            displayFactors.dataFormat = 'hex';
+            displayFactors.scaleFactor = 0;
+            displayFactors.offsetFactor = 0;
+            displayFactors.unitString = '';
+            displayFactors.displayName = "Device Address";
+            break;  
+    //================================================================================
+    // INVERTER CURRENT
+    //================================================================================
+        case "I_AC_Current":
+            interest.parameters = '01_9C880001_9600_8_1';
+            displayFactors.firstDataChar = 6;
+            displayFactors.lastDataChar = 9;
+            displayFactors.dataFormat = 'hex';
+            displayFactors.scaleFactor = 1;
+            displayFactors.offsetFactor = 0;
+            displayFactors.unitString = 'A';
+            displayFactors.displayName = "AC Total Current value";
+            break;
+        case "I_AC_CurrentA":
+            interest.parameters = '01_9C890001_9600_8_1';
+            displayFactors.firstDataChar = 6;
+            displayFactors.lastDataChar = 9;
+            displayFactors.dataFormat = 'hex';
+            displayFactors.scaleFactor = 1;
+            displayFactors.offsetFactor = 0;
+            displayFactors.unitString = 'A';
+            displayFactors.displayName = "AC Phase-A Current value";
+            break;
+        case "I_AC_CurrentB":
+            interest.parameters = '01_9C8A0001_9600_8_1';
+            displayFactors.firstDataChar = 6;
+            displayFactors.lastDataChar = 9;
+            displayFactors.dataFormat = 'hex';
+            displayFactors.scaleFactor = 1;
+            displayFactors.offsetFactor = 0;
+            displayFactors.unitString = 'A';
+            displayFactors.displayName = "AC Phase-B Current value";
+            break;
+        case "I_AC_CurrentC":
+            interest.parameters = '01_9C8B0001_9600_8_1';
+            displayFactors.firstDataChar = 6;
+            displayFactors.lastDataChar = 9;
+            displayFactors.dataFormat = 'hex';
+            displayFactors.scaleFactor = 1;
+            displayFactors.offsetFactor = 0;
+            displayFactors.unitString = 'A';
+            displayFactors.displayName = "AC Phase-C Current value";
+            break;
+    //================================================================================
+    // INVERTER VOlTAGE
+    //================================================================================
+        case "I_AC_VoltageAN":
+            interest.parameters = '01_9C900001_9600_8_1';
+            displayFactors.firstDataChar = 6;
+            displayFactors.lastDataChar = 9;
+            displayFactors.dataFormat = 'hex';
+            displayFactors.scaleFactor = 1;
+            displayFactors.offsetFactor = 0;
+            displayFactors.unitString = 'V';
+            displayFactors.displayName = "AC Voltage Phase-A-to-neutral value";
+            break;
+        case "I_AC_VoltageBN":
+            interest.parameters = '01_9C910001_9600_8_1';
+            displayFactors.firstDataChar = 6;
+            displayFactors.lastDataChar = 9;
+            displayFactors.dataFormat = 'hex';
+            displayFactors.scaleFactor = 1;
+            displayFactors.offsetFactor = 0;
+            displayFactors.unitString = 'V';
+            displayFactors.displayName = "AC Voltage Phase-B-to-neutral value";
+            break;
+        case "I_AC_VoltageCN":
+            interest.parameters = '01_9C920001_9600_8_1';
+            displayFactors.firstDataChar = 6;
+            displayFactors.lastDataChar = 9;
+            displayFactors.dataFormat = 'hex';
+            displayFactors.scaleFactor = 1;
+            displayFactors.offsetFactor = 0;
+            displayFactors.unitString = 'V';
+            displayFactors.displayName = "AC Voltage Phase-C-to-neutral value";
+            break;
+        case "I_AC_VoltageAB":
+            interest.parameters = '01_9C8D0001_9600_8_1';
+            displayFactors.firstDataChar = 6;
+            displayFactors.lastDataChar = 9;
+            displayFactors.dataFormat = 'hex';
+            displayFactors.scaleFactor = 1;
+            displayFactors.offsetFactor = 0;
+            displayFactors.unitString = 'V';
+            displayFactors.displayName = "AC Voltage Phase-AB value";
+            break;
+        case "I_AC_VoltageBC":
+            interest.parameters = '01_9C8E0001_9600_8_1';
+            displayFactors.firstDataChar = 6;
+            displayFactors.lastDataChar = 9;
+            displayFactors.dataFormat = 'hex';
+            displayFactors.scaleFactor = 1;
+            displayFactors.offsetFactor = 0;
+            displayFactors.unitString = 'V';
+            displayFactors.displayName = "AC Voltage Phase-BC value";
+            break;
+        case "I_AC_VoltageCA":
+            interest.parameters = '01_9C8F0001_9600_8_1';
+            displayFactors.firstDataChar = 6;
+            displayFactors.lastDataChar = 9;
+            displayFactors.dataFormat = 'hex';
+            displayFactors.scaleFactor = 1;
+            displayFactors.offsetFactor = 0;
+            displayFactors.unitString = 'V';
+            displayFactors.displayName = "AC Voltage Phase-CA value";
+            break;
+    //================================================================================
+    // INVERTER FREQUENCY
+    //================================================================================
+        case "I_AC_Frequency":
+            interest.parameters = '01_9C960001_9600_8_1';
+            displayFactors.firstDataChar = 6;
+            displayFactors.lastDataChar = 9;
+            displayFactors.dataFormat = 'hex';
+            displayFactors.scaleFactor = 1;
+            displayFactors.offsetFactor = 0;
+            displayFactors.unitString = 'Hz';
+            displayFactors.displayName = "AC Frequency value";
+            break;
+    //================================================================================
+    // INVERTER POWER
+    //================================================================================
+        case "I_AC_Power":
+            interest.parameters = '01_9C940001_9600_8_1';
+            displayFactors.firstDataChar = 6;
+            displayFactors.lastDataChar = 9;
+            displayFactors.dataFormat = 'hex';
+            displayFactors.scaleFactor = 1;
+            displayFactors.offsetFactor = 0;
+            displayFactors.unitString = 'W';
+            displayFactors.displayName = "AC Power value";
+            break;
+        case "I_AC_VA":
+            interest.parameters = '01_9C980001_9600_8_1';
+            displayFactors.firstDataChar = 6;
+            displayFactors.lastDataChar = 9;
+            displayFactors.dataFormat = 'hex';
+            displayFactors.scaleFactor = 1;
+            displayFactors.offsetFactor = 0;
+            displayFactors.unitString = 'VA';
+            displayFactors.displayName = "Apparent Power";
+            break;
+        case "I_AC_VAR":
+            interest.parameters = '01_9C9A0001_9600_8_1';
+            displayFactors.firstDataChar = 6;
+            displayFactors.lastDataChar = 9;
+            displayFactors.dataFormat = 'hex';
+            displayFactors.scaleFactor = 1;
+            displayFactors.offsetFactor = 0;
+            displayFactors.unitString = 'VAR';
+            displayFactors.displayName = "Reactive Power";
+            break;
+        case "I_AC_PF":
+            interest.parameters = '01_9C9C0001_9600_8_1';
+            displayFactors.firstDataChar = 6;
+            displayFactors.lastDataChar = 9;
+            displayFactors.dataFormat = 'hex';
+            displayFactors.scaleFactor = 1;
+            displayFactors.offsetFactor = 0;
+            displayFactors.unitString = '';
+            displayFactors.displayName = "Power Factor";
+            break;
+    //================================================================================
+    // INVERTER ENERGY
+    //================================================================================
+        case "I_AC_Energy_WH":
+            interest.parameters = '01_9C9E0002_9600_8_1';
+            displayFactors.firstDataChar = 6;
+            displayFactors.lastDataChar = 13;
+            displayFactors.dataFormat = 'hex';
+            displayFactors.scaleFactor = 1;
+            displayFactors.offsetFactor = 0;
+            displayFactors.unitString = 'Wh';
+            displayFactors.displayName = "AC Lifetime Energy production";
+            break;
+    //================================================================================
+    // INVERTER DC
+    //================================================================================
+        case "I_DC_Current":
+            interest.parameters = '01_9CA10001_9600_8_1';
+            displayFactors.firstDataChar = 6;
+            displayFactors.lastDataChar = 9;
+            displayFactors.dataFormat = 'hex';
+            displayFactors.scaleFactor = 1;
+            displayFactors.offsetFactor = 0;
+            displayFactors.unitString = 'A';
+            displayFactors.displayName = "DC Current value";
+            break;
+        case "I_DC_Voltage":
+            interest.parameters = '01_9CA30001_9600_8_1';
+            displayFactors.firstDataChar = 6;
+            displayFactors.lastDataChar = 9;
+            displayFactors.dataFormat = 'hex';
+            displayFactors.scaleFactor = 1;
+            displayFactors.offsetFactor = 0;
+            displayFactors.unitString = 'V';
+            displayFactors.displayName = "DC Voltage value";
+            break;
+        case "I_DC_Power":
+            interest.parameters = '01_9CA50001_9600_8_1';
+            displayFactors.firstDataChar = 6;
+            displayFactors.lastDataChar = 9;
+            displayFactors.dataFormat = 'hex';
+            displayFactors.scaleFactor = 1;
+            displayFactors.offsetFactor = 0;
+            displayFactors.unitString = 'W';
+            displayFactors.displayName = "DC Power value";
+            break;
+    //================================================================================
+    // INVERTER TEMPERATURE
+    //================================================================================
+        case "I_Temp_Cab":
+            interest.parameters = '01_9CA70001_9600_8_1'; // could be wrong
+            displayFactors.firstDataChar = 6;
+            displayFactors.lastDataChar = 9;
+            displayFactors.dataFormat = 'hex';
+            displayFactors.scaleFactor = 1;
+            displayFactors.offsetFactor = 0;
+            displayFactors.unitString = 'C';
+            displayFactors.displayName = "Cabinet Temperature";
+            break;
+        case "I_Temp_Sink":
+            interest.parameters = '01_9CA80001_9600_8_1';
+            displayFactors.firstDataChar = 6;
+            displayFactors.lastDataChar = 9;
+            displayFactors.dataFormat = 'hex';
+            displayFactors.scaleFactor = 1;
+            displayFactors.offsetFactor = 0;
+            displayFactors.unitString = 'C';
+            displayFactors.displayName = "Coolant or Heat Sink Temperature";
+            break;
+        case "I_Temp_Trans":
+            interest.parameters = '01_9CA90001_9600_8_1'; // could be wrong
+            displayFactors.firstDataChar = 6;
+            displayFactors.lastDataChar = 9;
+            displayFactors.dataFormat = 'hex';
+            displayFactors.scaleFactor = 1;
+            displayFactors.offsetFactor = 0;
+            displayFactors.unitString = 'C';
+            displayFactors.displayName = "Transformer Temperature";
+            break;
+        case "I_Temp_Other":
+            interest.parameters = '01_9CAA0001_9600_8_1'; // could be wrong
+            displayFactors.firstDataChar = 6;
+            displayFactors.lastDataChar = 9;
+            displayFactors.dataFormat = 'hex';
+            displayFactors.scaleFactor = 1;
+            displayFactors.offsetFactor = 0;
+            displayFactors.unitString = 'C';
+            displayFactors.displayName = "Other Temperature";
+            break;
+    //================================================================================
+    // INVERTER STATUS/EVENTS
+    //================================================================================
+        case "I_Status":
+            interest.parameters = '01_9CAC0001_9600_8_1';
+            displayFactors.firstDataChar = 6;
+            displayFactors.lastDataChar = 9;
+            displayFactors.dataFormat = 'hex';
+            displayFactors.scaleFactor = 1;
+            displayFactors.offsetFactor = 0;
+            displayFactors.unitString = '';
+            displayFactors.displayName = "Operating State";
+            break;
+        case "I_Status_Vendor":
+            interest.parameters = '01_9CAD0001_9600_8_1';
+            displayFactors.firstDataChar = 6;
+            displayFactors.lastDataChar = 9;
+            displayFactors.dataFormat = 'hex';
+            displayFactors.scaleFactor = 1;
+            displayFactors.offsetFactor = 0;
+            displayFactors.unitString = '';
+            displayFactors.displayName = "Vendor Defined Operating State";
+            break;
+        case "I_Event_1":
+            interest.parameters = '01_9CAE0002_9600_8_1';
+            displayFactors.firstDataChar = 6;
+            displayFactors.lastDataChar = 13;
+            displayFactors.dataFormat = 'hex';
+            displayFactors.scaleFactor = 1;
+            displayFactors.offsetFactor = 0;
+            displayFactors.unitString = '';
+            displayFactors.displayName = "Event Flags (bits 0-31)";
+            break;
+        case "I_Event_2":
+            interest.parameters = '01_9CB00002_9600_8_1';
+            displayFactors.firstDataChar = 6;
+            displayFactors.lastDataChar = 13;
+            displayFactors.dataFormat = 'hex';
+            displayFactors.scaleFactor = 1;
+            displayFactors.offsetFactor = 0;
+            displayFactors.unitString = '';
+            displayFactors.displayName = "Event Flags (bits 32-63)";
+            break;
+        case "I_Event_1_Vendor":
+            interest.parameters = '01_9CB20002_9600_8_1';
+            displayFactors.firstDataChar = 6;
+            displayFactors.lastDataChar = 13;
+            displayFactors.dataFormat = 'hex';
+            displayFactors.scaleFactor = 1;
+            displayFactors.offsetFactor = 0;
+            displayFactors.unitString = '';
+            displayFactors.displayName = "Vendor Defined Event Flags (bits 0-31)";
+            break;
+        case "I_Event_2_Vendor":
+            interest.parameters = '01_9CB40002_9600_8_1';
+            displayFactors.firstDataChar = 6;
+            displayFactors.lastDataChar = 13;
+            displayFactors.dataFormat = 'hex';
+            displayFactors.scaleFactor = 1;
+            displayFactors.offsetFactor = 0;
+            displayFactors.unitString = '';
+            displayFactors.displayName = "Vendor Defined Event Flags (bits 32-63)";
+            break;
+        case "I_Event_3_Vendor":
+            interest.parameters = '01_9CB60002_9600_8_1';
+            displayFactors.firstDataChar = 6;
+            displayFactors.lastDataChar = 13;
+            displayFactors.dataFormat = 'hex';
+            displayFactors.scaleFactor = 1;
+            displayFactors.offsetFactor = 0;
+            displayFactors.unitString = '';
+            displayFactors.displayName = "Vendor Defined Event Flags (bits 64-95)";
+            break;
+        case "I_Event_4_Vendor":
+            interest.parameters = '01_9CB80002_9600_8_1';
+            displayFactors.firstDataChar = 6;
+            displayFactors.lastDataChar = 13;
+            displayFactors.dataFormat = 'hex';
+            displayFactors.scaleFactor = 1;
+            displayFactors.offsetFactor = 0;
+            displayFactors.unitString = '';
+            displayFactors.displayName = "Vendor Defined Event Flags (bits 96- 127)";
+            break;
+
+
+    //================================================================================
     // If command not implemented, display requested name but return Manufacturer's name
     // This is something any SunSpec equipment can do
     //================================================================================   
         default:
-            interest.parameters = '64_C3540010_9600_8_1';
+            interest.parameters = '01_C3540010_9600_8_1';
             displayFactors.firstDataChar = 6;
             displayFactors.lastDataChar = 37;
             displayFactors.dataFormat = 'ascii';
