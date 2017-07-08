@@ -1356,7 +1356,7 @@ function readSunSpec(sunSpecName){
             displayFactors.firstDataChar = 6;
             displayFactors.lastDataChar = 9;
             displayFactors.dataFormat = 'hex';
-            displayFactors.scaleFactor = 0.001;
+            displayFactors.scaleFactor = 0.0001;
             displayFactors.offsetFactor = 0;
             displayFactors.unitString = 'A';
             displayFactors.displayName = "DC Current value";
