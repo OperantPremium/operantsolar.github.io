@@ -1101,7 +1101,7 @@ function readSunSpec(sunSpecName){
             interest.parameters = '64_C3FE0002_9600_8_1';
             displayFactors.firstDataChar = 6;
             displayFactors.lastDataChar = 13;
-            displayFactors.dataFormat = 'hex';
+            displayFactors.dataFormat = 'binary';
             displayFactors.scaleFactor =  1;
             displayFactors.offsetFactor = 0;
             displayFactors.unitString = '';
@@ -1431,7 +1431,7 @@ function readSunSpec(sunSpecName){
             interest.parameters = '01_9CAB0001_9600_8_1';
             displayFactors.firstDataChar = 6;
             displayFactors.lastDataChar = 9;
-            displayFactors.dataFormat = 'hex';
+            displayFactors.dataFormat = 'binary';
             displayFactors.scaleFactor = 1;
             displayFactors.offsetFactor = 0;
             displayFactors.unitString = '';
@@ -1441,7 +1441,7 @@ function readSunSpec(sunSpecName){
             interest.parameters = '01_9CAC0001_9600_8_1';
             displayFactors.firstDataChar = 6;
             displayFactors.lastDataChar = 9;
-            displayFactors.dataFormat = 'hex';
+            displayFactors.dataFormat = 'binary';
             displayFactors.scaleFactor = 1;
             displayFactors.offsetFactor = 0;
             displayFactors.unitString = '';
@@ -1451,7 +1451,7 @@ function readSunSpec(sunSpecName){
             interest.parameters = '01_9CAD0002_9600_8_1';
             displayFactors.firstDataChar = 6;
             displayFactors.lastDataChar = 13;
-            displayFactors.dataFormat = 'hex';
+            displayFactors.dataFormat = 'binary';
             displayFactors.scaleFactor = 1;
             displayFactors.offsetFactor = 0;
             displayFactors.unitString = '';
@@ -1461,7 +1461,7 @@ function readSunSpec(sunSpecName){
             interest.parameters = '01_9CAF0002_9600_8_1';
             displayFactors.firstDataChar = 6;
             displayFactors.lastDataChar = 13;
-            displayFactors.dataFormat = 'hex';
+            displayFactors.dataFormat = 'binary';
             displayFactors.scaleFactor = 1;
             displayFactors.offsetFactor = 0;
             displayFactors.unitString = '';
@@ -1471,7 +1471,7 @@ function readSunSpec(sunSpecName){
             interest.parameters = '01_9CB10002_9600_8_1';
             displayFactors.firstDataChar = 6;
             displayFactors.lastDataChar = 13;
-            displayFactors.dataFormat = 'hex';
+            displayFactors.dataFormat = 'binary';
             displayFactors.scaleFactor = 1;
             displayFactors.offsetFactor = 0;
             displayFactors.unitString = '';
@@ -1481,7 +1481,7 @@ function readSunSpec(sunSpecName){
             interest.parameters = '01_9CB30002_9600_8_1';
             displayFactors.firstDataChar = 6;
             displayFactors.lastDataChar = 13;
-            displayFactors.dataFormat = 'hex';
+            displayFactors.dataFormat = 'binary';
             displayFactors.scaleFactor = 1;
             displayFactors.offsetFactor = 0;
             displayFactors.unitString = '';
@@ -1491,7 +1491,7 @@ function readSunSpec(sunSpecName){
             interest.parameters = '01_9CB50002_9600_8_1';
             displayFactors.firstDataChar = 6;
             displayFactors.lastDataChar = 13;
-            displayFactors.dataFormat = 'hex';
+            displayFactors.dataFormat = 'binary';
             displayFactors.scaleFactor = 1;
             displayFactors.offsetFactor = 0;
             displayFactors.unitString = '';
@@ -1501,7 +1501,7 @@ function readSunSpec(sunSpecName){
             interest.parameters = '01_9CB70002_9600_8_1';
             displayFactors.firstDataChar = 6;
             displayFactors.lastDataChar = 13;
-            displayFactors.dataFormat = 'hex';
+            displayFactors.dataFormat = 'binary';
             displayFactors.scaleFactor = 1;
             displayFactors.offsetFactor = 0;
             displayFactors.unitString = '';
@@ -1538,10 +1538,16 @@ function formatData(rawData, interest){
         case 'hex':
             var numericData = 0;
             numericData = parseInt(cleanData, 16); 
+            if (cleanData != 'FFFF'){ 
+                numericData = numericData * displayFactors.scaleFactor + displayFactors.offsetFactor;
+                // Add units string at end of data, display two decimal places
+                returnDataString = numericData.toFixed(2) + " " + displayFactors.unitString;
+            }
+            else {
+                returnDataString = "Not Available";
+            }
             // apply scale factor and offset
-            numericData = numericData * displayFactors.scaleFactor + displayFactors.offsetFactor;
-            // Add units string at end of data
-            returnDataString = numericData.toFixed(2) + " " + displayFactors.unitString;
+
         break;
         case 'ascii':
             var asciiCode = 0;
@@ -1550,6 +1556,10 @@ function formatData(rawData, interest){
                 returnDataString += String.fromCharCode(asciiCode);
             }
         break;
+        case 'binary':
+            returnDataString = cleanData;
+        break;
+
         default:
             returnDataString = rawData;
         }
