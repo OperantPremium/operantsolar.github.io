@@ -1,29 +1,29 @@
 // FleetLink Mobirise Javascript 
 //Randy King 5/25/2017
 // default Interest with reasonable values for SN404
-var target = "SN403";
-var gateway = "SN403";
+var target = "SN513";
+var gateway = "SN513";
 var wiFiSSID = "";
 
 var interest = {
-    'usng': "21566247",
-    'deviceIdHash' : "018C268ECB5B",
+    'usng': "15795070",
+    'deviceIdHash' : "DF04146F1DF0",
     'rw': 'read',
     'category': 'modbus',
     'task': 'fc03',
-    'parameters': '64_C3A50001_9600_8_1',
-    'url' : "https://agent.electricimp.com/wXqOLIl3KiLB",
+    'parameters': '01_9C440010_9600_8_1',
+    'url' : "https://agent.electricimp.com/ZT8GBL-7RrgD",
 }
 
 var displayFactors = {
     // the following parameters are used to pretty up data returns, particularly from modbus
     'firstDataChar' : 6, // position of the FIRST data character in whatever the interest returns (0 based)
-    'lastDataChar' : 9,  // position of the LAST data character in whatever the interest returns (0 based)
-    'dataFormat' : 'hex', // defines format of returned data (can be hex | dec | ascii | string)
-    'scaleFactor' : 0.01, // Scale numeric data when necessary
+    'lastDataChar' : 37,  // position of the LAST data character in whatever the interest returns (0 based)
+    'dataFormat' : 'ascii', // defines format of returned data (can be hex | dec | ascii | string)
+    'scaleFactor' : 0, // Scale numeric data when necessary
     'offsetFactor' : 0, // similarly apply any numeric offset
-    'unitString' : "Hz", // append units string to communicate result better
-    'displayName' : "AC Frequency" // nice human readble display name for user
+    'unitString' : "", // append units string to communicate result better
+    'displayName' : "Manufacturer" // nice human readble display name for user
 }
 
 // Device ID hashes as reference for TARGET
@@ -49,18 +49,26 @@ var displayFactors = {
 //SN                     DeviceId        Agent URL       USNG Location
 //----------------------------------------------------------------------------------
 //SN503  Shirlie         4E562573DBA0    /tRNE2WbS2CGw   21016306
+//SN504  Sugi Inside     B930FA057CB6    /w8Bdk3n0iWt3   20706278        5728d2
 //SN505  Sugi Outside    BA48D077C2A8    /RVKEMRdCLmKj   21226282
 //SN507  Gibson          67AE0AAFD4E2    /S6QExe1f2KTi   21426258
-//SN509  Sugi Inside     16240A06C1FC    /D1PRYwJmmHAi   21236282
 //SN512  Beckman         6917511534FD    /kRQMPFuKmzDM   21896255
 
 // Customer demo houses - 917 MHz
 //----------------------------------------------------------------------------------
 //SN                     DeviceId        Agent URL       USNG Location
 //----------------------------------------------------------------------------------
-//SN506  Blue House      C3B996B9F76C    /oGQ_PBSAUppO   
-//SN513  Black House     DF04146F1DF0    /ZT8GBL-7RrgD
-//SN514  Yellow House    00E329B56259    /609atPXTxkX7
+ 
+
+
+// Solmetric demo  - 915.5 MHz
+//----------------------------------------------------------------------------------
+//SN                     DeviceId        Agent URL       USNG Location
+//----------------------------------------------------------------------------------
+//SN506  Solmetric       C3B996B9F76C    /oGQ_PBSAUppO   15795070
+//SN511  Solmetric       C1B16ADC8E57    /4R2NSeUUtys8   15795070
+//SN513  Solmetric       DF04146F1DF0    /ZT8GBL-7RrgD   15795070
+//SN514  Solmetric       00E329B56259    /609atPXTxkX7   15795070
 
 
 // Manufacturing - 915.5 MHz
@@ -70,7 +78,6 @@ var displayFactors = {
 //SN501
 //SN502
 //SN510 
-//SN511
 //SN515  Bad LoRa        4E44238D7110    /VRa-gimZfDGJ
 
 

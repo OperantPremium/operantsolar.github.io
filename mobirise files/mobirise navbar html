@@ -349,14 +349,14 @@
                         <div class="dropdown-menu dropdown-submenu">
                             <a class="dropdown-item mbr-editable-menu-item" href="http://www.operantsolar.com" onclick="setGateway('SN506'); return false;">SN506</a>
                             <a class="dropdown-item mbr-editable-menu-item" href="http://www.operantsolar.com" onclick="setGateway('SN511'); return false;">SN511</a>
-                            <a class="dropdown-item mbr-editable-menu-item" href="http://www.operantsolar.com" onclick="setGateway('SN513'); return false;">SN513</a>
+                            <a class="dropdown-item mbr-editable-menu-item" href="http://www.operantsolar.com" onclick="setGateway('SN513'); return false;">SolarEdge Inverter</a>
                             <a class="dropdown-item mbr-editable-menu-item" href="http://www.operantsolar.com" onclick="setGateway('SN514'); return false;">SN514</a>
                         </div>
                 </div>
                 <div class="dropdown">
-                    <a class="dropdown-item dropdown-toggle mbr-editable-menu-item" href="#" data-toggle="dropdown-submenu" aria-expanded="false">NEIGHBORHOOD</a>
+                    <a class="dropdown-item dropdown-toggle mbr-editable-menu-item" href="#" data-toggle="dropdown-submenu" aria-expanded="false">LARKFIELD</a>
                         <div class="dropdown-menu dropdown-submenu">
-                            <a class="dropdown-item mbr-editable-menu-item" href="http://www.operantsolar.com" onclick="setGateway('SN503'); return false;">Shirlee</a>
+                            <a class="dropdown-item mbr-editable-menu-item" href="http://www.operantsolar.com" onclick="setGateway('SN503'); return false;">Shirlie</a>
                             <a class="dropdown-item mbr-editable-menu-item" href="http://www.operantsolar.com" onclick="setGateway('SN505'); return false;">Sugi Outdoor</a>
                             <a class="dropdown-item mbr-editable-menu-item" href="http://www.operantsolar.com" onclick="setGateway('SN507'); return false;">Gibson</a>
                             <a class="dropdown-item mbr-editable-menu-item" href="http://www.operantsolar.com" onclick="setGateway('SN509'); return false;">Sugi Indoor</a>
@@ -367,7 +367,7 @@
                     <a class="dropdown-item dropdown-toggle mbr-editable-menu-item" href="#" data-toggle="dropdown-submenu" aria-expanded="false">DEV</a>
                         <div class="dropdown-menu dropdown-submenu">
                             <a class="dropdown-item mbr-editable-menu-item" href="http://www.operantsolar.com" onclick="setGateway('SN402'); return false;">SN402</a>
-                            <a class="dropdown-item mbr-editable-menu-item" href="http://www.operantsolar.com" onclick="setGateway('SN403'); return false;">SN403</a>
+                            <a class="dropdown-item mbr-editable-menu-item" href="http://www.operantsolar.com" onclick="setGateway('SN403'); return false;">MeasurLogic Meter</a>
                             <a class="dropdown-item mbr-editable-menu-item" href="http://www.operantsolar.com" onclick="setGateway('SN404'); return false;">SN404</a>
                             <a class="dropdown-item mbr-editable-menu-item" href="http://www.operantsolar.com" onclick="setGateway('SN405'); return false;">SN405</a>
                             <a class="dropdown-item mbr-editable-menu-item" href="http://www.operantsolar.com" onclick="setGateway('SN406'); return false;">SN406</a>
@@ -389,15 +389,15 @@
                         <div class="dropdown-menu dropdown-submenu">
                             <a class="dropdown-item mbr-editable-menu-item" href="http://www.operantsolar.com" onclick="setTarget('SN506'); return false;">SN506</a>
                             <a class="dropdown-item mbr-editable-menu-item" href="http://www.operantsolar.com" onclick="setTarget('SN511'); return false;">SN511</a>
-                            <a class="dropdown-item mbr-editable-menu-item" href="http://www.operantsolar.com" onclick="setTarget('SN513'); return false;">SN513</a>
+                            <a class="dropdown-item mbr-editable-menu-item" href="http://www.operantsolar.com" onclick="setTarget('SN513'); return false;">SolarEdge Inverter</a>
                             <a class="dropdown-item mbr-editable-menu-item" href="http://www.operantsolar.com" onclick="setTarget('SN514'); return false;">SN514</a>
                         </div>
                 </div>
                            
                 <div class="dropdown">
-                    <a class="dropdown-item dropdown-toggle mbr-editable-menu-item" href="#" data-toggle="dropdown-submenu" aria-expanded="false">NEIGHBORHOOD</a>
+                    <a class="dropdown-item dropdown-toggle mbr-editable-menu-item" href="#" data-toggle="dropdown-submenu" aria-expanded="false">LARKFIELD</a>
                         <div class="dropdown-menu dropdown-submenu">
-                            <a class="dropdown-item mbr-editable-menu-item" href="http://www.operantsolar.com" onclick="setTarget('SN503'); return false;">Shirlee</a>
+                            <a class="dropdown-item mbr-editable-menu-item" href="http://www.operantsolar.com" onclick="setTarget('SN503'); return false;">Shirlie</a>
                             <a class="dropdown-item mbr-editable-menu-item" href="http://www.operantsolar.com" onclick="setTarget('SN505'); return false;">Sugi Outdoor</a>
                             <a class="dropdown-item mbr-editable-menu-item" href="http://www.operantsolar.com" onclick="setTarget('SN507'); return false;">Gibson</a>
                             <a class="dropdown-item mbr-editable-menu-item" href="http://www.operantsolar.com" onclick="setTarget('SN509'); return false;">Sugi Indoor</a>
@@ -409,7 +409,7 @@
                     <a class="dropdown-item dropdown-toggle mbr-editable-menu-item" href="#" data-toggle="dropdown-submenu" aria-expanded="false">DEV</a>
                         <div class="dropdown-menu dropdown-submenu">
                             <a class="dropdown-item mbr-editable-menu-item" href="http://www.operantsolar.com" onclick="setTarget('SN402'); return false;">SN402</a>
-                            <a class="dropdown-item mbr-editable-menu-item" href="http://www.operantsolar.com" onclick="setTarget('SN403'); return false;">SN403</a>
+                            <a class="dropdown-item mbr-editable-menu-item" href="http://www.operantsolar.com" onclick="setTarget('SN403'); return false;">MeasurLogic Meter</a>
                             <a class="dropdown-item mbr-editable-menu-item" href="http://www.operantsolar.com" onclick="setTarget('SN404'); return false;">SN404</a>
                             <a class="dropdown-item mbr-editable-menu-item" href="http://www.operantsolar.com" onclick="setTarget('SN405'); return false;">SN405</a>
                             <a class="dropdown-item mbr-editable-menu-item" href="http://www.operantsolar.com" onclick="setTarget('SN406'); return false;">SN406</a>
