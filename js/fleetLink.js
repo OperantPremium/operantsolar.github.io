@@ -2,8 +2,8 @@
 //Randy King 5/25/2017
 // default Interest with reasonable values
 
-var gateway = "SN402";
-var target = "SN403";
+var gateway = "SN503";
+var target = "SN503";
 var sunSpecReg = 5; // as a decimal number, like SunSpec standards
 var sunSpecLength = 16; // as a decimal number, like SunSpec standards
 var wiFiSSID = "";
@@ -22,11 +22,11 @@ var fleetLink = {
     "SN506":{"network":"solmetric", "locName":"Solmetric 1", "deviceIdHash":"C3B996B9F76C", "deviceID":"5000d8c46a572880", "usng":"15795070", "latitude":38.4044100, "longitude":-122.8190367, "agentUrl": "/oGQ_PBSAUppO", "baseAddress":39999, "modbusAddress": 1},
     "SN511":{"network":"solmetric", "locName":"Solmetric 2 ", "deviceIdHash":"C1B16ADC8E57", "deviceID":"5000d8c46a5728f6", "usng":"15795070", "latitude":38.4044300, "longitude":-122.8190667, "agentUrl": "/4R2NSeUUtys8", "baseAddress":39999, "modbusAddress": 1},
     "SN513":{"network":"solmetric", "locName":"SolarEdge Inverter", "deviceIdHash":"DF04146F1DF0", "deviceID":"5000d8c46a57285e", "usng":"15795070", "latitude":38.4044500, "longitude":-122.8190967, "agentUrl": "/ZT8GBL-7RrgD", "baseAddress":39999, "modbusAddress": 1},
-    "SN514":{"network":"solmetric", "locName":"Solmetric ", "deviceIdHash":"00E329B56259", "deviceID":"5000d8c46a572872", "usng":"15795070", "latitude":38.4044700, "longitude":-122.8191267, "agentUrl": "/609atPXTxkX7", "baseAddress":39999, "modbusAddress": 1},
+    "SN514":{"network":"solmetric", "locName":"Solmetric 3", "deviceIdHash":"00E329B56259", "deviceID":"5000d8c46a572872", "usng":"15795070", "latitude":38.4044700, "longitude":-122.8191267, "agentUrl": "/609atPXTxkX7", "baseAddress":39999, "modbusAddress": 1},
     // larkfield
     "SN503":{"network":"larkfield", "locName":"Shirlie", "deviceIdHash":"4E562573DBA0", "deviceID":"5000d8c46a572868", "usng":"21016306", "latitude":38.5157472, "longitude":-122.7589444, "agentUrl": "/tRNE2WbS2CGw", "baseAddress":39999, "modbusAddress": 1},
-    "SN505":{"network":"larkfield", "locName":"Sugiyama", "deviceIdHash":"B930FA057CB6", "deviceID":"5000d8c46a57286a", "usng":"20706278", "latitude":38.5135694, "longitude":-122.7565250, "agentUrl": "/w8Bdk3n0iWt3", "baseAddress":39999, "modbusAddress": 1},
-    "SN507":{"network":"larkfield", "locName":"Gibson", "deviceIdHash":"67AE0AAFD4E2", "deviceID":"5000d8c46a5728a2", "usng":"21426258", "latitude":38.5113889, "longitude":-122.7542667, "agentUrl": "/S6QExe1f2KTi", "baseAddress":39999, "modbusAddress": 1},
+    "SN504":{"network":"larkfield", "locName":"Gibson", "deviceIdHash":"B930FA057CB6", "deviceID":"5000d8c46a5728d2", "usng":"21426258", "latitude":38.5113889, "longitude":-122.7542667, "agentUrl": "/w8Bdk3n0iWt3", "baseAddress":39999, "modbusAddress": 1},
+    "SN508":{"network":"larkfield", "locName":"Sugiyama", "deviceIdHash":"730D72A6E22F", "deviceID":"5000d8c46a572874", "usng":"21226282", "latitude":38.5135694, "longitude":-122.756525, "agentUrl": "/2866vQYBgUpC", "baseAddress":39999, "modbusAddress": 1},
     "SN512":{"network":"larkfield", "locName":"Beckman", "deviceIdHash":"6917511534FD", "deviceID":"5000d8c46a5721ea", "usng":"21896255", "latitude":38.5110833, "longitude":-122.7488806, "agentUrl": "/kRQMPFuKmzDM", "baseAddress":39999, "modbusAddress": 1},
 
 };

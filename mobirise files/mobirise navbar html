@@ -351,11 +351,8 @@
                     <a class="dropdown-item dropdown-toggle mbr-editable-menu-item" href="#" data-toggle="dropdown-submenu" aria-expanded="false">LARKFIELD</a>
                         <div class="dropdown-menu dropdown-submenu">
                             <a class="dropdown-item mbr-editable-menu-item" href="http://www.operantsolar.com" onclick="setGateway('SN503'); return false;">Shirlie</a>
-                            <a class="dropdown-item mbr-editable-menu-item" href="http://www.operantsolar.com" onclick="setGateway('SN505'); return false;">Sugi Outdoor</a>
-                            <a class="dropdown-item mbr-editable-menu-item" href="http://www.operantsolar.com" onclick="setGateway('SN507'); return false;">Gibson</a>
-                            <!--
-                            <a class="dropdown-item mbr-editable-menu-item" href="http://www.operantsolar.com" onclick="setGateway('SN509'); return false;">Sugi Indoor</a>
-                            -->
+                            <a class="dropdown-item mbr-editable-menu-item" href="http://www.operantsolar.com" onclick="setGateway('SN504'); return false;">Gibson</a>
+                            <a class="dropdown-item mbr-editable-menu-item" href="http://www.operantsolar.com" onclick="setGateway('SN508'); return false;">Sugiyama</a>
                             <a class="dropdown-item mbr-editable-menu-item" href="http://www.operantsolar.com" onclick="setGateway('SN512'); return false;">Beckman</a>
                         </div>
                 </div>
@@ -396,11 +393,8 @@
                     <a class="dropdown-item dropdown-toggle mbr-editable-menu-item" href="#" data-toggle="dropdown-submenu" aria-expanded="false">LARKFIELD</a>
                         <div class="dropdown-menu dropdown-submenu">
                             <a class="dropdown-item mbr-editable-menu-item" href="http://www.operantsolar.com" onclick="setTarget('SN503'); return false;">Shirlie</a>
-                            <a class="dropdown-item mbr-editable-menu-item" href="http://www.operantsolar.com" onclick="setTarget('SN505'); return false;">Sugi Outdoor</a>
-                            <a class="dropdown-item mbr-editable-menu-item" href="http://www.operantsolar.com" onclick="setTarget('SN507'); return false;">Gibson</a>
-                            <!--
-                            <a class="dropdown-item mbr-editable-menu-item" href="http://www.operantsolar.com" onclick="setTarget('SN509'); return false;">Sugi Indoor</a>
-                            -->
+                            <a class="dropdown-item mbr-editable-menu-item" href="http://www.operantsolar.com" onclick="setTarget('SN504'); return false;">Gibson</a>
+                            <a class="dropdown-item mbr-editable-menu-item" href="http://www.operantsolar.com" onclick="setTarget('SN508'); return false;">Sugiyama</a>
                             <a class="dropdown-item mbr-editable-menu-item" href="http://www.operantsolar.com" onclick="setTarget('SN512'); return false;">Beckman</a>
                         </div>
                 </div>
