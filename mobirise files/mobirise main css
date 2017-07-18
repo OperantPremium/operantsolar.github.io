@@ -12,7 +12,7 @@
 }
 .btn {
 	font-family: 'Open Sans', sans-serif;
-	font-size: 20px;
+	font-size: 18px;
     font-weight: bold;
      border: none;
 
@@ -29,9 +29,11 @@ table, th, td {
 	font-family: 'Open Sans', sans-serif;
 	font-size: 18px;
     font-weight: bold;
-	background-color: #859B6E;
     color: rgb(250,250,250);
    	border: 1px solid rgb(250,250,250);
     text-align: center;
 	padding: 10px;
+	
+    table-layout: fixed;
+    width: 200px;
 }

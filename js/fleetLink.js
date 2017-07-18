@@ -1,18 +1,44 @@
 // FleetLink Mobirise Javascript 
 //Randy King 5/25/2017
-// default Interest with reasonable values for SN404
-var target = "SN513";
-var gateway = "SN513";
+// default Interest with reasonable values
+
+var gateway = "SN402";
+var target = "SN403";
+var sunSpecReg = 5; // as a decimal number, like SunSpec standards
+var sunSpecLength = 16; // as a decimal number, like SunSpec standards
 var wiFiSSID = "";
+var mapFleetLink;
+
+
+var fleetLink = { 
+    //dev
+    "SN402":{"network":"dev", "locName":"Shirlie", "deviceIdHash":"D85F6461EB91", "deviceID":"5000d8c46a56dc4c", "usng":"21016306", "latitude":38.5157472, "longitude":-122.7589444, "agentUrl": "/oHMQMg_lcxsT", "baseAddress":49999, "modbusAddress": 100},
+    "SN403":{"network":"dev", "locName":"Kiva", "deviceIdHash":"018C268ECB5B", "deviceID":"5000d8c46a56dd24", "usng":"20916258", "latitude":38.5113556, "longitude":-122.7601444, "agentUrl": "/wXqOLIl3KiLB", "baseAddress":49999, "modbusAddress": 100},
+    "SN404":{"network":"dev", "locName":"Sugiyama Outside", "deviceIdHash":"2BF6EF3EFD90", "deviceID":"5000d8c46a56ddc8", "usng":"21236282", "latitude":38.51355, "longitude":-122.7564556, "agentUrl": "/QGO7JQAzyiev", "baseAddress":49999, "modbusAddress": 100},
+    "SN405":{"network":"dev", "locName":"Gibson", "deviceIdHash":"718A34D8423A", "deviceID":"5000d8c46a56ddb2", "usng":"21426258", "latitude":38.5113889, "longitude":-122.7542667, "agentUrl": "/CyPoe3l9E5Od", "baseAddress":49999, "modbusAddress": 100},
+    "SN406":{"network":"dev", "locName":"Beckman", "deviceIdHash":"C5F6371C8A03", "deviceID":"5000d8c46a56dd18", "usng":"21896255", "latitude":38.5110833, "longitude":-122.7488806, "agentUrl": "/hxsSiYETEEpd", "baseAddress":49999, "modbusAddress": 100},
+    "SN407":{"network":"dev", "locName":"Sugiyama Inside", "deviceIdHash":"4CA33E88EDAA", "deviceID":"5000d8c46a56ddde", "usng":"21226282", "latitude":38.5135694, "longitude":-122.756525, "agentUrl": "/VifAbahCX8ux", "baseAddress":49999, "modbusAddress": 100},
+    //solmetric
+    "SN506":{"network":"solmetric", "locName":"Solmetric 1", "deviceIdHash":"C3B996B9F76C", "deviceID":"5000d8c46a572880", "usng":"15795070", "latitude":38.4044100, "longitude":-122.8190367, "agentUrl": "/oGQ_PBSAUppO", "baseAddress":39999, "modbusAddress": 1},
+    "SN511":{"network":"solmetric", "locName":"Solmetric 2 ", "deviceIdHash":"C1B16ADC8E57", "deviceID":"5000d8c46a5728f6", "usng":"15795070", "latitude":38.4044300, "longitude":-122.8190667, "agentUrl": "/4R2NSeUUtys8", "baseAddress":39999, "modbusAddress": 1},
+    "SN513":{"network":"solmetric", "locName":"SolarEdge Inverter", "deviceIdHash":"DF04146F1DF0", "deviceID":"5000d8c46a57285e", "usng":"15795070", "latitude":38.4044500, "longitude":-122.8190967, "agentUrl": "/ZT8GBL-7RrgD", "baseAddress":39999, "modbusAddress": 1},
+    "SN514":{"network":"solmetric", "locName":"Solmetric ", "deviceIdHash":"00E329B56259", "deviceID":"5000d8c46a572872", "usng":"15795070", "latitude":38.4044700, "longitude":-122.8191267, "agentUrl": "/609atPXTxkX7", "baseAddress":39999, "modbusAddress": 1},
+    // larkfield
+    "SN503":{"network":"larkfield", "locName":"Shirlie", "deviceIdHash":"4E562573DBA0", "deviceID":"5000d8c46a572868", "usng":"21016306", "latitude":38.5157472, "longitude":-122.7589444, "agentUrl": "/tRNE2WbS2CGw", "baseAddress":39999, "modbusAddress": 1},
+    "SN505":{"network":"larkfield", "locName":"Sugiyama", "deviceIdHash":"B930FA057CB6", "deviceID":"5000d8c46a57286a", "usng":"20706278", "latitude":38.5135694, "longitude":-122.7565250, "agentUrl": "/w8Bdk3n0iWt3", "baseAddress":39999, "modbusAddress": 1},
+    "SN507":{"network":"larkfield", "locName":"Gibson", "deviceIdHash":"67AE0AAFD4E2", "deviceID":"5000d8c46a5728a2", "usng":"21426258", "latitude":38.5113889, "longitude":-122.7542667, "agentUrl": "/S6QExe1f2KTi", "baseAddress":39999, "modbusAddress": 1},
+    "SN512":{"network":"larkfield", "locName":"Beckman", "deviceIdHash":"6917511534FD", "deviceID":"5000d8c46a5721ea", "usng":"21896255", "latitude":38.5110833, "longitude":-122.7488806, "agentUrl": "/kRQMPFuKmzDM", "baseAddress":39999, "modbusAddress": 1},
+
+};
 
 var interest = {
-    'usng': "15795070",
-    'deviceIdHash' : "DF04146F1DF0",
+    'usng': fleetLink[target].usng,
+    'deviceIdHash' : fleetLink[target].deviceIdHash,
     'rw': 'read',
     'category': 'modbus',
     'task': 'fc03',
-    'parameters': '01_9C440010_9600_8_1',
-    'url' : "https://agent.electricimp.com/ZT8GBL-7RrgD",
+    'parameters': decimalToHex(fleetLink[target].modbusAddress, 2) + '_' + decimalToHex(fleetLink[target].baseAddress + sunSpecReg, 4) + decimalToHex(sunSpecLength, 4) + '_9600_8_1',
+    'url' : "https://agent.electricimp.com" + fleetLink[gateway].agentUrl
 }
 
 var displayFactors = {
@@ -26,235 +52,132 @@ var displayFactors = {
     'displayName' : "Manufacturer" // nice human readble display name for user
 }
 
-// Device ID hashes as reference for TARGET
-// Agent URLs as reference for GATEWAY
-//----------------------------------------------------------------------------------
-
-// R&D development units - 918.5 MHz
-//----------------------------------------------------------------------------------
-//SN                     DeviceIdHash    Agent URL       USNG Location   DeviceID
-//----------------------------------------------------------------------------------
-
-//SN402 [Shirlie]        D85F6461EB91    /oHMQMg_lcxsT   21016306        56dc4c
-//SN403 [Carriage Ln]    018C268ECB5B    /wXqOLIl3KiLB   21566247        56dd24
-//SN404 [Sugi Outside]   2BF6EF3EFD90    /QGO7JQAzyiev   21236282        56ddc8
-//SN405 [Gibson]         718A34D8423A    /CyPoe3l9E5Od   21426258        56ddb2
-//SN406 [Beckman]        C5F6371C8A03    /hxsSiYETEEpd   21896255        56dd18
-//SN407 [Sugi Inside]    4CA33E88EDAA    /VifAbahCX8ux   21226282        56ddde
-//SN504 [Corbett Cir]    B930FA057CB6    /w8Bdk3n0iWt3   20706278        5728d2
-//SN508 [Kiva Pl]        730D72A6E22F    /2866vQYBgUpC   20916258        572874
-
-// Larkfield demo - 915.5 MHz
-//----------------------------------------------------------------------------------
-//SN                     DeviceId        Agent URL       USNG Location
-//----------------------------------------------------------------------------------
-//SN503  Shirlie         4E562573DBA0    /tRNE2WbS2CGw   21016306
-//SN504  Sugi Inside     B930FA057CB6    /w8Bdk3n0iWt3   20706278        5728d2
-//SN505  Sugi Outside    BA48D077C2A8    /RVKEMRdCLmKj   21226282
-//SN507  Gibson          67AE0AAFD4E2    /S6QExe1f2KTi   21426258
-//SN512  Beckman         6917511534FD    /kRQMPFuKmzDM   21896255
-
-// Customer demo houses - 917 MHz
-//----------------------------------------------------------------------------------
-//SN                     DeviceId        Agent URL       USNG Location
-//----------------------------------------------------------------------------------
- 
-
-
-// Solmetric demo  - 915.5 MHz
-//----------------------------------------------------------------------------------
-//SN                     DeviceId        Agent URL       USNG Location
-//----------------------------------------------------------------------------------
-//SN506  Solmetric       C3B996B9F76C    /oGQ_PBSAUppO   15795070
-//SN511  Solmetric       C1B16ADC8E57    /4R2NSeUUtys8   15795070
-//SN513  Solmetric       DF04146F1DF0    /ZT8GBL-7RrgD   15795070
-//SN514  Solmetric       00E329B56259    /609atPXTxkX7   15795070
-
-
-// Manufacturing - 915.5 MHz
-//----------------------------------------------------------------------------------
-//SN                     DeviceId        Agent URL       USNG Location
-//----------------------------------------------------------------------------------
-//SN501
-//SN502
-//SN510 
-//SN515  Bad LoRa        4E44238D7110    /VRa-gimZfDGJ
-
-
-// Choose gateway unit
-function setGateway(requestedGateway) {
-    gateway = requestedGateway;
-    switch(requestedGateway) {
-// PROTO 4'S
-         case "SN402":
-            interest.url = "https://agent.electricimp.com/oHMQMg_lcxsT";
-            break;
-        case "SN403":
-            interest.url = "https://agent.electricimp.com/wXqOLIl3KiLB";
-            break;
-        case "SN404":
-            interest.url = "https://agent.electricimp.com/QGO7JQAzyiev";
-            break;            
-        case "SN405":
-            interest.url = "https://agent.electricimp.com/CyPoe3l9E5Od";
-            break;
-        case "SN406":
-            interest.url = "https://agent.electricimp.com/hxsSiYETEEpd";
-            break;
-        case "SN407":
-            interest.url = "https://agent.electricimp.com/VifAbahCX8ux";
-            break;      
-// PROTO 5'S
-         case "SN501":
-            interest.url = "";
-            break;      
-         case "SN502":
-            interest.url = "";
-            break; 
-         case "SN503":
-            interest.url = "https://agent.electricimp.com/tRNE2WbS2CGw";
-            break;      
-         case "SN504":
-            interest.url = "https://agent.electricimp.com/w8Bdk3n0iWt3";
-            break;
-         case "SN505":
-            interest.url = "https://agent.electricimp.com/RVKEMRdCLmKj";
-            break;      
-         case "SN506":
-            interest.url = "https://agent.electricimp.com/oGQ_PBSAUppO";
-            break; 
-         case "SN507":
-            interest.url = "https://agent.electricimp.com/S6QExe1f2KTi";
-            break;      
-         case "SN508":
-            interest.url = "https://agent.electricimp.com/2866vQYBgUpC";
-            break;  
-         case "SN509":
-            interest.url = "https://agent.electricimp.com/D1PRYwJmmHAi";
-            break;      
-         case "SN510":
-            interest.url = "";
-            break; 
-         case "SN511":
-            interest.url = "https://agent.electricimp.com/4R2NSeUUtys8";
-            break;      
-         case "SN512":
-            interest.url = "https://agent.electricimp.com/kRQMPFuKmzDM";
-            break;
-         case "SN513":
-            interest.url = "https://agent.electricimp.com/ZT8GBL-7RrgD";
-            break;      
-         case "SN514":
-            interest.url = "https://agent.electricimp.com/609atPXTxkX7";
-            break; 
-         case "SN515":
-            interest.url = "https://agent.electricimp.com/VRa-gimZfDGJ";
-            break;      
-        default:
-            interest.url = "";
-    }
-    //console.log("Setting gateway to " + requestedGateway);
-    updateParamTable(target,interest,displayFactors,gateway);
-
-  }
-
-
-
 
 // Choose target unit
 function setTarget(requestedTarget) {
     target = requestedTarget;
-    switch(requestedTarget) {
-// PROTO 4'S
-        case "SN402":
-            interest.deviceIdHash = "D85F6461EB91";
-            interest.usng = "21016306";
-             break;
-        case "SN403":
-            interest.deviceIdHash = "018C268ECB5B";
-            interest.usng = "21566247";
-            break;
-        case "SN404":
-            interest.deviceIdHash = "2BF6EF3EFD90";
-            interest.usng = "21236282";
-            break;
-        case "SN405":
-            interest.deviceIdHash = "718A34D8423A";
-            interest.usng = "21426258";
-            break;
-        case "SN406":
-            interest.deviceIdHash = "C5F6371C8A03";
-            interest.usng = "21896255";
-            break;
-        case "SN407":
-            interest.deviceIdHash = "4CA33E88EDAA";
-            interest.usng = "21226282";
-            break;
-// PROTO 5'S
-        case "SN501":
-            interest.deviceIdHash = "";
-             break;
-        case "SN502":
-            interest.deviceIdHash = "";
-            break;
-        case "SN503":
-            interest.deviceIdHash = "4E562573DBA0";
-            interest.usng = "21016306";
-            break;
-        case "SN504":
-            interest.deviceIdHash = "B930FA057CB6";
-            interest.usng = "20706278";
-            break;
-        case "SN505":
-            interest.deviceIdHash = "BA48D077C2A8";
-            interest.usng = "21226282";
-            break;
-        case "SN506":
-            interest.deviceIdHash = "C3B996B9F76C";
-            interest.usng = "15795070";
-            break;
-        case "SN507":
-            interest.deviceIdHash = "67AE0AAFD4E2";
-            interest.usng = "21426258";
-            break;
-        case "SN508":
-            interest.deviceIdHash = "730D72A6E22F";
-            interest.usng = "20916258";
-            break;
-        case "SN509":
-            interest.deviceIdHash = "16240A06C1FC";
-            interest.usng = "21236282";
-            break;
-        case "SN510":
-            interest.deviceIdHash = "";
-            break;
-        case "SN511":
-            interest.deviceIdHash = "C1B16ADC8E57";
-            interest.usng = "15795070";
-            break;
-        case "SN512":
-            interest.deviceIdHash = "6917511534FD";
-            interest.usng = "21896255";
-            break;
-        case "SN513":
-            interest.deviceIdHash = "DF04146F1DF0";
-            interest.usng = "15795070";            
-            break;
-        case "SN514":
-            interest.deviceIdHash = "00E329B56259";
-            interest.usng = "15795070";            
-            break;
-        case "SN515":
-            interest.deviceIdHash = "4E44238D7110";
-            break;
-        default:
-            interest.deviceIdHash = "";
-            console.log("Setting target to default");
-    }
-    //console.log("Setting target to " + requestedTarget); 
+    interest.deviceIdHash = fleetLink[target].deviceIdHash;
+    interest.usng = fleetLink[target].usng;
     updateParamTable(target,interest,displayFactors,gateway);
-
+    initMap();
 }
+
+// Choose gateway unit
+function setGateway(requestedGateway) {
+    gateway = requestedGateway;
+    interest.url = "https://agent.electricimp.com" + fleetLink[gateway].agentUrl
+    updateParamTable(target,interest,displayFactors,gateway);
+    initMap();
+  }
+
+
+
+//================================================================================
+// MAPPING 
+//================================================================================
+
+function initMap() {
+    var locations = [];
+    var iconColor = "white";
+    var iconScale = 4;
+    var iconType = "CIRCLE";
+    var infowindow = new google.maps.InfoWindow();
+    var bounds = new google.maps.LatLngBounds();
+    var myLatLng = {lat: 38.491, lng: -122.717};
+
+    // Draw default map
+        mapFleetLink = new google.maps.Map(document.getElementById('map'), {
+        zoom: 16,
+        mapTypeId: google.maps.MapTypeId.SATELLITE,
+        center: myLatLng
+        });
+
+    var i = 0;
+    for (var key in fleetLink) {
+        if (fleetLink.hasOwnProperty(key)) {
+            // if this unit is a member of the network which includes the target unit, then add to list to plot
+            if (fleetLink[key]["network"] == fleetLink[target]["network"] ){
+
+                if (key == target){ 
+                    iconType = "CIRCLE";
+                    iconColor = "#ff0066";
+                    iconScale = 10;
+                }
+                else if (key == gateway){
+                    iconType = "BACKWARD_CLOSED_ARROW";
+                    iconColor = "#ff0066";
+                    iconScale = 6;
+                } 
+                else {
+                    iconType = "CIRCLE";
+                    iconColor = "#0099cc";
+                    iconScale = 10;
+                }
+                locations[i] = [fleetLink[key]["locName"], fleetLink[key]["latitude"], fleetLink[key]["longitude"], iconType, iconColor, iconScale];
+                i++;
+            }
+        }
+    }
+
+
+    for (i = 0; i < locations.length; i++) {
+
+        marker = new google.maps.Marker({
+            position: new google.maps.LatLng(locations[i][1], locations[i][2]),
+            icon: {
+                path: google.maps.SymbolPath[locations[i][3]],
+                strokeColor: locations[i][4],
+                strokeWeight: 4,
+                scale: locations[i][5]
+            },
+            map: mapFleetLink
+        });
+
+        bounds.extend(marker.position);
+
+        google.maps.event.addListener(marker, 'click', (function (marker, i) {
+            return function () {
+                infowindow.setContent(locations[i][0]);
+                infowindow.open(map, marker);
+            }
+        })(marker, i));
+    }
+
+    mapFleetLink.fitBounds(bounds);
+
+    var listener = google.maps.event.addListener(mapFleetLink, "idle", function () {
+        google.maps.event.removeListener(listener);
+    });
+
+         };
+
+//================================================================================
+// Get  Imp log data
+//================================================================================
+function getImpLogs(){
+    console.log("getting Imp logs...");
+    
+    $.ajax({
+        url: 'https://preview-api.electricimp.com/v5/devices/5000d8c46a56dd24/logs',
+        timeout: 15000,
+        contentType: "pplication/vnd.api+json",
+        headers: { 'authorization': 'bearer pGh9RgphRUdwrZi8OVjM2XcaClgW2GnHXuUKMJCZUYYr7Eyx9a0KiDlNRVWVpbfEI7Z6gf31fOuIOVtRlJ0+mV3WY03nEPoBVfYzoIO7nALpNWkhD4/CpO8sqLUaq6LKwH4jrAkYG4I9na1Cnw==' },
+        //data: '{"id": "rama.nadendla@operantsolar.com", "password": "operant1solar"}',
+        type: 'GET',
+            success : function(response) {
+            console.log(response);
+            },
+            error : function(jqXHR, textStatus, err) {
+                var errorResponse = err ;
+                console.log(errorResponse);
+            }
+
+    });
+}
+
+//================================================================================
+// COMMAND LANGUAGE
+//================================================================================
 
 // Set a specific unit's geolocation
 function writeGeoSelf(){
@@ -305,18 +228,18 @@ function readModbus(){
  
 }
 
-
-// Read the Modbus, built from SunSpec register map
+//================================================================================
+// SUNSPEC LANGUAGE
+//================================================================================
 function readSunSpec(sunSpecName){
-    interest.rw = 'read';
-    interest.category = 'modbus';
-    interest.task = 'fc03';
+
     switch(sunSpecName) {
     //================================================================================
     // METER COMMON
     //================================================================================
-        case "M_Mn":
-            interest.parameters = '64_C3540010_9600_8_1';
+        case "Mn":
+            sunSpecReg = 5;
+            sunSpecLength = 16;
             displayFactors.firstDataChar = 6;
             displayFactors.lastDataChar = 37;
             displayFactors.dataFormat = 'ascii';
@@ -325,8 +248,9 @@ function readSunSpec(sunSpecName){
             displayFactors.unitString = '';
             displayFactors.displayName = "Manufacturer";
             break;
-        case "M_Md":
-            interest.parameters = '64_C3640010_9600_8_1';
+        case "Md":
+            sunSpecReg = 21;
+            sunSpecLength = 16;
             displayFactors.firstDataChar = 6;
             displayFactors.lastDataChar = 37;
             displayFactors.dataFormat = 'ascii';
@@ -335,8 +259,9 @@ function readSunSpec(sunSpecName){
             displayFactors.unitString = '';
             displayFactors.displayName = "Model";
             break;
-        case "M_Opt":
-            interest.parameters = '64_C3740008_9600_8_1';
+        case "Opt":
+            sunSpecReg = 37;
+            sunSpecLength = 8;
             displayFactors.firstDataChar = 6;
             displayFactors.lastDataChar = 21;
             displayFactors.dataFormat = 'ascii';
@@ -345,8 +270,9 @@ function readSunSpec(sunSpecName){
             displayFactors.unitString = '';
             displayFactors.displayName = "Option";
             break;    
-        case "M_Vr":
-            interest.parameters = '64_C37C0008_9600_8_1';
+        case "Vr":
+            sunSpecReg = 45;
+            sunSpecLength = 8;
             displayFactors.firstDataChar = 6;
             displayFactors.lastDataChar = 21;
             displayFactors.dataFormat = 'ascii';
@@ -355,8 +281,9 @@ function readSunSpec(sunSpecName){
             displayFactors.unitString = '';
             displayFactors.displayName = "Version";
             break;    
-        case "M_SN":
-            interest.parameters = '64_C3840010_9600_8_1';
+        case "SN":
+            sunSpecReg = 53;
+            sunSpecLength = 16;
             displayFactors.firstDataChar = 6;
             displayFactors.lastDataChar = 37;
             displayFactors.dataFormat = 'ascii';
@@ -365,8 +292,9 @@ function readSunSpec(sunSpecName){
             displayFactors.unitString = '';
             displayFactors.displayName = "Serial Number";
             break;    
-        case "M_DA":
-            interest.parameters = '64_C3940001_9600_8_1';
+        case "DA":
+            sunSpecReg = 69;
+            sunSpecLength = 1;
             displayFactors.firstDataChar = 6;
             displayFactors.lastDataChar = 9;
             displayFactors.dataFormat = 'hex';
@@ -383,7 +311,8 @@ function readSunSpec(sunSpecName){
     // METER CURRENT
     //================================================================================
         case "M_AC_Current":
-            interest.parameters = '64_C3970001_9600_8_1';
+            sunSpecReg = 69 + 3;
+            sunSpecLength = 1;
             displayFactors.firstDataChar = 6;
             displayFactors.lastDataChar = 9;
             displayFactors.dataFormat = 'hex';
@@ -393,7 +322,8 @@ function readSunSpec(sunSpecName){
             displayFactors.displayName = "AC Current (sum of active phases)";
             break;
         case "M_AC_Current_A":
-            interest.parameters = '64_C3980001_9600_8_1';
+            sunSpecReg = 69 + 4;
+            sunSpecLength = 1;
             displayFactors.firstDataChar = 6;
             displayFactors.lastDataChar = 9;
             displayFactors.dataFormat = 'hex';
@@ -403,7 +333,8 @@ function readSunSpec(sunSpecName){
             displayFactors.displayName = "Phase A AC Current";
             break;
         case "M_AC_Current_B":
-            interest.parameters = '64_C3A80001_9600_8_1';
+            sunSpecReg = 69 + 5;
+            sunSpecLength = 1;
             displayFactors.firstDataChar = 6;
             displayFactors.lastDataChar = 9;
             displayFactors.dataFormat = 'hex';
@@ -413,7 +344,8 @@ function readSunSpec(sunSpecName){
             displayFactors.displayName = "Phase B AC Current";
             break;            
         case "M_AC_Current_C":
-            interest.parameters = '64_C3B80001_9600_8_1';
+            sunSpecReg = 69 + 6;
+            sunSpecLength = 1;
             displayFactors.firstDataChar = 6;
             displayFactors.lastDataChar = 9;
             displayFactors.dataFormat = 'hex';
@@ -421,54 +353,15 @@ function readSunSpec(sunSpecName){
             displayFactors.offsetFactor = 0;
             displayFactors.unitString = 'A';
             displayFactors.displayName = "Phase C AC Current";
-            break;    
-        case "M_AC_Current":
-            interest.parameters = '64_C3970001_9600_8_1';
-            displayFactors.firstDataChar = 6;
-            displayFactors.lastDataChar = 9;
-            displayFactors.dataFormat = 'hex';
-            displayFactors.scaleFactor = 0.01;
-            displayFactors.offsetFactor = 0;
-            displayFactors.unitString = 'A';
-            displayFactors.displayName = "AC Current (sum of active phases)";
-            break;
-        case "M_AC_Current_A":
-            interest.parameters = '64_C3980001_9600_8_1';
-            displayFactors.firstDataChar = 6;
-            displayFactors.lastDataChar = 9;
-            displayFactors.dataFormat = 'hex';
-            displayFactors.scaleFactor = 0.01;
-            displayFactors.offsetFactor = 0;
-            displayFactors.unitString = 'A';
-            displayFactors.displayName = "Phase A AC Current";
-            break;
-        case "M_AC_Current_B":
-            interest.parameters = '64_C3A80001_9600_8_1';
-            displayFactors.firstDataChar = 6;
-            displayFactors.lastDataChar = 9;
-            displayFactors.dataFormat = 'hex';
-            displayFactors.scaleFactor = 0.01;
-            displayFactors.offsetFactor = 0;
-            displayFactors.unitString = 'A';
-            displayFactors.displayName = "Phase B AC Current";
-            break;            
-        case "M_AC_Current_C":
-            interest.parameters = '64_C3B80001_9600_8_1';
-            displayFactors.firstDataChar = 6;
-            displayFactors.lastDataChar = 9;
-            displayFactors.dataFormat = 'hex';
-            displayFactors.scaleFactor = 0.01;
-            displayFactors.offsetFactor = 0;
-            displayFactors.unitString = 'A';
-            displayFactors.displayName = "Phase C AC Current";
-            break;               
+            break;                
     //================================================================================
     // METER VOLTAGE
     //================================================================================
     // LINE TO NEUTRAL
     //================================================================================        
         case "M_AC_Voltage_LN":
-            interest.parameters = '64_C39C0001_9600_8_1';
+            sunSpecReg = 69 + 8;
+            sunSpecLength = 1;
             displayFactors.firstDataChar = 6;
             displayFactors.lastDataChar = 9;
             displayFactors.dataFormat = 'hex';
@@ -478,7 +371,8 @@ function readSunSpec(sunSpecName){
             displayFactors.displayName = "Line to Neutral AC Voltage (average of active phases)";
             break;
         case "M_AC_Voltage_AN":
-            interest.parameters = '64_C39D0001_9600_8_1';
+            sunSpecReg = 69 + 9;
+            sunSpecLength = 1;
             displayFactors.firstDataChar = 6;
             displayFactors.lastDataChar = 9;
             displayFactors.dataFormat = 'hex';
@@ -488,7 +382,8 @@ function readSunSpec(sunSpecName){
             displayFactors.displayName = "Phase A to Neutral AC Voltage";
             break;
         case "M_AC_Voltage_BN":
-            interest.parameters = '64_C39E0001_9600_8_1';
+            sunSpecReg = 69 + 10;
+            sunSpecLength = 1;
             displayFactors.firstDataChar = 6;
             displayFactors.lastDataChar = 9;
             displayFactors.dataFormat = 'hex';
@@ -498,7 +393,8 @@ function readSunSpec(sunSpecName){
             displayFactors.displayName = "Phase B to Neutral AC Voltage";
             break;                        
         case "M_AC_Voltage_CN":
-            interest.parameters = '64_C39F0001_9600_8_1';
+            sunSpecReg = 69 + 11;
+            sunSpecLength = 1;
             displayFactors.firstDataChar = 6;
             displayFactors.lastDataChar = 9;
             displayFactors.dataFormat = 'hex';
@@ -513,7 +409,8 @@ function readSunSpec(sunSpecName){
 // LINE TO LINE
 //================================================================================               
         case "M_AC_Voltage_LL":
-            interest.parameters = '64_C3A00001_9600_8_1';
+            sunSpecReg = 69 + 12;
+            sunSpecLength = 1;
             displayFactors.firstDataChar = 6;
             displayFactors.lastDataChar = 9;
             displayFactors.dataFormat = 'hex';
@@ -523,7 +420,8 @@ function readSunSpec(sunSpecName){
             displayFactors.displayName = "Line to Line AC Voltage (average of active phases)";
             break;
         case "M_AC_Voltage_AB":
-            interest.parameters = '64_C3A10001_9600_8_1';
+            sunSpecReg = 69 + 13;
+            sunSpecLength = 1;
             displayFactors.firstDataChar = 6;
             displayFactors.lastDataChar = 9;
             displayFactors.dataFormat = 'hex';
@@ -533,7 +431,8 @@ function readSunSpec(sunSpecName){
             displayFactors.displayName = "Phase A to Phase B AC Voltage";
             break;
         case "M_AC_Voltage_BC":
-            interest.parameters = '64_C3A20001_9600_8_1';
+            sunSpecReg = 69 + 14;
+            sunSpecLength = 1;
             displayFactors.firstDataChar = 6;
             displayFactors.lastDataChar = 9;
             displayFactors.dataFormat = 'hex';
@@ -543,7 +442,8 @@ function readSunSpec(sunSpecName){
             displayFactors.displayName = "Phase B to Phase C AC Voltage";
             break;     
         case "M_AC_Voltage_CA":
-            interest.parameters = '64_C3A30001_9600_8_1';
+            sunSpecReg = 69 + 15;
+            sunSpecLength = 1;
             displayFactors.firstDataChar = 6;
             displayFactors.lastDataChar = 9;
             displayFactors.dataFormat = 'hex';
@@ -556,7 +456,8 @@ function readSunSpec(sunSpecName){
     // METER FREQUENCY
     //================================================================================
         case "M_AC_Freq":
-            interest.parameters = '64_C3A50001_9600_8_1';
+            sunSpecReg = 69 + 17;
+            sunSpecLength = 1;
             displayFactors.firstDataChar = 6;
             displayFactors.lastDataChar = 9;
             displayFactors.dataFormat = 'hex';
@@ -571,7 +472,8 @@ function readSunSpec(sunSpecName){
     // REAL
     //================================================================================             
         case "M_AC_Power":
-            interest.parameters = '64_C3A70001_9600_8_1';
+            sunSpecReg = 69 + 19;
+            sunSpecLength = 1;
             displayFactors.firstDataChar = 6;
             displayFactors.lastDataChar = 9;
             displayFactors.dataFormat = 'hex';
@@ -581,7 +483,8 @@ function readSunSpec(sunSpecName){
             displayFactors.displayName = "Total Real Power(sum of active phases)";
             break;
         case "M_AC_Power_A":
-            interest.parameters = '64_C3A80001_9600_8_1';
+            sunSpecReg = 69 + 20;
+            sunSpecLength = 1;
             displayFactors.firstDataChar = 6;
             displayFactors.lastDataChar = 9;
             displayFactors.dataFormat = 'hex';
@@ -591,7 +494,8 @@ function readSunSpec(sunSpecName){
             displayFactors.displayName = "Phase A AC Real Power";
             break;
         case "M_AC_Power_B":
-            interest.parameters = '64_C3A90001_9600_8_1';
+            sunSpecReg = 69 + 21;
+            sunSpecLength = 1;
             displayFactors.firstDataChar = 6;
             displayFactors.lastDataChar = 9;
             displayFactors.dataFormat = 'hex';
@@ -601,7 +505,8 @@ function readSunSpec(sunSpecName){
             displayFactors.displayName = "Phase B AC Real Power";
             break;
         case "M_AC_Power_C":
-            interest.parameters = '64_C3AA0001_9600_8_1';
+            sunSpecReg = 69 + 22;
+            sunSpecLength = 1;
             displayFactors.firstDataChar = 6;
             displayFactors.lastDataChar = 9;
             displayFactors.dataFormat = 'hex';
@@ -616,7 +521,8 @@ function readSunSpec(sunSpecName){
     // APPARENT
     //================================================================================  
         case "M_AC_VA":
-            interest.parameters = '64_C3AC0001_9600_8_1';
+            sunSpecReg = 69 + 24;
+            sunSpecLength = 1;
             displayFactors.firstDataChar = 6;
             displayFactors.lastDataChar = 9;
             displayFactors.dataFormat = 'hex';
@@ -626,7 +532,8 @@ function readSunSpec(sunSpecName){
             displayFactors.displayName = "Total AC Apparent Power(sum of active phases)";
             break;
         case "M_AC_VA_A":
-            interest.parameters = '64_C3AD0001_9600_8_1';
+            sunSpecReg = 69 + 25;
+            sunSpecLength = 1;
             displayFactors.firstDataChar = 6;
             displayFactors.lastDataChar = 9;
             displayFactors.dataFormat = 'hex';
@@ -636,7 +543,8 @@ function readSunSpec(sunSpecName){
             displayFactors.displayName = "Phase A AC Apparent Power";
             break;
         case "M_AC_VA_B":
-            interest.parameters = '64_C3AE0001_9600_8_1';
+            sunSpecReg = 69 + 26;
+            sunSpecLength = 1;
             displayFactors.firstDataChar = 6;
             displayFactors.lastDataChar = 9;
             displayFactors.dataFormat = 'hex';
@@ -646,7 +554,8 @@ function readSunSpec(sunSpecName){
             displayFactors.displayName = "Phase B AC Apparent Power";
             break;
         case "M_AC_VA_C":
-            interest.parameters = '64_C3AF0001_9600_8_1';
+            sunSpecReg = 69 + 27;
+            sunSpecLength = 1;
             displayFactors.firstDataChar = 6;
             displayFactors.lastDataChar = 9;
             displayFactors.dataFormat = 'hex';
@@ -661,7 +570,8 @@ function readSunSpec(sunSpecName){
     // REACTIVE
     //================================================================================     
         case "M_AC_VAR":
-            interest.parameters = '64_C3B10001_9600_8_1';
+            sunSpecReg = 69 + 29;
+            sunSpecLength = 1;
             displayFactors.firstDataChar = 6;
             displayFactors.lastDataChar = 9;
             displayFactors.dataFormat = 'hex';
@@ -671,7 +581,8 @@ function readSunSpec(sunSpecName){
             displayFactors.displayName = "Total AC Reactive Power(sum of active phases)";
             break;
         case "M_AC_VAR_A":
-            interest.parameters = '64_C3B20001_9600_8_1';
+            sunSpecReg = 69 + 30;
+            sunSpecLength = 1;
             displayFactors.firstDataChar = 6;
             displayFactors.lastDataChar = 9;
             displayFactors.dataFormat = 'hex';
@@ -681,7 +592,8 @@ function readSunSpec(sunSpecName){
             displayFactors.displayName = "Phase A AC Reactive Power";
             break;
         case "M_AC_VAR_B":
-            interest.parameters = '64_C3B30001_9600_8_1';
+            sunSpecReg = 69 + 31;
+            sunSpecLength = 1;
             displayFactors.firstDataChar = 6;
             displayFactors.lastDataChar = 9;
             displayFactors.dataFormat = 'hex';
@@ -691,7 +603,8 @@ function readSunSpec(sunSpecName){
             displayFactors.displayName = "Phase B AC Reactive Power";
             break;
         case "M_AC_VAR_C":
-            interest.parameters = '64_C3B40001_9600_8_1';
+            sunSpecReg = 69 + 32;
+            sunSpecLength = 1;
             displayFactors.firstDataChar = 6;
             displayFactors.lastDataChar = 9;
             displayFactors.dataFormat = 'hex';
@@ -704,7 +617,8 @@ function readSunSpec(sunSpecName){
     // METER POWER FACTOR
     //================================================================================
         case "M_AC_PF":
-            interest.parameters = '64_C3B60001_9600_8_1';
+            sunSpecReg = 69 + 34;
+            sunSpecLength = 1;
             displayFactors.firstDataChar = 6;
             displayFactors.lastDataChar = 9;
             displayFactors.dataFormat = 'hex';
@@ -714,7 +628,8 @@ function readSunSpec(sunSpecName){
             displayFactors.displayName = "Average Power Factor(average of active phases)";
             break;
         case "M_AC_PF_A":
-            interest.parameters = '64_C3B70001_9600_8_1';
+            sunSpecReg = 69 + 35;
+            sunSpecLength = 1;
             displayFactors.firstDataChar = 6;
             displayFactors.lastDataChar = 9;
             displayFactors.dataFormat = 'hex';
@@ -724,7 +639,8 @@ function readSunSpec(sunSpecName){
             displayFactors.displayName = "Phase A Power Factor";
             break;
         case "M_AC_PF_B":
-            interest.parameters = '64_C3B80001_9600_8_1';
+            sunSpecReg = 69 + 36;
+            sunSpecLength = 1;
             displayFactors.firstDataChar = 6;
             displayFactors.lastDataChar = 9;
             displayFactors.dataFormat = 'hex';
@@ -734,7 +650,8 @@ function readSunSpec(sunSpecName){
             displayFactors.displayName = "Phase B Power Factor";
             break;
         case "M_AC_PF_C":
-            interest.parameters = '64_C3B90001_9600_8_1';
+            sunSpecReg = 69 + 37;
+            sunSpecLength = 1;
             displayFactors.firstDataChar = 6;
             displayFactors.lastDataChar = 9;
             displayFactors.dataFormat = 'hex';
@@ -749,7 +666,8 @@ function readSunSpec(sunSpecName){
     // EXPORTED
     //================================================================================ 
         case "M_Exported":
-            interest.parameters = '64_C3BB0002_9600_8_1';
+            sunSpecReg = 69 + 39;
+            sunSpecLength = 2;
             displayFactors.firstDataChar = 6;
             displayFactors.lastDataChar = 13;
             displayFactors.dataFormat = 'hex';
@@ -759,7 +677,8 @@ function readSunSpec(sunSpecName){
             displayFactors.displayName = "Total Exported Real Energy";
             break;
         case "M_Exported_A":
-            interest.parameters = '64_C3BD0002_9600_8_1';
+            sunSpecReg = 69 + 41;
+            sunSpecLength = 2;
             displayFactors.firstDataChar = 6;
             displayFactors.lastDataChar = 13;
             displayFactors.dataFormat = 'hex';
@@ -769,7 +688,8 @@ function readSunSpec(sunSpecName){
             displayFactors.displayName = "Phase A Exported Real Energy";
             break;
         case "M_Exported_B":
-            interest.parameters = '64_C3BF0002_9600_8_1';
+            sunSpecReg = 69 + 43;
+            sunSpecLength = 2;
             displayFactors.firstDataChar = 6;
             displayFactors.lastDataChar = 13;
             displayFactors.dataFormat = 'hex';
@@ -779,7 +699,8 @@ function readSunSpec(sunSpecName){
             displayFactors.displayName = "Phase B Exported Real Energy";
             break;
         case "M_Exported_C":
-            interest.parameters = '64_C3C10002_9600_8_1';
+            sunSpecReg = 69 + 45;
+            sunSpecLength = 2;
             displayFactors.firstDataChar = 6;
             displayFactors.lastDataChar = 13;
             displayFactors.dataFormat = 'hex';
@@ -794,7 +715,8 @@ function readSunSpec(sunSpecName){
     // IMPORTED
     //================================================================================     
         case "M_Imported":
-            interest.parameters = '64_C3C30002_9600_8_1';
+            sunSpecReg = 69 + 47;
+            sunSpecLength = 2;
             displayFactors.firstDataChar = 6;
             displayFactors.lastDataChar = 13;
             displayFactors.dataFormat = 'hex';
@@ -804,7 +726,8 @@ function readSunSpec(sunSpecName){
             displayFactors.displayName = "Total Imported Real Energy";
             break;
         case "M_Imported_A":
-            interest.parameters = '64_C3C50002_9600_8_1';
+            sunSpecReg = 69 + 49;
+            sunSpecLength = 2;
             displayFactors.firstDataChar = 6;
             displayFactors.lastDataChar = 13;
             displayFactors.dataFormat = 'hex';
@@ -814,7 +737,8 @@ function readSunSpec(sunSpecName){
             displayFactors.displayName = "Phase A Imported Real Energy";
             break;
         case "M_Imported_B":
-            interest.parameters = '64_C3C70002_9600_8_1';
+            sunSpecReg = 69 + 51;
+            sunSpecLength = 2;
             displayFactors.firstDataChar = 6;
             displayFactors.lastDataChar = 13;
             displayFactors.dataFormat = 'hex';
@@ -824,7 +748,8 @@ function readSunSpec(sunSpecName){
             displayFactors.displayName = "Phase B Imported Real Energy";
             break;
         case "M_Imported_C":
-            interest.parameters = '64_C3C90002_9600_8_1';
+            sunSpecReg = 69 + 53;
+            sunSpecLength = 2;
             displayFactors.firstDataChar = 6;
             displayFactors.lastDataChar = 13;
             displayFactors.dataFormat = 'hex';
@@ -839,7 +764,8 @@ function readSunSpec(sunSpecName){
     // EXPORTED
     //================================================================================      
         case "M_Exported_VA":
-            interest.parameters = '64_C3CC0002_9600_8_1';
+            sunSpecReg = 69 + 56;
+            sunSpecLength = 2;
             displayFactors.firstDataChar = 6;
             displayFactors.lastDataChar = 13;
             displayFactors.dataFormat = 'hex';
@@ -849,7 +775,8 @@ function readSunSpec(sunSpecName){
             displayFactors.displayName = "Total Imported Real Energy";
             break;
         case "M_Exported_VA_A":
-            interest.parameters = '64_C3CE0002_9600_8_1';
+            sunSpecReg = 69 + 58;
+            sunSpecLength = 2;
             displayFactors.firstDataChar = 6;
             displayFactors.lastDataChar = 13;
             displayFactors.dataFormat = 'hex';
@@ -859,7 +786,8 @@ function readSunSpec(sunSpecName){
             displayFactors.displayName = "Phase A Exported Apparent Energy";
             break;
         case "M_Exported_VA_B":
-            interest.parameters = '64_C3D00002_9600_8_1';
+            sunSpecReg = 69 + 60;
+            sunSpecLength = 2;
             displayFactors.firstDataChar = 6;
             displayFactors.lastDataChar = 13;
             displayFactors.dataFormat = 'hex';
@@ -869,7 +797,8 @@ function readSunSpec(sunSpecName){
             displayFactors.displayName = "Phase B Exported Apparent Energy";
             break;
         case "M_Exported_VA_C":
-            interest.parameters = '64_C3D20002_9600_8_1';
+            sunSpecReg = 69 + 62;
+            sunSpecLength = 2;
             displayFactors.firstDataChar = 6;
             displayFactors.lastDataChar = 13;
             displayFactors.dataFormat = 'hex';
@@ -884,7 +813,8 @@ function readSunSpec(sunSpecName){
     // IMPORTED
     //================================================================================      
         case "M_Imported_VA":
-            interest.parameters = '64_C3D40002_9600_8_1';
+            sunSpecReg = 69 + 64;
+            sunSpecLength = 2;
             displayFactors.firstDataChar = 6;
             displayFactors.lastDataChar = 13;
             displayFactors.dataFormat = 'hex';
@@ -894,7 +824,8 @@ function readSunSpec(sunSpecName){
             displayFactors.displayName = "Total Imported Apparent Energy";
             break;
         case "M_Imported_VA_A":
-            interest.parameters = '64_C3D60002_9600_8_1';
+            sunSpecReg = 69 + 66;
+            sunSpecLength = 2;
             displayFactors.firstDataChar = 6;
             displayFactors.lastDataChar = 13;
             displayFactors.dataFormat = 'hex';
@@ -904,7 +835,8 @@ function readSunSpec(sunSpecName){
             displayFactors.displayName = "Phase A Imported Apparent Energy";
             break;
         case "M_Imported_VA_B":
-            interest.parameters = '64_C3D80002_9600_8_1';
+            sunSpecReg = 69 + 68;
+            sunSpecLength = 2;
             displayFactors.firstDataChar = 6;
             displayFactors.lastDataChar = 13;
             displayFactors.dataFormat = 'hex';
@@ -914,7 +846,8 @@ function readSunSpec(sunSpecName){
             displayFactors.displayName = "Phase B Imported Apparent Energy";
             break;
         case "M_Imported_VA_C":
-            interest.parameters = '64_C3DA0002_9600_8_1';
+            sunSpecReg = 69 + 70;
+            sunSpecLength = 2;
             displayFactors.firstDataChar = 6;
             displayFactors.lastDataChar = 13;
             displayFactors.dataFormat = 'hex';
@@ -930,7 +863,8 @@ function readSunSpec(sunSpecName){
     // IMPORTED
     //================================================================================      
         case "M_Import_VARh_Q1":
-            interest.parameters = '64_C3DD0002_9600_8_1';
+            sunSpecReg = 69 + 73;
+            sunSpecLength = 2;
             displayFactors.firstDataChar = 6;
             displayFactors.lastDataChar = 13;
             displayFactors.dataFormat = 'hex';
@@ -940,7 +874,8 @@ function readSunSpec(sunSpecName){
             displayFactors.displayName = "Quadrant 1: Total Imported Reactive Energyy";
             break;
         case "M_Import_VARh_Q1A":
-            interest.parameters = '64_C3DF0002_9600_8_1';
+            sunSpecReg = 69 + 75;
+            sunSpecLength = 2;
             displayFactors.firstDataChar = 6;
             displayFactors.lastDataChar = 13;
             displayFactors.dataFormat = 'hex';
@@ -950,7 +885,8 @@ function readSunSpec(sunSpecName){
             displayFactors.displayName = "Phase A - Quadrant 1: Imported Reactive Energy";
             break;
         case "M_Import_VARh_Q1B":
-            interest.parameters = '64_C3E10002_9600_8_1';
+            sunSpecReg = 69 + 77;
+            sunSpecLength = 2;
             displayFactors.firstDataChar = 6;
             displayFactors.lastDataChar = 13;
             displayFactors.dataFormat = 'hex';
@@ -960,7 +896,8 @@ function readSunSpec(sunSpecName){
             displayFactors.displayName = "Phase B - Quadrant 1: Imported Reactive Energyy";
             break;
         case "M_Import_VARh_Q1C":
-            interest.parameters = '64_C3E30002_9600_8_1';
+            sunSpecReg = 69 + 79;
+            sunSpecLength = 2;
             displayFactors.firstDataChar = 6;
             displayFactors.lastDataChar = 13;
             displayFactors.dataFormat = 'hex';
@@ -970,7 +907,8 @@ function readSunSpec(sunSpecName){
             displayFactors.displayName = "Phase C - Quadrant 1: Imported Reactive Energy";
             break; 
         case "M_Import_VARh_Q2":
-            interest.parameters = '64_C3E50002_9600_8_1';
+            sunSpecReg = 69 + 81;
+            sunSpecLength = 2;
             displayFactors.firstDataChar = 6;
             displayFactors.lastDataChar = 13;
             displayFactors.dataFormat = 'hex';
@@ -980,7 +918,8 @@ function readSunSpec(sunSpecName){
             displayFactors.displayName = "Quadrant 2: Total Imported Reactive Energy";
             break;
         case "M_Import_VARh_Q2A":
-            interest.parameters = '64_C3E70002_9600_8_1';
+            sunSpecReg = 69 + 83;
+            sunSpecLength = 2;
             displayFactors.firstDataChar = 6;
             displayFactors.lastDataChar = 13;
             displayFactors.dataFormat = 'hex';
@@ -990,7 +929,8 @@ function readSunSpec(sunSpecName){
             displayFactors.displayName = "Phase A - Quadrant 2: Imported Reactive Energy";
             break;
         case "M_Import_VARh_Q2B":
-            interest.parameters = '64_C3E90002_9600_8_1';
+            sunSpecReg = 69 + 85;
+            sunSpecLength = 2;
             displayFactors.firstDataChar = 6;
             displayFactors.lastDataChar = 13;
             displayFactors.dataFormat = 'hex';
@@ -1000,7 +940,8 @@ function readSunSpec(sunSpecName){
             displayFactors.displayName = "Phase B - Quadrant 2: Imported Reactive Energy";
             break;
         case "M_Import_VARh_Q2C":
-            interest.parameters = '64_C3EB0002_9600_8_1';
+            sunSpecReg = 69 + 87;
+            sunSpecLength = 2;
             displayFactors.firstDataChar = 6;
             displayFactors.lastDataChar = 13;
             displayFactors.dataFormat = 'hex';
@@ -1015,7 +956,8 @@ function readSunSpec(sunSpecName){
     // EXPORTED
     //================================================================================   
         case "M_Export_VARh_Q3":
-            interest.parameters = '64_C3ED0002_9600_8_1';
+            sunSpecReg = 69 + 89;
+            sunSpecLength = 2;
             displayFactors.firstDataChar = 6;
             displayFactors.lastDataChar = 13;
             displayFactors.dataFormat = 'hex';
@@ -1025,7 +967,8 @@ function readSunSpec(sunSpecName){
             displayFactors.displayName = "Quadrant 3: Total Exported Reactive Energy";
             break;
         case "M_Export_VARh_Q3A":
-            interest.parameters = '64_C3EF0002_9600_8_1';
+            sunSpecReg = 69 + 91;
+            sunSpecLength = 2;
             displayFactors.firstDataChar = 6;
             displayFactors.lastDataChar = 13;
             displayFactors.dataFormat = 'hex';
@@ -1035,7 +978,8 @@ function readSunSpec(sunSpecName){
             displayFactors.displayName = "Phase A - Quadrant 3: Exported Reactive Energy";
             break;
         case "M_Export_VARh_Q3B":
-            interest.parameters = '64_C3F10002_9600_8_1';
+            sunSpecReg = 69 + 93;
+            sunSpecLength = 2;
             displayFactors.firstDataChar = 6;
             displayFactors.lastDataChar = 13;
             displayFactors.dataFormat = 'hex';
@@ -1045,7 +989,8 @@ function readSunSpec(sunSpecName){
             displayFactors.displayName = "Phase B - Quadrant 3: Exported Reactive Energy";
             break;
         case "M_Export_VARh_Q3C":
-            interest.parameters = '64_C3F30002_9600_8_1';
+            sunSpecReg = 69 + 95;
+            sunSpecLength = 2;
             displayFactors.firstDataChar = 6;
             displayFactors.lastDataChar = 13;
             displayFactors.dataFormat = 'hex';
@@ -1055,7 +1000,8 @@ function readSunSpec(sunSpecName){
             displayFactors.displayName = "Phase C - Quadrant 3: Exported Reactive Energy";
             break; 
             case "M_Export_VARh_Q4":
-            interest.parameters = '64_C3F50002_9600_8_1';
+            sunSpecReg = 69 + 97;
+            sunSpecLength = 2;
             displayFactors.firstDataChar = 6;
             displayFactors.lastDataChar = 13;
             displayFactors.dataFormat = 'hex';
@@ -1065,7 +1011,8 @@ function readSunSpec(sunSpecName){
             displayFactors.displayName = "Quadrant 4: Total Exported Reactive Energyy";
             break;
         case "M_Export_VARh_Q4A":
-            interest.parameters = '64_C3F70002_9600_8_1';
+            sunSpecReg = 69 + 99;
+            sunSpecLength = 2;
             displayFactors.firstDataChar = 6;
             displayFactors.lastDataChar = 13;
             displayFactors.dataFormat = 'hex';
@@ -1075,7 +1022,8 @@ function readSunSpec(sunSpecName){
             displayFactors.displayName = "Phase A - Quadrant 4: Exported Reactive Energy";
             break;
         case "M_Export_VARh_Q4B":
-            interest.parameters = '64_C3F90002_9600_8_1';
+            sunSpecReg = 69 + 101;
+            sunSpecLength = 2;
             displayFactors.firstDataChar = 6;
             displayFactors.lastDataChar = 13;
             displayFactors.dataFormat = 'hex';
@@ -1085,7 +1033,8 @@ function readSunSpec(sunSpecName){
             displayFactors.displayName = "Phase B - Quadrant 4: Exported Reactive Energy";
             break;
         case "M_Export_VARh_Q4C":
-            interest.parameters = '64_C3FB0002_9600_8_1';
+            sunSpecReg = 69 + 103;
+            sunSpecLength = 2;
             displayFactors.firstDataChar = 6;
             displayFactors.lastDataChar = 13;
             displayFactors.dataFormat = 'VARh';
@@ -1098,7 +1047,8 @@ function readSunSpec(sunSpecName){
     // METER EVENTS
     //================================================================================       
         case "M_Events":
-            interest.parameters = '64_C3FE0002_9600_8_1';
+            sunSpecReg = 69 + 106;
+            sunSpecLength = 2;
             displayFactors.firstDataChar = 6;
             displayFactors.lastDataChar = 13;
             displayFactors.dataFormat = 'binary';
@@ -1110,74 +1060,13 @@ function readSunSpec(sunSpecName){
     //================================================================================
     // INVERTER COMMANDS BELOW
     //================================================================================
-    //================================================================================
-    // INVERTER COMMON
-    //================================================================================
-        case "I_Mn":
-            interest.parameters = '01_9C440010_9600_8_1';
-            displayFactors.firstDataChar = 6;
-            displayFactors.lastDataChar = 37;
-            displayFactors.dataFormat = 'ascii';
-            displayFactors.scaleFactor = 0;
-            displayFactors.offsetFactor = 0;
-            displayFactors.unitString = '';
-            displayFactors.displayName = "Manufacturer";
-            break;
-        case "I_Md":
-            interest.parameters = '01_9C540010_9600_8_1';
-            displayFactors.firstDataChar = 6;
-            displayFactors.lastDataChar = 37;
-            displayFactors.dataFormat = 'ascii';
-            displayFactors.scaleFactor = 0;
-            displayFactors.offsetFactor = 0;
-            displayFactors.unitString = '';
-            displayFactors.displayName = "Model";
-            break;
-        case "I_Opt":
-            interest.parameters = '01_9C640008_9600_8_1';
-            displayFactors.firstDataChar = 6;
-            displayFactors.lastDataChar = 21;
-            displayFactors.dataFormat = 'ascii';
-            displayFactors.scaleFactor = 0;
-            displayFactors.offsetFactor = 0;
-            displayFactors.unitString = '';
-            displayFactors.displayName = "Option";
-            break;    
-        case "I_Vr":
-            interest.parameters = '01_9C6C0008_9600_8_1';
-            displayFactors.firstDataChar = 6;
-            displayFactors.lastDataChar = 21;
-            displayFactors.dataFormat = 'ascii';
-            displayFactors.scaleFactor = 0;
-            displayFactors.offsetFactor = 0;
-            displayFactors.unitString = '';
-            displayFactors.displayName = "Version";
-            break;    
-        case "I_SN":
-            interest.parameters = '01_9C740010_9600_8_1';
-            displayFactors.firstDataChar = 6;
-            displayFactors.lastDataChar = 37;
-            displayFactors.dataFormat = 'ascii';
-            displayFactors.scaleFactor = 0;
-            displayFactors.offsetFactor = 0;
-            displayFactors.unitString = '';
-            displayFactors.displayName = "Serial Number";
-            break;    
-        case "I_DA":
-            interest.parameters = '01_9C840001_9600_8_1';
-            displayFactors.firstDataChar = 6;
-            displayFactors.lastDataChar = 9;
-            displayFactors.dataFormat = 'hex';
-            displayFactors.scaleFactor = 0;
-            displayFactors.offsetFactor = 0;
-            displayFactors.unitString = '';
-            displayFactors.displayName = "Device Address";
-            break;  
+
     //================================================================================
     // INVERTER CURRENT
     //================================================================================
         case "I_AC_Current":
-            interest.parameters = '01_9C870001_9600_8_1';
+            sunSpecReg = 69 + 3;
+            sunSpecLength = 1;
             displayFactors.firstDataChar = 6;
             displayFactors.lastDataChar = 9;
             displayFactors.dataFormat = 'hex';
@@ -1187,7 +1076,8 @@ function readSunSpec(sunSpecName){
             displayFactors.displayName = "AC Total Current value";
             break;
         case "I_AC_CurrentA":
-            interest.parameters = '01_9C880001_9600_8_1';
+            sunSpecReg = 69 + 4;
+            sunSpecLength = 1;
             displayFactors.firstDataChar = 6;
             displayFactors.lastDataChar = 9;
             displayFactors.dataFormat = 'hex';
@@ -1197,7 +1087,8 @@ function readSunSpec(sunSpecName){
             displayFactors.displayName = "AC Phase-A Current value";
             break;
         case "I_AC_CurrentB":
-            interest.parameters = '01_9C890001_9600_8_1';
+            sunSpecReg = 69 + 5;
+            sunSpecLength = 1;
             displayFactors.firstDataChar = 6;
             displayFactors.lastDataChar = 9;
             displayFactors.dataFormat = 'hex';
@@ -1207,7 +1098,8 @@ function readSunSpec(sunSpecName){
             displayFactors.displayName = "AC Phase-B Current value";
             break;
         case "I_AC_CurrentC":
-            interest.parameters = '01_9C8A0001_9600_8_1';
+            sunSpecReg = 69 + 6;
+            sunSpecLength = 1;
             displayFactors.firstDataChar = 6;
             displayFactors.lastDataChar = 9;
             displayFactors.dataFormat = 'hex';
@@ -1219,38 +1111,9 @@ function readSunSpec(sunSpecName){
     //================================================================================
     // INVERTER VOLTAGE
     //================================================================================
-        case "I_AC_VoltageAN":
-            interest.parameters = '01_9C8F0001_9600_8_1';
-            displayFactors.firstDataChar = 6;
-            displayFactors.lastDataChar = 9;
-            displayFactors.dataFormat = 'hex';
-            displayFactors.scaleFactor = 0.1;
-            displayFactors.offsetFactor = 0;
-            displayFactors.unitString = 'V';
-            displayFactors.displayName = "AC Voltage Phase-A-to-neutral value";
-            break;
-        case "I_AC_VoltageBN":
-            interest.parameters = '01_9C900001_9600_8_1';
-            displayFactors.firstDataChar = 6;
-            displayFactors.lastDataChar = 9;
-            displayFactors.dataFormat = 'hex';
-            displayFactors.scaleFactor = 0.1;
-            displayFactors.offsetFactor = 0;
-            displayFactors.unitString = 'V';
-            displayFactors.displayName = "AC Voltage Phase-B-to-neutral value";
-            break;
-        case "I_AC_VoltageCN":
-            interest.parameters = '01_9C910001_9600_8_1';
-            displayFactors.firstDataChar = 6;
-            displayFactors.lastDataChar = 9;
-            displayFactors.dataFormat = 'hex';
-            displayFactors.scaleFactor = 0.1;
-            displayFactors.offsetFactor = 0;
-            displayFactors.unitString = 'V';
-            displayFactors.displayName = "AC Voltage Phase-C-to-neutral value";
-            break;
         case "I_AC_VoltageAB":
-            interest.parameters = '01_9C8C0001_9600_8_1';
+            sunSpecReg = 69 + 8;
+            sunSpecLength = 1;
             displayFactors.firstDataChar = 6;
             displayFactors.lastDataChar = 9;
             displayFactors.dataFormat = 'hex';
@@ -1260,7 +1123,8 @@ function readSunSpec(sunSpecName){
             displayFactors.displayName = "AC Voltage Phase-AB value";
             break;
         case "I_AC_VoltageBC":
-            interest.parameters = '01_9C8D0001_9600_8_1';
+            sunSpecReg = 69 + 9;
+            sunSpecLength = 1;
             displayFactors.firstDataChar = 6;
             displayFactors.lastDataChar = 9;
             displayFactors.dataFormat = 'hex';
@@ -1270,7 +1134,8 @@ function readSunSpec(sunSpecName){
             displayFactors.displayName = "AC Voltage Phase-BC value";
             break;
         case "I_AC_VoltageCA":
-            interest.parameters = '01_9C8E0001_9600_8_1';
+            sunSpecReg = 69 + 10;
+            sunSpecLength = 1;
             displayFactors.firstDataChar = 6;
             displayFactors.lastDataChar = 9;
             displayFactors.dataFormat = 'hex';
@@ -1278,12 +1143,60 @@ function readSunSpec(sunSpecName){
             displayFactors.offsetFactor = 0;
             displayFactors.unitString = 'V';
             displayFactors.displayName = "AC Voltage Phase-CA value";
+            break;        
+        case "I_AC_VoltageAN":
+            sunSpecReg = 69 + 11;
+            sunSpecLength = 1;
+            displayFactors.firstDataChar = 6;
+            displayFactors.lastDataChar = 9;
+            displayFactors.dataFormat = 'hex';
+            displayFactors.scaleFactor = 0.1;
+            displayFactors.offsetFactor = 0;
+            displayFactors.unitString = 'V';
+            displayFactors.displayName = "AC Voltage Phase-A-to-neutral value";
+            break;
+        case "I_AC_VoltageBN":
+            sunSpecReg = 69 + 12;
+            sunSpecLength = 1;
+            displayFactors.firstDataChar = 6;
+            displayFactors.lastDataChar = 9;
+            displayFactors.dataFormat = 'hex';
+            displayFactors.scaleFactor = 0.1;
+            displayFactors.offsetFactor = 0;
+            displayFactors.unitString = 'V';
+            displayFactors.displayName = "AC Voltage Phase-B-to-neutral value";
+            break;
+        case "I_AC_VoltageCN":
+            sunSpecReg = 69 + 13;
+            sunSpecLength = 1;
+            displayFactors.firstDataChar = 6;
+            displayFactors.lastDataChar = 9;
+            displayFactors.dataFormat = 'hex';
+            displayFactors.scaleFactor = 0.1;
+            displayFactors.offsetFactor = 0;
+            displayFactors.unitString = 'V';
+            displayFactors.displayName = "AC Voltage Phase-C-to-neutral value";
+            break;
+    //================================================================================
+    // INVERTER POWER
+    //================================================================================
+        case "I_AC_Power":
+            sunSpecReg = 69 + 15;
+            sunSpecLength = 1;
+            displayFactors.firstDataChar = 6;
+            displayFactors.lastDataChar = 9;
+            displayFactors.dataFormat = 'hex';
+            displayFactors.scaleFactor = 0.1;
+            displayFactors.offsetFactor = 0;
+            displayFactors.unitString = 'W';
+            displayFactors.displayName = "AC Power value";
             break;
     //================================================================================
     // INVERTER FREQUENCY
     //================================================================================
         case "I_AC_Frequency":
-            interest.parameters = '01_9C950001_9600_8_1';
+            sunSpecReg = 69 + 17;
+            sunSpecLength = 1;
             displayFactors.firstDataChar = 6;
             displayFactors.lastDataChar = 9;
             displayFactors.dataFormat = 'hex';
@@ -1295,18 +1208,9 @@ function readSunSpec(sunSpecName){
     //================================================================================
     // INVERTER POWER
     //================================================================================
-        case "I_AC_Power":
-            interest.parameters = '01_9C930001_9600_8_1';
-            displayFactors.firstDataChar = 6;
-            displayFactors.lastDataChar = 9;
-            displayFactors.dataFormat = 'hex';
-            displayFactors.scaleFactor = 0.1;
-            displayFactors.offsetFactor = 0;
-            displayFactors.unitString = 'W';
-            displayFactors.displayName = "AC Power value";
-            break;
         case "I_AC_VA":
-            interest.parameters = '01_9C970001_9600_8_1';
+            sunSpecReg = 69 + 19;
+            sunSpecLength = 1;
             displayFactors.firstDataChar = 6;
             displayFactors.lastDataChar = 9;
             displayFactors.dataFormat = 'hex';
@@ -1316,7 +1220,8 @@ function readSunSpec(sunSpecName){
             displayFactors.displayName = "Apparent Power";
             break;
         case "I_AC_VAR":
-            interest.parameters = '01_9C990001_9600_8_1';
+            sunSpecReg = 69 + 21;
+            sunSpecLength = 1;
             displayFactors.firstDataChar = 6;
             displayFactors.lastDataChar = 9;
             displayFactors.dataFormat = 'hex';
@@ -1326,7 +1231,8 @@ function readSunSpec(sunSpecName){
             displayFactors.displayName = "Reactive Power";
             break;
         case "I_AC_PF":
-            interest.parameters = '01_9C9B0001_9600_8_1';
+            sunSpecReg = 69 + 23;
+            sunSpecLength = 1;
             displayFactors.firstDataChar = 6;
             displayFactors.lastDataChar = 9;
             displayFactors.dataFormat = 'hex';
@@ -1339,7 +1245,8 @@ function readSunSpec(sunSpecName){
     // INVERTER ENERGY
     //================================================================================
         case "I_AC_Energy_WH":
-            interest.parameters = '01_9C9D0002_9600_8_1';
+            sunSpecReg = 69 + 25;
+            sunSpecLength = 2;
             displayFactors.firstDataChar = 6;
             displayFactors.lastDataChar = 13;
             displayFactors.dataFormat = 'hex';
@@ -1352,7 +1259,8 @@ function readSunSpec(sunSpecName){
     // INVERTER DC
     //================================================================================
         case "I_DC_Current":
-            interest.parameters = '01_9CA00001_9600_8_1';
+            sunSpecReg = 69 + 28;
+            sunSpecLength = 1;
             displayFactors.firstDataChar = 6;
             displayFactors.lastDataChar = 9;
             displayFactors.dataFormat = 'hex';
@@ -1362,7 +1270,8 @@ function readSunSpec(sunSpecName){
             displayFactors.displayName = "DC Current value";
             break;
         case "I_DC_Voltage":
-            interest.parameters = '01_9CA20001_9600_8_1';
+            sunSpecReg = 69 + 30;
+            sunSpecLength = 1;
             displayFactors.firstDataChar = 6;
             displayFactors.lastDataChar = 9;
             displayFactors.dataFormat = 'hex';
@@ -1372,7 +1281,8 @@ function readSunSpec(sunSpecName){
             displayFactors.displayName = "DC Voltage value";
             break;
         case "I_DC_Power":
-            interest.parameters = '01_9CA40001_9600_8_1';
+            sunSpecReg = 69 + 32;
+            sunSpecLength = 1;
             displayFactors.firstDataChar = 6;
             displayFactors.lastDataChar = 9;
             displayFactors.dataFormat = 'hex';
@@ -1385,7 +1295,8 @@ function readSunSpec(sunSpecName){
     // INVERTER TEMPERATURE
     //================================================================================
         case "I_Temp_Cab":
-            interest.parameters = '01_9CA60001_9600_8_1'; // could be wrong
+            sunSpecReg = 69 + 34;
+            sunSpecLength = 1;
             displayFactors.firstDataChar = 6;
             displayFactors.lastDataChar = 9;
             displayFactors.dataFormat = 'hex';
@@ -1395,7 +1306,8 @@ function readSunSpec(sunSpecName){
             displayFactors.displayName = "Cabinet Temperature";
             break;
         case "I_Temp_Sink":
-            interest.parameters = '01_9CA70001_9600_8_1';
+            sunSpecReg = 69 + 35;
+            sunSpecLength = 1;
             displayFactors.firstDataChar = 6;
             displayFactors.lastDataChar = 9;
             displayFactors.dataFormat = 'hex';
@@ -1405,7 +1317,8 @@ function readSunSpec(sunSpecName){
             displayFactors.displayName = "Coolant or Heat Sink Temperature";
             break;
         case "I_Temp_Trans":
-            interest.parameters = '01_9CA80001_9600_8_1'; // could be wrong
+            sunSpecReg = 69 + 36;
+            sunSpecLength = 1;
             displayFactors.firstDataChar = 6;
             displayFactors.lastDataChar = 9;
             displayFactors.dataFormat = 'hex';
@@ -1415,7 +1328,8 @@ function readSunSpec(sunSpecName){
             displayFactors.displayName = "Transformer Temperature";
             break;
         case "I_Temp_Other":
-            interest.parameters = '01_9CA90001_9600_8_1'; // could be wrong
+            sunSpecReg = 69 + 37;
+            sunSpecLength = 1;
             displayFactors.firstDataChar = 6;
             displayFactors.lastDataChar = 9;
             displayFactors.dataFormat = 'hex';
@@ -1428,7 +1342,8 @@ function readSunSpec(sunSpecName){
     // INVERTER STATUS/EVENTS
     //================================================================================
         case "I_Status":
-            interest.parameters = '01_9CAB0001_9600_8_1';
+            sunSpecReg = 69 + 39;
+            sunSpecLength = 1;
             displayFactors.firstDataChar = 6;
             displayFactors.lastDataChar = 9;
             displayFactors.dataFormat = 'binary';
@@ -1438,7 +1353,8 @@ function readSunSpec(sunSpecName){
             displayFactors.displayName = "Operating State";
             break;
         case "I_Status_Vendor":
-            interest.parameters = '01_9CAC0001_9600_8_1';
+            sunSpecReg = 69 + 40;
+            sunSpecLength = 1;
             displayFactors.firstDataChar = 6;
             displayFactors.lastDataChar = 9;
             displayFactors.dataFormat = 'binary';
@@ -1448,7 +1364,8 @@ function readSunSpec(sunSpecName){
             displayFactors.displayName = "Vendor Defined Operating State";
             break;
         case "I_Event_1":
-            interest.parameters = '01_9CAD0002_9600_8_1';
+            sunSpecReg = 69 + 41;
+            sunSpecLength = 2;
             displayFactors.firstDataChar = 6;
             displayFactors.lastDataChar = 13;
             displayFactors.dataFormat = 'binary';
@@ -1458,7 +1375,8 @@ function readSunSpec(sunSpecName){
             displayFactors.displayName = "Event Flags (bits 0-31)";
             break;
         case "I_Event_2":
-            interest.parameters = '01_9CAF0002_9600_8_1';
+            sunSpecReg = 69 + 43;
+            sunSpecLength = 2;
             displayFactors.firstDataChar = 6;
             displayFactors.lastDataChar = 13;
             displayFactors.dataFormat = 'binary';
@@ -1468,7 +1386,8 @@ function readSunSpec(sunSpecName){
             displayFactors.displayName = "Event Flags (bits 32-63)";
             break;
         case "I_Event_1_Vendor":
-            interest.parameters = '01_9CB10002_9600_8_1';
+            sunSpecReg = 69 + 45;
+            sunSpecLength = 2;
             displayFactors.firstDataChar = 6;
             displayFactors.lastDataChar = 13;
             displayFactors.dataFormat = 'binary';
@@ -1478,7 +1397,8 @@ function readSunSpec(sunSpecName){
             displayFactors.displayName = "Vendor Defined Event Flags (bits 0-31)";
             break;
         case "I_Event_2_Vendor":
-            interest.parameters = '01_9CB30002_9600_8_1';
+            sunSpecReg = 69 + 47;
+            sunSpecLength = 2;
             displayFactors.firstDataChar = 6;
             displayFactors.lastDataChar = 13;
             displayFactors.dataFormat = 'binary';
@@ -1488,7 +1408,8 @@ function readSunSpec(sunSpecName){
             displayFactors.displayName = "Vendor Defined Event Flags (bits 32-63)";
             break;
         case "I_Event_3_Vendor":
-            interest.parameters = '01_9CB50002_9600_8_1';
+            sunSpecReg = 69 + 49;
+            sunSpecLength = 2;
             displayFactors.firstDataChar = 6;
             displayFactors.lastDataChar = 13;
             displayFactors.dataFormat = 'binary';
@@ -1498,7 +1419,8 @@ function readSunSpec(sunSpecName){
             displayFactors.displayName = "Vendor Defined Event Flags (bits 64-95)";
             break;
         case "I_Event_4_Vendor":
-            interest.parameters = '01_9CB70002_9600_8_1';
+            sunSpecReg = 69 + 51;
+            sunSpecLength = 2;
             displayFactors.firstDataChar = 6;
             displayFactors.lastDataChar = 13;
             displayFactors.dataFormat = 'binary';
@@ -1514,7 +1436,8 @@ function readSunSpec(sunSpecName){
     // This is something any SunSpec equipment can do
     //================================================================================   
         default:
-            interest.parameters = '01_C3540010_9600_8_1';
+            sunSpecReg = 5;
+            sunSpecLength = 16;
             displayFactors.firstDataChar = 6;
             displayFactors.lastDataChar = 37;
             displayFactors.dataFormat = 'ascii';
@@ -1523,8 +1446,13 @@ function readSunSpec(sunSpecName){
             displayFactors.unitString = '';
             displayFactors.displayName = sunSpecName;    } 
 
+    interest.rw = 'read';
+    interest.category = 'modbus';
+    interest.task = 'fc03';
+    interest.parameters = decimalToHex(fleetLink[target].modbusAddress, 2) + '_' + decimalToHex(fleetLink[target].baseAddress + sunSpecReg, 4) + decimalToHex(sunSpecLength, 4) + '_9600_8_1';
     updateParamTable(target,interest,displayFactors,gateway);
 }
+
 
 // Format the data for pretty display
 function formatData(rawData, interest){
@@ -1571,15 +1499,37 @@ return returnDataString
 
 
 function updateParamTable(target, interest, displayFactors, gatewayID){
-    var x = document.getElementById("paramTable").rows[1].cells;
-    x[0].innerHTML = gateway;
-    x[1].innerHTML = displayFactors.displayName;
-    x[2].innerHTML = target;
+    var x = document.getElementById("paramTable").rows[0].cells;
+
+    x[0].innerHTML = gateway  + "  >";
+    x[1].innerHTML = ">  " + target;
+    x[2].innerHTML = displayFactors.displayName;    
+    x[3].innerHTML = "";
+    x[3].style.backgroundColor = null;  
 }
 
+
+function drawNodePath(unitId1,unitId2){
+
+var nodePlanCoordinates = [
+          {lat: fleetLink[unitId1].latitude, lng: fleetLink[unitId1].longitude},
+          {lat: fleetLink[unitId2].latitude, lng: fleetLink[unitId2].longitude}
+        ];
+
+var nodePath = new google.maps.Polyline({
+          path: nodePlanCoordinates,
+          geodesic: true,
+          strokeColor: '#FF0066',
+          strokeOpacity: 1.0,
+          strokeWeight: 3
+        });
+
+nodePath.setMap(mapFleetLink);
+
+}
 // read the web UI to determine the unit that is being targeted
 function expressInterest(buttonID) {
-
+    var x = document.getElementById("paramTable").rows[0].cells;
 // Trap the special case of write the geolocation to a unit, which uses fixed predefined geolocation in the Interest
 // Until you write a unit's geolocation into flash, you wouldn;t know what usng to use to address it, otherwise
 var tempUSNG = interest.usng; // First save the unit's expected geolocation temporarily (will put back after Express Interest below)
@@ -1589,12 +1539,25 @@ if (interest.rw == 'write'&& interest.category == 'flash' && interest.task == 'g
 
     console.log(interest);
 
-    var waitDisplay = "Sending to " + target;
-    if (target != gateway){
-        waitDisplay += " via " + gateway ;
+    initMap();
+
+    var waitButtonDisplay = "Sending";    
+    var waitResultDisplay = "";
+
+    if (target == gateway){
+        waitResultDisplay = "Direct.."
+        x[3].innerHTML = waitResultDisplay;
+        x[3].style.background='#1474BF';
+        buttonID.style.background='#1474BF';
+    } 
+    else  {
+        waitResultDisplay = "via Wireless.."
+        x[3].innerHTML = waitResultDisplay;
+        x[3].style.background='#9999ff';           
+        buttonID.style.background='#9999ff';
     }
-    buttonID.style.background='#1474BF';
-    buttonID.innerHTML = waitDisplay;
+    buttonID.innerHTML = waitButtonDisplay;
+
 
     // actual web POST
     $.ajax({
@@ -1603,26 +1566,34 @@ if (interest.rw == 'write'&& interest.category == 'flash' && interest.task == 'g
         data: JSON.stringify(interest), // convert interest string to JSON
         type: 'POST',
             success : function(response) {
-                presentableData = formatData(response, interest);
-                var successDisplay = target + " | " + presentableData;
-                buttonID.innerHTML = successDisplay;
+                var successDisplay = formatData(response, interest);
+                x[3].innerHTML = successDisplay;
+                x[3].style.background='#90A878';
+                buttonID.innerHTML = "GO";
                 buttonID.style.background='#90A878';
+                drawNodePath(gateway,target);
             },
             error : function(jqXHR, textStatus, err) {
-                //var errorResponse = jqXHR.status + ' ' + textStatus + ': ' + err + ' - ' + jqXHR.responseText;
                 var errorResponse = err ;
-
                 console.log(errorResponse);
-                buttonID.innerHTML = errorResponse;
-                buttonID.style.background='#D7AB4B';
+                x[3].innerHTML = errorResponse;
+                x[3].style.background='#D7AB4B';
+                buttonID.innerHTML = "GO";
+                buttonID.style.background='#90A878';
             }
         
     });
-    interest.usng = tempUSNG ; // Return the unit's expected geolcation 
+    interest.usng = tempUSNG ; // Return the unit's expected geolocation 
 
-    }
+}
+
+function decimalToHex(decimal, chars) {
+    return (decimal + Math.pow(16, chars)).toString(16).slice(-chars).toUpperCase();
+}
+
+
 
       $( window ).on( "load", function() {
+        initMap();
         updateParamTable(target,interest,displayFactors,gateway);
-        console.log("page loaded");
     });

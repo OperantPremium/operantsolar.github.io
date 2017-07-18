@@ -692,7 +692,7 @@ h6,
 }
 #header1-x .btn {
   font-family: 'Open Sans', sans-serif;
-  font-size: 20px;
+  font-size: 18px;
   font-weight: bold;
   border: none;
 }
@@ -706,11 +706,12 @@ h6,
   font-family: 'Open Sans', sans-serif;
   font-size: 18px;
   font-weight: bold;
-  background-color: #859B6E;
   color: #fafafa;
   border: 1px solid #fafafa;
   text-align: center;
   padding: 10px;
+  table-layout: fixed;
+  width: 200px;
 }
 #ext_menu-10 .hide-buttons .nav-btn {
   display: none !important;
