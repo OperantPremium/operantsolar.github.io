@@ -5,11 +5,11 @@
                     <div class="mbr-section-btn" style="margin-bottom: 30px; margin-top: 0px;">
                             <table id="paramTable" style="margin-bottom: 0px; margin-top: 0px;">
                                 <tr>
-                                    <td style="width: 100px"></td> 
-                                    <td style="width: 100px;"></td>
-                                    <td style="width: 250px;"></td>
+                                    <td style="width: 75px"></td> 
+                                    <td style="width: 75px;"></td>
+                                    <td style="width: 150px;"></td>
                                     <td style="width: 350px;"></td>
-                                    <td style="width: 200px;"><a class="btn btn-lg btn-success mbr-editable-button"  href="http://www.operantsolar.com" onclick="expressInterest(this); return false;">
+                                    <td style="width: 150px;"><a class="btn btn-lg btn-success mbr-editable-button"  href="http://www.operantsolar.com" onclick="expressInterest(this); return false;">
                                 <span class="mbri-logout mbr-iconfont mbr-iconfont-btn" style="color: rgb(250, 250, 250);"></span>GO</a> </td>
                                 </tr>
                             </table>
@@ -18,7 +18,7 @@
                     <div id="tableBlock">
                 </div>
         </div>
-        <div id="map" style="width: 1000px; height: 500px; margin-left: auto; margin-right: auto ; margin-bottom: 50px; border: 5px;"></div>
+        <div id="map" style="width: 800px; height: 400px; margin-left: auto; margin-right: auto ; margin-bottom: 50px; border: 5px;"></div>
         </div>
 
 </section>
