@@ -40,12 +40,12 @@
             <div class="dropdown ">
                 <a class="dropdown-item dropdown-toggle mbr-editable-menu-item" href="#" data-toggle="dropdown-submenu" aria-expanded="true">COMMON</a>
                 <div class="dropdown-menu dropdown-submenu">
-                    <a class="dropdown-item mbr-editable-menu-item" href="http://www.operantsolar.com" onclick="readSunSpec('Mn'); return false;">Mn</a> 
-                    <a class="dropdown-item mbr-editable-menu-item" href="http://www.operantsolar.com" onclick="readSunSpec('Md'); return false;">Md</a> 
-                    <a class="dropdown-item mbr-editable-menu-item" href="http://www.operantsolar.com" onclick="readSunSpec('Opt'); return false;">Opt</a> 
-                    <a class="dropdown-item mbr-editable-menu-item" href="http://www.operantsolar.com" onclick="readSunSpec('Vr'); return false;">Vr</a> 
-                    <a class="dropdown-item mbr-editable-menu-item" href="http://www.operantsolar.com" onclick="readSunSpec('SN'); return false;">SN</a> 
-                    <a class="dropdown-item mbr-editable-menu-item" href="http://www.operantsolar.com" onclick="readSunSpec('DA'); return false;">DA</a>                             
+                    <a class="dropdown-item mbr-editable-menu-item" href="http://www.operantsolar.com" onclick="readSunSpec('Mn'); return false;">Manufacturer</a> 
+                    <a class="dropdown-item mbr-editable-menu-item" href="http://www.operantsolar.com" onclick="readSunSpec('Md'); return false;">Model</a> 
+                    <a class="dropdown-item mbr-editable-menu-item" href="http://www.operantsolar.com" onclick="readSunSpec('Opt'); return false;">Option</a> 
+                    <a class="dropdown-item mbr-editable-menu-item" href="http://www.operantsolar.com" onclick="readSunSpec('Vr'); return false;">Version</a> 
+                    <a class="dropdown-item mbr-editable-menu-item" href="http://www.operantsolar.com" onclick="readSunSpec('SN'); return false;">Serial Number</a> 
+                    <a class="dropdown-item mbr-editable-menu-item" href="http://www.operantsolar.com" onclick="readSunSpec('DA'); return false;">Device Address</a>                             
                 </div>
             </div>           
 
@@ -250,12 +250,12 @@
             <div class="dropdown ">
                 <a class="dropdown-item dropdown-toggle mbr-editable-menu-item" href="#" data-toggle="dropdown-submenu" aria-expanded="true">COMMON</a>
                 <div class="dropdown-menu dropdown-submenu">
-                    <a class="dropdown-item mbr-editable-menu-item" href="http://www.operantsolar.com" onclick="readSunSpec('Mn'); return false;">Mn</a> 
-                    <a class="dropdown-item mbr-editable-menu-item" href="http://www.operantsolar.com" onclick="readSunSpec('Md'); return false;">Md</a> 
-                    <a class="dropdown-item mbr-editable-menu-item" href="http://www.operantsolar.com" onclick="readSunSpec('Opt'); return false;">Opt</a> 
-                    <a class="dropdown-item mbr-editable-menu-item" href="http://www.operantsolar.com" onclick="readSunSpec('Vr'); return false;">Vr</a> 
-                    <a class="dropdown-item mbr-editable-menu-item" href="http://www.operantsolar.com" onclick="readSunSpec('SN'); return false;">SN</a> 
-                    <a class="dropdown-item mbr-editable-menu-item" href="http://www.operantsolar.com" onclick="readSunSpec('DA'); return false;">DA</a>                             
+                    <a class="dropdown-item mbr-editable-menu-item" href="http://www.operantsolar.com" onclick="readSunSpec('Mn'); return false;">Manufacturer</a> 
+                    <a class="dropdown-item mbr-editable-menu-item" href="http://www.operantsolar.com" onclick="readSunSpec('Md'); return false;">Model</a> 
+                    <a class="dropdown-item mbr-editable-menu-item" href="http://www.operantsolar.com" onclick="readSunSpec('Opt'); return false;">Option</a> 
+                    <a class="dropdown-item mbr-editable-menu-item" href="http://www.operantsolar.com" onclick="readSunSpec('Vr'); return false;">Version</a> 
+                    <a class="dropdown-item mbr-editable-menu-item" href="http://www.operantsolar.com" onclick="readSunSpec('SN'); return false;">Serial Number</a> 
+                    <a class="dropdown-item mbr-editable-menu-item" href="http://www.operantsolar.com" onclick="readSunSpec('DA'); return false;">Device Address</a>                             
                 </div>
             </div>                 
                     

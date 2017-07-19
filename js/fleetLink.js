@@ -161,7 +161,7 @@ function initMap() {
 
     // Draw default map
         mapFleetLink = new google.maps.Map(document.getElementById('map'), {
-        zoom: 16,
+        zoom: 1,
         mapTypeId: google.maps.MapTypeId.SATELLITE,
         center: myLatLng
         });
@@ -1644,7 +1644,7 @@ if (interest.rw == 'write'&& interest.category == 'flash' && interest.task == 'g
 
     console.log(interest);
 
-   // initMap();
+    initMap();
 
     var waitButtonDisplay = "Sending";    
     var waitResultDisplay = "";
