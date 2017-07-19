@@ -2,8 +2,8 @@
 //Randy King 5/25/2017
 // default Interest with reasonable values
 
-var gateway = "SN503";
-var target = "SN503";
+var gateway = "SN403";
+var target = "SN403";
 var sunSpecReg = 5; // as a decimal number, like SunSpec standards
 var sunSpecLength = 16; // as a decimal number, like SunSpec standards
 var wiFiSSID = "";
@@ -13,22 +13,22 @@ var mapFleetLink;
 var fleetLink = { 
     //dev
     "SN402":{"network":"dev", "locName":"Shirlie", "deviceIdHash":"D85F6461EB91", "deviceID":"5000d8c46a56dc4c", "usng":"21016306", "latitude":38.5157472, "longitude":-122.7589444, "agentUrl": "/oHMQMg_lcxsT", "baseAddress":49999, "modbusAddress": 100},
-    "SN403":{"network":"dev", "locName":"Kiva", "deviceIdHash":"018C268ECB5B", "deviceID":"5000d8c46a56dd24", "usng":"20916258", "latitude":38.5113556, "longitude":-122.7601444, "agentUrl": "/wXqOLIl3KiLB", "baseAddress":49999, "modbusAddress": 100},
-    "SN404":{"network":"dev", "locName":"Sugiyama Outside", "deviceIdHash":"2BF6EF3EFD90", "deviceID":"5000d8c46a56ddc8", "usng":"21236282", "latitude":38.51355, "longitude":-122.7564556, "agentUrl": "/QGO7JQAzyiev", "baseAddress":49999, "modbusAddress": 100},
+ //   "SN403":{"network":"dev", "locName":"Sugiyama Outside", "deviceIdHash":"2BF6EF3EFD90", "deviceID":"5000d8c46a56ddc8", "usng":"21236282", "latitude":38.5134, "longitude":-122.75655, "agentUrl": "/QGO7JQAzyiev", "baseAddress":49999, "modbusAddress": 100},
+    "SN404":{"network":"dev", "locName":"Kiva", "deviceIdHash":"018C268ECB5B", "deviceID":"5000d8c46a56dd24", "usng":"20916258", "latitude":38.5113556, "longitude":-122.7601444, "agentUrl": "/wXqOLIl3KiLB", "baseAddress":49999, "modbusAddress": 100},
     "SN405":{"network":"dev", "locName":"Gibson", "deviceIdHash":"718A34D8423A", "deviceID":"5000d8c46a56ddb2", "usng":"21426258", "latitude":38.5113889, "longitude":-122.7542667, "agentUrl": "/CyPoe3l9E5Od", "baseAddress":49999, "modbusAddress": 100},
     "SN406":{"network":"dev", "locName":"Beckman", "deviceIdHash":"C5F6371C8A03", "deviceID":"5000d8c46a56dd18", "usng":"21896255", "latitude":38.5110833, "longitude":-122.7488806, "agentUrl": "/hxsSiYETEEpd", "baseAddress":49999, "modbusAddress": 100},
-    "SN407":{"network":"dev", "locName":"Sugiyama Inside", "deviceIdHash":"4CA33E88EDAA", "deviceID":"5000d8c46a56ddde", "usng":"21226282", "latitude":38.5135694, "longitude":-122.756525, "agentUrl": "/VifAbahCX8ux", "baseAddress":49999, "modbusAddress": 100},
-    //solmetric
-    "SN506":{"network":"solmetric", "locName":"Solmetric 1", "deviceIdHash":"C3B996B9F76C", "deviceID":"5000d8c46a572880", "usng":"15795070", "latitude":38.4044100, "longitude":-122.8190367, "agentUrl": "/oGQ_PBSAUppO", "baseAddress":39999, "modbusAddress": 1},
-    "SN511":{"network":"solmetric", "locName":"Solmetric 2 ", "deviceIdHash":"C1B16ADC8E57", "deviceID":"5000d8c46a5728f6", "usng":"15795070", "latitude":38.4044300, "longitude":-122.8190667, "agentUrl": "/4R2NSeUUtys8", "baseAddress":39999, "modbusAddress": 1},
-    "SN513":{"network":"solmetric", "locName":"SolarEdge Inverter", "deviceIdHash":"DF04146F1DF0", "deviceID":"5000d8c46a57285e", "usng":"15795070", "latitude":38.4044500, "longitude":-122.8190967, "agentUrl": "/ZT8GBL-7RrgD", "baseAddress":39999, "modbusAddress": 1},
-    "SN514":{"network":"solmetric", "locName":"Solmetric 3", "deviceIdHash":"00E329B56259", "deviceID":"5000d8c46a572872", "usng":"15795070", "latitude":38.4044700, "longitude":-122.8191267, "agentUrl": "/609atPXTxkX7", "baseAddress":39999, "modbusAddress": 1},
+    "SN407":{"network":"dev", "locName":"Sugiyama Inside", "deviceIdHash":"4CA33E88EDAA", "deviceID":"5000d8c46a56ddde", "usng":"21226282", "latitude":38.5135, "longitude":-122.75653, "agentUrl": "/VifAbahCX8ux", "baseAddress":49999, "modbusAddress": 100},
+    //vivint
+    "SN506":{"network":"vivint", "locName":"Vivint 1", "deviceIdHash":"C3B996B9F76C", "deviceID":"5000d8c46a572880", "usng":"15795063", "latitude":38.4038333, "longitude":-122.8190833, "agentUrl": "/oGQ_PBSAUppO", "baseAddress":39999, "modbusAddress": 1},
+    "SN511":{"network":"vivint", "locName":"Vivint 2 ", "deviceIdHash":"C1B16ADC8E57", "deviceID":"5000d8c46a5728f6", "usng":"15815066", "latitude":38.4041111, "longitude":-122.8189167, "agentUrl": "/4R2NSeUUtys8", "baseAddress":39999, "modbusAddress": 1},
+    "SN513":{"network":"vivint", "locName":"SolarEdge Inverter", "deviceIdHash":"DF04146F1DF0", "deviceID":"5000d8c46a57285e", "usng":"15795070", "latitude":38.40443, "longitude":-122.8190967, "agentUrl": "/ZT8GBL-7RrgD", "baseAddress":39999, "modbusAddress": 1},
+    "SN514":{"network":"vivint", "locName":"Vivint 3", "deviceIdHash":"00E329B56259", "deviceID":"5000d8c46a572872", "usng":"15705066", "latitude":38.4040556, "longitude":-122.8201667, "agentUrl": "/609atPXTxkX7", "baseAddress":39999, "modbusAddress": 1},
     // larkfield
     "SN503":{"network":"larkfield", "locName":"Shirlie", "deviceIdHash":"4E562573DBA0", "deviceID":"5000d8c46a572868", "usng":"21016306", "latitude":38.5157472, "longitude":-122.7589444, "agentUrl": "/tRNE2WbS2CGw", "baseAddress":39999, "modbusAddress": 1},
     "SN504":{"network":"larkfield", "locName":"Gibson", "deviceIdHash":"B930FA057CB6", "deviceID":"5000d8c46a5728d2", "usng":"21426258", "latitude":38.5113889, "longitude":-122.7542667, "agentUrl": "/w8Bdk3n0iWt3", "baseAddress":39999, "modbusAddress": 1},
-    "SN508":{"network":"larkfield", "locName":"Sugiyama", "deviceIdHash":"730D72A6E22F", "deviceID":"5000d8c46a572874", "usng":"21226282", "latitude":38.5135694, "longitude":-122.756525, "agentUrl": "/2866vQYBgUpC", "baseAddress":39999, "modbusAddress": 1},
-    "SN512":{"network":"larkfield", "locName":"Beckman", "deviceIdHash":"6917511534FD", "deviceID":"5000d8c46a5721ea", "usng":"21896255", "latitude":38.5110833, "longitude":-122.7488806, "agentUrl": "/kRQMPFuKmzDM", "baseAddress":39999, "modbusAddress": 1},
-
+    "SN508":{"network":"larkfield", "locName":"Sugiyama Outdoor", "deviceIdHash":"730D72A6E22F", "deviceID":"5000d8c46a572874", "usng":"21226282", "latitude":38.5135694, "longitude":-122.756525, "agentUrl": "/2866vQYBgUpC", "baseAddress":39999, "modbusAddress": 1},
+    "SN403":{"network":"larkfield", "locName":"Sugiyama Meter", "deviceIdHash":"018C268ECB5B", "deviceID":"5000d8c46a56dd24", "usng":"21226281", "latitude":38.5134, "longitude":-122.75655, "agentUrl": "/wXqOLIl3KiLB", "baseAddress":49999, "modbusAddress": 100},
+    "SN512":{"network":"larkfield", "locName":"Beckman", "deviceIdHash":"6917511534FD", "deviceID":"5000d8c46a5721ea", "usng":"21896255", "latitude":38.5110833, "longitude":-122.7488806, "agentUrl": "/kRQMPFuKmzDM", "baseAddress":39999, "modbusAddress": 1}
 };
 
 var interest = {
@@ -60,6 +60,19 @@ function setTarget(requestedTarget) {
     interest.usng = fleetLink[target].usng;
     updateParamTable(target,interest,displayFactors,gateway);
     initMap();
+    if (fleetLink[target].network == "larkfield"){
+        document.getElementById("inverterCommands").style.visibility = 'hidden'; // hide inverter commands
+        document.getElementById("meterCommands").style.visibility = 'visible'; // reveal meter commands
+        document.getElementById("targetPhoto").src = "../SunShotWebsite/img/DTS-SKTD-1.jpg"; // change target photo to meter
+
+    } else if (fleetLink[target].network == "vivint"){
+        document.getElementById("inverterCommands").style.visibility = 'visible'; // reveal inverter commands
+        document.getElementById("meterCommands").style.visibility = 'hidden'; // hide meter commands
+        document.getElementById("targetPhoto").src = "../SunShotWebsite/img/SE3800H-US-2.jpg"; // change target photo to inverter
+    } else {
+        document.getElementById("inverterCommands").style.visibility = 'visible'; // reveal inverter commands
+        document.getElementById("meterCommands").style.visibility = 'visible'; // reveal meter commands
+    }
 }
 
 // Choose gateway unit
@@ -70,7 +83,33 @@ function setGateway(requestedGateway) {
     initMap();
   }
 
+  // Change network
+  function changeNetwork(rb){
+    if(rb.value == "vivint"){ 
+        setTarget('SN513');
+        setGateway('SN513');      
+        readSunSpec('Mn');  
+    } else if (rb.value == "larkfield"){
+        setTarget('SN403');
+        setGateway('SN403');    
+        readSunSpec('Mn');  
+    } else {
+        setTarget('SN402');
+        setGateway('SN402');        
+        readSunSpec('Mn');  
+    }
+  }
 
+  // Set Development Mode
+  function setDevMode(cb){
+    if (cb.checked != true){
+        document.getElementById("serviceMenu").style.visibility = 'hidden';
+        document.getElementById("devRadio").style.visibility = 'hidden';
+    } else {
+        document.getElementById("serviceMenu").style.visibility = 'visible';
+        document.getElementById("devRadio").style.visibility = 'visible';        
+    }
+  }
 
 //================================================================================
 // MAPPING 
@@ -85,6 +124,44 @@ function initMap() {
     var bounds = new google.maps.LatLngBounds();
     var myLatLng = {lat: 38.491, lng: -122.717};
 
+    
+
+    var inverterTargetIcon = {
+    path: 'm -8 15, l 16 0, l 0 -30, l -16 0, l 0 30, m 0 -10, l 16 0',
+    fillColor: 'gold',
+    fillOpacity: 0.5,
+    scale: 1,
+    strokeColor: 'gold',
+    strokeWeight: 3
+    };
+
+    var inverterGatewayIcon = {
+    path: 'm -8 15, l 16 0, l 0 -30, l -16 0, l 0 30, m 0 -10, l 16 0',
+    fillColor: '#ff0066',
+    fillOpacity: 0.5,
+    scale: 1,
+    strokeColor: '#ff0066',
+    strokeWeight: 3
+    };
+
+    var meterTargetIcon = {
+    path: 'm -10 10, l 20 0, l 0 -20, l -20 0, l 0 20, m 10 -3, l 6 -12',
+    fillColor: 'orange',
+    fillOpacity: 0.3,
+    scale: 1,
+    strokeColor: 'orange',
+    strokeWeight: 3
+    };
+
+    var meterGatewayIcon = {
+    path: 'm -10 10, l 20 0, l 0 -20, l -20 0, l 0 20, m 10 -3, l 6 -12',
+    fillColor: '#ff0066',
+    fillOpacity: 0.3,
+    scale: 1,
+    strokeColor: '#ff0066',
+    strokeWeight: 3
+    };
+
     // Draw default map
         mapFleetLink = new google.maps.Map(document.getElementById('map'), {
         zoom: 16,
@@ -97,23 +174,40 @@ function initMap() {
         if (fleetLink.hasOwnProperty(key)) {
             // if this unit is a member of the network which includes the target unit, then add to list to plot
             if (fleetLink[key]["network"] == fleetLink[target]["network"] ){
-
                 if (key == target){ 
-                    iconType = "CIRCLE";
-                    iconColor = "#ff0066";
-                    iconScale = 10;
+                    if (fleetLink[target]["network"] == "larkfield"){
+                        if(key == gateway){
+                            icon =  meterGatewayIcon;
+                        } else {
+                            icon =  meterTargetIcon;
+                        }
+                    } else if (fleetLink[target]["network"] == "vivint"){
+                        if(key == gateway){
+                            icon =  inverterGatewayIcon;
+                        } else {
+                            icon =  inverterTargetIcon;
+                        }
+                    } else {
+                        if(key == gateway){
+                        icon =  {path: google.maps.SymbolPath["CIRCLE"], strokeColor: "#ff0066", strokeWeight: 3, scale: 10, fillColor: '#ff0066', fillOpacity: 0.3};
+                        } else {
+                        icon =  {path: google.maps.SymbolPath["CIRCLE"], strokeColor: "gold", strokeWeight: 3, scale: 10, fillColor: 'gold', fillOpacity: 0.3};
+                        }
+                    }
                 }
+
                 else if (key == gateway){
-                    iconType = "BACKWARD_CLOSED_ARROW";
-                    iconColor = "#ff0066";
-                    iconScale = 6;
-                } 
+                    if (fleetLink[target]["network"] == "larkfield"){
+                        icon =  {path: google.maps.SymbolPath["CIRCLE"], strokeColor: "#ff0066", strokeWeight: 3, scale: 10, fillColor: '#ff0066', fillOpacity: 0.3};
+                    } else if (fleetLink[target]["network"] == "vivint"){
+                        icon =  {path: google.maps.SymbolPath["CIRCLE"], strokeColor: "#ff0066", strokeWeight: 3, scale: 10, fillColor: '#ff0066', fillOpacity: 0.3};
+                    } else {
+                        icon =  {path: google.maps.SymbolPath["CIRCLE"], strokeColor: "#ff0066", strokeWeight: 3, scale: 10, fillColor: '#ff0066', fillOpacity: 0.3};
+                    }                } 
                 else {
-                    iconType = "CIRCLE";
-                    iconColor = "#0099cc";
-                    iconScale = 10;
+                icon =  {path: google.maps.SymbolPath["CIRCLE"], strokeColor: "#0099cc", strokeWeight: 3, scale: 10, fillColor: '#0099cc', fillOpacity: 0.3};
                 }
-                locations[i] = [fleetLink[key]["locName"], fleetLink[key]["latitude"], fleetLink[key]["longitude"], iconType, iconColor, iconScale];
+                locations[i] = [key, fleetLink[key]["latitude"], fleetLink[key]["longitude"], icon];
                 i++;
             }
         }
@@ -124,23 +218,29 @@ function initMap() {
 
         marker = new google.maps.Marker({
             position: new google.maps.LatLng(locations[i][1], locations[i][2]),
-            icon: {
-                path: google.maps.SymbolPath[locations[i][3]],
-                strokeColor: locations[i][4],
-                strokeWeight: 4,
-                scale: locations[i][5]
-            },
+            icon: locations[i][3],
             map: mapFleetLink
         });
+        
+
+
 
         bounds.extend(marker.position);
-
+/*
         google.maps.event.addListener(marker, 'click', (function (marker, i) {
             return function () {
                 infowindow.setContent(locations[i][0]);
                 infowindow.open(map, marker);
             }
         })(marker, i));
+*/
+        google.maps.event.addListener(marker, 'click', (function (marker, i) {
+            return function () {
+                setGateway(locations[i][0]);
+                console.log(locations[i][0]);
+            }
+        })(marker, i));
+
     }
 
     mapFleetLink.fitBounds(bounds);
@@ -1451,6 +1551,7 @@ function readSunSpec(sunSpecName){
     interest.task = 'fc03';
     interest.parameters = decimalToHex(fleetLink[target].modbusAddress, 2) + '_' + decimalToHex(fleetLink[target].baseAddress + sunSpecReg, 4) + decimalToHex(sunSpecLength, 4) + '_9600_8_1';
     updateParamTable(target,interest,displayFactors,gateway);
+    initMap();
 }
 
 
@@ -1501,21 +1602,18 @@ return returnDataString
 function updateParamTable(target, interest, displayFactors, gatewayID){
     var x = document.getElementById("paramTable").rows[0].cells;
 
-    x[0].innerHTML = gateway  + "  >";
-    x[1].innerHTML = ">  " + target;
-    x[2].innerHTML = displayFactors.displayName;    
-    x[3].innerHTML = "";
-    x[3].style.backgroundColor = null;  
+
+    x[0].innerHTML = displayFactors.displayName;    
+    x[1].innerHTML = "";
+    x[1].style.backgroundColor = null;  
 }
 
 
 function drawNodePath(unitId1,unitId2){
-
 var nodePlanCoordinates = [
           {lat: fleetLink[unitId1].latitude, lng: fleetLink[unitId1].longitude},
           {lat: fleetLink[unitId2].latitude, lng: fleetLink[unitId2].longitude}
         ];
-
 var nodePath = new google.maps.Polyline({
           path: nodePlanCoordinates,
           geodesic: true,
@@ -1523,10 +1621,12 @@ var nodePath = new google.maps.Polyline({
           strokeOpacity: 1.0,
           strokeWeight: 3
         });
-
 nodePath.setMap(mapFleetLink);
-
 }
+
+
+
+
 // read the web UI to determine the unit that is being targeted
 function expressInterest(buttonID) {
     var x = document.getElementById("paramTable").rows[0].cells;
@@ -1539,21 +1639,21 @@ if (interest.rw == 'write'&& interest.category == 'flash' && interest.task == 'g
 
     console.log(interest);
 
-    initMap();
+   // initMap();
 
     var waitButtonDisplay = "Sending";    
     var waitResultDisplay = "";
 
     if (target == gateway){
         waitResultDisplay = "Direct.."
-        x[3].innerHTML = waitResultDisplay;
-        x[3].style.background='#1474BF';
+        x[1].innerHTML = waitResultDisplay;
+        x[1].style.background='#1474BF';
         buttonID.style.background='#1474BF';
     } 
     else  {
         waitResultDisplay = "via Wireless.."
-        x[3].innerHTML = waitResultDisplay;
-        x[3].style.background='#9999ff';           
+        x[1].innerHTML = waitResultDisplay;
+        x[1].style.background='#9999ff';           
         buttonID.style.background='#9999ff';
     }
     buttonID.innerHTML = waitButtonDisplay;
@@ -1567,8 +1667,8 @@ if (interest.rw == 'write'&& interest.category == 'flash' && interest.task == 'g
         type: 'POST',
             success : function(response) {
                 var successDisplay = formatData(response, interest);
-                x[3].innerHTML = successDisplay;
-                x[3].style.background='#90A878';
+                x[1].innerHTML = successDisplay;
+                x[1].style.background='#90A878';
                 buttonID.innerHTML = "GO";
                 buttonID.style.background='#90A878';
                 drawNodePath(gateway,target);
@@ -1576,8 +1676,8 @@ if (interest.rw == 'write'&& interest.category == 'flash' && interest.task == 'g
             error : function(jqXHR, textStatus, err) {
                 var errorResponse = err ;
                 console.log(errorResponse);
-                x[3].innerHTML = errorResponse;
-                x[3].style.background='#D7AB4B';
+                x[1].innerHTML = errorResponse;
+                x[1].style.background='#D7AB4B';
                 buttonID.innerHTML = "GO";
                 buttonID.style.background='#90A878';
             }
@@ -1596,4 +1696,8 @@ function decimalToHex(decimal, chars) {
       $( window ).on( "load", function() {
         initMap();
         updateParamTable(target,interest,displayFactors,gateway);
+        document.getElementById("serviceMenu").style.visibility = 'hidden'; // hide service commands on start up
+        document.getElementById("inverterCommands").style.visibility = 'hidden'; // hide inverter commnads on startup
+        document.getElementById("devRadio").style.visibility = 'hidden'; // hide development network on startup
+
     });

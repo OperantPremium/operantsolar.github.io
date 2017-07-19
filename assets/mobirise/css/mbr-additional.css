@@ -696,6 +696,12 @@ h6,
   font-weight: bold;
   border: none;
 }
+#header1-x .radioForm {
+  color: white;
+  font-family: 'Open Sans', sans-serif;
+  font-size: 16px;
+  font-weight: bold;
+}
 #header1-x #paramTable {
   margin: auto;
   padding: 50px;
