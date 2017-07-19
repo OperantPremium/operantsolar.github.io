@@ -53,63 +53,60 @@ var displayFactors = {
 }
 
 
-// Choose target unit
-function setTarget(requestedTarget) {
-    target = requestedTarget;
-    interest.deviceIdHash = fleetLink[target].deviceIdHash;
-    interest.usng = fleetLink[target].usng;
-    updateParamTable(target,interest,displayFactors,gateway);
-    initMap();
-    if (fleetLink[target].network == "larkfield"){
-        document.getElementById("inverterCommands").style.visibility = 'hidden'; // hide inverter commands
-        document.getElementById("meterCommands").style.visibility = 'visible'; // reveal meter commands
-        document.getElementById("targetPhoto").src = "file:///Users/randy/Library/Application%20Support/Mobirise.com/Mobirise/projects/project-2017-05-24_103057/assets/images/dts-sktd-2000x1880.jpg"; // change target photo to meter
-
-    } else if (fleetLink[target].network == "vivint"){
-        document.getElementById("inverterCommands").style.visibility = 'visible'; // reveal inverter commands
-        document.getElementById("meterCommands").style.visibility = 'hidden'; // hide meter commands
-        document.getElementById("targetPhoto").src = "file:///Users/randy/Library/Application%20Support/Mobirise.com/Mobirise/projects/project-2017-05-24_103057/assets/images/se3800h-us-2000x2123.jpg"; // change target photo to inverter
-    } else {
-        document.getElementById("inverterCommands").style.visibility = 'visible'; // reveal inverter commands
-        document.getElementById("meterCommands").style.visibility = 'visible'; // reveal meter commands
+    // Choose target unit
+    function setTarget(requestedTarget) {
+        target = requestedTarget;
+        interest.deviceIdHash = fleetLink[target].deviceIdHash;
+        interest.usng = fleetLink[target].usng;
+        updateParamTable(target,interest,displayFactors,gateway);
+        initMap();
+        if (fleetLink[target].network == "larkfield"){
+            document.getElementById("inverterCommands").style.visibility = 'hidden'; // hide inverter commands
+            document.getElementById("meterCommands").style.visibility = 'visible'; // reveal meter commands
+        } else if (fleetLink[target].network == "vivint"){
+            document.getElementById("inverterCommands").style.visibility = 'visible'; // reveal inverter commands
+            document.getElementById("meterCommands").style.visibility = 'hidden'; // hide meter commands
+        } else {
+            document.getElementById("inverterCommands").style.visibility = 'visible'; // reveal inverter commands
+            document.getElementById("meterCommands").style.visibility = 'visible'; // reveal meter commands
+        }
     }
-}
 
-// Choose gateway unit
-function setGateway(requestedGateway) {
+    // Choose gateway unit
+    function setGateway(requestedGateway) {
     gateway = requestedGateway;
     interest.url = "https://agent.electricimp.com" + fleetLink[gateway].agentUrl
     updateParamTable(target,interest,displayFactors,gateway);
     initMap();
-  }
-
-  // Change network
-  function changeNetwork(rb){
-    if(rb.value == "vivint"){ 
-        setTarget('SN513');
-        setGateway('SN513');      
-        readSunSpec('Mn');  
-    } else if (rb.value == "larkfield"){
-        setTarget('SN508');
-        setGateway('SN508');    
-        readSunSpec('Mn');  
-    } else {
-        setTarget('SN402');
-        setGateway('SN402');        
-        readSunSpec('Mn');  
     }
-  }
 
-  // Set Development Mode
-  function setDevMode(cb){
-    if (cb.checked != true){
-        document.getElementById("serviceMenu").style.visibility = 'hidden';
-        document.getElementById("devRadio").style.visibility = 'hidden';
-    } else {
-        document.getElementById("serviceMenu").style.visibility = 'visible';
-        document.getElementById("devRadio").style.visibility = 'visible';        
+    // Change network
+    function changeNetwork(rb){
+        if(rb.value == "vivint"){ 
+            setTarget('SN513');
+            setGateway('SN513');      
+            readSunSpec('Mn');  
+        } else if (rb.value == "larkfield"){
+            setTarget('SN508');
+            setGateway('SN508');    
+            readSunSpec('Mn');  
+        } else {
+            setTarget('SN402');
+            setGateway('SN402');        
+            readSunSpec('Mn');  
+        }
     }
-  }
+
+    // Set Development Mode
+    function setDevMode(cb){
+        if (cb.checked != true){
+            document.getElementById("serviceMenu").style.visibility = 'hidden';
+            document.getElementById("devRadio").style.visibility = 'hidden';
+        } else {
+            document.getElementById("serviceMenu").style.visibility = 'visible';
+            document.getElementById("devRadio").style.visibility = 'visible';        
+        }
+    }
 
 //================================================================================
 // MAPPING 
@@ -1601,9 +1598,9 @@ return returnDataString
 
 function updateParamTable(target, interest, displayFactors, gatewayID){
     var x = document.getElementById("paramTable").rows[0].cells;
-    x[1].innerHTML = displayFactors.displayName;    
-    x[3].innerHTML = "";
-    x[3].style.backgroundColor = null;  
+    x[0].innerHTML = displayFactors.displayName;    
+    x[2].innerHTML = "";
+    x[2].style.backgroundColor = null;  
 }
 
 
@@ -1612,6 +1609,16 @@ var nodePlanCoordinates = [
           {lat: fleetLink[unitId1].latitude, lng: fleetLink[unitId1].longitude},
           {lat: fleetLink[unitId2].latitude, lng: fleetLink[unitId2].longitude}
         ];
+// Special case to indicate forwarding for Beckman Sugiyama demo
+if ((unitId1 == "SN508" && unitId2 == "SN512") || (unitId2 == "SN508" && unitId1 == "SN512")){
+    nodePlanCoordinates = [
+        {lat: fleetLink[unitId1].latitude, lng: fleetLink[unitId1].longitude},
+        {lat: fleetLink["SN504"].latitude, lng: fleetLink["SN504"].longitude},
+        {lat: fleetLink[unitId2].latitude, lng: fleetLink[unitId2].longitude}
+        ];
+}
+
+
 var nodePath = new google.maps.Polyline({
           path: nodePlanCoordinates,
           geodesic: true,
@@ -1644,12 +1651,12 @@ if (interest.rw == 'write'&& interest.category == 'flash' && interest.task == 'g
 
     if (target == gateway){
         waitResultDisplay = "Direct WiFi..."
-        x[3].innerHTML = waitResultDisplay;
+        x[2].innerHTML = waitResultDisplay;
         buttonID.style.background='#1474BF';
     } 
     else  {
         waitResultDisplay = "Accessing LoRa Mesh..."
-        x[3].innerHTML = waitResultDisplay;
+        x[2].innerHTML = waitResultDisplay;
         buttonID.style.background='#9999ff';
     }
     buttonID.innerHTML = waitButtonDisplay;
@@ -1663,7 +1670,7 @@ if (interest.rw == 'write'&& interest.category == 'flash' && interest.task == 'g
         type: 'POST',
             success : function(response) {
                 var successDisplay = formatData(response, interest);
-                x[3].innerHTML = successDisplay;
+                x[2].innerHTML = successDisplay;
                 buttonID.innerHTML = "GO";
                 buttonID.style.background='#90A878';
                 drawNodePath(gateway,target);
@@ -1671,7 +1678,7 @@ if (interest.rw == 'write'&& interest.category == 'flash' && interest.task == 'g
             error : function(jqXHR, textStatus, err) {
                 var errorResponse = err ;
                 console.log(errorResponse);
-                x[3].innerHTML = errorResponse;
+                x[2].innerHTML = errorResponse;
                 buttonID.innerHTML = "GO";
                 buttonID.style.background='#90A878';
             }

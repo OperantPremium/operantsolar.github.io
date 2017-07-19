@@ -704,7 +704,6 @@ h6,
 }
 #header1-x #paramTable {
   margin: auto;
-  padding: 50px;
 }
 #header1-x table,
 #header1-x th,
@@ -715,7 +714,7 @@ h6,
   color: #fafafa;
   text-align: center;
   padding: 5px;
-  border: 3px solid #fafafa;
+  border: 1px solid #fafafa;
   table-layout: fixed;
   width: 160px;
 }

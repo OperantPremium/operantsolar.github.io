@@ -3,14 +3,13 @@
 
                 <div class="mbr-section col-md-10 col-md-offset-1 text-xs-center" style="margin-bottom: 0px; margin-top: 0px;">
 
-                    <div class="mbr-section-btn" style="margin-bottom: 30px; margin-top: 0px;">
+                    <div class="mbr-section-btn" style="margin-bottom: 0px; margin-top: 0px;">
                             <table id="paramTable" style="margin-bottom: 0px; margin-top: 0px;">
                                 <tr>
-                                    <td style="width: 60px;"> <img id="targetPhoto" src="file:///Users/randy/git/fleetLink/web/SunShotWebsite/img/DTS-SKTD-1.jpg"  height="50" width="50">  </td>
-                                    <td style="width: 290px;"></td>
+                                    <td style="width: 320px;"></td>
                                     <td style="width: 160px;"><a class="btn btn-lg btn-success mbr-editable-button"  href="http://www.operantsolar.com" onclick="expressInterest(this); return false;">
                                     <span class="mbri-logout mbr-iconfont mbr-iconfont-btn" style="color: rgb(250, 250, 250);"></span>GO</a> </td>
-                                    <td style="width: 290px;"></td>
+                                    <td style="width: 320px;"></td>
                                 </tr>
                             </table>
                             <br>
@@ -18,9 +17,9 @@
                     <div id="tableBlock">
                 </div>
         </div>
-        <div id="map" style="width: 800px; height: 400px; margin-left: auto; margin-right: auto ; margin-bottom: 0px; border: 5px;"></div>
+        <div id="map" style="width: 800px; height: 400px; margin-left: auto; margin-right: auto ; margin-bottom: 0px; margin-top: 0px;border: 5px;"></div>
         
-        <form action="" class="radioForm" style="margin-bottom: 30px; ">
+        <form action="" class="radioForm" style="margin-top: 30px; ">
             <input type="radio" name="network" value="larkfield" checked="checked" onchange="changeNetwork(this)" ><span style="margin-right: 50px" > LARKFIELD </span>
             <input type="radio" name="network" value="vivint" onchange="changeNetwork(this)" ><span style="margin-right: 50px" > VIVINT SOLAR </span>
             <span id="devRadio" ><input type="radio" name="network" value="dev" onchange="changeNetwork(this)" ><span style="margin-right: 50px" > DEV </span></span>
