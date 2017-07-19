@@ -6,10 +6,10 @@
                     <div class="mbr-section-btn" style="margin-bottom: 0px; margin-top: 0px;">
                             <table id="paramTable" style="margin-bottom: 0px; margin-top: 0px;">
                                 <tr>
-                                    <td style="width: 320px;"></td>
-                                    <td style="width: 160px;"><a class="btn btn-lg btn-success mbr-editable-button"  href="http://www.operantsolar.com" onclick="expressInterest(this); return false;">
-                                    <span class="mbri-logout mbr-iconfont mbr-iconfont-btn" style="color: rgb(250, 250, 250);"></span>GO</a> </td>
-                                    <td style="width: 320px;"></td>
+                                    <td style="width: 340px;"></td>
+                                    <td style="width: 120px;"><span id="goButton"><a class="btn btn-lg btn-success mbr-editable-button"  href="http://www.operantsolar.com" onclick="expressInterest(this); return false;">
+                                    <span style="color: rgb(250, 250, 250);"></span>GO</a></span></td>
+                                    <td style="width: 340px;"></td>
                                 </tr>
                             </table>
                             <br>

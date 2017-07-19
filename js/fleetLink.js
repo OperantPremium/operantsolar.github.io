@@ -212,32 +212,18 @@ function initMap() {
 
 
     for (i = 0; i < locations.length; i++) {
-
         marker = new google.maps.Marker({
             position: new google.maps.LatLng(locations[i][1], locations[i][2]),
             icon: locations[i][3],
             map: mapFleetLink
         });
-        
-
-
-
         bounds.extend(marker.position);
-/*
-        google.maps.event.addListener(marker, 'click', (function (marker, i) {
-            return function () {
-                infowindow.setContent(locations[i][0]);
-                infowindow.open(map, marker);
-            }
-        })(marker, i));
-*/
         google.maps.event.addListener(marker, 'click', (function (marker, i) {
             return function () {
                 setGateway(locations[i][0]);
                 console.log(locations[i][0]);
             }
         })(marker, i));
-
     }
 
     mapFleetLink.fitBounds(bounds);
@@ -1564,7 +1550,7 @@ function formatData(rawData, interest){
         case 'hex':
             var numericData = 0;
             numericData = parseInt(cleanData, 16); 
-            if (cleanData != 'FFFF'){ 
+            if (cleanData != 'FFFF' && cleanData != '8000'){ 
                 numericData = numericData * displayFactors.scaleFactor + displayFactors.offsetFactor;
                 // Add units string at end of data, display two decimal places
                 returnDataString = numericData.toFixed(2) + " " + displayFactors.unitString;
@@ -1629,7 +1615,10 @@ var nodePath = new google.maps.Polyline({
 nodePath.setMap(mapFleetLink);
 }
 
-
+function redrawGoButton(){
+    console.log("redraw go button");
+    document.getElementById("goButton").style.visibility = 'visible';
+}
 
 
 // read the web UI to determine the unit that is being targeted
@@ -1646,9 +1635,7 @@ if (interest.rw == 'write'&& interest.category == 'flash' && interest.task == 'g
 
     initMap();
 
-    var waitButtonDisplay = "Sending";    
     var waitResultDisplay = "";
-
     if (target == gateway){
         waitResultDisplay = "Direct WiFi..."
         x[2].innerHTML = waitResultDisplay;
@@ -1659,8 +1646,7 @@ if (interest.rw == 'write'&& interest.category == 'flash' && interest.task == 'g
         x[2].innerHTML = waitResultDisplay;
         buttonID.style.background='#9999ff';
     }
-    buttonID.innerHTML = waitButtonDisplay;
-
+    document.getElementById("goButton").style.visibility = 'hidden';
 
     // actual web POST
     $.ajax({
@@ -1671,21 +1657,21 @@ if (interest.rw == 'write'&& interest.category == 'flash' && interest.task == 'g
             success : function(response) {
                 var successDisplay = formatData(response, interest);
                 x[2].innerHTML = successDisplay;
-                buttonID.innerHTML = "GO";
-                buttonID.style.background='#90A878';
+                setTimeout(redrawGoButton, 5000, buttonID);
                 drawNodePath(gateway,target);
             },
             error : function(jqXHR, textStatus, err) {
                 var errorResponse = err ;
                 console.log(errorResponse);
                 x[2].innerHTML = errorResponse;
-                buttonID.innerHTML = "GO";
-                buttonID.style.background='#90A878';
+                document.getElementById("goButton").style.visibility = 'hidden';
+                setTimeout(redrawGoButton, 5000, buttonID);
             }
         
     });
     interest.usng = tempUSNG ; // Return the unit's expected geolocation 
-
+    buttonID.innerHTML = "GO";
+    buttonID.style.background='#90A878';
 }
 
 function decimalToHex(decimal, chars) {
