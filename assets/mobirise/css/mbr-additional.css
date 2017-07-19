@@ -713,9 +713,9 @@ h6,
   font-size: 16px;
   font-weight: bold;
   color: #fafafa;
-  border: 1px solid #fafafa;
   text-align: center;
   padding: 5px;
+  border: 3px solid #fafafa;
   table-layout: fixed;
   width: 160px;
 }

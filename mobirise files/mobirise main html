@@ -6,11 +6,11 @@
                     <div class="mbr-section-btn" style="margin-bottom: 30px; margin-top: 0px;">
                             <table id="paramTable" style="margin-bottom: 0px; margin-top: 0px;">
                                 <tr>
-                                    <td style="width: 260px;"></td>
-                                    <td style="width: 260px;"></td>
-                                    <td style="width: 200px;"><a class="btn btn-lg btn-success mbr-editable-button"  href="http://www.operantsolar.com" onclick="expressInterest(this); return false;">
+                                    <td style="width: 60px;"> <img id="targetPhoto" src="file:///Users/randy/git/fleetLink/web/SunShotWebsite/img/DTS-SKTD-1.jpg"  height="50" width="50">  </td>
+                                    <td style="width: 290px;"></td>
+                                    <td style="width: 160px;"><a class="btn btn-lg btn-success mbr-editable-button"  href="http://www.operantsolar.com" onclick="expressInterest(this); return false;">
                                     <span class="mbri-logout mbr-iconfont mbr-iconfont-btn" style="color: rgb(250, 250, 250);"></span>GO</a> </td>
-                                    <td style="width: 80px;"> <img id="targetPhoto" src="file:///Users/randy/git/fleetLink/web/SunShotWebsite/img/DTS-SKTD-1.jpg"  height="60" width="60">  </td>
+                                    <td style="width: 290px;"></td>
                                 </tr>
                             </table>
                             <br>

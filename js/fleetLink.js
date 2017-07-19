@@ -2,8 +2,8 @@
 //Randy King 5/25/2017
 // default Interest with reasonable values
 
-var gateway = "SN403";
-var target = "SN403";
+var gateway = "SN508";
+var target = "SN508";
 var sunSpecReg = 5; // as a decimal number, like SunSpec standards
 var sunSpecLength = 16; // as a decimal number, like SunSpec standards
 var wiFiSSID = "";
@@ -24,11 +24,11 @@ var fleetLink = {
     "SN513":{"network":"vivint", "locName":"SolarEdge Inverter", "deviceIdHash":"DF04146F1DF0", "deviceID":"5000d8c46a57285e", "usng":"15795070", "latitude":38.40443, "longitude":-122.8190967, "agentUrl": "/ZT8GBL-7RrgD", "baseAddress":39999, "modbusAddress": 1},
     "SN514":{"network":"vivint", "locName":"Vivint 3", "deviceIdHash":"00E329B56259", "deviceID":"5000d8c46a572872", "usng":"15705066", "latitude":38.4040556, "longitude":-122.8201667, "agentUrl": "/609atPXTxkX7", "baseAddress":39999, "modbusAddress": 1},
     // larkfield
-    "SN503":{"network":"larkfield", "locName":"Shirlie", "deviceIdHash":"4E562573DBA0", "deviceID":"5000d8c46a572868", "usng":"21016306", "latitude":38.5157472, "longitude":-122.7589444, "agentUrl": "/tRNE2WbS2CGw", "baseAddress":39999, "modbusAddress": 1},
-    "SN504":{"network":"larkfield", "locName":"Gibson", "deviceIdHash":"B930FA057CB6", "deviceID":"5000d8c46a5728d2", "usng":"21426258", "latitude":38.5113889, "longitude":-122.7542667, "agentUrl": "/w8Bdk3n0iWt3", "baseAddress":39999, "modbusAddress": 1},
-    "SN508":{"network":"larkfield", "locName":"Sugiyama Outdoor", "deviceIdHash":"730D72A6E22F", "deviceID":"5000d8c46a572874", "usng":"21226282", "latitude":38.5135694, "longitude":-122.756525, "agentUrl": "/2866vQYBgUpC", "baseAddress":39999, "modbusAddress": 1},
-    "SN403":{"network":"larkfield", "locName":"Sugiyama Meter", "deviceIdHash":"018C268ECB5B", "deviceID":"5000d8c46a56dd24", "usng":"21226281", "latitude":38.5134, "longitude":-122.75655, "agentUrl": "/wXqOLIl3KiLB", "baseAddress":49999, "modbusAddress": 100},
-    "SN512":{"network":"larkfield", "locName":"Beckman", "deviceIdHash":"6917511534FD", "deviceID":"5000d8c46a5721ea", "usng":"21896255", "latitude":38.5110833, "longitude":-122.7488806, "agentUrl": "/kRQMPFuKmzDM", "baseAddress":39999, "modbusAddress": 1}
+    "SN503":{"network":"larkfield", "locName":"Shirlie", "deviceIdHash":"4E562573DBA0", "deviceID":"5000d8c46a572868", "usng":"21016306", "latitude":38.5157472, "longitude":-122.7589444, "agentUrl": "/tRNE2WbS2CGw", "baseAddress":49999, "modbusAddress": 100},
+    "SN504":{"network":"larkfield", "locName":"Gibson", "deviceIdHash":"B930FA057CB6", "deviceID":"5000d8c46a5728d2", "usng":"21426258", "latitude":38.5113889, "longitude":-122.7542667, "agentUrl": "/w8Bdk3n0iWt3", "baseAddress":49999, "modbusAddress": 100},
+    "SN508":{"network":"larkfield", "locName":"Sugiyama Outdoor", "deviceIdHash":"730D72A6E22F", "deviceID":"5000d8c46a572874", "usng":"21226282", "latitude":38.5135694, "longitude":-122.756525, "agentUrl": "/2866vQYBgUpC", "baseAddress":49999, "modbusAddress": 100},
+//    "SN403":{"network":"larkfield", "locName":"Sugiyama Meter", "deviceIdHash":"018C268ECB5B", "deviceID":"5000d8c46a56dd24", "usng":"21226281", "latitude":38.5134, "longitude":-122.75655, "agentUrl": "/wXqOLIl3KiLB", "baseAddress":49999, "modbusAddress": 100},
+    "SN512":{"network":"larkfield", "locName":"Beckman", "deviceIdHash":"6917511534FD", "deviceID":"5000d8c46a5721ea", "usng":"21896255", "latitude":38.5110833, "longitude":-122.7488806, "agentUrl": "/kRQMPFuKmzDM", "baseAddress":49999, "modbusAddress": 100}
 };
 
 var interest = {
@@ -63,12 +63,12 @@ function setTarget(requestedTarget) {
     if (fleetLink[target].network == "larkfield"){
         document.getElementById("inverterCommands").style.visibility = 'hidden'; // hide inverter commands
         document.getElementById("meterCommands").style.visibility = 'visible'; // reveal meter commands
-        document.getElementById("targetPhoto").src = "../SunShotWebsite/img/DTS-SKTD-1.jpg"; // change target photo to meter
+        document.getElementById("targetPhoto").src = "file:///Users/randy/Library/Application%20Support/Mobirise.com/Mobirise/projects/project-2017-05-24_103057/assets/images/dts-sktd-2000x1880.jpg"; // change target photo to meter
 
     } else if (fleetLink[target].network == "vivint"){
         document.getElementById("inverterCommands").style.visibility = 'visible'; // reveal inverter commands
         document.getElementById("meterCommands").style.visibility = 'hidden'; // hide meter commands
-        document.getElementById("targetPhoto").src = "../SunShotWebsite/img/SE3800H-US-2.jpg"; // change target photo to inverter
+        document.getElementById("targetPhoto").src = "file:///Users/randy/Library/Application%20Support/Mobirise.com/Mobirise/projects/project-2017-05-24_103057/assets/images/se3800h-us-2000x2123.jpg"; // change target photo to inverter
     } else {
         document.getElementById("inverterCommands").style.visibility = 'visible'; // reveal inverter commands
         document.getElementById("meterCommands").style.visibility = 'visible'; // reveal meter commands
@@ -90,8 +90,8 @@ function setGateway(requestedGateway) {
         setGateway('SN513');      
         readSunSpec('Mn');  
     } else if (rb.value == "larkfield"){
-        setTarget('SN403');
-        setGateway('SN403');    
+        setTarget('SN508');
+        setGateway('SN508');    
         readSunSpec('Mn');  
     } else {
         setTarget('SN402');
@@ -1601,11 +1601,9 @@ return returnDataString
 
 function updateParamTable(target, interest, displayFactors, gatewayID){
     var x = document.getElementById("paramTable").rows[0].cells;
-
-
-    x[0].innerHTML = displayFactors.displayName;    
-    x[1].innerHTML = "";
-    x[1].style.backgroundColor = null;  
+    x[1].innerHTML = displayFactors.displayName;    
+    x[3].innerHTML = "";
+    x[3].style.backgroundColor = null;  
 }
 
 
@@ -1645,15 +1643,13 @@ if (interest.rw == 'write'&& interest.category == 'flash' && interest.task == 'g
     var waitResultDisplay = "";
 
     if (target == gateway){
-        waitResultDisplay = "Direct.."
-        x[1].innerHTML = waitResultDisplay;
-        x[1].style.background='#1474BF';
+        waitResultDisplay = "Direct WiFi..."
+        x[3].innerHTML = waitResultDisplay;
         buttonID.style.background='#1474BF';
     } 
     else  {
-        waitResultDisplay = "via Wireless.."
-        x[1].innerHTML = waitResultDisplay;
-        x[1].style.background='#9999ff';           
+        waitResultDisplay = "Accessing LoRa Mesh..."
+        x[3].innerHTML = waitResultDisplay;
         buttonID.style.background='#9999ff';
     }
     buttonID.innerHTML = waitButtonDisplay;
@@ -1667,8 +1663,7 @@ if (interest.rw == 'write'&& interest.category == 'flash' && interest.task == 'g
         type: 'POST',
             success : function(response) {
                 var successDisplay = formatData(response, interest);
-                x[1].innerHTML = successDisplay;
-                x[1].style.background='#90A878';
+                x[3].innerHTML = successDisplay;
                 buttonID.innerHTML = "GO";
                 buttonID.style.background='#90A878';
                 drawNodePath(gateway,target);
@@ -1676,8 +1671,7 @@ if (interest.rw == 'write'&& interest.category == 'flash' && interest.task == 'g
             error : function(jqXHR, textStatus, err) {
                 var errorResponse = err ;
                 console.log(errorResponse);
-                x[1].innerHTML = errorResponse;
-                x[1].style.background='#D7AB4B';
+                x[3].innerHTML = errorResponse;
                 buttonID.innerHTML = "GO";
                 buttonID.style.background='#90A878';
             }
