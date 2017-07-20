@@ -1599,6 +1599,7 @@ var nodePlanCoordinates = [
           {lat: fleetLink[unitId2].latitude, lng: fleetLink[unitId2].longitude}
         ];
 // Special case to indicate forwarding for Beckman Sugiyama demo
+/*
 if ((unitId1 == "SN508" && unitId2 == "SN512") || (unitId2 == "SN508" && unitId1 == "SN512")){
     nodePlanCoordinates = [
         {lat: fleetLink[unitId1].latitude, lng: fleetLink[unitId1].longitude},
@@ -1606,7 +1607,7 @@ if ((unitId1 == "SN508" && unitId2 == "SN512") || (unitId2 == "SN508" && unitId1
         {lat: fleetLink[unitId2].latitude, lng: fleetLink[unitId2].longitude}
         ];
 }
-
+*/
 
 var nodePath = new google.maps.Polyline({
           path: nodePlanCoordinates,
@@ -1655,14 +1656,14 @@ if (interest.rw == 'write'&& interest.category == 'flash' && interest.task == 'g
     // actual web POST
     $.ajax({
         url: interest.url,
-        timeout: 35000,
+        timeout: 15000,
         data: JSON.stringify(interest), // convert interest string to JSON
         type: 'POST',
             success : function(response) {
                 var successDisplay = formatData(response, interest);
                 x[2].style.background = '#1474BF';
                 x[2].innerHTML = successDisplay;
-                setTimeout(redrawGoButton, 5000, buttonID);
+                setTimeout(redrawGoButton, 3000, buttonID);
                 drawNodePath(gateway,target);
             },
             error : function(jqXHR, textStatus, err) {
@@ -1670,7 +1671,7 @@ if (interest.rw == 'write'&& interest.category == 'flash' && interest.task == 'g
                 console.log(errorResponse);
                 x[2].innerHTML = errorResponse;
                 document.getElementById("goButton").style.visibility = 'hidden';
-                setTimeout(redrawGoButton, 5000, buttonID);
+                setTimeout(redrawGoButton, 3000, buttonID);
             }
         
     });
