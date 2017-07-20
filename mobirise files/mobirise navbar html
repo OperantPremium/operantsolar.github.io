@@ -350,92 +350,56 @@
 
     </li>
 
-
-
-
-<!--
-    
-    <li class="nav-item dropdown">
-        <a class="nav-link link dropdown-toggle mbr-editable-menu-item" href="https://mobirise.com/" data-toggle="dropdown-submenu" aria-expanded="false">GATEWAY</a>
-            <div class="dropdown-menu">
-                <div class="dropdown">
-                    <a class="dropdown-item dropdown-toggle mbr-editable-menu-item" href="#" data-toggle="dropdown-submenu" aria-expanded="false">VIVINT SOLAR</a>
-                        <div class="dropdown-menu dropdown-submenu">
-                            <a class="dropdown-item mbr-editable-menu-item" href="http://www.operantsolar.com" onclick="setGateway('SN506'); return false;">SN506</a>
-                            <a class="dropdown-item mbr-editable-menu-item" href="http://www.operantsolar.com" onclick="setGateway('SN511'); return false;">SN511</a>
-                            <a class="dropdown-item mbr-editable-menu-item" href="http://www.operantsolar.com" onclick="setGateway('SN513'); return false;">SolarEdge Inverter</a>
-                            <a class="dropdown-item mbr-editable-menu-item" href="http://www.operantsolar.com" onclick="setGateway('SN514'); return false;">SN514</a>
-                        </div>
-                </div>
-                <div class="dropdown">
-                    <a class="dropdown-item dropdown-toggle mbr-editable-menu-item" href="#" data-toggle="dropdown-submenu" aria-expanded="false">LARKFIELD</a>
-                        <div class="dropdown-menu dropdown-submenu">
-                            <a class="dropdown-item mbr-editable-menu-item" href="http://www.operantsolar.com" onclick="setGateway('SN503'); return false;">Shirlie</a>
-                            <a class="dropdown-item mbr-editable-menu-item" href="http://www.operantsolar.com" onclick="setGateway('SN504'); return false;">Gibson</a>
-                            <a class="dropdown-item mbr-editable-menu-item" href="http://www.operantsolar.com" onclick="setGateway('SN508'); return false;">Sugiyama Outside</a>
-                            <a class="dropdown-item mbr-editable-menu-item" href="http://www.operantsolar.com" onclick="setGateway('SN403'); return false;">Sugiyama Meter</a>
-                            <a class="dropdown-item mbr-editable-menu-item" href="http://www.operantsolar.com" onclick="setGateway('SN512'); return false;">Beckman</a>
-                        </div>
-                </div>
-                <div class="dropdown">
-                    <a class="dropdown-item dropdown-toggle mbr-editable-menu-item" href="#" data-toggle="dropdown-submenu" aria-expanded="false">DEV</a>
-                        <div class="dropdown-menu dropdown-submenu">
-                            <a class="dropdown-item mbr-editable-menu-item" href="http://www.operantsolar.com" onclick="setGateway('SN402'); return false;">SN402</a>
-                            <a class="dropdown-item mbr-editable-menu-item" href="http://www.operantsolar.com" onclick="setGateway('SN403'); return false;">MeasurLogic Meter</a>
-                            <a class="dropdown-item mbr-editable-menu-item" href="http://www.operantsolar.com" onclick="setGateway('SN404'); return false;">SN404</a>
-                            <a class="dropdown-item mbr-editable-menu-item" href="http://www.operantsolar.com" onclick="setGateway('SN405'); return false;">SN405</a>
-                            <a class="dropdown-item mbr-editable-menu-item" href="http://www.operantsolar.com" onclick="setGateway('SN406'); return false;">SN406</a>
-                            <a class="dropdown-item mbr-editable-menu-item" href="http://www.operantsolar.com" onclick="setGateway('SN407'); return false;">SN407</a>
-                            <a class="dropdown-item mbr-editable-menu-item" href="http://www.operantsolar.com" onclick="setGateway('SN504'); return false;">SN504</a>       
-                            <a class="dropdown-item mbr-editable-menu-item" href="http://www.operantsolar.com" onclick="setGateway('SN508'); return false;">SN508</a>                                                 
-                        </div>
+<!------------------------------------------------------------------->
+    <li class="nav-item dropdown " id="sunSpecModels">
+        <a class="nav-link link dropdown-toggle mbr-editable-menu-item" href="https://mobirise.com/" data-toggle="dropdown-submenu" aria-expanded="false">SUNSPEC</a>
+        <div class="dropdown-menu">  
+        <!------------------------------------------------------------------->
+        <div class="dropdown ">
+                <a class="dropdown-item dropdown-toggle mbr-editable-menu-item" href="#" data-toggle="dropdown-submenu" aria-expanded="true">INVERTER IMMEDIATE COMMANDS</a>
+                <div class="dropdown-menu dropdown-submenu">
+                    <a class="dropdown-item mbr-editable-menu-item" href="http://www.operantsolar.com" onclick="readSunSpec(''); return false;">SET POWER LEVEL</a>     
+                    <a class="dropdown-item mbr-editable-menu-item" href="http://www.operantsolar.com" onclick="readSunSpec(''); return false;">SET POWER LEVEL TIME WINDOW</a>     
+                    <a class="dropdown-item mbr-editable-menu-item" href="http://www.operantsolar.com" onclick="readSunSpec(''); return false;">SET POWER LEVEL TIMEOUT</a>     
+                    <a class="dropdown-item mbr-editable-menu-item" href="http://www.operantsolar.com" onclick="readSunSpec(''); return false;">SET POWER LEVEL RAMP TIME</a>     
+                    <a class="dropdown-item mbr-editable-menu-item" href="http://www.operantsolar.com" onclick="readSunSpec(''); return false;">SET POWER FACTOR ANGLE</a>     
+                    <a class="dropdown-item mbr-editable-menu-item" href="http://www.operantsolar.com" onclick="readSunSpec(''); return false;">SET POWER FACTOR TIME WINDOW</a>     
+                    <a class="dropdown-item mbr-editable-menu-item" href="http://www.operantsolar.com" onclick="readSunSpec(''); return false;">SET POWER FACTOR TIMEOUT</a>     
+                    <a class="dropdown-item mbr-editable-menu-item" href="http://www.operantsolar.com" onclick="readSunSpec(''); return false;">SET POWER FACTOR RAMP TIME</a>     
+                    <a class="dropdown-item mbr-editable-menu-item" href="http://www.operantsolar.com" onclick="readSunSpec(''); return false;">SET REACTIVE POWER % W MAX</a>     
+                    <a class="dropdown-item mbr-editable-menu-item" href="http://www.operantsolar.com" onclick="readSunSpec(''); return false;">SET REACTIVE POWER % VAR MAX</a>     
+                    <a class="dropdown-item mbr-editable-menu-item" href="http://www.operantsolar.com" onclick="readSunSpec(''); return false;">SET REACTIVE POWER % VAR AVAIL</a>     
                 </div>
             </div>
-    </li>
-
--->
-<!--
-    <li class="nav-item dropdown">   
-        <a class="nav-link link dropdown-toggle mbr-editable-menu-item" href="https://mobirise.com/" data-toggle="dropdown-submenu" aria-expanded="false">EQUIPMENT</a>
-            <div class="dropdown-menu">
-                <div class="dropdown">
-                    <a class="dropdown-item dropdown-toggle mbr-editable-menu-item" href="#" data-toggle="dropdown-submenu" aria-expanded="false">VIVINT SOLAR</a>
-                        <div class="dropdown-menu dropdown-submenu">
-                            <a class="dropdown-item mbr-editable-menu-item" href="http://www.operantsolar.com" onclick="setTarget('SN506'); return false;">SN506</a>
-                            <a class="dropdown-item mbr-editable-menu-item" href="http://www.operantsolar.com" onclick="setTarget('SN511'); return false;">SN511</a>
-                            <a class="dropdown-item mbr-editable-menu-item" href="http://www.operantsolar.com" onclick="setTarget('SN513'); return false;">SolarEdge Inverter</a>
-                            <a class="dropdown-item mbr-editable-menu-item" href="http://www.operantsolar.com" onclick="setTarget('SN514'); return false;">SN514</a>
-                        </div>
+            <!------------------------------------------------------------------->            
+                <a class="dropdown-item dropdown-toggle mbr-editable-menu-item" href="#" data-toggle="dropdown-submenu" aria-expanded="true">INVERTER EXTENDED COMMANDS</a>
+                <div class="dropdown-menu dropdown-submenu">
+                    <a class="dropdown-item mbr-editable-menu-item" href="http://www.operantsolar.com" onclick="readSunSpec(''); return false;">Static Volt-VAR Arrays</a>     
+                    <a class="dropdown-item mbr-editable-menu-item" href="http://www.operantsolar.com" onclick="readSunSpec(''); return false;">Parameterized Frequency-Watt </a>     
+                    <a class="dropdown-item mbr-editable-menu-item" href="http://www.operantsolar.com" onclick="readSunSpec(''); return false;">Dynamic Reactive Current </a>     
+                    <a class="dropdown-item mbr-editable-menu-item" href="http://www.operantsolar.com" onclick="readSunSpec(''); return false;">LVRT Must Disconnect</a>     
+                    <a class="dropdown-item mbr-editable-menu-item" href="http://www.operantsolar.com" onclick="readSunSpec(''); return false;">HVRT Must Disconnect</a>     
+                    <a class="dropdown-item mbr-editable-menu-item" href="http://www.operantsolar.com" onclick="readSunSpec(''); return false;">Watt-Power Factor</a>     
+                    <a class="dropdown-item mbr-editable-menu-item" href="http://www.operantsolar.com" onclick="readSunSpec(''); return false;">Volt-Watt</a>     
+                    <a class="dropdown-item mbr-editable-menu-item" href="http://www.operantsolar.com" onclick="readSunSpec(''); return false;">Basic Scheduling</a>     
+                    <a class="dropdown-item mbr-editable-menu-item" href="http://www.operantsolar.com" onclick="readSunSpec(''); return false;">Curve-Based Frequency-Watt</a>     
+                    <a class="dropdown-item mbr-editable-menu-item" href="http://www.operantsolar.com" onclick="readSunSpec(''); return false;">Low Frequency Ride-through</a>     
+                    <a class="dropdown-item mbr-editable-menu-item" href="http://www.operantsolar.com" onclick="readSunSpec(''); return false;">High Frequency Ride-through</a>     
                 </div>
-                           
-                <div class="dropdown">
-                    <a class="dropdown-item dropdown-toggle mbr-editable-menu-item" href="#" data-toggle="dropdown-submenu" aria-expanded="false">LARKFIELD</a>
-                        <div class="dropdown-menu dropdown-submenu">
-                            <a class="dropdown-item mbr-editable-menu-item" href="http://www.operantsolar.com" onclick="setTarget('SN503'); return false;">Shirlie</a>
-                            <a class="dropdown-item mbr-editable-menu-item" href="http://www.operantsolar.com" onclick="setTarget('SN504'); return false;">Gibson</a>
-                            <a class="dropdown-item mbr-editable-menu-item" href="http://www.operantsolar.com" onclick="setTarget('SN508'); return false;">Sugiyama</a>
-                            <a class="dropdown-item mbr-editable-menu-item" href="http://www.operantsolar.com" onclick="setTarget('SN512'); return false;">Beckman</a>
-                        </div>
-                </div>
+            <!------------------------------------------------------------------->            
+                <a class="dropdown-item dropdown-toggle mbr-editable-menu-item" href="#" data-toggle="dropdown-submenu" aria-expanded="true">ENERGY STORAGE</a>
+                <a class="dropdown-item dropdown-toggle mbr-editable-menu-item" href="#" data-toggle="dropdown-submenu" aria-expanded="true">PRICING</a>
+                <a class="dropdown-item dropdown-toggle mbr-editable-menu-item" href="#" data-toggle="dropdown-submenu" aria-expanded="true">METEOROLOGICAL MODEL</a>
+                <a class="dropdown-item dropdown-toggle mbr-editable-menu-item" href="#" data-toggle="dropdown-submenu" aria-expanded="true">IRRADIANCE MEASUREMENT</a>                
+                <a class="dropdown-item dropdown-toggle mbr-editable-menu-item" href="#" data-toggle="dropdown-submenu" aria-expanded="true">STRING COMBINER</a>
+                <a class="dropdown-item dropdown-toggle mbr-editable-menu-item" href="#" data-toggle="dropdown-submenu" aria-expanded="true">SOLAR MODULE</a>
+                <a class="dropdown-item dropdown-toggle mbr-editable-menu-item" href="#" data-toggle="dropdown-submenu" aria-expanded="true">SOLAR TRACKER</a>                
+                <a class="dropdown-item dropdown-toggle mbr-editable-menu-item" href="#" data-toggle="dropdown-submenu" aria-expanded="true">INCLINOMETER</a>
+                <a class="dropdown-item dropdown-toggle mbr-editable-menu-item" href="#" data-toggle="dropdown-submenu" aria-expanded="true">GPS</a>
+            <!------------------------------------------------------------------->                               
+        </div>
 
-                <div class="dropdown">
-                    <a class="dropdown-item dropdown-toggle mbr-editable-menu-item" href="#" data-toggle="dropdown-submenu" aria-expanded="false">DEV</a>
-                        <div class="dropdown-menu dropdown-submenu">
-                            <a class="dropdown-item mbr-editable-menu-item" href="http://www.operantsolar.com" onclick="setTarget('SN402'); return false;">SN402</a>
-                            <a class="dropdown-item mbr-editable-menu-item" href="http://www.operantsolar.com" onclick="setTarget('SN403'); return false;">MeasurLogic Meter</a>
-                            <a class="dropdown-item mbr-editable-menu-item" href="http://www.operantsolar.com" onclick="setTarget('SN404'); return false;">SN404</a>
-                            <a class="dropdown-item mbr-editable-menu-item" href="http://www.operantsolar.com" onclick="setTarget('SN405'); return false;">SN405</a>
-                            <a class="dropdown-item mbr-editable-menu-item" href="http://www.operantsolar.com" onclick="setTarget('SN406'); return false;">SN406</a>
-                            <a class="dropdown-item mbr-editable-menu-item" href="http://www.operantsolar.com" onclick="setTarget('SN407'); return false;">SN407</a>
-                             
-                            <a class="dropdown-item mbr-editable-menu-item" href="http://www.operantsolar.com" onclick="setTarget('SN504'); return false;">SN504</a>
-                            <a class="dropdown-item mbr-editable-menu-item" href="http://www.operantsolar.com" onclick="setTarget('SN508'); return false;">SN508</a>                            
-                            
-                        </div>
-                </div>  
-            </div>
     </li>
--->
     
 </ul>
 

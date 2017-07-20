@@ -13,8 +13,8 @@ var mapFleetLink;
 var fleetLink = { 
     //dev
     "SN402":{"network":"dev", "locName":"Shirlie", "deviceIdHash":"D85F6461EB91", "deviceID":"5000d8c46a56dc4c", "usng":"21016306", "latitude":38.5157472, "longitude":-122.7589444, "agentUrl": "/oHMQMg_lcxsT", "baseAddress":49999, "modbusAddress": 100},
- //   "SN403":{"network":"dev", "locName":"Sugiyama Outside", "deviceIdHash":"2BF6EF3EFD90", "deviceID":"5000d8c46a56ddc8", "usng":"21236282", "latitude":38.5134, "longitude":-122.75655, "agentUrl": "/QGO7JQAzyiev", "baseAddress":49999, "modbusAddress": 100},
-    "SN404":{"network":"dev", "locName":"Kiva", "deviceIdHash":"018C268ECB5B", "deviceID":"5000d8c46a56dd24", "usng":"20916258", "latitude":38.5113556, "longitude":-122.7601444, "agentUrl": "/wXqOLIl3KiLB", "baseAddress":49999, "modbusAddress": 100},
+ //   "SN403":{"network":"dev", "locName":"Sugiyama Outside", "deviceIdHash":"2BF6EF3EFD90", "deviceID":"5000d8c46a56ddc8", "usng":"21236282", "latitude":38.5134, "longitude":-122.75655, "agentUrl": "/wXqOLIl3KiLB", "baseAddress":49999, "modbusAddress": 100},
+    "SN404":{"network":"dev", "locName":"Kiva", "deviceIdHash":"018C268ECB5B", "deviceID":"5000d8c46a56dd24", "usng":"20916258", "latitude":38.5113556, "longitude":-122.7601444, "agentUrl": "/QGO7JQAzyiev", "baseAddress":49999, "modbusAddress": 100},
     "SN405":{"network":"dev", "locName":"Gibson", "deviceIdHash":"718A34D8423A", "deviceID":"5000d8c46a56ddb2", "usng":"21426258", "latitude":38.5113889, "longitude":-122.7542667, "agentUrl": "/CyPoe3l9E5Od", "baseAddress":49999, "modbusAddress": 100},
     "SN406":{"network":"dev", "locName":"Beckman", "deviceIdHash":"C5F6371C8A03", "deviceID":"5000d8c46a56dd18", "usng":"21896255", "latitude":38.5110833, "longitude":-122.7488806, "agentUrl": "/hxsSiYETEEpd", "baseAddress":49999, "modbusAddress": 100},
     "SN407":{"network":"dev", "locName":"Sugiyama Inside", "deviceIdHash":"4CA33E88EDAA", "deviceID":"5000d8c46a56ddde", "usng":"21226282", "latitude":38.5135, "longitude":-122.75653, "agentUrl": "/VifAbahCX8ux", "baseAddress":49999, "modbusAddress": 100},
@@ -102,9 +102,12 @@ var displayFactors = {
         if (cb.checked != true){
             document.getElementById("serviceMenu").style.visibility = 'hidden';
             document.getElementById("devRadio").style.visibility = 'hidden';
+            document.getElementById("sunSpecModels").style.visibility = 'hidden';
         } else {
             document.getElementById("serviceMenu").style.visibility = 'visible';
-            document.getElementById("devRadio").style.visibility = 'visible';        
+            document.getElementById("devRadio").style.visibility = 'visible';      
+            document.getElementById("sunSpecModels").style.visibility = 'visible';
+             
         }
     }
 
@@ -1634,6 +1637,7 @@ if (interest.rw == 'write'&& interest.category == 'flash' && interest.task == 'g
     console.log(interest);
 
     initMap();
+    updateParamTable(target,interest,displayFactors,gateway);    
 
     var waitResultDisplay = "";
     if (target == gateway){
@@ -1656,6 +1660,7 @@ if (interest.rw == 'write'&& interest.category == 'flash' && interest.task == 'g
         type: 'POST',
             success : function(response) {
                 var successDisplay = formatData(response, interest);
+                x[2].style.background = '#1474BF';
                 x[2].innerHTML = successDisplay;
                 setTimeout(redrawGoButton, 5000, buttonID);
                 drawNodePath(gateway,target);
@@ -1686,5 +1691,5 @@ function decimalToHex(decimal, chars) {
         document.getElementById("serviceMenu").style.visibility = 'hidden'; // hide service commands on start up
         document.getElementById("inverterCommands").style.visibility = 'hidden'; // hide inverter commnads on startup
         document.getElementById("devRadio").style.visibility = 'hidden'; // hide development network on startup
-
+        document.getElementById("sunSpecModels").style.visibility = 'hidden';
     });
