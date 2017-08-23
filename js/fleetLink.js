@@ -26,7 +26,7 @@ var fleetLink = {
     // larkfield
     "SN503":{"network":"larkfield", "locName":"Shirlie", "deviceIdHash":"4E562573DBA0", "deviceID":"5000d8c46a572868", "usng":"21016306", "latitude":38.5157472, "longitude":-122.7589444, "agentUrl": "/tRNE2WbS2CGw", "baseAddress":49999, "modbusAddress": 100},
     "SN528":{"network":"larkfield", "locName":"Gibson", "deviceIdHash":"F5ED514678B2", "deviceID":"5000d8c46a572a58", "usng":"21416258", "latitude":38.5113889, "longitude":-122.7542667, "agentUrl": "/aQTyLRwIHjYn", "baseAddress":0, "modbusAddress": 1},
-    "SN508":{"network":"larkfield", "locName":"Sugiyama Outdoor", "deviceIdHash":"730D72A6E22F", "deviceID":"5000d8c46a572874", "usng":"21226282", "latitude":38.5135694, "longitude":-122.756525, "agentUrl": "/2866vQYBgUpC", "baseAddress":49999, "modbusAddress": 100},
+    "SN517":{"network":"larkfield", "locName":"Sugiyama", "deviceIdHash":"73210C7C7368", "deviceID":"5000d8c46a572a40", "usng":"21226281", "latitude":38.5135694, "longitude":-122.756525, "agentUrl": "/lfonbmovX8Ak", "baseAddress":49999, "modbusAddress": 100},
 //    "SN403":{"network":"larkfield", "locName":"Sugiyama Meter", "deviceIdHash":"018C268ECB5B", "deviceID":"5000d8c46a56dd24", "usng":"21226281", "latitude":38.5134, "longitude":-122.75655, "agentUrl": "/wXqOLIl3KiLB", "baseAddress":49999, "modbusAddress": 100},
     "SN512":{"network":"larkfield", "locName":"Beckman", "deviceIdHash":"6917511534FD", "deviceID":"5000d8c46a5721ea", "usng":"21896255", "latitude":38.5110833, "longitude":-122.7488806, "agentUrl": "/kRQMPFuKmzDM", "baseAddress":49999, "modbusAddress": 100}
 };
