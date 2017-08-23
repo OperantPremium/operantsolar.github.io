@@ -86,8 +86,8 @@ var displayFactors = {
             setGateway('SN513');      
             readSunSpec('Mn');  
         } else if (rb.value == "larkfield"){
-            setTarget('SN508');
-            setGateway('SN508');    
+            setTarget('SN517');
+            setGateway('SN517');    
             readSunSpec('Mn');  
         } else {
             setTarget('SN402');
