@@ -1,33 +1,89 @@
 
 <section class="mbr-section mbr-section-hero mbr-section-full mbr-parallax-background mbr-after-navbar" style="background-image: url(file:///Users/randy/Library/Application%20Support/Mobirise.com/Mobirise/projects/project-2017-05-24_103057/assets/images/dark%20blue-2000x1348.png);">
 
-                <div class="mbr-section col-md-10 col-md-offset-1 text-xs-center" style="margin-bottom: 0px; margin-top: 0px;">
-
-                    <div class="mbr-section-btn" style="margin-bottom: 0px; margin-top: 0px;">
-                            <table id="paramTable" style="margin-bottom: 0px; margin-top: 0px;">
-                                <tr>
-                                    <td style="width: 340px;"></td>
-                                    <td style="width: 120px;"><span id="goButton"><a class="btn btn-lg btn-success mbr-editable-button"  href="http://www.operantsolar.com" onclick="expressInterest(this); return false;">
-                                    <span style="color: rgb(250, 250, 250);"></span>GO</a></span></td>
-                                    <td style="width: 340px;"></td>
-                                </tr>
-                            </table>
-                            <br>
-                            
-                    <div id="tableBlock">
-                </div>
-        </div>
-        <div id="map" style="width: 800px; height: 400px; margin-left: auto; margin-right: auto ; margin-bottom: 0px; margin-top: 0px;border: 5px;"></div>
+    <div class="mbr-section col-md-10 col-md-offset-1 text-xs-center" style="margin-bottom: 0px; margin-top: 0px;"> 
         
+        <div id="tableBlock">
+            <table id="paramTable" style="margin-bottom: 0px; margin-top: 0px;">
+                <tr>
+                    <td style="width: 340px;"></td>
+                    <td style="width: 120px;"><span id="goButton"><a class="btn btn-lg btn-success mbr-editable-button"  href="http://www.operantsolar.com" onclick="expressInterest(this); return false;">
+                    <span style="color: rgb(250, 250, 250);"></span>GO</a></span></td>
+                    <td style="width: 340px;"></td>
+                </tr>
+            </table>
+            <br>
+         </div>
+
+        <div id="map" style="width: 600px; height: 600px; margin-left: auto; margin-right: auto ; margin-bottom: 0px; margin-top: 0px;border: 5px;"></div>
+        
+        <span id="autoButton"><a class="btn btn-lg btn-success mbr-editable-button"  href="http://www.operantsolar.com" onclick="autoExpress(); return false;">
+        <span style="color: rgb(250, 250, 250);"></span>AUTO</a></span>
+
+        <div>
+            <table id="resultTable" style="margin-bottom: 0px; margin-top: 10px;">
+                <tr>
+                    <td style="width: 200px;"></td>
+                    <td style="width: 200px;"></td>
+                    <td style="width: 200px;"></td>
+                </tr>
+                <tr>
+                    <td style="width: 200px;"></td>
+                    <td style="width: 200px;"></td>
+                    <td style="width: 200px;"></td>
+                </tr>
+                <tr>
+                    <td style="width: 200px;"></td>
+                    <td style="width: 200px;"></td>
+                    <td style="width: 200px;"></td>
+                </tr>
+                <tr>
+                    <td style="width: 200px;"></td>
+                    <td style="width: 200px;"></td>
+                    <td style="width: 200px;"></td>
+                </tr>
+                <tr>
+                    <td style="width: 200px;"></td>
+                    <td style="width: 200px;"></td>
+                    <td style="width: 200px;"></td>
+                </tr>
+                <tr>
+                    <td style="width: 200px;"></td>
+                    <td style="width: 200px;"></td>
+                    <td style="width: 200px;"></td>
+                </tr>                                
+                <tr>
+                    <td style="width: 200px;"></td>
+                    <td style="width: 200px;"></td>
+                    <td style="width: 200px;"></td>
+                </tr>
+                <tr>
+                    <td style="width: 200px;"></td>
+                    <td style="width: 200px;"></td>
+                    <td style="width: 200px;"></td>
+                </tr>
+                <tr>
+                    <td style="width: 200px;"></td>
+                    <td style="width: 200px;"></td>
+                    <td style="width: 200px;"></td>
+                </tr>
+                <tr>
+                    <td style="width: 200px;"></td>
+                    <td style="width: 200px;"></td>
+                    <td style="width: 200px;"></td>
+                </tr>                                
+            </table>
+        </div>
+
+        <div>
         <form action="" class="radioForm" style="margin-top: 30px; ">
             <input type="radio" name="network" value="larkfield" checked="checked" onchange="changeNetwork(this)" ><span style="margin-right: 50px" > LARKFIELD </span>
             <input type="radio" name="network" value="vivint" onchange="changeNetwork(this)" ><span style="margin-right: 50px" > VIVINT SOLAR </span>
             <span id="devRadio" ><input type="radio" name="network" value="dev" onchange="changeNetwork(this)" ><span style="margin-right: 50px" > DEV </span></span>
             <input type="checkbox" name="allowDev" value="false" style="margin-top:10px" onclick="setDevMode(this)"> Development Mode <br>
         </form>
-
         </div>
 
-
+    </div>
 
 </section>

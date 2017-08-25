@@ -705,6 +705,9 @@ h6,
 #header1-x #paramTable {
   margin: auto;
 }
+#header1-x #resultTable {
+  margin: auto;
+}
 #header1-x table,
 #header1-x th,
 #header1-x td {

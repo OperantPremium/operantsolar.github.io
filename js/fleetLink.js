@@ -3,31 +3,40 @@
 // default Interest with reasonable values
 
 var gateway = "SN517";
-var target = "SN517";
-var sunSpecReg = 5; // as a decimal number, like SunSpec standards
-var sunSpecLength = 16; // as a decimal number, like SunSpec standards
+var target = "SN528";
+var sunSpecReg = 0; // as a decimal number, like SunSpec standards
+var sunSpecLength = 1; // as a decimal number, like SunSpec standards
 var wiFiSSID = "";
 var mapFleetLink;
+var nodePath =  null;
 
 
 var fleetLink = { 
     //dev
-    "SN402":{"network":"dev", "locName":"Shirlie", "deviceIdHash":"D85F6461EB91", "deviceID":"5000d8c46a56dc4c", "usng":"21016306", "latitude":38.5157472, "longitude":-122.7589444, "agentUrl": "/oHMQMg_lcxsT", "baseAddress":49999, "modbusAddress": 100},
- //   "SN403":{"network":"dev", "locName":"Sugiyama Outside", "deviceIdHash":"2BF6EF3EFD90", "deviceID":"5000d8c46a56ddc8", "usng":"21236282", "latitude":38.5134, "longitude":-122.75655, "agentUrl": "/wXqOLIl3KiLB", "baseAddress":49999, "modbusAddress": 100},
-    "SN404":{"network":"dev", "locName":"Kiva", "deviceIdHash":"018C268ECB5B", "deviceID":"5000d8c46a56dd24", "usng":"20916258", "latitude":38.5113556, "longitude":-122.7601444, "agentUrl": "/QGO7JQAzyiev", "baseAddress":49999, "modbusAddress": 100},
-    "SN405":{"network":"dev", "locName":"Gibson", "deviceIdHash":"718A34D8423A", "deviceID":"5000d8c46a56ddb2", "usng":"21426258", "latitude":38.5113889, "longitude":-122.7542667, "agentUrl": "/CyPoe3l9E5Od", "baseAddress":49999, "modbusAddress": 100},
-    "SN406":{"network":"dev", "locName":"Beckman", "deviceIdHash":"C5F6371C8A03", "deviceID":"5000d8c46a56dd18", "usng":"21896255", "latitude":38.5110833, "longitude":-122.7488806, "agentUrl": "/hxsSiYETEEpd", "baseAddress":49999, "modbusAddress": 100},
-    "SN407":{"network":"dev", "locName":"Sugiyama Inside", "deviceIdHash":"4CA33E88EDAA", "deviceID":"5000d8c46a56ddde", "usng":"21226282", "latitude":38.5135, "longitude":-122.75653, "agentUrl": "/VifAbahCX8ux", "baseAddress":49999, "modbusAddress": 100},
+    "SN402":{"network":"dev", "locName":"Shirlie", "deviceIdHash":"D85F6461EB91", "deviceID":"5000d8c46a56dc4c", "usng":"21016306", "latitude":38.5157472, "longitude":-122.7589444, "agentUrl": "/oHMQMg_lcxsT", "baseAddress":49999, "modbusAddress": 100, "marker": null, "online":false},
+ //   "SN403":{"network":"dev", "locName":"Sugiyama Outside", "deviceIdHash":"2BF6EF3EFD90", "deviceID":"5000d8c46a56ddc8", "usng":"21236282", "latitude":38.5134, "longitude":-122.75655, "agentUrl": "/wXqOLIl3KiLB", "baseAddress":49999, "modbusAddress": 100, "marker": null, "online":false},
+    "SN404":{"network":"dev", "locName":"Kiva", "deviceIdHash":"018C268ECB5B", "deviceID":"5000d8c46a56dd24", "usng":"20916258", "latitude":38.5113556, "longitude":-122.7601444, "agentUrl": "/QGO7JQAzyiev", "baseAddress":49999, "modbusAddress": 100, "marker": null, "online":false},
+    "SN405":{"network":"dev", "locName":"Gibson", "deviceIdHash":"718A34D8423A", "deviceID":"5000d8c46a56ddb2", "usng":"21426258", "latitude":38.5113889, "longitude":-122.7542667, "agentUrl": "/CyPoe3l9E5Od", "baseAddress":49999, "modbusAddress": 100, "marker": null, "online":false},
+    "SN406":{"network":"dev", "locName":"Beckman", "deviceIdHash":"C5F6371C8A03", "deviceID":"5000d8c46a56dd18", "usng":"21896255", "latitude":38.5110833, "longitude":-122.7488806, "agentUrl": "/hxsSiYETEEpd", "baseAddress":49999, "modbusAddress": 100, "marker": null, "online":false},
+    "SN407":{"network":"dev", "locName":"Sugiyama Inside", "deviceIdHash":"4CA33E88EDAA", "deviceID":"5000d8c46a56ddde", "usng":"21226282", "latitude":38.5135, "longitude":-122.75653, "agentUrl": "/VifAbahCX8ux", "baseAddress":49999, "modbusAddress": 100, "marker": null, "online":false},
     //vivint
-    "SN506":{"network":"vivint", "locName":"Vivint 1", "deviceIdHash":"C3B996B9F76C", "deviceID":"5000d8c46a572880", "usng":"15795063", "latitude":38.4038333, "longitude":-122.8190833, "agentUrl": "/oGQ_PBSAUppO", "baseAddress":39999, "modbusAddress": 1},
-    "SN511":{"network":"vivint", "locName":"Vivint 2 ", "deviceIdHash":"C1B16ADC8E57", "deviceID":"5000d8c46a5728f6", "usng":"15815066", "latitude":38.4041111, "longitude":-122.8189167, "agentUrl": "/4R2NSeUUtys8", "baseAddress":39999, "modbusAddress": 1},
-    "SN513":{"network":"vivint", "locName":"SolarEdge Inverter", "deviceIdHash":"DF04146F1DF0", "deviceID":"5000d8c46a57285e", "usng":"15795070", "latitude":38.40443, "longitude":-122.8190967, "agentUrl": "/ZT8GBL-7RrgD", "baseAddress":39999, "modbusAddress": 1},
-    "SN514":{"network":"vivint", "locName":"Vivint 3", "deviceIdHash":"00E329B56259", "deviceID":"5000d8c46a572872", "usng":"15705066", "latitude":38.4040556, "longitude":-122.8201667, "agentUrl": "/609atPXTxkX7", "baseAddress":39999, "modbusAddress": 1},
+    "SN506":{"network":"vivint", "locName":"Vivint 1", "deviceIdHash":"C3B996B9F76C", "deviceID":"5000d8c46a572880", "usng":"15795063", "latitude":38.4038333, "longitude":-122.8190833, "agentUrl": "/oGQ_PBSAUppO", "baseAddress":39999, "modbusAddress": 1, "marker": null, "online":false},
+    "SN511":{"network":"vivint", "locName":"Vivint 2 ", "deviceIdHash":"C1B16ADC8E57", "deviceID":"5000d8c46a5728f6", "usng":"15815066", "latitude":38.4041111, "longitude":-122.8189167, "agentUrl": "/4R2NSeUUtys8", "baseAddress":39999, "modbusAddress": 1, "marker": null, "online":false},
+    "SN513":{"network":"vivint", "locName":"SolarEdge Inverter", "deviceIdHash":"DF04146F1DF0", "deviceID":"5000d8c46a57285e", "usng":"15795070", "latitude":38.40443, "longitude":-122.8190967, "agentUrl": "/ZT8GBL-7RrgD", "baseAddress":39999, "modbusAddress": 1, "marker": null, "online":false},
+    "SN514":{"network":"vivint", "locName":"Vivint 3", "deviceIdHash":"00E329B56259", "deviceID":"5000d8c46a572872", "usng":"15705066", "latitude":38.4040556, "longitude":-122.8201667, "agentUrl": "/609atPXTxkX7", "baseAddress":39999, "modbusAddress": 1, "marker": null, "online":false},
     // larkfield
-    "SN503":{"network":"larkfield", "locName":"Shirlie", "deviceIdHash":"4E562573DBA0", "deviceID":"5000d8c46a572868", "usng":"21016306", "latitude":38.5157472, "longitude":-122.7589444, "agentUrl": "/tRNE2WbS2CGw", "baseAddress":49999, "modbusAddress": 100},
-    "SN528":{"network":"larkfield", "locName":"Gibson", "deviceIdHash":"F5ED514678B2", "deviceID":"5000d8c46a572a58", "usng":"21416258", "latitude":38.5113889, "longitude":-122.7542667, "agentUrl": "/aQTyLRwIHjYn", "baseAddress":0, "modbusAddress": 1},
-    "SN517":{"network":"larkfield", "locName":"Sugiyama", "deviceIdHash":"73210C7C7368", "deviceID":"5000d8c46a572a40", "usng":"21226281", "latitude":38.5135694, "longitude":-122.756525, "agentUrl": "/lfonbmovX8Ak", "baseAddress":49999, "modbusAddress": 100},
-    "SN512":{"network":"larkfield", "locName":"Beckman", "deviceIdHash":"6917511534FD", "deviceID":"5000d8c46a5721ea", "usng":"21896255", "latitude":38.5110833, "longitude":-122.7488806, "agentUrl": "/kRQMPFuKmzDM", "baseAddress":49999, "modbusAddress": 100}
+    //
+    //"SN503":{"network":"larkfield", "locName":"Shirlie", "deviceIdHash":"4E562573DBA0", "deviceID":"5000d8c46a572868", "usng":"21016306", "latitude":38.515786, "longitude":-122.759001, "agentUrl": "/tRNE2WbS2CGw", "baseAddress":0, "modbusAddress": 1, "marker": null, "online":false},
+    //"SN512":{"network":"larkfield", "locName":"Beckman", "deviceIdHash":"6917511534FD", "deviceID":"5000d8c46a5721ea", "usng":"21886253", "latitude":38.510951, "longitude": -122.748958, "agentUrl": "/kRQMPFuKmzDM", "baseAddress":0, "modbusAddress": 1, "marker": null, "online":false},
+    "SN517":{"network":"larkfield", "locName":"Sugiyama", "deviceIdHash":"73210C7C7368", "deviceID":"5000d8c46a572a40", "usng":"21226281", "latitude":38.513469, "longitude":-122.756491, "agentUrl": "/lfonbmovX8Ak", "baseAddress":0, "modbusAddress": 1, "marker": null, "online":true},
+    "SN522":{"network":"larkfield", "locName":"Van Grouw", "deviceIdHash":"9CBABDD00BD5", "deviceID":"5000d8c46a572a68", "usng":"17286817", "latitude":38.561889, "longitude":-122.801555, "agentUrl": "/QCxFKECTRdBH", "baseAddress":0, "modbusAddress": 1, "marker": null, "online":true},
+    "SN523":{"network":"larkfield", "locName":"Buffo", "deviceIdHash":"BB2A0BFDC8FC", "deviceID":"5000d8c46a5729e6", "usng":"16386739", "latitude":38.554853, "longitude":-122.811906, "agentUrl": "/jYthi-aNvlv6", "baseAddress":0, "modbusAddress": 1, "marker": null, "online":true},
+    "SN524":{"network":"larkfield", "locName":"Yamasaki", "deviceIdHash":"022676CEA2C8", "deviceID":"5000d8c46a572a70", "usng":"16426752", "latitude":38.555988, "longitude":-122.811517, "agentUrl": "/NTLnl40ofe9Y", "baseAddress":0, "modbusAddress": 1, "marker": null, "online":true},
+    "SN528":{"network":"larkfield", "locName":"Gibson", "deviceIdHash":"F5ED514678B2", "deviceID":"5000d8c46a572a58", "usng":"21416258", "latitude":38.511400, "longitude":-122.754315, "agentUrl": "/aQTyLRwIHjYn", "baseAddress":0, "modbusAddress": 1, "marker": null, "online":true},
+    "SN530":{"network":"larkfield", "locName":"Nadendla", "deviceIdHash":"2EB55A0B48F4", "deviceID":"5000d8c46a572a12", "usng":"17616705", "latitude":38.551712, "longitude":-122.79779, "agentUrl": "/r7-wVnF8nV9b", "baseAddress":0, "modbusAddress": 1, "marker": null, "online":true},
+    "SN531":{"network":"larkfield", "locName":"Ferrara", "deviceIdHash":"A9D4A224043D", "deviceID":"5000d8c46a572a4c", "usng":"21246285", "latitude":38.513862, "longitude":-122.756289, "agentUrl": "/lgWdhq_T9EsC", "baseAddress":0, "modbusAddress": 1, "marker": null, "online":true}
+    //
+    //
 };
 
 var interest = {
@@ -43,22 +52,24 @@ var interest = {
 var displayFactors = {
     // the following parameters are used to pretty up data returns, particularly from modbus
     'firstDataChar' : 6, // position of the FIRST data character in whatever the interest returns (0 based)
-    'lastDataChar' : 37,  // position of the LAST data character in whatever the interest returns (0 based)
-    'dataFormat' : 'ascii', // defines format of returned data (can be hex | dec | ascii | string)
-    'scaleFactor' : 0, // Scale numeric data when necessary
+    'lastDataChar' : 9,  // position of the LAST data character in whatever the interest returns (0 based)
+    'dataFormat' : 'hex', // defines format of returned data (can be hex | dec | ascii | string)
+    'scaleFactor' : 0.529, // Scale numeric data when necessary
     'offsetFactor' : 0, // similarly apply any numeric offset
-    'unitString' : "", // append units string to communicate result better
-    'displayName' : "Manufacturer" // nice human readble display name for user
+    'unitString' : "W/m^2", // append units string to communicate result better
+    'displayName' : "Irradiance" // nice human readble display name for user
 }
 
 
     // Choose target unit
     function setTarget(requestedTarget) {
+        console.log("Target= " + requestedTarget)
         target = requestedTarget;
         interest.deviceIdHash = fleetLink[target].deviceIdHash;
         interest.usng = fleetLink[target].usng;
         updateParamTable(target,interest,displayFactors,gateway);
-        initMap();
+        reDrawMap();     
+        
         if (fleetLink[target].network == "larkfield"){
             document.getElementById("inverterCommands").style.visibility = 'hidden'; // hide inverter commands
             document.getElementById("meterCommands").style.visibility = 'visible'; // reveal meter commands
@@ -73,10 +84,11 @@ var displayFactors = {
 
     // Choose gateway unit
     function setGateway(requestedGateway) {
+    console.log("Gateway= " + requestedGateway)
     gateway = requestedGateway;
     interest.url = "https://agent.electricimp.com" + fleetLink[gateway].agentUrl
     updateParamTable(target,interest,displayFactors,gateway);
-    initMap();
+    reDrawMap();    
     }
 
     // Change network
@@ -86,8 +98,8 @@ var displayFactors = {
             setGateway('SN513');      
             readSunSpec('Mn');  
         } else if (rb.value == "larkfield"){
-            setTarget('SN517');
-            setGateway('SN517');    
+            setTarget('SN523');
+            setGateway('SN523');    
             readSunSpec('Mn');  
         } else {
             setTarget('SN402');
@@ -119,48 +131,11 @@ function initMap() {
     var iconColor = "white";
     var iconScale = 4;
     var iconType = "CIRCLE";
-    var infowindow = new google.maps.InfoWindow();
+    //var infowindow = new google.maps.InfoWindow();
     var bounds = new google.maps.LatLngBounds();
     var myLatLng = {lat: 38.491, lng: -122.717};
 
     
-
-    var inverterTargetIcon = {
-    path: 'm -8 15, l 16 0, l 0 -30, l -16 0, l 0 30, m 0 -10, l 16 0',
-    fillColor: 'gold',
-    fillOpacity: 0.5,
-    scale: 1,
-    strokeColor: 'gold',
-    strokeWeight: 3
-    };
-
-    var inverterGatewayIcon = {
-    path: 'm -8 15, l 16 0, l 0 -30, l -16 0, l 0 30, m 0 -10, l 16 0',
-    fillColor: '#ff0066',
-    fillOpacity: 0.5,
-    scale: 1,
-    strokeColor: '#ff0066',
-    strokeWeight: 3
-    };
-
-    var meterTargetIcon = {
-    path: 'm -10 10, l 20 0, l 0 -20, l -20 0, l 0 20, m 10 -3, l 6 -12',
-    fillColor: 'orange',
-    fillOpacity: 0.3,
-    scale: 1,
-    strokeColor: 'orange',
-    strokeWeight: 3
-    };
-
-    var meterGatewayIcon = {
-    path: 'm -10 10, l 20 0, l 0 -20, l -20 0, l 0 20, m 10 -3, l 6 -12',
-    fillColor: '#ff0066',
-    fillOpacity: 0.3,
-    scale: 1,
-    strokeColor: '#ff0066',
-    strokeWeight: 3
-    };
-
     // Draw default map
         mapFleetLink = new google.maps.Map(document.getElementById('map'), {
         zoom: 1,
@@ -168,64 +143,42 @@ function initMap() {
         center: myLatLng
         });
 
-    var i = 0;
+        
     for (var key in fleetLink) {
         if (fleetLink.hasOwnProperty(key)) {
             // if this unit is a member of the network which includes the target unit, then add to list to plot
             if (fleetLink[key]["network"] == fleetLink[target]["network"] ){
                 if (key == target){ 
-                    if (fleetLink[target]["network"] == "larkfield"){
-                        if(key == gateway){
-                            icon =  meterGatewayIcon;
-                        } else {
-                            icon =  meterTargetIcon;
-                        }
-                    } else if (fleetLink[target]["network"] == "vivint"){
-                        if(key == gateway){
-                            icon =  inverterGatewayIcon;
-                        } else {
-                            icon =  inverterTargetIcon;
-                        }
+                    if(key == gateway){
+                        icon =  {path: google.maps.SymbolPath["CIRCLE"], strokeColor: "#ff6600", strokeWeight: 3, scale: 7, fillColor: '#ff0066', fillOpacity: 0.3};
                     } else {
-                        if(key == gateway){
-                        icon =  {path: google.maps.SymbolPath["CIRCLE"], strokeColor: "#ff0066", strokeWeight: 3, scale: 10, fillColor: '#ff0066', fillOpacity: 0.3};
-                        } else {
-                        icon =  {path: google.maps.SymbolPath["CIRCLE"], strokeColor: "gold", strokeWeight: 3, scale: 10, fillColor: 'gold', fillOpacity: 0.3};
-                        }
+                        icon =  {path: google.maps.SymbolPath["CIRCLE"], strokeColor: "gold", strokeWeight: 3, scale: 7, fillColor: 'gold', fillOpacity: 0.3};
                     }
                 }
-
-                else if (key == gateway){
-                    if (fleetLink[target]["network"] == "larkfield"){
-                        icon =  {path: google.maps.SymbolPath["CIRCLE"], strokeColor: "#ff0066", strokeWeight: 3, scale: 10, fillColor: '#ff0066', fillOpacity: 0.3};
-                    } else if (fleetLink[target]["network"] == "vivint"){
-                        icon =  {path: google.maps.SymbolPath["CIRCLE"], strokeColor: "#ff0066", strokeWeight: 3, scale: 10, fillColor: '#ff0066', fillOpacity: 0.3};
-                    } else {
-                        icon =  {path: google.maps.SymbolPath["CIRCLE"], strokeColor: "#ff0066", strokeWeight: 3, scale: 10, fillColor: '#ff0066', fillOpacity: 0.3};
-                    }                } 
+                else if (key == gateway && key != target){
+                    icon =  {path: google.maps.SymbolPath["CIRCLE"], strokeColor: "#ff0066", strokeWeight: 3, scale: 7, fillColor: '#ff0066', fillOpacity: 0.3};
+                } 
                 else {
-                icon =  {path: google.maps.SymbolPath["CIRCLE"], strokeColor: "#0099cc", strokeWeight: 3, scale: 10, fillColor: '#0099cc', fillOpacity: 0.3};
+                    icon =  {path: google.maps.SymbolPath["CIRCLE"], strokeColor: "#0099cc", strokeWeight: 3, scale: 7, fillColor: '#0099cc', fillOpacity: 0.3};
                 }
-                locations[i] = [key, fleetLink[key]["latitude"], fleetLink[key]["longitude"], icon];
-                i++;
+                marker = new google.maps.Marker({
+                    position: new google.maps.LatLng(fleetLink[key]["latitude"], fleetLink[key]["longitude"]),
+                    icon: icon,
+                    map: mapFleetLink
+                });
+                bounds.extend(marker.position);
+                fleetLink[key]["marker"] = marker;
+
+                /*
+                google.maps.event.addListener(marker, 'click', (function (marker, i) {
+                    return function () {
+                        setGateway(locations[i][0]);
+                        console.log(locations[i][0]);
+                    }
+                })(marker, i));
+                */
             }
         }
-    }
-
-
-    for (i = 0; i < locations.length; i++) {
-        marker = new google.maps.Marker({
-            position: new google.maps.LatLng(locations[i][1], locations[i][2]),
-            icon: locations[i][3],
-            map: mapFleetLink
-        });
-        bounds.extend(marker.position);
-        google.maps.event.addListener(marker, 'click', (function (marker, i) {
-            return function () {
-                setGateway(locations[i][0]);
-                console.log(locations[i][0]);
-            }
-        })(marker, i));
     }
 
     mapFleetLink.fitBounds(bounds);
@@ -234,30 +187,198 @@ function initMap() {
         google.maps.event.removeListener(listener);
     });
 
-         };
+}
 
-//================================================================================
-// Get  Imp log data
-//================================================================================
-function getImpLogs(){
-    console.log("getting Imp logs...");
-    
+
+function reDrawMap(){
+    // remove any node paths
+    if (nodePath != null){
+        nodePath.setMap(null);
+    }
+    // redraw the icons to match the targets andgateways
+    for (var key in fleetLink) {
+        if (fleetLink.hasOwnProperty(key)) {
+            // if this unit is a member of the network which includes the target unit, then add to list to plot
+            if (fleetLink[key]["network"] == fleetLink[target]["network"] ){
+                if (key == target){ 
+                    if(key == gateway){
+                        icon =  {path: google.maps.SymbolPath["CIRCLE"], strokeColor: "#ff6600", strokeWeight: 3, scale: 7, fillColor: '#ff0066', fillOpacity: 0.3};
+                    } else {
+                        icon =  {path: google.maps.SymbolPath["CIRCLE"], strokeColor: "gold", strokeWeight: 3, scale: 7, fillColor: 'gold', fillOpacity: 0.3};
+                    }
+                }
+                else if (key == gateway && key != target){
+                    icon =  {path: google.maps.SymbolPath["CIRCLE"], strokeColor: "#ff0066", strokeWeight: 3, scale: 7, fillColor: '#ff0066', fillOpacity: 0.3};
+                } 
+                else {
+                    icon =  {path: google.maps.SymbolPath["CIRCLE"], strokeColor: "#0099cc", strokeWeight: 3, scale: 7, fillColor: '#0099cc', fillOpacity: 0.3};
+                }
+                fleetLink[key]["marker"].setIcon(icon) ;        
+            }
+        }
+    }
+}
+
+
+function drawNodePath(unitId1,unitId2){
+    var nodePlanCoordinates = [
+              {lat: fleetLink[unitId1].latitude, lng: fleetLink[unitId1].longitude},
+              {lat: fleetLink[unitId2].latitude, lng: fleetLink[unitId2].longitude}
+            ];
+    nodePath = new google.maps.Polyline({
+              path: nodePlanCoordinates,
+              geodesic: true,
+              strokeColor: '#00ff00',
+              strokeOpacity: 1.0,
+              strokeWeight: 3
+            });
+    nodePath.setMap(mapFleetLink);
+    }
+
+
+
+// Format the data for pretty display
+function formatData(rawData, interest){
+    var returnDataString = "";
+
+    // remove any leading or trailing numbers (esp Modbus)    
+    var cleanData = rawData.substring(displayFactors.firstDataChar, displayFactors.lastDataChar + 1);
+    // convert to decimal if hex
+    switch(displayFactors.dataFormat){
+        case 'hex':
+            var numericData = 0;
+            numericData = parseInt(cleanData, 16); 
+            if (cleanData != 'FFFF' && cleanData != '8000'){ 
+                numericData = numericData * displayFactors.scaleFactor + displayFactors.offsetFactor;
+                // Add units string at end of data, display two decimal places
+                returnDataString = numericData.toFixed(2) + " " + displayFactors.unitString;                
+            }
+            else {
+                returnDataString = "Not Available";
+            }
+            // apply scale factor and offset
+
+        break;
+        case 'ascii':
+            var asciiCode = 0;
+            for (i = 0; i < cleanData.length; i+=2) { 
+                asciiCode = parseInt(cleanData.substring(i,i+2), 16);
+                returnDataString += String.fromCharCode(asciiCode);
+            }
+        break;
+        case 'binary':
+            returnDataString = cleanData;
+        break;
+
+        default:
+            returnDataString = rawData;
+        }
+
+return returnDataString
+}
+
+
+
+function updateParamTable(target, interest, displayFactors, gatewayID){
+    var x = document.getElementById("paramTable").rows[0].cells;
+    x[0].innerHTML = displayFactors.displayName;    
+    x[2].innerHTML = "";
+    x[2].style.backgroundColor = null;  
+}
+
+
+
+function redrawGoButton(){
+    document.getElementById("goButton").style.visibility = 'visible';
+}
+
+
+// read the web UI to determine the unit that is being targeted
+function expressInterest(buttonID) {
+    var x = document.getElementById("paramTable").rows[0].cells;
+// Trap the special case of write the geolocation to a unit, which uses fixed predefined geolocation in the Interest
+// Until you write a unit's geolocation into flash, you wouldn;t know what usng to use to address it, otherwise
+var tempUSNG = interest.usng; // First save the unit's expected geolocation temporarily (will put back after Express Interest below)
+if (interest.rw == 'write'&& interest.category == 'flash' && interest.task == 'geoSelf'){
+    interest.usng = '45898592'; // predefined geolocation used for writing actual geolocation to flash
+}
+
+    console.log(interest);
+
+    updateParamTable(target,interest,displayFactors,gateway);    
+    reDrawMap();
+
+    var waitResultDisplay = "";
+    if (target == gateway){
+        waitResultDisplay = "Direct WiFi..."
+        x[2].innerHTML = waitResultDisplay;
+        buttonID.style.background='#1474BF';
+    } 
+    else  {
+        waitResultDisplay = "Accessing LoRa Mesh..."
+        x[2].innerHTML = waitResultDisplay;
+        buttonID.style.background='#9999ff';
+    }
+    document.getElementById("goButton").style.visibility = 'hidden';
+
+    // actual web POST
     $.ajax({
-        url: 'https://preview-api.electricimp.com/v5/devices/5000d8c46a56dd24/logs',
+        url: interest.url,
         timeout: 15000,
-        contentType: "pplication/vnd.api+json",
-        headers: { 'authorization': 'bearer pGh9RgphRUdwrZi8OVjM2XcaClgW2GnHXuUKMJCZUYYr7Eyx9a0KiDlNRVWVpbfEI7Z6gf31fOuIOVtRlJ0+mV3WY03nEPoBVfYzoIO7nALpNWkhD4/CpO8sqLUaq6LKwH4jrAkYG4I9na1Cnw==' },
-        //data: '{"id": "rama.nadendla@operantsolar.com", "password": "operant1solar"}',
-        type: 'GET',
+        data: JSON.stringify(interest), // convert interest string to JSON
+        type: 'POST',
             success : function(response) {
-            console.log(response);
+                var successDisplay = formatData(response, interest);
+                x[2].style.background = '#1474BF';
+                x[2].innerHTML = successDisplay;
+                setTimeout(redrawGoButton, 3000, buttonID);
+                drawNodePath(gateway,target);
             },
             error : function(jqXHR, textStatus, err) {
                 var errorResponse = err ;
                 console.log(errorResponse);
+                x[2].innerHTML = errorResponse;
+                document.getElementById("goButton").style.visibility = 'hidden';
+                setTimeout(redrawGoButton, 3000, buttonID);
             }
-
+        
     });
+    interest.usng = tempUSNG ; // Return the unit's expected geolocation 
+    buttonID.innerHTML = "GO";
+    buttonID.style.background='#90A878';
+}
+
+
+function autoExpress() {
+    console.log("Retrieving online units data");
+    for (var key in fleetLink) {
+        if (fleetLink.hasOwnProperty(key)) {
+            // if this unit is a member of the network which includes the target unit, then add to list to plot
+            if (fleetLink[key]["network"] == fleetLink[target]["network"] ){
+                console.log("Checking " + key);
+                if(fleetLink[key]["online"] == true){
+                    setGateway(key);
+                    setTarget(key);
+                    console.log("Getting data from " + key);
+                    // actual web POST direct to unit
+                 $.ajax({
+                        url: interest.url,
+                        timeout: 15000,
+                        data: JSON.stringify(interest), // convert interest string to JSON
+                        type: 'POST',
+                            success : function(response) {
+                                console.log(response);
+                                console.log(formatData(response, interest));
+                            },
+                            error : function(jqXHR, textStatus, err) {
+                                var errorResponse = err ;
+                                console.log(errorResponse);
+                            }
+                    });
+                }
+            }
+        }
+    }
 }
 
 //================================================================================
@@ -1540,148 +1661,10 @@ function readSunSpec(sunSpecName){
 }
 
 
-// Format the data for pretty display
-function formatData(rawData, interest){
-    var returnDataString = "";
-
-    // remove any leading or trailing numbers (esp Modbus)    
-    var cleanData = rawData.substring(displayFactors.firstDataChar, displayFactors.lastDataChar + 1);
-
-    // convert to decimal if hex
-    switch(displayFactors.dataFormat){
-        case 'hex':
-            var numericData = 0;
-            numericData = parseInt(cleanData, 16); 
-            if (cleanData != 'FFFF' && cleanData != '8000'){ 
-                numericData = numericData * displayFactors.scaleFactor + displayFactors.offsetFactor;
-                // Add units string at end of data, display two decimal places
-                returnDataString = numericData.toFixed(2) + " " + displayFactors.unitString;
-            }
-            else {
-                returnDataString = "Not Available";
-            }
-            // apply scale factor and offset
-
-        break;
-        case 'ascii':
-            var asciiCode = 0;
-            for (i = 0; i < cleanData.length; i+=2) { 
-                asciiCode = parseInt(cleanData.substring(i,i+2), 16);
-                returnDataString += String.fromCharCode(asciiCode);
-            }
-        break;
-        case 'binary':
-            returnDataString = cleanData;
-        break;
-
-        default:
-            returnDataString = rawData;
-        }
-        console.log("data: " + returnDataString);
-
-return returnDataString
-}
-
-
-
-function updateParamTable(target, interest, displayFactors, gatewayID){
-    var x = document.getElementById("paramTable").rows[0].cells;
-    x[0].innerHTML = displayFactors.displayName;    
-    x[2].innerHTML = "";
-    x[2].style.backgroundColor = null;  
-}
-
-
-function drawNodePath(unitId1,unitId2){
-var nodePlanCoordinates = [
-          {lat: fleetLink[unitId1].latitude, lng: fleetLink[unitId1].longitude},
-          {lat: fleetLink[unitId2].latitude, lng: fleetLink[unitId2].longitude}
-        ];
-// Special case to indicate forwarding for Beckman Sugiyama demo
-/*
-if ((unitId1 == "SN508" && unitId2 == "SN512") || (unitId2 == "SN508" && unitId1 == "SN512")){
-    nodePlanCoordinates = [
-        {lat: fleetLink[unitId1].latitude, lng: fleetLink[unitId1].longitude},
-        {lat: fleetLink["SN504"].latitude, lng: fleetLink["SN504"].longitude},
-        {lat: fleetLink[unitId2].latitude, lng: fleetLink[unitId2].longitude}
-        ];
-}
-*/
-
-var nodePath = new google.maps.Polyline({
-          path: nodePlanCoordinates,
-          geodesic: true,
-          strokeColor: '#FF0066',
-          strokeOpacity: 1.0,
-          strokeWeight: 3
-        });
-nodePath.setMap(mapFleetLink);
-}
-
-function redrawGoButton(){
-    console.log("redraw go button");
-    document.getElementById("goButton").style.visibility = 'visible';
-}
-
-
-// read the web UI to determine the unit that is being targeted
-function expressInterest(buttonID) {
-    var x = document.getElementById("paramTable").rows[0].cells;
-// Trap the special case of write the geolocation to a unit, which uses fixed predefined geolocation in the Interest
-// Until you write a unit's geolocation into flash, you wouldn;t know what usng to use to address it, otherwise
-var tempUSNG = interest.usng; // First save the unit's expected geolocation temporarily (will put back after Express Interest below)
-if (interest.rw == 'write'&& interest.category == 'flash' && interest.task == 'geoSelf'){
-    interest.usng = '45898592'; // predefined geolocation used for writing actual geolocation to flash
-}
-
-    console.log(interest);
-
-    initMap();
-    updateParamTable(target,interest,displayFactors,gateway);    
-
-    var waitResultDisplay = "";
-    if (target == gateway){
-        waitResultDisplay = "Direct WiFi..."
-        x[2].innerHTML = waitResultDisplay;
-        buttonID.style.background='#1474BF';
-    } 
-    else  {
-        waitResultDisplay = "Accessing LoRa Mesh..."
-        x[2].innerHTML = waitResultDisplay;
-        buttonID.style.background='#9999ff';
-    }
-    document.getElementById("goButton").style.visibility = 'hidden';
-
-    // actual web POST
-    $.ajax({
-        url: interest.url,
-        timeout: 15000,
-        data: JSON.stringify(interest), // convert interest string to JSON
-        type: 'POST',
-            success : function(response) {
-                var successDisplay = formatData(response, interest);
-                x[2].style.background = '#1474BF';
-                x[2].innerHTML = successDisplay;
-                setTimeout(redrawGoButton, 3000, buttonID);
-                drawNodePath(gateway,target);
-            },
-            error : function(jqXHR, textStatus, err) {
-                var errorResponse = err ;
-                console.log(errorResponse);
-                x[2].innerHTML = errorResponse;
-                document.getElementById("goButton").style.visibility = 'hidden';
-                setTimeout(redrawGoButton, 3000, buttonID);
-            }
-        
-    });
-    interest.usng = tempUSNG ; // Return the unit's expected geolocation 
-    buttonID.innerHTML = "GO";
-    buttonID.style.background='#90A878';
-}
-
 function decimalToHex(decimal, chars) {
     return (decimal + Math.pow(16, chars)).toString(16).slice(-chars).toUpperCase();
 }
+
 
 
 

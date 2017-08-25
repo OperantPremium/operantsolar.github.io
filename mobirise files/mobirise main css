@@ -26,6 +26,12 @@
 
 #paramTable{
 	margin: auto;
+
+}
+
+#resultTable{
+	margin: auto;
+
 }
 
 table, th, td {
