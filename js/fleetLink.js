@@ -28,10 +28,12 @@ var fleetLink = {
     //
     //"SN503":{"network":"larkfield", "locName":"Shirlie", "deviceIdHash":"4E562573DBA0", "deviceID":"5000d8c46a572868", "usng":"21016306", "latitude":38.515786, "longitude":-122.759001, "agentUrl": "/tRNE2WbS2CGw", "baseAddress":0, "modbusAddress": 1, "marker": null, "online":false},
     //"SN512":{"network":"larkfield", "locName":"Beckman", "deviceIdHash":"6917511534FD", "deviceID":"5000d8c46a5721ea", "usng":"21886253", "latitude":38.510951, "longitude": -122.748958, "agentUrl": "/kRQMPFuKmzDM", "baseAddress":0, "modbusAddress": 1, "marker": null, "online":false},
+    "SN508":{"network":"larkfield", "locName":"Foster", "deviceIdHash":"730D72A6E22F", "deviceID":"5000d8c46a572874", "usng":"17776661", "latitude":38.547754, "longitude":-122.796043, "agentUrl": "/2866vQYBgUpC", "baseAddress":0, "modbusAddress": 1, "marker": null, "online":true},
     "SN517":{"network":"larkfield", "locName":"Sugiyama", "deviceIdHash":"73210C7C7368", "deviceID":"5000d8c46a572a40", "usng":"21226281", "latitude":38.513469, "longitude":-122.756491, "agentUrl": "/lfonbmovX8Ak", "baseAddress":0, "modbusAddress": 1, "marker": null, "online":true},
     "SN522":{"network":"larkfield", "locName":"Van Grouw", "deviceIdHash":"9CBABDD00BD5", "deviceID":"5000d8c46a572a68", "usng":"17286817", "latitude":38.561889, "longitude":-122.801555, "agentUrl": "/QCxFKECTRdBH", "baseAddress":0, "modbusAddress": 1, "marker": null, "online":true},
     "SN523":{"network":"larkfield", "locName":"Buffo", "deviceIdHash":"BB2A0BFDC8FC", "deviceID":"5000d8c46a5729e6", "usng":"16386739", "latitude":38.554853, "longitude":-122.811906, "agentUrl": "/jYthi-aNvlv6", "baseAddress":0, "modbusAddress": 1, "marker": null, "online":true},
     "SN524":{"network":"larkfield", "locName":"Yamasaki", "deviceIdHash":"022676CEA2C8", "deviceID":"5000d8c46a572a70", "usng":"16426752", "latitude":38.555988, "longitude":-122.811517, "agentUrl": "/NTLnl40ofe9Y", "baseAddress":0, "modbusAddress": 1, "marker": null, "online":true},
+    "SN527":{"network":"larkfield", "locName":"Galli", "deviceIdHash":"E18F79FBF4D0", "deviceID":"5000d8c46a572a38", "usng":"18166731", "latitude":38.554040, "longitude":-122.791538, "agentUrl": "/t02E8X0S0Kl6", "baseAddress":0, "modbusAddress": 1, "marker": null, "online":true},
     "SN528":{"network":"larkfield", "locName":"Gibson", "deviceIdHash":"F5ED514678B2", "deviceID":"5000d8c46a572a58", "usng":"21416258", "latitude":38.511400, "longitude":-122.754315, "agentUrl": "/aQTyLRwIHjYn", "baseAddress":0, "modbusAddress": 1, "marker": null, "online":true},
     "SN530":{"network":"larkfield", "locName":"Nadendla", "deviceIdHash":"2EB55A0B48F4", "deviceID":"5000d8c46a572a12", "usng":"17616705", "latitude":38.551712, "longitude":-122.79779, "agentUrl": "/r7-wVnF8nV9b", "baseAddress":0, "modbusAddress": 1, "marker": null, "online":true},
     "SN531":{"network":"larkfield", "locName":"Ferrara", "deviceIdHash":"A9D4A224043D", "deviceID":"5000d8c46a572a4c", "usng":"21246285", "latitude":38.513862, "longitude":-122.756289, "agentUrl": "/lgWdhq_T9EsC", "baseAddress":0, "modbusAddress": 1, "marker": null, "online":true}
@@ -63,7 +65,7 @@ var displayFactors = {
 
     // Choose target unit
     function setTarget(requestedTarget) {
-        console.log("Target= " + requestedTarget)
+        //console.log("Target= " + requestedTarget)
         target = requestedTarget;
         interest.deviceIdHash = fleetLink[target].deviceIdHash;
         interest.usng = fleetLink[target].usng;
@@ -84,7 +86,7 @@ var displayFactors = {
 
     // Choose gateway unit
     function setGateway(requestedGateway) {
-    console.log("Gateway= " + requestedGateway)
+    //console.log("Gateway= " + requestedGateway)
     gateway = requestedGateway;
     interest.url = "https://agent.electricimp.com" + fleetLink[gateway].agentUrl
     updateParamTable(target,interest,displayFactors,gateway);
@@ -150,16 +152,16 @@ function initMap() {
             if (fleetLink[key]["network"] == fleetLink[target]["network"] ){
                 if (key == target){ 
                     if(key == gateway){
-                        icon =  {path: google.maps.SymbolPath["CIRCLE"], strokeColor: "#ff6600", strokeWeight: 3, scale: 7, fillColor: '#ff0066', fillOpacity: 0.3};
+                        icon =  {path: google.maps.SymbolPath["CIRCLE"], strokeColor: "#ff6600", strokeWeight: 2, scale: 7, fillColor: '#ff0066', fillOpacity: 0.3};
                     } else {
-                        icon =  {path: google.maps.SymbolPath["CIRCLE"], strokeColor: "gold", strokeWeight: 3, scale: 7, fillColor: 'gold', fillOpacity: 0.3};
+                        icon =  {path: google.maps.SymbolPath["CIRCLE"], strokeColor: "gold", strokeWeight: 2, scale: 7, fillColor: 'gold', fillOpacity: 0.3};
                     }
                 }
                 else if (key == gateway && key != target){
-                    icon =  {path: google.maps.SymbolPath["CIRCLE"], strokeColor: "#ff0066", strokeWeight: 3, scale: 7, fillColor: '#ff0066', fillOpacity: 0.3};
+                    icon =  {path: google.maps.SymbolPath["CIRCLE"], strokeColor: "#ff0066", strokeWeight: 2, scale: 7, fillColor: '#ff0066', fillOpacity: 0.3};
                 } 
                 else {
-                    icon =  {path: google.maps.SymbolPath["CIRCLE"], strokeColor: "#0099cc", strokeWeight: 3, scale: 7, fillColor: '#0099cc', fillOpacity: 0.3};
+                    icon =  {path: google.maps.SymbolPath["CIRCLE"], strokeColor: "#0099cc", strokeWeight: 2, scale: 7, fillColor: '#0099cc', fillOpacity: 0.3};
                 }
                 marker = new google.maps.Marker({
                     position: new google.maps.LatLng(fleetLink[key]["latitude"], fleetLink[key]["longitude"]),
@@ -230,7 +232,7 @@ function drawNodePath(unitId1,unitId2){
               geodesic: true,
               strokeColor: '#00ff00',
               strokeOpacity: 1.0,
-              strokeWeight: 3
+              strokeWeight: 4
             });
     nodePath.setMap(mapFleetLink);
     }
@@ -349,25 +351,23 @@ if (interest.rw == 'write'&& interest.category == 'flash' && interest.task == 'g
 }
 
 
-function autoExpress() {
-    console.log("Retrieving online units data");
+function autoOnlines() {
     for (var key in fleetLink) {
         if (fleetLink.hasOwnProperty(key)) {
             // if this unit is a member of the network which includes the target unit, then add to list to plot
             if (fleetLink[key]["network"] == fleetLink[target]["network"] ){
-                console.log("Checking " + key);
                 if(fleetLink[key]["online"] == true){
                     setGateway(key);
                     setTarget(key);
-                    console.log("Getting data from " + key);
                     // actual web POST direct to unit
                  $.ajax({
                         url: interest.url,
+                        context:{requestedTargetKey:key},
                         timeout: 15000,
                         data: JSON.stringify(interest), // convert interest string to JSON
                         type: 'POST',
                             success : function(response) {
-                                console.log(response);
+                                console.log(this.requestedTargetKey);
                                 console.log(formatData(response, interest));
                             },
                             error : function(jqXHR, textStatus, err) {
