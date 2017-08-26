@@ -39,6 +39,7 @@
                 <div class="dropdown">
                 <a class="dropdown-item mbr-editable-menu-item" href="http://www.operantsolar.com" onclick="setGateway('SN508'); return false;">SN508 Foster</a>
                 <a class="dropdown-item mbr-editable-menu-item" href="http://www.operantsolar.com" onclick="setGateway('SN517'); return false;">SN517 Sugiyama</a>
+                <a class="dropdown-item mbr-editable-menu-item" href="http://www.operantsolar.com" onclick="setGateway('SN518'); return false;">SN518 Hermosillo</a>
                 <a class="dropdown-item mbr-editable-menu-item" href="http://www.operantsolar.com" onclick="setGateway('SN522'); return false;">SN522 Van Grouw</a>
                 <a class="dropdown-item mbr-editable-menu-item" href="http://www.operantsolar.com" onclick="setGateway('SN523'); return false;">SN523 Buffo</a>
                 <a class="dropdown-item mbr-editable-menu-item" href="http://www.operantsolar.com" onclick="setGateway('SN524'); return false;">SN524 Yamasaki</a>  
@@ -60,6 +61,7 @@
                 <div class="dropdown">
                 <a class="dropdown-item mbr-editable-menu-item" href="http://www.operantsolar.com" onclick="setTarget('SN508'); return false;">SN508 Foster</a>
                 <a class="dropdown-item mbr-editable-menu-item" href="http://www.operantsolar.com" onclick="setTarget('SN517'); return false;">SN517 Sugiyama</a>
+                <a class="dropdown-item mbr-editable-menu-item" href="http://www.operantsolar.com" onclick="setTarget('SN518'); return false;">SN518 Hermosillo</a>
                 <a class="dropdown-item mbr-editable-menu-item" href="http://www.operantsolar.com" onclick="setTarget('SN522'); return false;">SN522 Van Grouw</a>
                 <a class="dropdown-item mbr-editable-menu-item" href="http://www.operantsolar.com" onclick="setTarget('SN523'); return false;">SN523 Buffo</a>
                 <a class="dropdown-item mbr-editable-menu-item" href="http://www.operantsolar.com" onclick="setTarget('SN524'); return false;">SN524 Yamasaki</a>                

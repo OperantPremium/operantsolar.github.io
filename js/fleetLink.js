@@ -30,6 +30,7 @@ var fleetLink = {
     //"SN512":{"network":"larkfield", "locName":"Beckman", "deviceIdHash":"6917511534FD", "deviceID":"5000d8c46a5721ea", "usng":"21886253", "latitude":38.510951, "longitude": -122.748958, "agentUrl": "/kRQMPFuKmzDM", "baseAddress":0, "modbusAddress": 1, "marker": null, "online":false},
     "SN508":{"network":"larkfield", "locName":"Foster", "deviceIdHash":"730D72A6E22F", "deviceID":"5000d8c46a572874", "usng":"17776661", "latitude":38.547754, "longitude":-122.796043, "agentUrl": "/2866vQYBgUpC", "baseAddress":0, "modbusAddress": 1, "marker": null, "online":true},
     "SN517":{"network":"larkfield", "locName":"Sugiyama", "deviceIdHash":"73210C7C7368", "deviceID":"5000d8c46a572a40", "usng":"21226281", "latitude":38.513469, "longitude":-122.756491, "agentUrl": "/lfonbmovX8Ak", "baseAddress":0, "modbusAddress": 1, "marker": null, "online":true},
+    "SN518":{"network":"larkfield", "locName":"Hermosillo", "deviceIdHash":"45BB2C5D3151", "deviceID":"5000d8c46a5729fa", "usng":"16106798", "latitude":38.560186, "longitude":-122.815174, "agentUrl": "/JPTE9uGlCGQL", "baseAddress":0, "modbusAddress": 1, "marker": null, "online":true},
     "SN522":{"network":"larkfield", "locName":"Van Grouw", "deviceIdHash":"9CBABDD00BD5", "deviceID":"5000d8c46a572a68", "usng":"17286817", "latitude":38.561889, "longitude":-122.801555, "agentUrl": "/QCxFKECTRdBH", "baseAddress":0, "modbusAddress": 1, "marker": null, "online":true},
     "SN523":{"network":"larkfield", "locName":"Buffo", "deviceIdHash":"BB2A0BFDC8FC", "deviceID":"5000d8c46a5729e6", "usng":"16386739", "latitude":38.554853, "longitude":-122.811906, "agentUrl": "/jYthi-aNvlv6", "baseAddress":0, "modbusAddress": 1, "marker": null, "online":true},
     "SN524":{"network":"larkfield", "locName":"Yamasaki", "deviceIdHash":"022676CEA2C8", "deviceID":"5000d8c46a572a70", "usng":"16426752", "latitude":38.555988, "longitude":-122.811517, "agentUrl": "/NTLnl40ofe9Y", "baseAddress":0, "modbusAddress": 1, "marker": null, "online":true},
@@ -58,7 +59,7 @@ var displayFactors = {
     'dataFormat' : 'hex', // defines format of returned data (can be hex | dec | ascii | string)
     'scaleFactor' : 0.529, // Scale numeric data when necessary
     'offsetFactor' : 0, // similarly apply any numeric offset
-    'unitString' : "W/m^2", // append units string to communicate result better
+    'unitString' : "W", // append units string to communicate result better
     'displayName' : "Irradiance" // nice human readble display name for user
 }
 
@@ -69,8 +70,6 @@ var displayFactors = {
         target = requestedTarget;
         interest.deviceIdHash = fleetLink[target].deviceIdHash;
         interest.usng = fleetLink[target].usng;
-        updateParamTable(target,interest,displayFactors,gateway);
-        reDrawMap();     
         
         if (fleetLink[target].network == "larkfield"){
             document.getElementById("inverterCommands").style.visibility = 'hidden'; // hide inverter commands
@@ -89,8 +88,7 @@ var displayFactors = {
     //console.log("Gateway= " + requestedGateway)
     gateway = requestedGateway;
     interest.url = "https://agent.electricimp.com" + fleetLink[gateway].agentUrl
-    updateParamTable(target,interest,displayFactors,gateway);
-    reDrawMap();    
+    //updateParamTable(target,interest,displayFactors,gateway);
     }
 
     // Change network
@@ -150,38 +148,38 @@ function initMap() {
         if (fleetLink.hasOwnProperty(key)) {
             // if this unit is a member of the network which includes the target unit, then add to list to plot
             if (fleetLink[key]["network"] == fleetLink[target]["network"] ){
-                if (key == target){ 
-                    if(key == gateway){
-                        icon =  {path: google.maps.SymbolPath["CIRCLE"], strokeColor: "#ff6600", strokeWeight: 2, scale: 7, fillColor: '#ff0066', fillOpacity: 0.3};
-                    } else {
-                        icon =  {path: google.maps.SymbolPath["CIRCLE"], strokeColor: "gold", strokeWeight: 2, scale: 7, fillColor: 'gold', fillOpacity: 0.3};
-                    }
+                if (fleetLink[key]["online"] == true ){
+                    icon =  {path: google.maps.SymbolPath["CIRCLE"], strokeColor: "#ffffff", strokeWeight: 2, scale: 6, fillColor: '#ffffff', fillOpacity: 0.0};
+                } else {
+                    icon =  {path: google.maps.SymbolPath["CIRCLE"], strokeColor: "gold", strokeWeight: 2, scale: 6, fillColor: 'gold', fillOpacity: 0.0};
                 }
-                else if (key == gateway && key != target){
-                    icon =  {path: google.maps.SymbolPath["CIRCLE"], strokeColor: "#ff0066", strokeWeight: 2, scale: 7, fillColor: '#ff0066', fillOpacity: 0.3};
-                } 
-                else {
-                    icon =  {path: google.maps.SymbolPath["CIRCLE"], strokeColor: "#0099cc", strokeWeight: 2, scale: 7, fillColor: '#0099cc', fillOpacity: 0.3};
-                }
-                marker = new google.maps.Marker({
-                    position: new google.maps.LatLng(fleetLink[key]["latitude"], fleetLink[key]["longitude"]),
-                    icon: icon,
-                    map: mapFleetLink
-                });
-                bounds.extend(marker.position);
-                fleetLink[key]["marker"] = marker;
 
-                /*
-                google.maps.event.addListener(marker, 'click', (function (marker, i) {
-                    return function () {
-                        setGateway(locations[i][0]);
-                        console.log(locations[i][0]);
-                    }
-                })(marker, i));
-                */
+                
+        marker = new google.maps.Marker({
+            position: new google.maps.LatLng(fleetLink[key]["latitude"], fleetLink[key]["longitude"]),
+            icon: icon,
+            map: mapFleetLink
+        });
+        bounds.extend(marker.position);
+        fleetLink[key]["marker"] = marker;
+
+        
+        google.maps.event.addListener(marker, 'click', (function (marker,key) {
+            return function () {
+                if(fleetLink[key]["online"] == true){
+                    fleetLink[key]["online"] = false;
+                    reDrawMarker(key, 'gold', 'gold', '0.0');                    
+                } else {
+                    fleetLink[key]["online"] = true;
+                    reDrawMarker(key, 'white', 'white', '0.0');
+                }
             }
+        })(marker, key));
+        
         }
     }
+}
+
 
     mapFleetLink.fitBounds(bounds);
 
@@ -192,37 +190,14 @@ function initMap() {
 }
 
 
-function reDrawMap(){
-    // remove any node paths
-    if (nodePath != null){
-        nodePath.setMap(null);
-    }
-    // redraw the icons to match the targets andgateways
-    for (var key in fleetLink) {
-        if (fleetLink.hasOwnProperty(key)) {
-            // if this unit is a member of the network which includes the target unit, then add to list to plot
-            if (fleetLink[key]["network"] == fleetLink[target]["network"] ){
-                if (key == target){ 
-                    if(key == gateway){
-                        icon =  {path: google.maps.SymbolPath["CIRCLE"], strokeColor: "#ff6600", strokeWeight: 3, scale: 7, fillColor: '#ff0066', fillOpacity: 0.3};
-                    } else {
-                        icon =  {path: google.maps.SymbolPath["CIRCLE"], strokeColor: "gold", strokeWeight: 3, scale: 7, fillColor: 'gold', fillOpacity: 0.3};
-                    }
-                }
-                else if (key == gateway && key != target){
-                    icon =  {path: google.maps.SymbolPath["CIRCLE"], strokeColor: "#ff0066", strokeWeight: 3, scale: 7, fillColor: '#ff0066', fillOpacity: 0.3};
-                } 
-                else {
-                    icon =  {path: google.maps.SymbolPath["CIRCLE"], strokeColor: "#0099cc", strokeWeight: 3, scale: 7, fillColor: '#0099cc', fillOpacity: 0.3};
-                }
-                fleetLink[key]["marker"].setIcon(icon) ;        
-            }
-        }
-    }
+function reDrawMarker(unitID, reqStrokeColor, reqFillColor, reqFillOpacity){
+    //console.log(unitID, reqStrokeColor, reqFillColor, reqFillOpacity);
+    var icon =  {path: google.maps.SymbolPath["CIRCLE"], strokeColor: reqStrokeColor, strokeWeight: 2, scale: 6, fillColor: reqFillColor, fillOpacity: Number(reqFillOpacity)};
+    fleetLink[unitID]["marker"].setIcon(icon) ;   
 }
 
 
-function drawNodePath(unitId1,unitId2){
+function drawNodePath(unitId1,unitId2, color){
     var nodePlanCoordinates = [
               {lat: fleetLink[unitId1].latitude, lng: fleetLink[unitId1].longitude},
               {lat: fleetLink[unitId2].latitude, lng: fleetLink[unitId2].longitude}
@@ -230,13 +205,12 @@ function drawNodePath(unitId1,unitId2){
     nodePath = new google.maps.Polyline({
               path: nodePlanCoordinates,
               geodesic: true,
-              strokeColor: '#00ff00',
+              strokeColor: color,
               strokeOpacity: 1.0,
-              strokeWeight: 4
+              strokeWeight: 3
             });
     nodePath.setMap(mapFleetLink);
     }
-
 
 
 // Format the data for pretty display
@@ -253,7 +227,7 @@ function formatData(rawData, interest){
             if (cleanData != 'FFFF' && cleanData != '8000'){ 
                 numericData = numericData * displayFactors.scaleFactor + displayFactors.offsetFactor;
                 // Add units string at end of data, display two decimal places
-                returnDataString = numericData.toFixed(2) + " " + displayFactors.unitString;                
+                returnDataString = numericData.toFixed(0) + " " + displayFactors.unitString;                
             }
             else {
                 returnDataString = "Not Available";
@@ -281,77 +255,9 @@ return returnDataString
 
 
 
-function updateParamTable(target, interest, displayFactors, gatewayID){
-    var x = document.getElementById("paramTable").rows[0].cells;
-    x[0].innerHTML = displayFactors.displayName;    
-    x[2].innerHTML = "";
-    x[2].style.backgroundColor = null;  
-}
+function getAllData() {
 
-
-
-function redrawGoButton(){
-    document.getElementById("goButton").style.visibility = 'visible';
-}
-
-
-// read the web UI to determine the unit that is being targeted
-function expressInterest(buttonID) {
-    var x = document.getElementById("paramTable").rows[0].cells;
-// Trap the special case of write the geolocation to a unit, which uses fixed predefined geolocation in the Interest
-// Until you write a unit's geolocation into flash, you wouldn;t know what usng to use to address it, otherwise
-var tempUSNG = interest.usng; // First save the unit's expected geolocation temporarily (will put back after Express Interest below)
-if (interest.rw == 'write'&& interest.category == 'flash' && interest.task == 'geoSelf'){
-    interest.usng = '45898592'; // predefined geolocation used for writing actual geolocation to flash
-}
-
-    console.log(interest);
-
-    updateParamTable(target,interest,displayFactors,gateway);    
-    reDrawMap();
-
-    var waitResultDisplay = "";
-    if (target == gateway){
-        waitResultDisplay = "Direct WiFi..."
-        x[2].innerHTML = waitResultDisplay;
-        buttonID.style.background='#1474BF';
-    } 
-    else  {
-        waitResultDisplay = "Accessing LoRa Mesh..."
-        x[2].innerHTML = waitResultDisplay;
-        buttonID.style.background='#9999ff';
-    }
-    document.getElementById("goButton").style.visibility = 'hidden';
-
-    // actual web POST
-    $.ajax({
-        url: interest.url,
-        timeout: 15000,
-        data: JSON.stringify(interest), // convert interest string to JSON
-        type: 'POST',
-            success : function(response) {
-                var successDisplay = formatData(response, interest);
-                x[2].style.background = '#1474BF';
-                x[2].innerHTML = successDisplay;
-                setTimeout(redrawGoButton, 3000, buttonID);
-                drawNodePath(gateway,target);
-            },
-            error : function(jqXHR, textStatus, err) {
-                var errorResponse = err ;
-                console.log(errorResponse);
-                x[2].innerHTML = errorResponse;
-                document.getElementById("goButton").style.visibility = 'hidden';
-                setTimeout(redrawGoButton, 3000, buttonID);
-            }
-        
-    });
-    interest.usng = tempUSNG ; // Return the unit's expected geolocation 
-    buttonID.innerHTML = "GO";
-    buttonID.style.background='#90A878';
-}
-
-
-function autoOnlines() {
+    // Request all the online units' data asynchronously
     for (var key in fleetLink) {
         if (fleetLink.hasOwnProperty(key)) {
             // if this unit is a member of the network which includes the target unit, then add to list to plot
@@ -367,19 +273,167 @@ function autoOnlines() {
                         data: JSON.stringify(interest), // convert interest string to JSON
                         type: 'POST',
                             success : function(response) {
-                                console.log(this.requestedTargetKey);
-                                console.log(formatData(response, interest));
+                                reDrawMarker(this.requestedTargetKey, '#ffffff', '#2eb82e', '1.0');                                
+                                clockTime = getClock();
+                                console.log(clockTime + " Direct " + this.requestedTargetKey + " Success " + formatData(response, interest));
                             },
                             error : function(jqXHR, textStatus, err) {
                                 var errorResponse = err ;
-                                console.log(errorResponse);
+                                reDrawMarker(this.requestedTargetKey, '#66d9ff', '#ff3333', '1.0');                                                                
+                                clockTime = getClock();
+                                console.log(clockTime + " Direct " + this.requestedTargetKey + " Failure " + errorResponse);
                             }
                     });
                 }
             }
         }
     }
+    // now get all the offlines, must be sequential to avoid overloading LoRa network
+    // Wait a bit to allow return of onlin unit data
+    setTimeout(getOfflineData, 2000);
 }
+
+
+function getOfflineData(){
+    var nearestOnlineUnit = '';
+    var thisDistance = 0;
+    var clockTime = "";
+
+    (function($) {
+        // This is a way to queue  Ajax POST queries so that they run sequentially
+        // Got it here: http://jsfiddle.net/1337/9TG8t/86/
+        // Can't claim I understand it!
+        // jQuery on an empty object, we are going to use this as our Queue
+        var ajaxQueue = $({});
+        
+        $.ajaxQueue = function( ajaxOpts ) {
+            var jqXHR,
+                dfd = $.Deferred(),
+                promise = dfd.promise();
+            // queue our ajax request
+            ajaxQueue.queue( doRequest );
+            // add the abort method
+            promise.abort = function( statusText ) {
+                // proxy abort to the jqXHR if it is active
+                if ( jqXHR ) {
+                    return jqXHR.abort( statusText );
+                }
+                // if there wasn't already a jqXHR we need to remove from queue
+                var queue = ajaxQueue.queue(),
+                    index = $.inArray( doRequest, queue );
+                if ( index > -1 ) {
+                    queue.splice( index, 1 );
+                }
+                // and then reject the deferred
+                dfd.rejectWith( ajaxOpts.context || ajaxOpts,
+                    [ promise, statusText, "" ] );
+                return promise;
+            };
+        
+            // run the actual query
+            function doRequest( next ) {
+                jqXHR = $.ajax( ajaxOpts )
+                    .then( next, next )
+                    .done( dfd.resolve )
+                    .fail( dfd.reject );
+            }
+            return promise;
+        };
+        })(jQuery);
+
+
+    // This is the application specific Ajax query to get offline units' data    
+    for (var key in fleetLink) {
+        if (fleetLink.hasOwnProperty(key)) {
+            // if this unit is a member of the network which includes the target unit, then process it as potentially offline
+            if (fleetLink[key]["network"] == fleetLink[target]["network"] ){
+                if(fleetLink[key]["online"] == false){  // if it's offline, we have query via LoRa
+                setTarget(key); 
+                nearestOnlineUnit = findNearestOnline(key);
+                thisDistance = findDistance(key, nearestOnlineUnit);
+                //console.log("Using Gateway " + nearestOnlineUnit + " to Target " + key + " over distance " + findDistance(key, nearestOnlineUnit) + " meters");
+                setGateway(nearestOnlineUnit); // will need to intelligently select this to be the closest online unit!!
+                // Draw a whie line to indicate activity
+                drawNodePath(target,gateway,"white");
+                // Web POST to nearby agent for LoRa request
+                $.ajaxQueue({
+                    url: interest.url,
+                    context:{requestedTargetKey:key, requestedGatewayKey:nearestOnlineUnit, requestedDistance:thisDistance},
+                    timeout: 15000,
+                    data: JSON.stringify(interest), // convert interest string to JSON
+                    type: 'POST',
+                        success : function(response) {
+                            reDrawMarker(this.requestedTargetKey, 'gold', '#2eb82e', '1.0');                                                            
+                            drawNodePath(this.requestedTargetKey,this.requestedGatewayKey, '#2eb82e');
+                            clockTime = getClock();
+                            console.log(clockTime + " Target " + this.requestedTargetKey + " Gateway " + this.requestedGatewayKey + " Distance " + this.requestedDistance + " Success " + formatData(response, interest));
+                        },
+                        error : function(jqXHR, textStatus, err) {
+                            var errorResponse = err ;
+                            clockTime = getClock();
+                            reDrawMarker(this.requestedTargetKey, 'gold', '#ff3333', '1.0');                                                                                        
+                            drawNodePath(this.requestedTargetKey,this.requestedGatewayKey, '#ff3333');
+                            console.log(clockTime + " Target " + this.requestedTargetKey + " Gateway " + this.requestedGatewayKey + " Distance " + this.requestedDistance + " Failure " + errorResponse);
+                        }
+                });
+                }
+            }
+        }
+    }
+}
+
+function findNearestOnline(offlineUnit){
+    var nearestOnline = '';
+    var distanceToNearestOnline = 99999;
+    var thisDistance = 99999;
+
+    for (var key in fleetLink) {
+        if (fleetLink.hasOwnProperty(key)) {
+            // if this unit is a member of the network which includes the target unit, then process it as potentially online
+            if (fleetLink[key]["network"] == fleetLink[offlineUnit]["network"] ){
+                if(fleetLink[key]["online"] == true){  // if its online, check if its closest unit
+                    thisDistance = findDistance(offlineUnit, key);
+                    //console.log("checking distance from " + key + " to " + offlineUnit + " = " + thisDistance + " compared to " + distanceToNearestOnline);
+                    if(Number(thisDistance) < Number(distanceToNearestOnline)){
+                        nearestOnline = key;
+                        distanceToNearestOnline = thisDistance;
+                       // console.log("decided unit " + nearestOnline + " at distance " + distanceToNearestOnline + " is best so far");
+                    }
+                }
+            }
+        }
+    }
+
+    return nearestOnline;
+    
+}
+
+
+function findDistance(unit1, unit2){
+    var x1 = 10 * fleetLink[unit1]["usng"].substring(0,4);
+    var y1 = 10 * fleetLink[unit1]["usng"].substring(4,8);
+    var x2 = 10 * fleetLink[unit2]["usng"].substring(0,4);
+    var y2 = 10 * fleetLink[unit2]["usng"].substring(4,8);
+    var distance = Math.pow((Math.pow((x2 - x1),2) + Math.pow((y2 - y1),2)),0.5).toFixed(0);
+    return distance;
+}
+
+
+function getClock(){
+    var d=new Date();
+    year = d.getFullYear();
+    month = d.getMonth();
+    date = d.getDate();
+    h=d.getHours();
+    m=d.getMinutes();
+    s=d.getSeconds();
+    if (m<10) { m = "0" + m; }
+    if (s<10) { s = "0" + s; }
+    var clockTime = month + "/" + date + "/" + year + " " + h + ":" + m + ":" + s;
+    return clockTime;
+}
+
+
 
 //================================================================================
 // COMMAND LANGUAGE
@@ -394,7 +448,7 @@ function writeGeoSelf(){
     interest.parameters = geoSelf;
     displayFactors.dataFormat = 'string';
     displayFactors.displayName = "Set Geolocation to " + interest.parameters;
-    updateParamTable(target,interest,displayFactors,gateway);
+    //updateParamTable(target,interest,displayFactors,gateway);
 }
 
 // Read a specific unit's geolocation
@@ -405,7 +459,7 @@ function readGeoSelf(){
     interest.parameters = "";
     displayFactors.dataFormat = 'string';
     displayFactors.displayName = "Read Geolocation" + interest.parameters;
-    updateParamTable(target,interest,displayFactors,gateway);
+    //updateParamTable(target,interest,displayFactors,gateway);
 }
 
 // Scan the WiFi environment, optionally choose the SSID of the network to scane
@@ -417,7 +471,7 @@ function scanWiFi(){
     interest.parameters = wiFiSSID;
     displayFactors.dataFormat = 'string';
     displayFactors.displayName = "Scan WiFi for SSID " + interest.parameters;
-    updateParamTable(target,interest,displayFactors,gateway);
+    //updateParamTable(target,interest,displayFactors,gateway);
 
 }
 
@@ -430,7 +484,7 @@ function readModbus(){
     interest.parameters = modbusCommand;
     displayFactors.dataFormat = 'string';
     displayFactors.displayName = "Read Modbus: " + interest.parameters;
-    updateParamTable(target,interest,displayFactors,gateway);
+    //updateParamTable(target,interest,displayFactors,gateway);
  
 }
 
@@ -1656,7 +1710,7 @@ function readSunSpec(sunSpecName){
     interest.category = 'modbus';
     interest.task = 'fc03';
     interest.parameters = decimalToHex(fleetLink[target].modbusAddress, 2) + '_' + decimalToHex(fleetLink[target].baseAddress + sunSpecReg, 4) + decimalToHex(sunSpecLength, 4) + '_9600_8_1';
-    updateParamTable(target,interest,displayFactors,gateway);
+    //(target,interest,displayFactors,gateway);
     initMap();
 }
 
@@ -1670,7 +1724,7 @@ function decimalToHex(decimal, chars) {
 
       $( window ).on( "load", function() {
         initMap();
-        updateParamTable(target,interest,displayFactors,gateway);
+        //updateParamTable(target,interest,displayFactors,gateway);
         document.getElementById("serviceMenu").style.visibility = 'hidden'; // hide service commands on start up
         document.getElementById("inverterCommands").style.visibility = 'hidden'; // hide inverter commnads on startup
         document.getElementById("devRadio").style.visibility = 'hidden'; // hide development network on startup
