@@ -2,16 +2,27 @@
 <section class="mbr-section mbr-section-hero mbr-section-full mbr-parallax-background mbr-after-navbar" style="background-image: url(file:///Users/randy/Library/Application%20Support/Mobirise.com/Mobirise/projects/project-2017-05-24_103057/assets/images/dark%20blue-2000x1348.png);">
 
     <div class="mbr-section col-md-10 col-md-offset-1 text-xs-center" style="margin-bottom: 0px; margin-top: 0px;"> 
-        <span id="autoButton"><a class="btn btn-lg btn-success mbr-editable-button"  href="http://www.operantsolar.com" onclick="getAllData(); return false;">
-        <span style="color: rgb(204, 250, 204);margins:auto"></span>AUTO</a></span>  
-        
+        <span id="autoButton">
+        <a class="btn btn-lg btn-success mbr-editable-button"  href="http://www.operantsolar.com" onclick="getAllData(); return false;">
+        <span style="color: rgb(204, 250, 204);margins:auto"></span>GO</a>
+        </span>  
+
+
         <div id="map" style="width: 600px; height: 600px; margin-left: auto; margin-right: auto ; margin-bottom: 0px; margin-top: 0px;border: 5px;"></div>
 
         <form action="" class="radioForm" style="margin-top: 30px; ">
+            <input type="checkbox" id="continuousGo" name="contGo" value="false" style="margin-top:10px" > Continuous     
+            <br>
+            <input type="checkbox" id="devCheckbox" name="allowDev" value="false" style="margin-top:10px; margin-bottom:10px" onclick="setDevMode(this)"> Development Mode 
+            <br>
+            <span id="devRadio" >
             <input type="radio" name="network" value="larkfield" checked="checked" onchange="changeNetwork(this)" ><span style="margin-right: 50px" > LARKFIELD </span>
             <input type="radio" name="network" value="vivint" onchange="changeNetwork(this)" ><span style="margin-right: 50px" > VIVINT SOLAR </span>
-            <span id="devRadio" ><input type="radio" name="network" value="dev" onchange="changeNetwork(this)" ><span style="margin-right: 50px" > DEV </span></span>
-            <input type="checkbox" name="allowDev" value="false" style="margin-top:10px" onclick="setDevMode(this)"> Development Mode <br>
+            <input type="radio" name="network" value="dev" onchange="changeNetwork(this)" ><span style="margin-right: 50px" > DEV </span>
+            </span>
+            <br>
+
+        <br>
         </form>
 
     </div>

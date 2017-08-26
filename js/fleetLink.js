@@ -13,32 +13,32 @@ var nodePath =  null;
 
 var fleetLink = { 
     //dev
-    "SN402":{"network":"dev", "locName":"Shirlie", "deviceIdHash":"D85F6461EB91", "deviceID":"5000d8c46a56dc4c", "usng":"21016306", "latitude":38.5157472, "longitude":-122.7589444, "agentUrl": "/oHMQMg_lcxsT", "baseAddress":49999, "modbusAddress": 100, "marker": null, "online":false},
- //   "SN403":{"network":"dev", "locName":"Sugiyama Outside", "deviceIdHash":"2BF6EF3EFD90", "deviceID":"5000d8c46a56ddc8", "usng":"21236282", "latitude":38.5134, "longitude":-122.75655, "agentUrl": "/wXqOLIl3KiLB", "baseAddress":49999, "modbusAddress": 100, "marker": null, "online":false},
-    "SN404":{"network":"dev", "locName":"Kiva", "deviceIdHash":"018C268ECB5B", "deviceID":"5000d8c46a56dd24", "usng":"20916258", "latitude":38.5113556, "longitude":-122.7601444, "agentUrl": "/QGO7JQAzyiev", "baseAddress":49999, "modbusAddress": 100, "marker": null, "online":false},
-    "SN405":{"network":"dev", "locName":"Gibson", "deviceIdHash":"718A34D8423A", "deviceID":"5000d8c46a56ddb2", "usng":"21426258", "latitude":38.5113889, "longitude":-122.7542667, "agentUrl": "/CyPoe3l9E5Od", "baseAddress":49999, "modbusAddress": 100, "marker": null, "online":false},
-    "SN406":{"network":"dev", "locName":"Beckman", "deviceIdHash":"C5F6371C8A03", "deviceID":"5000d8c46a56dd18", "usng":"21896255", "latitude":38.5110833, "longitude":-122.7488806, "agentUrl": "/hxsSiYETEEpd", "baseAddress":49999, "modbusAddress": 100, "marker": null, "online":false},
-    "SN407":{"network":"dev", "locName":"Sugiyama Inside", "deviceIdHash":"4CA33E88EDAA", "deviceID":"5000d8c46a56ddde", "usng":"21226282", "latitude":38.5135, "longitude":-122.75653, "agentUrl": "/VifAbahCX8ux", "baseAddress":49999, "modbusAddress": 100, "marker": null, "online":false},
+    "SN402":{"network":"dev", "locName":"Shirlie", "deviceIdHash":"D85F6461EB91", "deviceID":"5000d8c46a56dc4c", "usng":"21016306", "latitude":38.5157472, "longitude":-122.7589444, "agentUrl": "/oHMQMg_lcxsT", "baseAddress":49999, "modbusAddress": 100, "marker": null, "nodePath":null, "online":false},
+ //   "SN403":{"network":"dev", "locName":"Sugiyama Outside", "deviceIdHash":"2BF6EF3EFD90", "deviceID":"5000d8c46a56ddc8", "usng":"21236282", "latitude":38.5134, "longitude":-122.75655, "agentUrl": "/wXqOLIl3KiLB", "baseAddress":49999, "modbusAddress": 100, "marker": null, "nodePath":null, "online":false},
+    "SN404":{"network":"dev", "locName":"Kiva", "deviceIdHash":"018C268ECB5B", "deviceID":"5000d8c46a56dd24", "usng":"20916258", "latitude":38.5113556, "longitude":-122.7601444, "agentUrl": "/QGO7JQAzyiev", "baseAddress":49999, "modbusAddress": 100, "marker": null, "nodePath":null, "online":false},
+    "SN405":{"network":"dev", "locName":"Gibson", "deviceIdHash":"718A34D8423A", "deviceID":"5000d8c46a56ddb2", "usng":"21426258", "latitude":38.5113889, "longitude":-122.7542667, "agentUrl": "/CyPoe3l9E5Od", "baseAddress":49999, "modbusAddress": 100, "marker": null, "nodePath":null, "online":false},
+    "SN406":{"network":"dev", "locName":"Beckman", "deviceIdHash":"C5F6371C8A03", "deviceID":"5000d8c46a56dd18", "usng":"21896255", "latitude":38.5110833, "longitude":-122.7488806, "agentUrl": "/hxsSiYETEEpd", "baseAddress":49999, "modbusAddress": 100, "marker": null, "nodePath":null, "online":false},
+    "SN407":{"network":"dev", "locName":"Sugiyama Inside", "deviceIdHash":"4CA33E88EDAA", "deviceID":"5000d8c46a56ddde", "usng":"21226282", "latitude":38.5135, "longitude":-122.75653, "agentUrl": "/VifAbahCX8ux", "baseAddress":49999, "modbusAddress": 100, "marker": null, "nodePath":null, "online":false},
     //vivint
-    "SN506":{"network":"vivint", "locName":"Vivint 1", "deviceIdHash":"C3B996B9F76C", "deviceID":"5000d8c46a572880", "usng":"15795063", "latitude":38.4038333, "longitude":-122.8190833, "agentUrl": "/oGQ_PBSAUppO", "baseAddress":39999, "modbusAddress": 1, "marker": null, "online":false},
-    "SN511":{"network":"vivint", "locName":"Vivint 2 ", "deviceIdHash":"C1B16ADC8E57", "deviceID":"5000d8c46a5728f6", "usng":"15815066", "latitude":38.4041111, "longitude":-122.8189167, "agentUrl": "/4R2NSeUUtys8", "baseAddress":39999, "modbusAddress": 1, "marker": null, "online":false},
-    "SN513":{"network":"vivint", "locName":"SolarEdge Inverter", "deviceIdHash":"DF04146F1DF0", "deviceID":"5000d8c46a57285e", "usng":"15795070", "latitude":38.40443, "longitude":-122.8190967, "agentUrl": "/ZT8GBL-7RrgD", "baseAddress":39999, "modbusAddress": 1, "marker": null, "online":false},
-    "SN514":{"network":"vivint", "locName":"Vivint 3", "deviceIdHash":"00E329B56259", "deviceID":"5000d8c46a572872", "usng":"15705066", "latitude":38.4040556, "longitude":-122.8201667, "agentUrl": "/609atPXTxkX7", "baseAddress":39999, "modbusAddress": 1, "marker": null, "online":false},
+    "SN506":{"network":"vivint", "locName":"Vivint 1", "deviceIdHash":"C3B996B9F76C", "deviceID":"5000d8c46a572880", "usng":"15795063", "latitude":38.4038333, "longitude":-122.8190833, "agentUrl": "/oGQ_PBSAUppO", "baseAddress":39999, "modbusAddress": 1, "marker": null, "nodePath":null, "online":false},
+    "SN511":{"network":"vivint", "locName":"Vivint 2 ", "deviceIdHash":"C1B16ADC8E57", "deviceID":"5000d8c46a5728f6", "usng":"15815066", "latitude":38.4041111, "longitude":-122.8189167, "agentUrl": "/4R2NSeUUtys8", "baseAddress":39999, "modbusAddress": 1, "marker": null, "nodePath":null, "online":false},
+    "SN513":{"network":"vivint", "locName":"SolarEdge Inverter", "deviceIdHash":"DF04146F1DF0", "deviceID":"5000d8c46a57285e", "usng":"15795070", "latitude":38.40443, "longitude":-122.8190967, "agentUrl": "/ZT8GBL-7RrgD", "baseAddress":39999, "modbusAddress": 1, "marker": null, "nodePath":null, "online":false},
+    "SN514":{"network":"vivint", "locName":"Vivint 3", "deviceIdHash":"00E329B56259", "deviceID":"5000d8c46a572872", "usng":"15705066", "latitude":38.4040556, "longitude":-122.8201667, "agentUrl": "/609atPXTxkX7", "baseAddress":39999, "modbusAddress": 1, "marker": null, "nodePath":null, "online":false},
     // larkfield
     //
-    //"SN503":{"network":"larkfield", "locName":"Shirlie", "deviceIdHash":"4E562573DBA0", "deviceID":"5000d8c46a572868", "usng":"21016306", "latitude":38.515786, "longitude":-122.759001, "agentUrl": "/tRNE2WbS2CGw", "baseAddress":0, "modbusAddress": 1, "marker": null, "online":false},
-    //"SN512":{"network":"larkfield", "locName":"Beckman", "deviceIdHash":"6917511534FD", "deviceID":"5000d8c46a5721ea", "usng":"21886253", "latitude":38.510951, "longitude": -122.748958, "agentUrl": "/kRQMPFuKmzDM", "baseAddress":0, "modbusAddress": 1, "marker": null, "online":false},
-    "SN508":{"network":"larkfield", "locName":"Foster", "deviceIdHash":"730D72A6E22F", "deviceID":"5000d8c46a572874", "usng":"17776661", "latitude":38.547754, "longitude":-122.796043, "agentUrl": "/2866vQYBgUpC", "baseAddress":0, "modbusAddress": 1, "marker": null, "online":true},
-    "SN517":{"network":"larkfield", "locName":"Sugiyama", "deviceIdHash":"73210C7C7368", "deviceID":"5000d8c46a572a40", "usng":"21226281", "latitude":38.513469, "longitude":-122.756491, "agentUrl": "/lfonbmovX8Ak", "baseAddress":0, "modbusAddress": 1, "marker": null, "online":true},
-    "SN518":{"network":"larkfield", "locName":"Hermosillo", "deviceIdHash":"45BB2C5D3151", "deviceID":"5000d8c46a5729fa", "usng":"16106798", "latitude":38.560186, "longitude":-122.815174, "agentUrl": "/JPTE9uGlCGQL", "baseAddress":0, "modbusAddress": 1, "marker": null, "online":true},
-    "SN522":{"network":"larkfield", "locName":"Van Grouw", "deviceIdHash":"9CBABDD00BD5", "deviceID":"5000d8c46a572a68", "usng":"17286817", "latitude":38.561889, "longitude":-122.801555, "agentUrl": "/QCxFKECTRdBH", "baseAddress":0, "modbusAddress": 1, "marker": null, "online":true},
-    "SN523":{"network":"larkfield", "locName":"Buffo", "deviceIdHash":"BB2A0BFDC8FC", "deviceID":"5000d8c46a5729e6", "usng":"16386739", "latitude":38.554853, "longitude":-122.811906, "agentUrl": "/jYthi-aNvlv6", "baseAddress":0, "modbusAddress": 1, "marker": null, "online":true},
-    "SN524":{"network":"larkfield", "locName":"Yamasaki", "deviceIdHash":"022676CEA2C8", "deviceID":"5000d8c46a572a70", "usng":"16426752", "latitude":38.555988, "longitude":-122.811517, "agentUrl": "/NTLnl40ofe9Y", "baseAddress":0, "modbusAddress": 1, "marker": null, "online":true},
-    "SN527":{"network":"larkfield", "locName":"Galli", "deviceIdHash":"E18F79FBF4D0", "deviceID":"5000d8c46a572a38", "usng":"18166731", "latitude":38.554040, "longitude":-122.791538, "agentUrl": "/t02E8X0S0Kl6", "baseAddress":0, "modbusAddress": 1, "marker": null, "online":true},
-    "SN528":{"network":"larkfield", "locName":"Gibson", "deviceIdHash":"F5ED514678B2", "deviceID":"5000d8c46a572a58", "usng":"21416258", "latitude":38.511400, "longitude":-122.754315, "agentUrl": "/aQTyLRwIHjYn", "baseAddress":0, "modbusAddress": 1, "marker": null, "online":true},
-    "SN530":{"network":"larkfield", "locName":"Nadendla", "deviceIdHash":"2EB55A0B48F4", "deviceID":"5000d8c46a572a12", "usng":"17616705", "latitude":38.551712, "longitude":-122.79779, "agentUrl": "/r7-wVnF8nV9b", "baseAddress":0, "modbusAddress": 1, "marker": null, "online":true},
-    "SN531":{"network":"larkfield", "locName":"Ferrara", "deviceIdHash":"A9D4A224043D", "deviceID":"5000d8c46a572a4c", "usng":"21246285", "latitude":38.513862, "longitude":-122.756289, "agentUrl": "/lgWdhq_T9EsC", "baseAddress":0, "modbusAddress": 1, "marker": null, "online":true}
-    //
+    //"SN503":{"network":"larkfield", "locName":"Shirlie", "deviceIdHash":"4E562573DBA0", "deviceID":"5000d8c46a572868", "usng":"21016306", "latitude":38.515786, "longitude":-122.759001, "agentUrl": "/tRNE2WbS2CGw", "baseAddress":0, "modbusAddress": 1, "marker": null, "nodePath":null, "online":false},
+    //"SN512":{"network":"larkfield", "locName":"Beckman", "deviceIdHash":"6917511534FD", "deviceID":"5000d8c46a5721ea", "usng":"21886253", "latitude":38.510951, "longitude": -122.748958, "agentUrl": "/kRQMPFuKmzDM", "baseAddress":0, "modbusAddress": 1, "marker": null, "nodePath":null, "online":false},
+    "SN508":{"network":"larkfield", "locName":"Foster", "deviceIdHash":"730D72A6E22F", "deviceID":"5000d8c46a572874", "usng":"17776661", "latitude":38.547754, "longitude":-122.796043, "agentUrl": "/2866vQYBgUpC", "baseAddress":0, "modbusAddress": 1, "marker": null, "nodePath":null, "online":true},
+    "SN517":{"network":"larkfield", "locName":"Sugiyama", "deviceIdHash":"73210C7C7368", "deviceID":"5000d8c46a572a40", "usng":"21226281", "latitude":38.513469, "longitude":-122.756491, "agentUrl": "/lfonbmovX8Ak", "baseAddress":0, "modbusAddress": 1, "marker": null, "nodePath":null, "online":true},
+    "SN518":{"network":"larkfield", "locName":"Hermosillo", "deviceIdHash":"45BB2C5D3151", "deviceID":"5000d8c46a5729fa", "usng":"16106798", "latitude":38.560186, "longitude":-122.815174, "agentUrl": "/JPTE9uGlCGQL", "baseAddress":0, "modbusAddress": 1, "marker": null, "nodePath":null, "online":true},
+    "SN520":{"network":"larkfield", "locName":"Buren", "deviceIdHash":"8C41DCBC3DF2", "deviceID":"5000d8c46a572a84", "usng":"14576664", "latitude":38.548154, "longitude":-122.832752, "agentUrl": "/2IauvU30NdQH", "baseAddress":0, "modbusAddress": 1, "marker": null, "nodePath":null, "online":true},
+    "SN522":{"network":"larkfield", "locName":"Van Grouw", "deviceIdHash":"9CBABDD00BD5", "deviceID":"5000d8c46a572a68", "usng":"17286817", "latitude":38.561889, "longitude":-122.801555, "agentUrl": "/QCxFKECTRdBH", "baseAddress":0, "modbusAddress": 1, "marker": null, "nodePath":null, "online":true},
+    //"SN523":{"network":"larkfield", "locName":"Buffo", "deviceIdHash":"BB2A0BFDC8FC", "deviceID":"5000d8c46a5729e6", "usng":"16386739", "latitude":38.554853, "longitude":-122.811906, "agentUrl": "/jYthi-aNvlv6", "baseAddress":0, "modbusAddress": 1, "marker": null, "nodePath":null, "online":true},
+    "SN524":{"network":"larkfield", "locName":"Yamasaki", "deviceIdHash":"022676CEA2C8", "deviceID":"5000d8c46a572a70", "usng":"16426752", "latitude":38.555988, "longitude":-122.811517, "agentUrl": "/NTLnl40ofe9Y", "baseAddress":0, "modbusAddress": 1, "marker": null, "nodePath":null, "online":true},
+    "SN527":{"network":"larkfield", "locName":"Galli", "deviceIdHash":"E18F79FBF4D0", "deviceID":"5000d8c46a572a38", "usng":"18166731", "latitude":38.554040, "longitude":-122.791538, "agentUrl": "/t02E8X0S0Kl6", "baseAddress":0, "modbusAddress": 1, "marker": null, "nodePath":null, "online":true},
+    "SN528":{"network":"larkfield", "locName":"Gibson", "deviceIdHash":"F5ED514678B2", "deviceID":"5000d8c46a572a58", "usng":"21416258", "latitude":38.511400, "longitude":-122.754315, "agentUrl": "/aQTyLRwIHjYn", "baseAddress":0, "modbusAddress": 1, "marker": null, "nodePath":null, "online":true},
+    "SN530":{"network":"larkfield", "locName":"Nadendla", "deviceIdHash":"2EB55A0B48F4", "deviceID":"5000d8c46a572a12", "usng":"17616705", "latitude":38.551712, "longitude":-122.79779, "agentUrl": "/r7-wVnF8nV9b", "baseAddress":0, "modbusAddress": 1, "marker": null, "nodePath":null, "online":true},
+    "SN531":{"network":"larkfield", "locName":"Ferrara", "deviceIdHash":"A9D4A224043D", "deviceID":"5000d8c46a572a4c", "usng":"21246285", "latitude":38.513862, "longitude":-122.756289, "agentUrl": "/lgWdhq_T9EsC", "baseAddress":0, "modbusAddress": 1, "marker": null, "nodePath":null, "online":true}
     //
 };
 
@@ -51,6 +51,7 @@ var interest = {
     'parameters': decimalToHex(fleetLink[target].modbusAddress, 2) + '_' + decimalToHex(fleetLink[target].baseAddress + sunSpecReg, 4) + decimalToHex(sunSpecLength, 4) + '_9600_8_1',
     'url' : "https://agent.electricimp.com" + fleetLink[gateway].agentUrl
 }
+
 
 var displayFactors = {
     // the following parameters are used to pretty up data returns, particularly from modbus
@@ -70,26 +71,17 @@ var displayFactors = {
         target = requestedTarget;
         interest.deviceIdHash = fleetLink[target].deviceIdHash;
         interest.usng = fleetLink[target].usng;
-        
-        if (fleetLink[target].network == "larkfield"){
-            document.getElementById("inverterCommands").style.visibility = 'hidden'; // hide inverter commands
-            document.getElementById("meterCommands").style.visibility = 'visible'; // reveal meter commands
-        } else if (fleetLink[target].network == "vivint"){
-            document.getElementById("inverterCommands").style.visibility = 'visible'; // reveal inverter commands
-            document.getElementById("meterCommands").style.visibility = 'hidden'; // hide meter commands
-        } else {
-            document.getElementById("inverterCommands").style.visibility = 'visible'; // reveal inverter commands
-            document.getElementById("meterCommands").style.visibility = 'visible'; // reveal meter commands
-        }
-    }
+        var devMode = document.getElementById("devCheckbox").value;
+      }
+
 
     // Choose gateway unit
     function setGateway(requestedGateway) {
     //console.log("Gateway= " + requestedGateway)
     gateway = requestedGateway;
     interest.url = "https://agent.electricimp.com" + fleetLink[gateway].agentUrl
-    //updateParamTable(target,interest,displayFactors,gateway);
     }
+
 
     // Change network
     function changeNetwork(rb){
@@ -108,19 +100,30 @@ var displayFactors = {
         }
     }
 
+
     // Set Development Mode
     function setDevMode(cb){
         if (cb.checked != true){
             document.getElementById("serviceMenu").style.visibility = 'hidden';
             document.getElementById("devRadio").style.visibility = 'hidden';
             document.getElementById("sunSpecModels").style.visibility = 'hidden';
+            document.getElementById("gatewayMenu").style.visibility = 'hidden';
+            document.getElementById("targetMenu").style.visibility = 'hidden';
+            document.getElementById("meterCommands").style.visibility = 'hidden';
+            document.getElementById("inverterCommands").style.visibility = 'hidden';
+            
         } else {
             document.getElementById("serviceMenu").style.visibility = 'visible';
             document.getElementById("devRadio").style.visibility = 'visible';      
             document.getElementById("sunSpecModels").style.visibility = 'visible';
-             
-        }
+            document.getElementById("gatewayMenu").style.visibility = 'visible';
+            document.getElementById("targetMenu").style.visibility = 'visible';
+            document.getElementById("meterCommands").style.visibility = 'visible';
+            document.getElementById("inverterCommands").style.visibility = 'visible';
+            
+         }
     }
+
 
 //================================================================================
 // MAPPING 
@@ -135,14 +138,12 @@ function initMap() {
     var bounds = new google.maps.LatLngBounds();
     var myLatLng = {lat: 38.491, lng: -122.717};
 
-    
     // Draw default map
-        mapFleetLink = new google.maps.Map(document.getElementById('map'), {
-        zoom: 1,
-        mapTypeId: google.maps.MapTypeId.SATELLITE,
-        center: myLatLng
-        });
-
+    mapFleetLink = new google.maps.Map(document.getElementById('map'), {
+    zoom: 1,
+    mapTypeId: google.maps.MapTypeId.SATELLITE,
+    center: myLatLng
+    });
         
     for (var key in fleetLink) {
         if (fleetLink.hasOwnProperty(key)) {
@@ -151,9 +152,8 @@ function initMap() {
                 if (fleetLink[key]["online"] == true ){
                     icon =  {path: google.maps.SymbolPath["CIRCLE"], strokeColor: "#ffffff", strokeWeight: 2, scale: 6, fillColor: '#ffffff', fillOpacity: 0.0};
                 } else {
-                    icon =  {path: google.maps.SymbolPath["CIRCLE"], strokeColor: "gold", strokeWeight: 2, scale: 6, fillColor: 'gold', fillOpacity: 0.0};
+                    icon =  {path: google.maps.SymbolPath["CIRCLE"], strokeColor: "orange", strokeWeight: 2, scale: 6, fillColor: 'orange', fillOpacity: 0.0};
                 }
-
                 
         marker = new google.maps.Marker({
             position: new google.maps.LatLng(fleetLink[key]["latitude"], fleetLink[key]["longitude"]),
@@ -161,17 +161,18 @@ function initMap() {
             map: mapFleetLink
         });
         bounds.extend(marker.position);
-        fleetLink[key]["marker"] = marker;
 
+        fleetLink[key]["marker"] = marker; // store this marker in the fleetlink JSON object
         
+        // add a lsitener to change online status by clicking on marker
         google.maps.event.addListener(marker, 'click', (function (marker,key) {
             return function () {
                 if(fleetLink[key]["online"] == true){
                     fleetLink[key]["online"] = false;
-                    reDrawMarker(key, 'gold', 'gold', '0.0');                    
+                    drawMarker(key, 'orange', 'orange', '0.0');                    
                 } else {
                     fleetLink[key]["online"] = true;
-                    reDrawMarker(key, 'white', 'white', '0.0');
+                    drawMarker(key, 'white', 'white', '0.0');
                 }
             }
         })(marker, key));
@@ -179,38 +180,71 @@ function initMap() {
         }
     }
 }
-
-
+    // size the map to include all units
     mapFleetLink.fitBounds(bounds);
 
     var listener = google.maps.event.addListener(mapFleetLink, "idle", function () {
         google.maps.event.removeListener(listener);
     });
-
 }
 
 
-function reDrawMarker(unitID, reqStrokeColor, reqFillColor, reqFillOpacity){
-    //console.log(unitID, reqStrokeColor, reqFillColor, reqFillOpacity);
+function drawMarker(unitID, reqStrokeColor, reqFillColor, reqFillOpacity){
     var icon =  {path: google.maps.SymbolPath["CIRCLE"], strokeColor: reqStrokeColor, strokeWeight: 2, scale: 6, fillColor: reqFillColor, fillOpacity: Number(reqFillOpacity)};
     fleetLink[unitID]["marker"].setIcon(icon) ;   
 }
 
+function clearNodePath(targetId){
+    if (fleetLink[targetId]["nodePath"] != null) {
+        // if this unit has an existing node path, remove it
+        fleetLink[targetId]["nodePath"].setMap(null);
+    }
+    }
 
-function drawNodePath(unitId1,unitId2, color){
+function drawNodePath(unitId1,unitId2, color, opacity){
     var nodePlanCoordinates = [
               {lat: fleetLink[unitId1].latitude, lng: fleetLink[unitId1].longitude},
               {lat: fleetLink[unitId2].latitude, lng: fleetLink[unitId2].longitude}
             ];
-    nodePath = new google.maps.Polyline({
-              path: nodePlanCoordinates,
-              geodesic: true,
-              strokeColor: color,
-              strokeOpacity: 1.0,
-              strokeWeight: 3
-            });
-    nodePath.setMap(mapFleetLink);
+
+    if (fleetLink[unitId1]["nodePath"] != null) {
+        // if this unit has an existing node path, remove it
+        fleetLink[unitId1]["nodePath"].setMap(null);
     }
+    // then draw the new one  
+    nodePath = new google.maps.Polyline({
+        path: nodePlanCoordinates,
+        geodesic: true,
+        strokeColor: color,
+        strokeOpacity: opacity,
+        strokeWeight: 3
+        });
+        nodePath.setMap(mapFleetLink);
+
+    fleetLink[unitId1]["nodePath"] = nodePath;
+    }
+
+
+    // reset all the merkers and node paths to blank without reinitializing map
+    function clearMap(){
+        for (var key in fleetLink) {
+            if (fleetLink.hasOwnProperty(key)) {
+                // if this unit is a member of the network which includes the target unit, then add to list to plot
+                if (fleetLink[key]["network"] == fleetLink[target]["network"] ){
+                    if (fleetLink[key]["online"] == true ){
+                        drawMarker(key, 'white', 'white', '0.0');
+                    } else {
+                        drawMarker(key, 'orange', 'orange', '0.0');                    
+                    }          
+                    if (fleetLink[key]["nodePath"] != null){
+                        fleetLink[key]["nodePath"].setOptions({strokeOpacity: 0.0});
+                    }
+                clearNodePath(key);
+                }        
+            }
+        }   
+    }
+
 
 
 // Format the data for pretty display
@@ -257,40 +291,57 @@ return returnDataString
 
 function getAllData() {
 
-    // Request all the online units' data asynchronously
-    for (var key in fleetLink) {
-        if (fleetLink.hasOwnProperty(key)) {
-            // if this unit is a member of the network which includes the target unit, then add to list to plot
-            if (fleetLink[key]["network"] == fleetLink[target]["network"] ){
-                if(fleetLink[key]["online"] == true){
-                    setGateway(key);
-                    setTarget(key);
-                    // actual web POST direct to unit
-                 $.ajax({
-                        url: interest.url,
-                        context:{requestedTargetKey:key},
-                        timeout: 15000,
-                        data: JSON.stringify(interest), // convert interest string to JSON
-                        type: 'POST',
-                            success : function(response) {
-                                reDrawMarker(this.requestedTargetKey, '#ffffff', '#2eb82e', '1.0');                                
-                                clockTime = getClock();
-                                console.log(clockTime + " Direct " + this.requestedTargetKey + " Success " + formatData(response, interest));
-                            },
-                            error : function(jqXHR, textStatus, err) {
-                                var errorResponse = err ;
-                                reDrawMarker(this.requestedTargetKey, '#66d9ff', '#ff3333', '1.0');                                                                
-                                clockTime = getClock();
-                                console.log(clockTime + " Direct " + this.requestedTargetKey + " Failure " + errorResponse);
-                            }
-                    });
+    clearMap();
+
+    // if in continous mode, randomize the offline units and do this every X seconds
+
+    var continuousMode = document.getElementById("continuousGo").value;
+    if (continuousMode){
+        setOfflineRandom();
+        setTimeout(getAllData,90000);
+    }
+
+    getOnlineData();
+
+    // now get all the offlines, must be sequential to avoid overloading LoRa network
+    // Wait a bit to allow return of online unit data
+    setTimeout(getOfflineData, 2000);
+}
+
+
+function getOnlineData(){
+
+        // Request all the online units' data asynchronously
+        for (var key in fleetLink) {
+            if (fleetLink.hasOwnProperty(key)) {
+                // if this unit is a member of the network which includes the target unit, then add to list to plot
+                if (fleetLink[key]["network"] == fleetLink[target]["network"] ){
+                    if(fleetLink[key]["online"] == true){
+                        setGateway(key);
+                        setTarget(key);
+                        // actual web POST direct to unit
+                     $.ajax({
+                            url: interest.url,
+                            context:{requestedTargetKey:key},
+                            timeout: 15000,
+                            data: JSON.stringify(interest), // convert interest string to JSON
+                            type: 'POST',
+                                success : function(response) {
+                                    drawMarker(this.requestedTargetKey, 'white', '#2eb82e', '1.0');                                
+                                    clockTime = getClock();
+                                    console.log(clockTime + " WiFi PASS, " + this.requestedTargetKey + ", " + formatData(response, interest));
+                                },
+                                error : function(jqXHR, textStatus, err) {
+                                    var errorResponse = err ;
+                                    drawMarker(this.requestedTargetKey, 'white', '#ff3333', '1.0');                                                                
+                                    clockTime = getClock();
+                                    console.log(clockTime + " WiFi FAIL, " + this.requestedTargetKey);
+                                }
+                        });
+                    }
                 }
             }
         }
-    }
-    // now get all the offlines, must be sequential to avoid overloading LoRa network
-    // Wait a bit to allow return of onlin unit data
-    setTimeout(getOfflineData, 2000);
 }
 
 
@@ -351,10 +402,9 @@ function getOfflineData(){
                 setTarget(key); 
                 nearestOnlineUnit = findNearestOnline(key);
                 thisDistance = findDistance(key, nearestOnlineUnit);
-                //console.log("Using Gateway " + nearestOnlineUnit + " to Target " + key + " over distance " + findDistance(key, nearestOnlineUnit) + " meters");
-                setGateway(nearestOnlineUnit); // will need to intelligently select this to be the closest online unit!!
-                // Draw a whie line to indicate activity
-                drawNodePath(target,gateway,"white");
+                setGateway(nearestOnlineUnit); 
+                // Draw a white line to indicate activity
+                drawNodePath(target,gateway,"white", 1);
                 // Web POST to nearby agent for LoRa request
                 $.ajaxQueue({
                     url: interest.url,
@@ -363,17 +413,17 @@ function getOfflineData(){
                     data: JSON.stringify(interest), // convert interest string to JSON
                     type: 'POST',
                         success : function(response) {
-                            reDrawMarker(this.requestedTargetKey, 'gold', '#2eb82e', '1.0');                                                            
-                            drawNodePath(this.requestedTargetKey,this.requestedGatewayKey, '#2eb82e');
+                            drawMarker(this.requestedTargetKey, 'orange', '#2eb82e', '1.0');                                                            
+                            drawNodePath(this.requestedTargetKey,this.requestedGatewayKey, '#2eb82e', 1);
                             clockTime = getClock();
-                            console.log(clockTime + " Target " + this.requestedTargetKey + " Gateway " + this.requestedGatewayKey + " Distance " + this.requestedDistance + " Success " + formatData(response, interest));
+                            console.log(clockTime + " LoRa PASS, " + this.requestedTargetKey + ", " + this.requestedGatewayKey + ", " + this.requestedDistance + " m, " + formatData(response, interest));
                         },
                         error : function(jqXHR, textStatus, err) {
                             var errorResponse = err ;
                             clockTime = getClock();
-                            reDrawMarker(this.requestedTargetKey, 'gold', '#ff3333', '1.0');                                                                                        
-                            drawNodePath(this.requestedTargetKey,this.requestedGatewayKey, '#ff3333');
-                            console.log(clockTime + " Target " + this.requestedTargetKey + " Gateway " + this.requestedGatewayKey + " Distance " + this.requestedDistance + " Failure " + errorResponse);
+                            drawMarker(this.requestedTargetKey, 'orange', '#ff3333', '1.0');                                                                                        
+                            drawNodePath(this.requestedTargetKey,this.requestedGatewayKey, '#ff3333', 1);
+                            console.log(clockTime + " LoRa FAIL, " + this.requestedTargetKey + ", " + this.requestedGatewayKey + ", " + this.requestedDistance + " m");
                         }
                 });
                 }
@@ -381,6 +431,24 @@ function getOfflineData(){
         }
     }
 }
+
+function setOfflineRandom(){
+    for (var key in fleetLink) {
+        if (fleetLink.hasOwnProperty(key)) {
+            // if this unit is a member of the network which includes the target unit, then process it
+            if (fleetLink[key]["network"] == fleetLink[target]["network"] ){
+                // randomly set units offline with a 20% probability
+                if(Math.random() < 0.2){
+                    fleetLink[key]["online"] = false;
+                } else {
+                    fleetLink[key]["online"] = true;
+                }
+                }
+        }
+    }
+    clearMap();
+}
+
 
 function findNearestOnline(offlineUnit){
     var nearestOnline = '';
@@ -1729,4 +1797,8 @@ function decimalToHex(decimal, chars) {
         document.getElementById("inverterCommands").style.visibility = 'hidden'; // hide inverter commnads on startup
         document.getElementById("devRadio").style.visibility = 'hidden'; // hide development network on startup
         document.getElementById("sunSpecModels").style.visibility = 'hidden';
+        document.getElementById("gatewayMenu").style.visibility = 'hidden';
+        document.getElementById("targetMenu").style.visibility = 'hidden';
+        document.getElementById("meterCommands").style.visibility = 'hidden';
+        
     });
