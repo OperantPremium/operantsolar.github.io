@@ -299,7 +299,7 @@ function getAllData() {
     //console.log("In continuous mode? " + continuousMode);
     if (continuousMode == true){
         setOfflineRandom();
-        setTimeout(getAllData,60000);
+        setTimeout(getAllData,90000);
         //console.log("setting continuous mode on");
     }
 
