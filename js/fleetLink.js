@@ -26,12 +26,12 @@ var fleetLink = {
     "SN514":{"network":"vivint", "locName":"Vivint 3", "deviceIdHash":"00E329B56259", "deviceID":"5000d8c46a572872", "usng":"15705066", "latitude":38.4040556, "longitude":-122.8201667, "agentUrl": "/609atPXTxkX7", "baseAddress":39999, "modbusAddress": 1, "marker": null, "nodePath":null, "online":false},
     // larkfield
     //
-    //"SN503":{"network":"larkfield", "locName":"Shirlie", "deviceIdHash":"4E562573DBA0", "deviceID":"5000d8c46a572868", "usng":"21016306", "latitude":38.515786, "longitude":-122.759001, "agentUrl": "/tRNE2WbS2CGw", "baseAddress":0, "modbusAddress": 1, "marker": null, "nodePath":null, "online":false},
-    //"SN512":{"network":"larkfield", "locName":"Beckman", "deviceIdHash":"6917511534FD", "deviceID":"5000d8c46a5721ea", "usng":"21886253", "latitude":38.510951, "longitude": -122.748958, "agentUrl": "/kRQMPFuKmzDM", "baseAddress":0, "modbusAddress": 1, "marker": null, "nodePath":null, "online":false},
+    //"SN503":{"network":"larkfield", "locName":"Shirlie", "deviceIdHash":"4E562573DBA0", "deviceID":"5000d8c46a572868", "usng":"21016306", "latitude":38.515786, "longitude":-122.759001, "agentUrl": "/tRNE2WbS2CGw", "baseAddress":0, "modbusAddress": 1, "marker": null, "nodePath":null, "online":true},
     "SN508":{"network":"larkfield", "locName":"Foster", "deviceIdHash":"730D72A6E22F", "deviceID":"5000d8c46a572874", "usng":"17776661", "latitude":38.547754, "longitude":-122.796043, "agentUrl": "/2866vQYBgUpC", "baseAddress":0, "modbusAddress": 1, "marker": null, "nodePath":null, "online":true},
+    "SN512":{"network":"larkfield", "locName":"Beckman", "deviceIdHash":"6917511534FD", "deviceID":"5000d8c46a5721ea", "usng":"21886253", "latitude":38.510951, "longitude": -122.748958, "agentUrl": "/kRQMPFuKmzDM", "baseAddress":0, "modbusAddress": 1, "marker": null, "nodePath":null, "online":true},
     "SN517":{"network":"larkfield", "locName":"Sugiyama", "deviceIdHash":"73210C7C7368", "deviceID":"5000d8c46a572a40", "usng":"21226281", "latitude":38.513469, "longitude":-122.756491, "agentUrl": "/lfonbmovX8Ak", "baseAddress":0, "modbusAddress": 1, "marker": null, "nodePath":null, "online":true},
     "SN518":{"network":"larkfield", "locName":"Hermosillo", "deviceIdHash":"45BB2C5D3151", "deviceID":"5000d8c46a5729fa", "usng":"16106798", "latitude":38.560186, "longitude":-122.815174, "agentUrl": "/JPTE9uGlCGQL", "baseAddress":0, "modbusAddress": 1, "marker": null, "nodePath":null, "online":true},
-    "SN520":{"network":"larkfield", "locName":"Buren", "deviceIdHash":"8C41DCBC3DF2", "deviceID":"5000d8c46a572a84", "usng":"14576664", "latitude":38.548154, "longitude":-122.832752, "agentUrl": "/2IauvU30NdQH", "baseAddress":0, "modbusAddress": 1, "marker": null, "nodePath":null, "online":true},
+    //"SN520":{"network":"larkfield", "locName":"Buren", "deviceIdHash":"8C41DCBC3DF2", "deviceID":"5000d8c46a572a84", "usng":"14576664", "latitude":38.548154, "longitude":-122.832752, "agentUrl": "/2IauvU30NdQH", "baseAddress":0, "modbusAddress": 1, "marker": null, "nodePath":null, "online":true},
     "SN522":{"network":"larkfield", "locName":"Van Grouw", "deviceIdHash":"9CBABDD00BD5", "deviceID":"5000d8c46a572a68", "usng":"17286817", "latitude":38.561889, "longitude":-122.801555, "agentUrl": "/QCxFKECTRdBH", "baseAddress":0, "modbusAddress": 1, "marker": null, "nodePath":null, "online":true},
     //"SN523":{"network":"larkfield", "locName":"Buffo", "deviceIdHash":"BB2A0BFDC8FC", "deviceID":"5000d8c46a5729e6", "usng":"16386739", "latitude":38.554853, "longitude":-122.811906, "agentUrl": "/jYthi-aNvlv6", "baseAddress":0, "modbusAddress": 1, "marker": null, "nodePath":null, "online":true},
     "SN524":{"network":"larkfield", "locName":"Yamasaki", "deviceIdHash":"022676CEA2C8", "deviceID":"5000d8c46a572a70", "usng":"16426752", "latitude":38.555988, "longitude":-122.811517, "agentUrl": "/NTLnl40ofe9Y", "baseAddress":0, "modbusAddress": 1, "marker": null, "nodePath":null, "online":true},
@@ -290,22 +290,24 @@ return returnDataString
 
 
 function getAllData() {
-
+    console.log("----------------------------------------");
     clearMap();
 
     // if in continous mode, randomize the offline units and do this every X seconds
 
-    var continuousMode = document.getElementById("continuousGo").value;
-    if (continuousMode){
+    var continuousMode = document.getElementById("continuousGo").checked;
+    //console.log("In continuous mode? " + continuousMode);
+    if (continuousMode == true){
         setOfflineRandom();
-        setTimeout(getAllData,90000);
+        setTimeout(getAllData,60000);
+        //console.log("setting continuous mode on");
     }
 
     getOnlineData();
 
     // now get all the offlines, must be sequential to avoid overloading LoRa network
     // Wait a bit to allow return of online unit data
-    setTimeout(getOfflineData, 2000);
+    setTimeout(getOfflineData, 10000);
 }
 
 
@@ -323,19 +325,21 @@ function getOnlineData(){
                      $.ajax({
                             url: interest.url,
                             context:{requestedTargetKey:key},
-                            timeout: 15000,
+                            timeout: 7000,
                             data: JSON.stringify(interest), // convert interest string to JSON
                             type: 'POST',
                                 success : function(response) {
-                                    drawMarker(this.requestedTargetKey, 'white', '#2eb82e', '1.0');                                
+                                    drawMarker(this.requestedTargetKey, 'white', '#2eb82e', '1.0');      
+                                    fleetLink[this.requestedTargetKey]["online"] = true;                                      
                                     clockTime = getClock();
                                     console.log(clockTime + " WiFi PASS, " + this.requestedTargetKey + ", " + formatData(response, interest));
                                 },
                                 error : function(jqXHR, textStatus, err) {
                                     var errorResponse = err ;
-                                    drawMarker(this.requestedTargetKey, 'white', '#ff3333', '1.0');                                                                
+                                    drawMarker(this.requestedTargetKey, 'orange', '#ff3333', '1.0');       
+                                    fleetLink[this.requestedTargetKey]["online"] = false;                                                         
                                     clockTime = getClock();
-                                    console.log(clockTime + " WiFi FAIL, " + this.requestedTargetKey);
+                                    console.log(clockTime + " WiFi FAIL, " + this.requestedTargetKey + " setting online status to false");
                                 }
                         });
                     }
@@ -440,6 +444,7 @@ function setOfflineRandom(){
                 // randomly set units offline with a 20% probability
                 if(Math.random() < 0.2){
                     fleetLink[key]["online"] = false;
+                    console.log("randomly setting unit " + key + " online status to false")
                 } else {
                     fleetLink[key]["online"] = true;
                 }
@@ -461,11 +466,9 @@ function findNearestOnline(offlineUnit){
             if (fleetLink[key]["network"] == fleetLink[offlineUnit]["network"] ){
                 if(fleetLink[key]["online"] == true){  // if its online, check if its closest unit
                     thisDistance = findDistance(offlineUnit, key);
-                    //console.log("checking distance from " + key + " to " + offlineUnit + " = " + thisDistance + " compared to " + distanceToNearestOnline);
                     if(Number(thisDistance) < Number(distanceToNearestOnline)){
                         nearestOnline = key;
                         distanceToNearestOnline = thisDistance;
-                       // console.log("decided unit " + nearestOnline + " at distance " + distanceToNearestOnline + " is best so far");
                     }
                 }
             }
