@@ -25,11 +25,13 @@ var fleetLink = {
     "SN513":{"network":"vivint", "locName":"SolarEdge Inverter", "deviceIdHash":"DF04146F1DF0", "deviceID":"5000d8c46a57285e", "usng":"15795070", "latitude":38.40443, "longitude":-122.8190967, "agentUrl": "/ZT8GBL-7RrgD", "baseAddress":39999, "modbusAddress": 1, "marker": null, "nodePath":null, "online":false},
     "SN514":{"network":"vivint", "locName":"Vivint 3", "deviceIdHash":"00E329B56259", "deviceID":"5000d8c46a572872", "usng":"15705066", "latitude":38.4040556, "longitude":-122.8201667, "agentUrl": "/609atPXTxkX7", "baseAddress":39999, "modbusAddress": 1, "marker": null, "nodePath":null, "online":false},
     // larkfield
+
     //
-    //"SN503":{"network":"larkfield", "locName":"Shirlie", "deviceIdHash":"4E562573DBA0", "deviceID":"5000d8c46a572868", "usng":"21016306", "latitude":38.515786, "longitude":-122.759001, "agentUrl": "/tRNE2WbS2CGw", "baseAddress":0, "modbusAddress": 1, "marker": null, "nodePath":null, "online":true},
+    "SN504":{"network":"larkfield", "locName":"Piero", "deviceIdHash":"B930FA057CB6", "deviceID":"5000d8c46a5728d2", "usng":"16706801", "latitude":38.560425, "longitude":-122.808282, "agentUrl": "/w8Bdk3n0iWt3", "baseAddress":0, "modbusAddress": 1, "marker": null, "nodePath":null, "online":true},
     "SN508":{"network":"larkfield", "locName":"Foster", "deviceIdHash":"730D72A6E22F", "deviceID":"5000d8c46a572874", "usng":"17776661", "latitude":38.547754, "longitude":-122.796043, "agentUrl": "/2866vQYBgUpC", "baseAddress":0, "modbusAddress": 1, "marker": null, "nodePath":null, "online":true},
     "SN512":{"network":"larkfield", "locName":"Beckman", "deviceIdHash":"6917511534FD", "deviceID":"5000d8c46a5721ea", "usng":"21886253", "latitude":38.510951, "longitude": -122.748958, "agentUrl": "/kRQMPFuKmzDM", "baseAddress":0, "modbusAddress": 1, "marker": null, "nodePath":null, "online":true},
-    "SN517":{"network":"larkfield", "locName":"Sugiyama", "deviceIdHash":"73210C7C7368", "deviceID":"5000d8c46a572a40", "usng":"21226281", "latitude":38.513469, "longitude":-122.756491, "agentUrl": "/lfonbmovX8Ak", "baseAddress":0, "modbusAddress": 1, "marker": null, "nodePath":null, "online":true},
+    "SN516":{"network":"larkfield", "locName":"Sugiyama", "deviceIdHash":"364935E144C5", "deviceID":"5000d8c46a572a5a", "usng":"21226281", "latitude":38.513469, "longitude":-122.756491, "agentUrl": "/m6fnIP8Xwcbx", "baseAddress":0, "modbusAddress": 1, "marker": null, "nodePath":null, "online":true},
+    "SN517":{"network":"larkfield", "locName":"Shirlie", "deviceIdHash":"73210C7C7368", "deviceID":"5000d8c46a572a40", "usng":"21016306", "latitude":38.515786, "longitude":-122.759001, "agentUrl": "/lfonbmovX8Ak", "baseAddress":0, "modbusAddress": 1, "marker": null, "nodePath":null, "online":true},
     "SN518":{"network":"larkfield", "locName":"Hermosillo", "deviceIdHash":"45BB2C5D3151", "deviceID":"5000d8c46a5729fa", "usng":"16106798", "latitude":38.560186, "longitude":-122.815174, "agentUrl": "/JPTE9uGlCGQL", "baseAddress":0, "modbusAddress": 1, "marker": null, "nodePath":null, "online":true},
     "SN519":{"network":"larkfield", "locName":"Kempker", "deviceIdHash":"035E6124319B", "deviceID":"5000d8c46a572a04", "usng":"17996657", "latitude":38.547460, "longitude":-122.793545, "agentUrl": "/sv3PuN3lquKO", "baseAddress":0, "modbusAddress": 1, "marker": null, "nodePath":null, "online":true},
     "SN520":{"network":"larkfield", "locName":"Buren", "deviceIdHash":"8C41DCBC3DF2", "deviceID":"5000d8c46a572a84", "usng":"14576664", "latitude":38.548154, "longitude":-122.832752, "agentUrl": "/2IauvU30NdQH", "baseAddress":0, "modbusAddress": 1, "marker": null, "nodePath":null, "online":true},
@@ -39,7 +41,7 @@ var fleetLink = {
     "SN527":{"network":"larkfield", "locName":"Galli", "deviceIdHash":"E18F79FBF4D0", "deviceID":"5000d8c46a572a38", "usng":"18166731", "latitude":38.554040, "longitude":-122.791538, "agentUrl": "/t02E8X0S0Kl6", "baseAddress":0, "modbusAddress": 1, "marker": null, "nodePath":null, "online":true},
     "SN528":{"network":"larkfield", "locName":"Gibson", "deviceIdHash":"F5ED514678B2", "deviceID":"5000d8c46a572a58", "usng":"21416258", "latitude":38.511400, "longitude":-122.754315, "agentUrl": "/aQTyLRwIHjYn", "baseAddress":0, "modbusAddress": 1, "marker": null, "nodePath":null, "online":true},
     "SN530":{"network":"larkfield", "locName":"Nadendla", "deviceIdHash":"2EB55A0B48F4", "deviceID":"5000d8c46a572a12", "usng":"17616705", "latitude":38.551712, "longitude":-122.79779, "agentUrl": "/r7-wVnF8nV9b", "baseAddress":0, "modbusAddress": 1, "marker": null, "nodePath":null, "online":true},
-    "SN531":{"network":"larkfield", "locName":"Ferrara", "deviceIdHash":"A9D4A224043D", "deviceID":"5000d8c46a572a4c", "usng":"21246285", "latitude":38.513862, "longitude":-122.756289, "agentUrl": "/lgWdhq_T9EsC", "baseAddress":0, "modbusAddress": 1, "marker": null, "nodePath":null, "online":true}
+    "SN531":{"network":"larkfield", "locName":"Ferrara", "deviceIdHash":"A9D4A224043D", "deviceID":"5000d8c46a572a4c", "usng":"21246285", "latitude":38.51395, "longitude":-122.756289, "agentUrl": "/lgWdhq_T9EsC", "baseAddress":0, "modbusAddress": 1, "marker": null, "nodePath":null, "online":true}
     //
 };
 
@@ -72,15 +74,28 @@ var displayFactors = {
         target = requestedTarget;
         interest.deviceIdHash = fleetLink[target].deviceIdHash;
         interest.usng = fleetLink[target].usng;
-        var devMode = document.getElementById("devCheckbox").value;
+        fleetLink[target]["online"] = false;
+        var continuousMode = document.getElementById("continuousGo").checked;
+        if (continuousMode == false){        
+            redrawMap();
+            drawMarker(target, "orange", "orange", 0);
+            drawNodePath(target,gateway, "white", 1);
+        }
       }
 
 
     // Choose gateway unit
     function setGateway(requestedGateway) {
-    //console.log("Gateway= " + requestedGateway)
-    gateway = requestedGateway;
-    interest.url = "https://agent.electricimp.com" + fleetLink[gateway].agentUrl
+        //console.log("Gateway= " + requestedGateway)
+        gateway = requestedGateway;
+        interest.url = "https://agent.electricimp.com" + fleetLink[gateway].agentUrl
+        fleetLink[gateway]["online"] = true;
+        var continuousMode = document.getElementById("continuousGo").checked;
+        if (continuousMode == false){               
+            redrawMap();
+            drawMarker(gateway, "white", "white", 0);
+            drawNodePath(target,gateway, "white", 1);
+        }
     }
 
 
@@ -108,8 +123,6 @@ var displayFactors = {
             document.getElementById("serviceMenu").style.visibility = 'hidden';
             document.getElementById("devRadio").style.visibility = 'hidden';
             document.getElementById("sunSpecModels").style.visibility = 'hidden';
-            document.getElementById("gatewayMenu").style.visibility = 'hidden';
-            document.getElementById("targetMenu").style.visibility = 'hidden';
             document.getElementById("meterCommands").style.visibility = 'hidden';
             document.getElementById("inverterCommands").style.visibility = 'hidden';
             
@@ -117,14 +130,22 @@ var displayFactors = {
             document.getElementById("serviceMenu").style.visibility = 'visible';
             document.getElementById("devRadio").style.visibility = 'visible';      
             document.getElementById("sunSpecModels").style.visibility = 'visible';
-            document.getElementById("gatewayMenu").style.visibility = 'visible';
-            document.getElementById("targetMenu").style.visibility = 'visible';
             document.getElementById("meterCommands").style.visibility = 'visible';
             document.getElementById("inverterCommands").style.visibility = 'visible';
             
          }
     }
 
+     // Set Run Mode
+     function setRunMode(cb){
+        if (cb.checked == true){
+            document.getElementById("gatewayMenu").style.visibility = 'hidden';
+            document.getElementById("targetMenu").style.visibility = 'hidden';
+         } else {
+            document.getElementById("gatewayMenu").style.visibility = 'visible';
+            document.getElementById("targetMenu").style.visibility = 'visible';
+         }
+    }
 
 //================================================================================
 // MAPPING 
@@ -159,6 +180,7 @@ function initMap() {
         marker = new google.maps.Marker({
             position: new google.maps.LatLng(fleetLink[key]["latitude"], fleetLink[key]["longitude"]),
             icon: icon,
+            title: key,
             map: mapFleetLink
         });
         bounds.extend(marker.position);
@@ -227,7 +249,7 @@ function drawNodePath(unitId1,unitId2, color, opacity){
 
 
     // reset all the merkers and node paths to blank without reinitializing map
-    function clearMap(){
+    function redrawMap(){
         for (var key in fleetLink) {
             if (fleetLink.hasOwnProperty(key)) {
                 // if this unit is a member of the network which includes the target unit, then add to list to plot
@@ -292,25 +314,53 @@ return returnDataString
 
 function getAllData() {
     console.log("----------------------------------------");
-    clearMap();
+    redrawMap();
 
     // if in continous mode, randomize the offline units and do this every X seconds
-
     var continuousMode = document.getElementById("continuousGo").checked;
-    //console.log("In continuous mode? " + continuousMode);
     if (continuousMode == true){
         setOfflineRandom();
         setTimeout(getAllData,90000);
-        //console.log("setting continuous mode on");
+        getOnlineData();
+        // now get all the offlines, must be sequential to avoid overloading LoRa network
+        // Wait a bit to allow return of online unit data
+        setTimeout(getAllOfflineData, 10000);
+    } else {
+        getOneOfflineData();
     }
-
-    getOnlineData();
-
-    // now get all the offlines, must be sequential to avoid overloading LoRa network
-    // Wait a bit to allow return of online unit data
-    setTimeout(getOfflineData, 10000);
 }
 
+
+
+function getOneOfflineData(){
+// assumes you've already set target and gateway units
+var thisDistance = 0;
+var clockTime = "";
+thisDistance = findDistance(target, gateway);
+// Draw a white line to indicate activity
+drawNodePath(target,gateway,"white", 1);
+// Web POST to nearby agent for LoRa request
+$.ajax({
+        url: interest.url,
+        context:{requestedTargetKey:target, requestedGatewayKey:gateway, requestedDistance:thisDistance},
+        timeout: 15000,
+        data: JSON.stringify(interest), // convert interest string to JSON
+        type: 'POST',
+            success : function(response) {
+                drawMarker(this.requestedTargetKey, 'orange', '#2eb82e', '1.0');                                                            
+                drawNodePath(this.requestedTargetKey,this.requestedGatewayKey, '#2eb82e', 1);
+                clockTime = getClock();
+                console.log(clockTime + " LoRa PASS, " + this.requestedTargetKey + ", " + this.requestedGatewayKey + ", " + this.requestedDistance + " m, " + formatData(response, interest));
+            },
+            error : function(jqXHR, textStatus, err) {
+                var errorResponse = err ;
+                clockTime = getClock();
+                drawMarker(this.requestedTargetKey, 'orange', '#ff3333', '1.0');                                                                                        
+                drawNodePath(this.requestedTargetKey,this.requestedGatewayKey, '#ff3333', 1);
+                console.log(clockTime + " LoRa FAIL, " + this.requestedTargetKey + ", " + this.requestedGatewayKey + ", " + this.requestedDistance + " m");
+            }
+    });
+}
 
 function getOnlineData(){
 
@@ -350,7 +400,7 @@ function getOnlineData(){
 }
 
 
-function getOfflineData(){
+function getAllOfflineData(){
     var nearestOnlineUnit = '';
     var thisDistance = 0;
     var clockTime = "";
@@ -452,7 +502,7 @@ function setOfflineRandom(){
                 }
         }
     }
-    clearMap();
+    redrawMap();
 }
 
 
@@ -1801,8 +1851,8 @@ function decimalToHex(decimal, chars) {
         document.getElementById("inverterCommands").style.visibility = 'hidden'; // hide inverter commnads on startup
         document.getElementById("devRadio").style.visibility = 'hidden'; // hide development network on startup
         document.getElementById("sunSpecModels").style.visibility = 'hidden';
-        document.getElementById("gatewayMenu").style.visibility = 'hidden';
-        document.getElementById("targetMenu").style.visibility = 'hidden';
+        //document.getElementById("gatewayMenu").style.visibility = 'hidden';
+        //document.getElementById("targetMenu").style.visibility = 'hidden';
         document.getElementById("meterCommands").style.visibility = 'hidden';
         
     });

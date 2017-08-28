@@ -11,7 +11,7 @@
         <div id="map" style="width: 600px; height: 600px; margin-left: auto; margin-right: auto ; margin-bottom: 0px; margin-top: 0px;border: 5px;"></div>
 
         <form action="" class="radioForm" style="margin-top: 30px; ">
-            <input type="checkbox" id="continuousGo" name="contGo" value="false" style="margin-top:10px" > Continuous     
+            <input type="checkbox" id="continuousGo" name="contGo" value="false" style="margin-top:10px" onclick="setRunMode(this)"> Continuous     
             <br>
             <input type="checkbox" id="devCheckbox" name="allowDev" value="false" style="margin-top:10px; margin-bottom:10px" onclick="setDevMode(this)"> Development Mode 
             <br>

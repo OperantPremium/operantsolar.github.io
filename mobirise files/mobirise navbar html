@@ -37,9 +37,14 @@
         <a class="nav-link link dropdown-toggle mbr-editable-menu-item" href="https://mobirise.com/" data-toggle="dropdown-submenu" aria-expanded="false">GATEWAY</a>
             <div class="dropdown-menu">
                 <div class="dropdown">
+                <a class="dropdown-item mbr-editable-menu-item" href="http://www.operantsolar.com" onclick="setGateway('SN504'); return false;">SN504 Piero</a>
                 <a class="dropdown-item mbr-editable-menu-item" href="http://www.operantsolar.com" onclick="setGateway('SN508'); return false;">SN508 Foster</a>
-                <a class="dropdown-item mbr-editable-menu-item" href="http://www.operantsolar.com" onclick="setGateway('SN517'); return false;">SN517 Sugiyama</a>
+                <a class="dropdown-item mbr-editable-menu-item" href="http://www.operantsolar.com" onclick="setGateway('SN512'); return false;">SN512 Beckman</a>
+                <a class="dropdown-item mbr-editable-menu-item" href="http://www.operantsolar.com" onclick="setGateway('SN516'); return false;">SN516 Sugiyama</a>
+                <a class="dropdown-item mbr-editable-menu-item" href="http://www.operantsolar.com" onclick="setGateway('SN517'); return false;">SN517 Shirlie</a>
                 <a class="dropdown-item mbr-editable-menu-item" href="http://www.operantsolar.com" onclick="setGateway('SN518'); return false;">SN518 Hermosillo</a>
+                <a class="dropdown-item mbr-editable-menu-item" href="http://www.operantsolar.com" onclick="setGateway('SN519'); return false;">SN519 Kempker</a>
+                <a class="dropdown-item mbr-editable-menu-item" href="http://www.operantsolar.com" onclick="setGateway('SN520'); return false;">SN520 Buren</a>
                 <a class="dropdown-item mbr-editable-menu-item" href="http://www.operantsolar.com" onclick="setGateway('SN522'); return false;">SN522 Van Grouw</a>
                 <a class="dropdown-item mbr-editable-menu-item" href="http://www.operantsolar.com" onclick="setGateway('SN523'); return false;">SN523 Buffo</a>
                 <a class="dropdown-item mbr-editable-menu-item" href="http://www.operantsolar.com" onclick="setGateway('SN524'); return false;">SN524 Yamasaki</a>  
@@ -59,9 +64,14 @@
         <a class="nav-link link dropdown-toggle mbr-editable-menu-item" href="https://mobirise.com/" data-toggle="dropdown-submenu" aria-expanded="false">TARGET</a>
             <div class="dropdown-menu">
                 <div class="dropdown">
+                <a class="dropdown-item mbr-editable-menu-item" href="http://www.operantsolar.com" onclick="setTarget('SN504'); return false;">SN504 Piero</a>
                 <a class="dropdown-item mbr-editable-menu-item" href="http://www.operantsolar.com" onclick="setTarget('SN508'); return false;">SN508 Foster</a>
-                <a class="dropdown-item mbr-editable-menu-item" href="http://www.operantsolar.com" onclick="setTarget('SN517'); return false;">SN517 Sugiyama</a>
+                <a class="dropdown-item mbr-editable-menu-item" href="http://www.operantsolar.com" onclick="setTarget('SN512'); return false;">SN512 Beckman</a>
+                <a class="dropdown-item mbr-editable-menu-item" href="http://www.operantsolar.com" onclick="setTarget('SN516'); return false;">SN516 Sugiyama</a>
+                <a class="dropdown-item mbr-editable-menu-item" href="http://www.operantsolar.com" onclick="setTarget('SN517'); return false;">SN517 Shirlie</a>
                 <a class="dropdown-item mbr-editable-menu-item" href="http://www.operantsolar.com" onclick="setTarget('SN518'); return false;">SN518 Hermosillo</a>
+                <a class="dropdown-item mbr-editable-menu-item" href="http://www.operantsolar.com" onclick="setTarget('SN519'); return false;">SN519 Kempker</a>
+                <a class="dropdown-item mbr-editable-menu-item" href="http://www.operantsolar.com" onclick="setTarget('SN520'); return false;">SN520 Buren</a>
                 <a class="dropdown-item mbr-editable-menu-item" href="http://www.operantsolar.com" onclick="setTarget('SN522'); return false;">SN522 Van Grouw</a>
                 <a class="dropdown-item mbr-editable-menu-item" href="http://www.operantsolar.com" onclick="setTarget('SN523'); return false;">SN523 Buffo</a>
                 <a class="dropdown-item mbr-editable-menu-item" href="http://www.operantsolar.com" onclick="setTarget('SN524'); return false;">SN524 Yamasaki</a>                
