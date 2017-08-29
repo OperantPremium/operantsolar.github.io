@@ -13,8 +13,6 @@ var nodePath =  null;
 
 var fleetLink = { 
     //dev
-    "SN402":{"network":"dev", "locName":"Shirlie", "deviceIdHash":"D85F6461EB91", "deviceID":"5000d8c46a56dc4c", "usng":"21016306", "latitude":38.5157472, "longitude":-122.7589444, "agentUrl": "/oHMQMg_lcxsT", "baseAddress":49999, "modbusAddress": 100, "marker": null, "nodePath":null, "online":false},
- //   "SN403":{"network":"dev", "locName":"Sugiyama Outside", "deviceIdHash":"2BF6EF3EFD90", "deviceID":"5000d8c46a56ddc8", "usng":"21236282", "latitude":38.5134, "longitude":-122.75655, "agentUrl": "/wXqOLIl3KiLB", "baseAddress":49999, "modbusAddress": 100, "marker": null, "nodePath":null, "online":false},
     "SN404":{"network":"dev", "locName":"Kiva", "deviceIdHash":"018C268ECB5B", "deviceID":"5000d8c46a56dd24", "usng":"20916258", "latitude":38.5113556, "longitude":-122.7601444, "agentUrl": "/QGO7JQAzyiev", "baseAddress":49999, "modbusAddress": 100, "marker": null, "nodePath":null, "online":false},
     "SN405":{"network":"dev", "locName":"Gibson", "deviceIdHash":"718A34D8423A", "deviceID":"5000d8c46a56ddb2", "usng":"21426258", "latitude":38.5113889, "longitude":-122.7542667, "agentUrl": "/CyPoe3l9E5Od", "baseAddress":49999, "modbusAddress": 100, "marker": null, "nodePath":null, "online":false},
     "SN406":{"network":"dev", "locName":"Beckman", "deviceIdHash":"C5F6371C8A03", "deviceID":"5000d8c46a56dd18", "usng":"21896255", "latitude":38.5110833, "longitude":-122.7488806, "agentUrl": "/hxsSiYETEEpd", "baseAddress":49999, "modbusAddress": 100, "marker": null, "nodePath":null, "online":false},
@@ -25,12 +23,13 @@ var fleetLink = {
     "SN513":{"network":"vivint", "locName":"SolarEdge Inverter", "deviceIdHash":"DF04146F1DF0", "deviceID":"5000d8c46a57285e", "usng":"15795070", "latitude":38.40443, "longitude":-122.8190967, "agentUrl": "/ZT8GBL-7RrgD", "baseAddress":39999, "modbusAddress": 1, "marker": null, "nodePath":null, "online":false},
     "SN514":{"network":"vivint", "locName":"Vivint 3", "deviceIdHash":"00E329B56259", "deviceID":"5000d8c46a572872", "usng":"15705066", "latitude":38.4040556, "longitude":-122.8201667, "agentUrl": "/609atPXTxkX7", "baseAddress":39999, "modbusAddress": 1, "marker": null, "nodePath":null, "online":false},
     // larkfield
-
-    //
+    "SN402":{"network":"larkfield", "locName":"Opalitliga", "deviceIdHash":"D85F6461EB91", "deviceID":"5000d8c46a56dc4c", "usng":"14776690", "latitude":38.550429, "longitude":-122.830439, "agentUrl": "/oHMQMg_lcxsT", "baseAddress":0, "modbusAddress": 1, "marker": null, "nodePath":null, "online":true},
+    "SN503":{"network":"larkfield", "locName":"Henry", "deviceIdHash":"4E562573DBA0", "deviceID":"5000d8c46a572868", "usng":"18166719", "latitude":38.552979, "longitude":-122.791571, "agentUrl": "/tRNE2WbS2CGw", "baseAddress":0, "modbusAddress": 1, "marker": null, "nodePath":null, "online":true},
     "SN504":{"network":"larkfield", "locName":"Piero", "deviceIdHash":"B930FA057CB6", "deviceID":"5000d8c46a5728d2", "usng":"17136785", "latitude":38.558938, "longitude":-122.803337, "agentUrl": "/w8Bdk3n0iWt3", "baseAddress":0, "modbusAddress": 1, "marker": null, "nodePath":null, "online":true},
+    // "SN505":{"network":"larkfield", "locName":"Spare for Buffo", "deviceIdHash":"BA48D077C2A8", "deviceID":"5000d8c46a57286a", "usng":"16386739", "latitude":38.554853, "longitude":-122.811906, "agentUrl": "/RVKEMRdCLmKj", "baseAddress":0, "modbusAddress": 1, "marker": null, "nodePath":null, "online":true},
     "SN508":{"network":"larkfield", "locName":"Foster", "deviceIdHash":"730D72A6E22F", "deviceID":"5000d8c46a572874", "usng":"17776661", "latitude":38.547754, "longitude":-122.796043, "agentUrl": "/2866vQYBgUpC", "baseAddress":0, "modbusAddress": 1, "marker": null, "nodePath":null, "online":true},
     "SN512":{"network":"larkfield", "locName":"Beckman", "deviceIdHash":"6917511534FD", "deviceID":"5000d8c46a5721ea", "usng":"21886253", "latitude":38.510951, "longitude": -122.748958, "agentUrl": "/kRQMPFuKmzDM", "baseAddress":0, "modbusAddress": 1, "marker": null, "nodePath":null, "online":true},
-    "SN516":{"network":"larkfield", "locName":"Sugiyama", "deviceIdHash":"364935E144C5", "deviceID":"5000d8c46a572a5a", "usng":"21226281", "latitude":38.513469, "longitude":-122.756491, "agentUrl": "/m6fnIP8Xwcbx", "baseAddress":0, "modbusAddress": 1, "marker": null, "nodePath":null, "online":true},
+    "SN516":{"network":"larkfield", "locName":"Sugiyama", "deviceIdHash":"364935E144C5", "deviceID":"5000d8c46a572a5a", "usng":"21226281", "latitude":38.513469, "longitude":-122.756491, "agentUrl": "/m6fnIP8Xwcbx", "baseAddress":49999, "modbusAddress": 100, "marker": null, "nodePath":null, "online":true},
     "SN517":{"network":"larkfield", "locName":"Shirlie", "deviceIdHash":"73210C7C7368", "deviceID":"5000d8c46a572a40", "usng":"21016306", "latitude":38.515786, "longitude":-122.759001, "agentUrl": "/lfonbmovX8Ak", "baseAddress":0, "modbusAddress": 1, "marker": null, "nodePath":null, "online":true},
     "SN518":{"network":"larkfield", "locName":"Hermosillo", "deviceIdHash":"45BB2C5D3151", "deviceID":"5000d8c46a5729fa", "usng":"16106798", "latitude":38.560186, "longitude":-122.815174, "agentUrl": "/JPTE9uGlCGQL", "baseAddress":0, "modbusAddress": 1, "marker": null, "nodePath":null, "online":true},
     "SN519":{"network":"larkfield", "locName":"Kempker", "deviceIdHash":"035E6124319B", "deviceID":"5000d8c46a572a04", "usng":"17996657", "latitude":38.547460, "longitude":-122.793545, "agentUrl": "/sv3PuN3lquKO", "baseAddress":0, "modbusAddress": 1, "marker": null, "nodePath":null, "online":true},
@@ -39,12 +38,12 @@ var fleetLink = {
     "SN522":{"network":"larkfield", "locName":"Van Grouw", "deviceIdHash":"9CBABDD00BD5", "deviceID":"5000d8c46a572a68", "usng":"17286817", "latitude":38.561889, "longitude":-122.801555, "agentUrl": "/QCxFKECTRdBH", "baseAddress":0, "modbusAddress": 1, "marker": null, "nodePath":null, "online":true},
     "SN523":{"network":"larkfield", "locName":"Buffo", "deviceIdHash":"BB2A0BFDC8FC", "deviceID":"5000d8c46a5729e6", "usng":"16386739", "latitude":38.554853, "longitude":-122.811906, "agentUrl": "/jYthi-aNvlv6", "baseAddress":0, "modbusAddress": 1, "marker": null, "nodePath":null, "online":true},
     "SN524":{"network":"larkfield", "locName":"Yamasaki", "deviceIdHash":"022676CEA2C8", "deviceID":"5000d8c46a572a70", "usng":"16426752", "latitude":38.555988, "longitude":-122.811517, "agentUrl": "/NTLnl40ofe9Y", "baseAddress":0, "modbusAddress": 1, "marker": null, "nodePath":null, "online":true},
+    "SN526":{"network":"larkfield", "locName":"Buell", "deviceIdHash":"022676CEA2C8", "deviceID":"5000d8c46a572a70", "usng":"20386500", "latitude":38.533223, "longitude":-122.766098, "agentUrl": "/_ERhHgIiqjx0", "baseAddress":0, "modbusAddress": 1, "marker": null, "nodePath":null, "online":true},
     "SN527":{"network":"larkfield", "locName":"Galli", "deviceIdHash":"E18F79FBF4D0", "deviceID":"5000d8c46a572a38", "usng":"18166731", "latitude":38.554040, "longitude":-122.791538, "agentUrl": "/t02E8X0S0Kl6", "baseAddress":0, "modbusAddress": 1, "marker": null, "nodePath":null, "online":true},
     "SN528":{"network":"larkfield", "locName":"Gibson", "deviceIdHash":"F5ED514678B2", "deviceID":"5000d8c46a572a58", "usng":"21416258", "latitude":38.511400, "longitude":-122.754315, "agentUrl": "/aQTyLRwIHjYn", "baseAddress":0, "modbusAddress": 1, "marker": null, "nodePath":null, "online":true},
     "SN529":{"network":"larkfield", "locName":"Clapper", "deviceIdHash":"BC4AD7B8D7B2", "deviceID":"5000d8c46a572a7a", "usng":"16576784", "latitude":38.558927, "longitude": -122.809762, "agentUrl": "/TjIP9SXEzEGb", "baseAddress":0, "modbusAddress": 1, "marker": null, "nodePath":null, "online":true},    
     "SN530":{"network":"larkfield", "locName":"Nadendla", "deviceIdHash":"2EB55A0B48F4", "deviceID":"5000d8c46a572a12", "usng":"17616705", "latitude":38.551712, "longitude":-122.79779, "agentUrl": "/r7-wVnF8nV9b", "baseAddress":0, "modbusAddress": 1, "marker": null, "nodePath":null, "online":true},
     "SN531":{"network":"larkfield", "locName":"Ferrara", "deviceIdHash":"A9D4A224043D", "deviceID":"5000d8c46a572a4c", "usng":"21246285", "latitude":38.51405, "longitude":-122.756289, "agentUrl": "/lgWdhq_T9EsC", "baseAddress":0, "modbusAddress": 1, "marker": null, "nodePath":null, "online":true}
-    //
 };
 
 var interest = {
@@ -470,6 +469,11 @@ function getAllOfflineData(){
                 if(fleetLink[key]["online"] == false){  // if it's offline, we have query via LoRa
                 setTarget(key); 
                 nearestOnlineUnit = findNearestOnline(key);
+
+                if (key ==  "SN520") {  // special case over ride for Neal Buren's unit
+                nearestOnlineUnit = "SN517"  // will change to Shiloh Park unit when available
+                }
+                
                 thisDistance = findDistance(key, nearestOnlineUnit);
                 setGateway(nearestOnlineUnit); 
                 // Draw a white line to indicate activity
@@ -554,7 +558,9 @@ function findNearestOnline(offlineUnit){
                 }
             }
         }
+
     }
+
 
     return nearestOnline;
     
