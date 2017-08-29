@@ -27,7 +27,7 @@ var fleetLink = {
     // larkfield
 
     //
-    "SN504":{"network":"larkfield", "locName":"Piero", "deviceIdHash":"B930FA057CB6", "deviceID":"5000d8c46a5728d2", "usng":"16706801", "latitude":38.560425, "longitude":-122.808282, "agentUrl": "/w8Bdk3n0iWt3", "baseAddress":0, "modbusAddress": 1, "marker": null, "nodePath":null, "online":true},
+    "SN504":{"network":"larkfield", "locName":"Piero", "deviceIdHash":"B930FA057CB6", "deviceID":"5000d8c46a5728d2", "usng":"17136785", "latitude":38.558938, "longitude":-122.803337, "agentUrl": "/w8Bdk3n0iWt3", "baseAddress":0, "modbusAddress": 1, "marker": null, "nodePath":null, "online":true},
     "SN508":{"network":"larkfield", "locName":"Foster", "deviceIdHash":"730D72A6E22F", "deviceID":"5000d8c46a572874", "usng":"17776661", "latitude":38.547754, "longitude":-122.796043, "agentUrl": "/2866vQYBgUpC", "baseAddress":0, "modbusAddress": 1, "marker": null, "nodePath":null, "online":true},
     "SN512":{"network":"larkfield", "locName":"Beckman", "deviceIdHash":"6917511534FD", "deviceID":"5000d8c46a5721ea", "usng":"21886253", "latitude":38.510951, "longitude": -122.748958, "agentUrl": "/kRQMPFuKmzDM", "baseAddress":0, "modbusAddress": 1, "marker": null, "nodePath":null, "online":true},
     "SN516":{"network":"larkfield", "locName":"Sugiyama", "deviceIdHash":"364935E144C5", "deviceID":"5000d8c46a572a5a", "usng":"21226281", "latitude":38.513469, "longitude":-122.756491, "agentUrl": "/m6fnIP8Xwcbx", "baseAddress":0, "modbusAddress": 1, "marker": null, "nodePath":null, "online":true},
@@ -41,8 +41,9 @@ var fleetLink = {
     "SN524":{"network":"larkfield", "locName":"Yamasaki", "deviceIdHash":"022676CEA2C8", "deviceID":"5000d8c46a572a70", "usng":"16426752", "latitude":38.555988, "longitude":-122.811517, "agentUrl": "/NTLnl40ofe9Y", "baseAddress":0, "modbusAddress": 1, "marker": null, "nodePath":null, "online":true},
     "SN527":{"network":"larkfield", "locName":"Galli", "deviceIdHash":"E18F79FBF4D0", "deviceID":"5000d8c46a572a38", "usng":"18166731", "latitude":38.554040, "longitude":-122.791538, "agentUrl": "/t02E8X0S0Kl6", "baseAddress":0, "modbusAddress": 1, "marker": null, "nodePath":null, "online":true},
     "SN528":{"network":"larkfield", "locName":"Gibson", "deviceIdHash":"F5ED514678B2", "deviceID":"5000d8c46a572a58", "usng":"21416258", "latitude":38.511400, "longitude":-122.754315, "agentUrl": "/aQTyLRwIHjYn", "baseAddress":0, "modbusAddress": 1, "marker": null, "nodePath":null, "online":true},
+    "SN529":{"network":"larkfield", "locName":"Clapper", "deviceIdHash":"BC4AD7B8D7B2", "deviceID":"5000d8c46a572a7a", "usng":"16576784", "latitude":38.558927, "longitude": -122.809762, "agentUrl": "/TjIP9SXEzEGb", "baseAddress":0, "modbusAddress": 1, "marker": null, "nodePath":null, "online":true},    
     "SN530":{"network":"larkfield", "locName":"Nadendla", "deviceIdHash":"2EB55A0B48F4", "deviceID":"5000d8c46a572a12", "usng":"17616705", "latitude":38.551712, "longitude":-122.79779, "agentUrl": "/r7-wVnF8nV9b", "baseAddress":0, "modbusAddress": 1, "marker": null, "nodePath":null, "online":true},
-    "SN531":{"network":"larkfield", "locName":"Ferrara", "deviceIdHash":"A9D4A224043D", "deviceID":"5000d8c46a572a4c", "usng":"21246285", "latitude":38.51395, "longitude":-122.756289, "agentUrl": "/lgWdhq_T9EsC", "baseAddress":0, "modbusAddress": 1, "marker": null, "nodePath":null, "online":true}
+    "SN531":{"network":"larkfield", "locName":"Ferrara", "deviceIdHash":"A9D4A224043D", "deviceID":"5000d8c46a572a4c", "usng":"21246285", "latitude":38.51405, "longitude":-122.756289, "agentUrl": "/lgWdhq_T9EsC", "baseAddress":0, "modbusAddress": 1, "marker": null, "nodePath":null, "online":true}
     //
 };
 
@@ -181,7 +182,7 @@ function initMap() {
         marker = new google.maps.Marker({
             position: new google.maps.LatLng(fleetLink[key]["latitude"], fleetLink[key]["longitude"]),
             icon: icon,
-            title: key,
+            title: key + " " + fleetLink[key]["locName"],
             map: mapFleetLink
         });
         bounds.extend(marker.position);
@@ -320,13 +321,22 @@ function getAllData() {
     // if in continous mode, randomize the offline units and do this every X seconds
     var continuousMode = document.getElementById("continuousGo").checked;
     if (continuousMode == true){
-        setOfflineRandom();
         setTimeout(getAllData,90000);
+        // set all units as online to start
+        for (var key in fleetLink) {
+                // if this unit is a member of the network which includes the target unit, then process it
+                if (fleetLink[key]["network"] == fleetLink[target]["network"] ){
+                    fleetLink[key]["online"] = true;                                                                         
+                }
+            }
+        redrawMap();
+        // get data from online units and find out if any are unexpectedly offline
         getOnlineData();
         // now get all the offlines, must be sequential to avoid overloading LoRa network
         // Wait a bit to allow return of online unit data
         setTimeout(getAllOfflineData, 10000);
     } else {
+        // maybe you're in single measurement mode
         getOneOfflineData();
     }
 }
@@ -351,14 +361,14 @@ $.ajax({
                 drawMarker(this.requestedTargetKey, 'orange', '#2eb82e', '1.0');                                                            
                 drawNodePath(this.requestedTargetKey,this.requestedGatewayKey, '#2eb82e', 1);
                 clockTime = getClock();
-                console.log(clockTime + " LoRa PASS, " + this.requestedTargetKey + ", " + this.requestedGatewayKey + ", " + this.requestedDistance + " m, " + formatData(response, interest));
+                console.log(clockTime + " LoRa PASS, " + this.requestedTargetKey + " " + fleetLink[this.requestedTargetKey]["locName"] + ", " + this.requestedGatewayKey + " " + fleetLink[this.requestedGatewayKey]["locName"] + ", " + this.requestedDistance + " m, " + formatData(response, interest));
             },
             error : function(jqXHR, textStatus, err) {
                 var errorResponse = err ;
                 clockTime = getClock();
                 drawMarker(this.requestedTargetKey, 'orange', '#ff3333', '1.0');                                                                                        
                 drawNodePath(this.requestedTargetKey,this.requestedGatewayKey, '#ff3333', 1);
-                console.log(clockTime + " LoRa FAIL, " + this.requestedTargetKey + ", " + this.requestedGatewayKey + ", " + this.requestedDistance + " m");
+                console.log(clockTime + " LoRa FAIL, " + this.requestedTargetKey + " " + fleetLink[this.requestedTargetKey]["locName"] + ", " + this.requestedGatewayKey + " " + fleetLink[this.requestedGatewayKey]["locName"] + ", " + this.requestedDistance + " m");
             }
     });
 }
@@ -384,14 +394,14 @@ function getOnlineData(){
                                     drawMarker(this.requestedTargetKey, 'white', '#2eb82e', '1.0');      
                                     fleetLink[this.requestedTargetKey]["online"] = true;                                      
                                     clockTime = getClock();
-                                    console.log(clockTime + " WiFi PASS, " + this.requestedTargetKey + ", " + formatData(response, interest));
+                                    console.log(clockTime + " WiFi PASS, " + this.requestedTargetKey + " " + fleetLink[this.requestedTargetKey]["locName"] + ", " + formatData(response, interest));
                                 },
                                 error : function(jqXHR, textStatus, err) {
                                     var errorResponse = err ;
                                     drawMarker(this.requestedTargetKey, 'orange', '#ff3333', '1.0');       
                                     fleetLink[this.requestedTargetKey]["online"] = false;                                                         
                                     clockTime = getClock();
-                                    console.log(clockTime + " WiFi FAIL, " + this.requestedTargetKey + " setting online status to false");
+                                    console.log(clockTime + " WiFi FAIL, " + this.requestedTargetKey + " " + fleetLink[this.requestedTargetKey]["locName"] + " WiFi is offline");
                                 }
                         });
                     }
@@ -405,6 +415,9 @@ function getAllOfflineData(){
     var nearestOnlineUnit = '';
     var thisDistance = 0;
     var clockTime = "";
+
+    // set the desired number of uits offline
+    setOfflineRandom();
 
     (function($) {
         // This is a way to queue  Ajax POST queries so that they run sequentially
@@ -472,14 +485,14 @@ function getAllOfflineData(){
                             drawMarker(this.requestedTargetKey, 'orange', '#2eb82e', '1.0');                                                            
                             drawNodePath(this.requestedTargetKey,this.requestedGatewayKey, '#2eb82e', 1);
                             clockTime = getClock();
-                            console.log(clockTime + " LoRa PASS, " + this.requestedTargetKey + ", " + this.requestedGatewayKey + ", " + this.requestedDistance + " m, " + formatData(response, interest));
+                            console.log(clockTime + " LoRa PASS, " + this.requestedTargetKey + " " + fleetLink[this.requestedTargetKey]["locName"] + ", " + this.requestedGatewayKey + " " + fleetLink[this.requestedGatewayKey]["locName"] + ", " + this.requestedDistance + " m, " + formatData(response, interest));
                         },
                         error : function(jqXHR, textStatus, err) {
                             var errorResponse = err ;
                             clockTime = getClock();
                             drawMarker(this.requestedTargetKey, 'orange', '#ff3333', '1.0');                                                                                        
                             drawNodePath(this.requestedTargetKey,this.requestedGatewayKey, '#ff3333', 1);
-                            console.log(clockTime + " LoRa FAIL, " + this.requestedTargetKey + ", " + this.requestedGatewayKey + ", " + this.requestedDistance + " m");
+                            console.log(clockTime + " LoRa FAIL, " + this.requestedTargetKey + " " + fleetLink[this.requestedTargetKey]["locName"] + ", " + this.requestedGatewayKey + " " + fleetLink[this.requestedGatewayKey]["locName"] + ", " + this.requestedDistance + " m");
                         }
                 });
                 }
@@ -489,21 +502,37 @@ function getAllOfflineData(){
 }
 
 function setOfflineRandom(){
-    for (var key in fleetLink) {
-        if (fleetLink.hasOwnProperty(key)) {
+    var randomKey = "";
+    var fleetLinkKeys = Object.keys(fleetLink);
+    do {
+            randomNumber = Math.floor(Math.random() * fleetLinkKeys.length);
+            randomKey = fleetLinkKeys[randomNumber];
             // if this unit is a member of the network which includes the target unit, then process it
-            if (fleetLink[key]["network"] == fleetLink[target]["network"] ){
-                // randomly set units offline with a 20% probability
-                if(Math.random() < 0.2){
-                    fleetLink[key]["online"] = false;
-                    console.log("randomly setting unit " + key + " online status to false")
-                } else {
-                    fleetLink[key]["online"] = true;
+            if (fleetLink[randomKey]["network"] == fleetLink[target]["network"] ){
+                // if this unit is online, set it offline
+                if (fleetLink[randomKey]["online"] == true){
+                    fleetLink[randomKey]["online"] = false;
+                    drawMarker(randomKey, 'orange', 'orange', '0.0');                                                                            
+                    clockTime = getClock();
+                    console.log(clockTime + " forcing unit " + randomKey + " " + fleetLink[randomKey]["locName"] + " WiFi offline")
                 }
+
+            }
+        // count offline units
+        var numberOfflineUnits = 0;
+        for (var key in fleetLink) {
+            if (fleetLink.hasOwnProperty(key)) {
+                // if this unit is a member of the network which includes the target unit, then process it
+                if (fleetLink[key]["network"] == fleetLink[target]["network"] ){
+                    if (fleetLink[key]["online"] == false){
+                        numberOfflineUnits++;
+                    }
                 }
+            }
         }
     }
-    redrawMap();
+    while (numberOfflineUnits < 4);
+
 }
 
 
