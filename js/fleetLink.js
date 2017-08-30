@@ -26,10 +26,10 @@ var fleetLink = {
     "SN402":{"network":"larkfield", "locName":"Opalitliga", "deviceIdHash":"D85F6461EB91", "deviceID":"5000d8c46a56dc4c", "usng":"14776690", "latitude":38.550429, "longitude":-122.830439, "agentUrl": "/oHMQMg_lcxsT", "baseAddress":0, "modbusAddress": 1, "marker": null, "nodePath":null, "online":true},
     "SN503":{"network":"larkfield", "locName":"Henry", "deviceIdHash":"4E562573DBA0", "deviceID":"5000d8c46a572868", "usng":"18166719", "latitude":38.552979, "longitude":-122.791571, "agentUrl": "/tRNE2WbS2CGw", "baseAddress":0, "modbusAddress": 1, "marker": null, "nodePath":null, "online":true},
     "SN504":{"network":"larkfield", "locName":"Piero", "deviceIdHash":"B930FA057CB6", "deviceID":"5000d8c46a5728d2", "usng":"17136785", "latitude":38.558938, "longitude":-122.803337, "agentUrl": "/w8Bdk3n0iWt3", "baseAddress":0, "modbusAddress": 1, "marker": null, "nodePath":null, "online":true},
-    "SN505":{"network":"larkfield", "locName":"Spare for Buffo", "deviceIdHash":"BA48D077C2A8", "deviceID":"5000d8c46a57286a", "usng":"16386739", "latitude":38.554853, "longitude":-122.811906, "agentUrl": "/RVKEMRdCLmKj", "baseAddress":0, "modbusAddress": 1, "marker": null, "nodePath":null, "online":true},
+    "SN505":{"network":"larkfield", "locName":"Sugiyama2", "deviceIdHash":"BA48D077C2A8", "deviceID":"5000d8c46a57286a", "usng":"16386739", "latitude":38.554853, "longitude":-122.811906, "agentUrl": "/RVKEMRdCLmKj", "baseAddress":0, "modbusAddress": 1, "marker": null, "nodePath":null, "online":true},
     "SN508":{"network":"larkfield", "locName":"Foster", "deviceIdHash":"730D72A6E22F", "deviceID":"5000d8c46a572874", "usng":"17776661", "latitude":38.547754, "longitude":-122.796043, "agentUrl": "/2866vQYBgUpC", "baseAddress":0, "modbusAddress": 1, "marker": null, "nodePath":null, "online":true},
     "SN512":{"network":"larkfield", "locName":"Beckman", "deviceIdHash":"6917511534FD", "deviceID":"5000d8c46a5721ea", "usng":"21886253", "latitude":38.510951, "longitude": -122.748958, "agentUrl": "/kRQMPFuKmzDM", "baseAddress":0, "modbusAddress": 1, "marker": null, "nodePath":null, "online":true},
-    "SN516":{"network":"larkfield", "locName":"Sugiyama", "deviceIdHash":"364935E144C5", "deviceID":"5000d8c46a572a5a", "usng":"21226281", "latitude":38.513469, "longitude":-122.756491, "agentUrl": "/m6fnIP8Xwcbx", "baseAddress":49999, "modbusAddress": 100, "marker": null, "nodePath":null, "online":true},
+    "SN516":{"network":"larkfield", "locName":"Sugiyama", "deviceIdHash":"364935E144C5", "deviceID":"5000d8c46a572a5a", "usng":"21226281", "latitude":38.513469, "longitude":-122.756491, "agentUrl": "/m6fnIP8Xwcbx", "baseAddress":50070, "modbusAddress": 100, "marker": null, "nodePath":null, "online":true},
     "SN517":{"network":"larkfield", "locName":"Shirlie", "deviceIdHash":"73210C7C7368", "deviceID":"5000d8c46a572a40", "usng":"21016306", "latitude":38.515786, "longitude":-122.759001, "agentUrl": "/lfonbmovX8Ak", "baseAddress":0, "modbusAddress": 1, "marker": null, "nodePath":null, "online":true},
     "SN518":{"network":"larkfield", "locName":"Hermosillo", "deviceIdHash":"45BB2C5D3151", "deviceID":"5000d8c46a5729fa", "usng":"16106798", "latitude":38.560186, "longitude":-122.815174, "agentUrl": "/JPTE9uGlCGQL", "baseAddress":0, "modbusAddress": 1, "marker": null, "nodePath":null, "online":true},
     "SN519":{"network":"larkfield", "locName":"Kempker", "deviceIdHash":"035E6124319B", "deviceID":"5000d8c46a572a04", "usng":"17996657", "latitude":38.547460, "longitude":-122.793545, "agentUrl": "/sv3PuN3lquKO", "baseAddress":0, "modbusAddress": 1, "marker": null, "nodePath":null, "online":true},
@@ -38,7 +38,6 @@ var fleetLink = {
     "SN522":{"network":"larkfield", "locName":"Van Grouw", "deviceIdHash":"9CBABDD00BD5", "deviceID":"5000d8c46a572a68", "usng":"17286817", "latitude":38.561889, "longitude":-122.801555, "agentUrl": "/QCxFKECTRdBH", "baseAddress":0, "modbusAddress": 1, "marker": null, "nodePath":null, "online":true},
     "SN523":{"network":"larkfield", "locName":"Buffo", "deviceIdHash":"BB2A0BFDC8FC", "deviceID":"5000d8c46a5729e6", "usng":"16386739", "latitude":38.554853, "longitude":-122.811906, "agentUrl": "/jYthi-aNvlv6", "baseAddress":0, "modbusAddress": 1, "marker": null, "nodePath":null, "online":true},
     "SN524":{"network":"larkfield", "locName":"Yamasaki", "deviceIdHash":"022676CEA2C8", "deviceID":"5000d8c46a572a70", "usng":"16426752", "latitude":38.555988, "longitude":-122.811517, "agentUrl": "/NTLnl40ofe9Y", "baseAddress":0, "modbusAddress": 1, "marker": null, "nodePath":null, "online":true},
-    "SN526":{"network":"larkfield", "locName":"Buell", "deviceIdHash":"022676CEA2C8", "deviceID":"5000d8c46a572a70", "usng":"20386500", "latitude":38.533223, "longitude":-122.766098, "agentUrl": "/_ERhHgIiqjx0", "baseAddress":0, "modbusAddress": 1, "marker": null, "nodePath":null, "online":true},
     "SN527":{"network":"larkfield", "locName":"Galli", "deviceIdHash":"E18F79FBF4D0", "deviceID":"5000d8c46a572a38", "usng":"18166731", "latitude":38.554040, "longitude":-122.791538, "agentUrl": "/t02E8X0S0Kl6", "baseAddress":0, "modbusAddress": 1, "marker": null, "nodePath":null, "online":true},
     "SN528":{"network":"larkfield", "locName":"Gibson", "deviceIdHash":"F5ED514678B2", "deviceID":"5000d8c46a572a58", "usng":"21416258", "latitude":38.511400, "longitude":-122.754315, "agentUrl": "/aQTyLRwIHjYn", "baseAddress":0, "modbusAddress": 1, "marker": null, "nodePath":null, "online":true},
     "SN529":{"network":"larkfield", "locName":"Clapper", "deviceIdHash":"BC4AD7B8D7B2", "deviceID":"5000d8c46a572a7a", "usng":"16576784", "latitude":38.558927, "longitude": -122.809762, "agentUrl": "/TjIP9SXEzEGb", "baseAddress":0, "modbusAddress": 1, "marker": null, "nodePath":null, "online":true},    
@@ -320,7 +319,7 @@ function getAllData() {
     // if in continous mode, randomize the offline units and do this every X seconds
     var continuousMode = document.getElementById("continuousGo").checked;
     if (continuousMode == true){
-        setTimeout(getAllData,90000);
+        setTimeout(getAllData,120000);
         // set all units as online to start
         for (var key in fleetLink) {
                 // if this unit is a member of the network which includes the target unit, then process it
@@ -430,7 +429,7 @@ function getAllOfflineData(){
                 dfd = $.Deferred(),
                 promise = dfd.promise();
             // queue our ajax request
-            ajaxQueue.queue( doRequest );
+            ajaxQueue.delay(15000).queue( doRequest );
             // add the abort method
             promise.abort = function( statusText ) {
                 // proxy abort to the jqXHR if it is active
@@ -448,14 +447,14 @@ function getAllOfflineData(){
                     [ promise, statusText, "" ] );
                 return promise;
             };
-        
             // run the actual query
             function doRequest( next ) {
                 jqXHR = $.ajax( ajaxOpts )
-                    .then( next, next )
-                    .done( dfd.resolve )
-                    .fail( dfd.reject );
+                .then( next, next )
+                .done( dfd.resolve )
+                .fail( dfd.reject );
             }
+
             return promise;
         };
         })(jQuery);
@@ -470,9 +469,6 @@ function getAllOfflineData(){
                 setTarget(key); 
                 nearestOnlineUnit = findNearestOnline(key);
 
-                if (key ==  "SN520") {  // special case over ride for Neal Buren's unit
-                nearestOnlineUnit = "SN517"  // will change to Shiloh Park unit when available
-                }
                 
                 thisDistance = findDistance(key, nearestOnlineUnit);
                 setGateway(nearestOnlineUnit); 
