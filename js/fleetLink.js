@@ -78,7 +78,7 @@ var displayFactors = {
         var continuousMode = document.getElementById("continuousGo").checked;
         if (continuousMode == false){        
             redrawMap();
-            drawMarker(target, "orange", "orange", 0);
+            drawMarker(target, "#ff8080", "#ff4d4d", 0);
             drawNodePath(target,gateway, "white", 1);
         }
       }
@@ -172,9 +172,9 @@ function initMap() {
             // if this unit is a member of the network which includes the target unit, then add to list to plot
             if (fleetLink[key]["network"] == fleetLink[target]["network"] ){
                 if (fleetLink[key]["online"] == true ){
-                    icon =  {path: google.maps.SymbolPath["CIRCLE"], strokeColor: "#ffffff", strokeWeight: 2, scale: 6, fillColor: '#ffffff', fillOpacity: 0.0};
+                    icon =  {path: google.maps.SymbolPath["CIRCLE"], strokeColor: "white", strokeWeight: 2, scale: 6, fillColor: 'white', fillOpacity: 0.0};
                 } else {
-                    icon =  {path: google.maps.SymbolPath["CIRCLE"], strokeColor: "orange", strokeWeight: 2, scale: 6, fillColor: 'orange', fillOpacity: 0.0};
+                    icon =  {path: google.maps.SymbolPath["CIRCLE"], strokeColor: "#ff8080", strokeWeight: 2, scale: 6, fillColor: '#ff4d4d', fillOpacity: 0.0};
                 }
                 
         marker = new google.maps.Marker({
@@ -192,7 +192,7 @@ function initMap() {
             return function () {
                 if(fleetLink[key]["online"] == true){
                     fleetLink[key]["online"] = false;
-                    drawMarker(key, 'orange', 'orange', '0.0');                    
+                    drawMarker(key, '#ff8080', '#ff4d4d', '0.0');                    
                 } else {
                     fleetLink[key]["online"] = true;
                     drawMarker(key, 'white', 'white', '0.0');
@@ -257,7 +257,7 @@ function drawNodePath(unitId1,unitId2, color, opacity){
                     if (fleetLink[key]["online"] == true ){
                         drawMarker(key, 'white', 'white', '0.0');
                     } else {
-                        drawMarker(key, 'orange', 'orange', '0.0');                    
+                        drawMarker(key, '#ff8080', '#ff4d4d', '0.0');                    
                     }          
                     if (fleetLink[key]["nodePath"] != null){
                         fleetLink[key]["nodePath"].setOptions({strokeOpacity: 0.0});
@@ -329,7 +329,7 @@ function getAllData() {
             }
         redrawMap();
         // get data from online units and find out if any are unexpectedly offline
-        getOnlineData();
+        setTimeout(getOnlineData,1000);
         // now get all the offlines, must be sequential to avoid overloading LoRa network
         // Wait a bit to allow return of online unit data
         setTimeout(getAllOfflineData, 10000);
@@ -352,11 +352,11 @@ drawNodePath(target,gateway,"white", 1);
 $.ajax({
         url: interest.url,
         context:{requestedTargetKey:target, requestedGatewayKey:gateway, requestedDistance:thisDistance},
-        timeout: 18000,
+        timeout: 15000,
         data: JSON.stringify(interest), // convert interest string to JSON
         type: 'POST',
             success : function(response) {
-                drawMarker(this.requestedTargetKey, 'orange', '#2eb82e', '1.0');                                                            
+                drawMarker(this.requestedTargetKey, '80ff80', '#2eb82e', '1.0');                                                            
                 drawNodePath(this.requestedTargetKey,this.requestedGatewayKey, '#2eb82e', 1);
                 clockTime = getClock();
                 console.log(clockTime + " LoRa PASS, " + this.requestedTargetKey + " " + fleetLink[this.requestedTargetKey]["locName"] + ", " + this.requestedGatewayKey + " " + fleetLink[this.requestedGatewayKey]["locName"] + ", " + this.requestedDistance + " m, " + formatData(response, interest));
@@ -364,8 +364,8 @@ $.ajax({
             error : function(jqXHR, textStatus, err) {
                 var errorResponse = err ;
                 clockTime = getClock();
-                drawMarker(this.requestedTargetKey, 'orange', '#ff3333', '1.0');                                                                                        
-                drawNodePath(this.requestedTargetKey,this.requestedGatewayKey, '#ff3333', 1);
+                drawMarker(this.requestedTargetKey, '#ff8080', '#ff4d4d', '1.0');                                                                                        
+                drawNodePath(this.requestedTargetKey,this.requestedGatewayKey, '#ff4d4d', 1);
                 console.log(clockTime + " LoRa FAIL, " + this.requestedTargetKey + " " + fleetLink[this.requestedTargetKey]["locName"] + ", " + this.requestedGatewayKey + " " + fleetLink[this.requestedGatewayKey]["locName"] + ", " + this.requestedDistance + " m");
             }
     });
@@ -385,7 +385,7 @@ function getOnlineData(){
                      $.ajax({
                             url: interest.url,
                             context:{requestedTargetKey:key},
-                            timeout: 7000,
+                            timeout: 5000,
                             data: JSON.stringify(interest), // convert interest string to JSON
                             type: 'POST',
                                 success : function(response) {
@@ -396,7 +396,7 @@ function getOnlineData(){
                                 },
                                 error : function(jqXHR, textStatus, err) {
                                     var errorResponse = err ;
-                                    drawMarker(this.requestedTargetKey, 'orange', '#ff3333', '0.0');       
+                                    drawMarker(this.requestedTargetKey, '#ff8080', '#ff4d4d', '0.0');       
                                     fleetLink[this.requestedTargetKey]["online"] = false;                                                         
                                     clockTime = getClock();
                                     console.log(clockTime + " WiFi FAIL, " + this.requestedTargetKey + " " + fleetLink[this.requestedTargetKey]["locName"] + " WiFi is offline");
@@ -430,7 +430,7 @@ function getAllOfflineData(){
                 dfd = $.Deferred(),
                 promise = dfd.promise();
             // queue our ajax request
-            ajaxQueue.delay(10000).queue( doRequest );
+            ajaxQueue.delay(5000).queue( doRequest );
             // add the abort method
             promise.abort = function( statusText ) {
                 // proxy abort to the jqXHR if it is active
@@ -490,7 +490,7 @@ function addToAjaxQueue(key, nearestOnlineUnit, thisDistance, retryFlag){
         data: JSON.stringify(interest), // convert interest string to JSON
         type: 'POST',
             success : function(response) {                
-                drawMarker(this.requestedTargetKey, 'orange', '#2eb82e', '1.0');                                                            
+                drawMarker(this.requestedTargetKey, '#80ff80', '#2eb82e', '1.0');                                                            
                 drawNodePath(this.requestedTargetKey,this.requestedGatewayKey, '#2eb82e', 1);
                 clockTime = getClock();
                 console.log(clockTime + " LoRa PASS, " + this.requestedTargetKey + " " + fleetLink[this.requestedTargetKey]["locName"] + ", " + this.requestedGatewayKey + " " + fleetLink[this.requestedGatewayKey]["locName"] + ", " + this.requestedDistance + " m, " + formatData(response, interest));
@@ -506,13 +506,13 @@ function addToAjaxQueue(key, nearestOnlineUnit, thisDistance, retryFlag){
                     addToAjaxQueue(this.requestedTargetKey, this.requestedGatewayKey, this.requestedDistance, true);
                     trialNumber++;
                     clockTime = getClock();
-                    drawMarker(this.requestedTargetKey, 'orange', '#e6e600', '1.0');                                                                                        
-                    drawNodePath(this.requestedTargetKey,this.requestedGatewayKey, '#e6e600', 1);
+                    drawMarker(this.requestedTargetKey, '#ffffb3', '#cccc00', '1.0');                                                                                        
+                    drawNodePath(this.requestedTargetKey,this.requestedGatewayKey, '#ffffb3', 1);
                     console.log(clockTime + " LoRa RETRY, " + this.requestedTargetKey + " " + fleetLink[this.requestedTargetKey]["locName"] + ", " + this.requestedGatewayKey + " " + fleetLink[this.requestedGatewayKey]["locName"] + ", " + this.requestedDistance + " m");    
                 } else {
                     clockTime = getClock();
-                    drawMarker(this.requestedTargetKey, 'orange', '#ff3333', '1.0');                                                                                        
-                    drawNodePath(this.requestedTargetKey,this.requestedGatewayKey, '#ff3333', 1);
+                    drawMarker(this.requestedTargetKey, '#ff8080', '#ff4d4d', '1.0');                                                                                        
+                    drawNodePath(this.requestedTargetKey,this.requestedGatewayKey, '#ff4d4d', 1);
                     console.log(clockTime + " LoRa FAIL, " + this.requestedTargetKey + " " + fleetLink[this.requestedTargetKey]["locName"] + ", " + this.requestedGatewayKey + " " + fleetLink[this.requestedGatewayKey]["locName"] + ", " + this.requestedDistance + " m");
                 }
             }
@@ -531,7 +531,7 @@ function setOfflineRandom(){
                 // if this unit is online, set it offline
                 if (fleetLink[randomKey]["online"] == true){
                     fleetLink[randomKey]["online"] = false;
-                    drawMarker(randomKey, 'orange', 'orange', '0.0');                                                                            
+                    drawMarker(randomKey, '#ff8080', '#ff4d4d', '0.0');                                                                            
                     clockTime = getClock();
                     console.log(clockTime + " forcing unit " + randomKey + " " + fleetLink[randomKey]["locName"] + " WiFi offline")
                 }
