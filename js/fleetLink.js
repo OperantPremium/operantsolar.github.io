@@ -319,7 +319,7 @@ function getAllData() {
     // if in continous mode, randomize the offline units and do this every X seconds
     var continuousMode = document.getElementById("continuousGo").checked;
     if (continuousMode == true){
-        setTimeout(getAllData,120000);
+        setTimeout(getAllData,150000);
         // set all units as online to start
         for (var key in fleetLink) {
                 // if this unit is a member of the network which includes the target unit, then process it
@@ -352,7 +352,7 @@ drawNodePath(target,gateway,"white", 1);
 $.ajax({
         url: interest.url,
         context:{requestedTargetKey:target, requestedGatewayKey:gateway, requestedDistance:thisDistance},
-        timeout: 15000,
+        timeout: 18000,
         data: JSON.stringify(interest), // convert interest string to JSON
         type: 'POST',
             success : function(response) {
@@ -396,7 +396,7 @@ function getOnlineData(){
                                 },
                                 error : function(jqXHR, textStatus, err) {
                                     var errorResponse = err ;
-                                    drawMarker(this.requestedTargetKey, 'orange', '#ff3333', '1.0');       
+                                    drawMarker(this.requestedTargetKey, 'orange', '#ff3333', '0.0');       
                                     fleetLink[this.requestedTargetKey]["online"] = false;                                                         
                                     clockTime = getClock();
                                     console.log(clockTime + " WiFi FAIL, " + this.requestedTargetKey + " " + fleetLink[this.requestedTargetKey]["locName"] + " WiFi is offline");
