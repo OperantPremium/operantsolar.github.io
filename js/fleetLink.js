@@ -413,6 +413,7 @@ function getAllOfflineData(){
     var nearestOnlineUnit = '';
     var thisDistance = 0;
     var clockTime = "";
+    var retryFlag = false;
 
     // set the desired number of uits offline
     setOfflineRandom();
@@ -429,7 +430,7 @@ function getAllOfflineData(){
                 dfd = $.Deferred(),
                 promise = dfd.promise();
             // queue our ajax request
-            ajaxQueue.delay(15000).queue( doRequest );
+            ajaxQueue.delay(10000).queue( doRequest );
             // add the abort method
             promise.abort = function( statusText ) {
                 // proxy abort to the jqXHR if it is active
@@ -462,43 +463,61 @@ function getAllOfflineData(){
 
     // This is the application specific Ajax query to get offline units' data    
     for (var key in fleetLink) {
+        trialNumber = 0;
         if (fleetLink.hasOwnProperty(key)) {
             // if this unit is a member of the network which includes the target unit, then process it as potentially offline
             if (fleetLink[key]["network"] == fleetLink[target]["network"] ){
                 if(fleetLink[key]["online"] == false){  // if it's offline, we have query via LoRa
                 setTarget(key); 
                 nearestOnlineUnit = findNearestOnline(key);
-
-                
                 thisDistance = findDistance(key, nearestOnlineUnit);
                 setGateway(nearestOnlineUnit); 
                 // Draw a white line to indicate activity
                 drawNodePath(target,gateway,"white", 1);
-                // Web POST to nearby agent for LoRa request
-                $.ajaxQueue({
-                    url: interest.url,
-                    context:{requestedTargetKey:key, requestedGatewayKey:nearestOnlineUnit, requestedDistance:thisDistance},
-                    timeout: 15000,
-                    data: JSON.stringify(interest), // convert interest string to JSON
-                    type: 'POST',
-                        success : function(response) {
-                            drawMarker(this.requestedTargetKey, 'orange', '#2eb82e', '1.0');                                                            
-                            drawNodePath(this.requestedTargetKey,this.requestedGatewayKey, '#2eb82e', 1);
-                            clockTime = getClock();
-                            console.log(clockTime + " LoRa PASS, " + this.requestedTargetKey + " " + fleetLink[this.requestedTargetKey]["locName"] + ", " + this.requestedGatewayKey + " " + fleetLink[this.requestedGatewayKey]["locName"] + ", " + this.requestedDistance + " m, " + formatData(response, interest));
-                        },
-                        error : function(jqXHR, textStatus, err) {
-                            var errorResponse = err ;
-                            clockTime = getClock();
-                            drawMarker(this.requestedTargetKey, 'orange', '#ff3333', '1.0');                                                                                        
-                            drawNodePath(this.requestedTargetKey,this.requestedGatewayKey, '#ff3333', 1);
-                            console.log(clockTime + " LoRa FAIL, " + this.requestedTargetKey + " " + fleetLink[this.requestedTargetKey]["locName"] + ", " + this.requestedGatewayKey + " " + fleetLink[this.requestedGatewayKey]["locName"] + ", " + this.requestedDistance + " m");
-                        }
-                });
+                trialNumber = addToAjaxQueue(key, nearestOnlineUnit, thisDistance, retryFlag);
                 }
             }
         }
     }
+}
+
+function addToAjaxQueue(key, nearestOnlineUnit, thisDistance, retryFlag){
+    // Web POST to nearby agent for LoRa request
+    $.ajaxQueue({
+        url: interest.url,
+        context:{requestedTargetKey:key, requestedGatewayKey:nearestOnlineUnit, requestedDistance:thisDistance, requestedRetryFlag:retryFlag},
+        timeout: 15000,
+        data: JSON.stringify(interest), // convert interest string to JSON
+        type: 'POST',
+            success : function(response) {                
+                drawMarker(this.requestedTargetKey, 'orange', '#2eb82e', '1.0');                                                            
+                drawNodePath(this.requestedTargetKey,this.requestedGatewayKey, '#2eb82e', 1);
+                clockTime = getClock();
+                console.log(clockTime + " LoRa PASS, " + this.requestedTargetKey + " " + fleetLink[this.requestedTargetKey]["locName"] + ", " + this.requestedGatewayKey + " " + fleetLink[this.requestedGatewayKey]["locName"] + ", " + this.requestedDistance + " m, " + formatData(response, interest));
+            },
+            error : function(jqXHR, textStatus, err) {
+                var errorResponse = err ;
+                // retry (currently set to only one retry)
+                if (this.requestedRetryFlag == false){
+                    setTarget(this.requestedTargetKey); 
+                    nearestOnlineUnit = findNearestOnline(key);
+                    thisDistance = findDistance(key, nearestOnlineUnit);
+                    setGateway(nearestOnlineUnit); 
+                    addToAjaxQueue(this.requestedTargetKey, this.requestedGatewayKey, this.requestedDistance, true);
+                    trialNumber++;
+                    clockTime = getClock();
+                    drawMarker(this.requestedTargetKey, 'orange', '#e6e600', '1.0');                                                                                        
+                    drawNodePath(this.requestedTargetKey,this.requestedGatewayKey, '#e6e600', 1);
+                    console.log(clockTime + " LoRa RETRY, " + this.requestedTargetKey + " " + fleetLink[this.requestedTargetKey]["locName"] + ", " + this.requestedGatewayKey + " " + fleetLink[this.requestedGatewayKey]["locName"] + ", " + this.requestedDistance + " m");    
+                } else {
+                    clockTime = getClock();
+                    drawMarker(this.requestedTargetKey, 'orange', '#ff3333', '1.0');                                                                                        
+                    drawNodePath(this.requestedTargetKey,this.requestedGatewayKey, '#ff3333', 1);
+                    console.log(clockTime + " LoRa FAIL, " + this.requestedTargetKey + " " + fleetLink[this.requestedTargetKey]["locName"] + ", " + this.requestedGatewayKey + " " + fleetLink[this.requestedGatewayKey]["locName"] + ", " + this.requestedDistance + " m");
+                }
+            }
+    });
+    return trialNumber;
 }
 
 function setOfflineRandom(){
