@@ -383,7 +383,6 @@ function getOneOfflineData(){
 }
 
 function getOnlineData(){
-ßß
         // Request all the online units' data asynchronously
         for (var key in fleetLink) {
             if (fleetLink.hasOwnProperty(key)) {
