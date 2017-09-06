@@ -23,7 +23,6 @@ var fleetLink = {
     "SN513":{"network":"vivint", "locName":"SolarEdge Inverter", "deviceIdHash":"DF04146F1DF0", "deviceID":"5000d8c46a57285e", "usng":"15795070", "latitude":38.40443, "longitude":-122.8190967, "agentUrl": "/ZT8GBL-7RrgD", "baseAddress":39999, "modbusAddress": 1, "marker": null, "nodePath":null, "online":false},
     "SN514":{"network":"vivint", "locName":"Vivint 3", "deviceIdHash":"00E329B56259", "deviceID":"5000d8c46a572872", "usng":"15705066", "latitude":38.4040556, "longitude":-122.8201667, "agentUrl": "/609atPXTxkX7", "baseAddress":39999, "modbusAddress": 1, "marker": null, "nodePath":null, "online":false},
     // larkfield
-    //"SN402":{"network":"larkfield", "locName":"Opalitliga", "deviceIdHash":"D85F6461EB91", "deviceID":"5000d8c46a56dc4c", "usng":"14776690", "latitude":38.550429, "longitude":-122.830439, "agentUrl": "/oHMQMg_lcxsT", "baseAddress":0, "modbusAddress": 1, "marker": null, "nodePath":null, "online":true},
     "SN503":{"network":"larkfield", "locName":"Henry", "deviceIdHash":"4E562573DBA0", "deviceID":"5000d8c46a572868", "usng":"18166719", "latitude":38.552979, "longitude":-122.791571, "agentUrl": "/tRNE2WbS2CGw", "baseAddress":0, "modbusAddress": 1, "marker": null, "nodePath":null, "online":true},
     "SN504":{"network":"larkfield", "locName":"Piero", "deviceIdHash":"B930FA057CB6", "deviceID":"5000d8c46a5728d2", "usng":"17136785", "latitude":38.558938, "longitude":-122.8033373, "agentUrl": "/w8Bdk3n0iWt3", "baseAddress":0, "modbusAddress": 1, "marker": null, "nodePath":null, "online":true},
     "SN505":{"network":"larkfield", "locName":"Sugiyama2", "deviceIdHash":"BA48D077C2A8", "deviceID":"5000d8c46a57286a", "usng":"21236281", "latitude":38.513395, "longitude":-122.756469, "agentUrl": "/RVKEMRdCLmKj", "baseAddress":0, "modbusAddress": 1, "marker": null, "nodePath":null, "online":true},
@@ -320,7 +319,7 @@ function getAllData() {
     // if in continous mode, randomize the offline units and do this every X seconds
     var continuousMode = document.getElementById("continuousGo").checked;
     if (continuousMode == true){
-        setTimeout(getAllData,120000);
+        setTimeout(getAllData,150000);
         // set all units as online to start
         for (var key in fleetLink) {
                 // if this unit is a member of the network which includes the target unit, then process it
@@ -333,7 +332,7 @@ function getAllData() {
         setTimeout(getOnlineData,2000);
         // now get all the offlines, must be sequential to avoid overloading LoRa network
         // Wait a bit to allow return of online unit data
-        setTimeout(getAllOfflineData, 8000);
+        setTimeout(getAllOfflineData, 10000);
     } else {
         // maybe you're in single measurement mode
         getOneOfflineData();
@@ -440,7 +439,7 @@ function getAllOfflineData(){
                 dfd = $.Deferred(),
                 promise = dfd.promise();
             // queue our ajax request
-            ajaxQueue.delay(5000).queue( doRequest );
+            ajaxQueue.delay(8000).queue( doRequest );
             // add the abort method
             promise.abort = function( statusText ) {
                 // proxy abort to the jqXHR if it is active
@@ -496,7 +495,7 @@ function addToAjaxQueue(key, nearestOnlineUnit, thisDistance, retryFlag){
     $.ajaxQueue({
         url: interest.url,
         context:{requestedTargetKey:key, requestedGatewayKey:nearestOnlineUnit, requestedDistance:thisDistance, requestedRetryFlag:retryFlag},
-        timeout: 8000,
+        timeout: 15000,
         data: JSON.stringify(interest), // convert interest string to JSON
         type: 'POST',
             success : function(response) {                
