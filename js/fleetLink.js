@@ -425,7 +425,7 @@ function getAllOfflineData(){
     var clockTime = "";
     var retryFlag = false;
 
-    // set the desired number of uits offline
+    // set the desired number of units offline
     setOfflineRandom();
 
     (function($) {
@@ -496,7 +496,7 @@ function addToAjaxQueue(key, nearestOnlineUnit, thisDistance, retryFlag){
     $.ajaxQueue({
         url: interest.url,
         context:{requestedTargetKey:key, requestedGatewayKey:nearestOnlineUnit, requestedDistance:thisDistance, requestedRetryFlag:retryFlag},
-        timeout: 10000,
+        timeout: 8000,
         data: JSON.stringify(interest), // convert interest string to JSON
         type: 'POST',
             success : function(response) {                
