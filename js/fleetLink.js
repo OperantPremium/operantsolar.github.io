@@ -395,7 +395,7 @@ function getOnlineData(){
                      $.ajax({
                             url: interest.url,
                             context:{requestedTargetKey:key},
-                            timeout: 6000,
+                            timeout: 5000,
                             data: JSON.stringify(interest), // convert interest string to JSON
                             type: 'POST',
                                 success : function(response) {
@@ -440,7 +440,7 @@ function getAllOfflineData(){
                 dfd = $.Deferred(),
                 promise = dfd.promise();
             // queue our ajax request
-            ajaxQueue.delay(3000).queue( doRequest );
+            ajaxQueue.delay(5000).queue( doRequest );
             // add the abort method
             promise.abort = function( statusText ) {
                 // proxy abort to the jqXHR if it is active
