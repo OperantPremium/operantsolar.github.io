@@ -333,7 +333,7 @@ function getAllData() {
         setTimeout(getOnlineData,2000);
         // now get all the offlines, must be sequential to avoid overloading LoRa network
         // Wait a bit to allow return of online unit data
-        setTimeout(getAllOfflineData, 5000);
+        setTimeout(getAllOfflineData, 8000);
     } else {
         // maybe you're in single measurement mode
         getOneOfflineData();
