@@ -48,7 +48,9 @@
                 <a class="dropdown-item mbr-editable-menu-item" href="http://www.operantsolar.com" onclick="setGateway('SN521'); return false;">SN521 Palmer</a>
                 <a class="dropdown-item mbr-editable-menu-item" href="http://www.operantsolar.com" onclick="setGateway('SN523'); return false;">SN523 Buffo</a>
                 <a class="dropdown-item mbr-editable-menu-item" href="http://www.operantsolar.com" onclick="setGateway('SN524'); return false;">SN524 Yamasaki</a>  
+                <a class="dropdown-item mbr-editable-menu-item" href="http://www.operantsolar.com" onclick="setGateway('SN527'); return false;">SN527 Galli</a>  
                 <a class="dropdown-item mbr-editable-menu-item" href="http://www.operantsolar.com" onclick="setGateway('SN528'); return false;">SN528 Gibson</a>   
+                <a class="dropdown-item mbr-editable-menu-item" href="http://www.operantsolar.com" onclick="setGateway('SN529'); return false;">SN529 Clapper</a>  
                 <a class="dropdown-item mbr-editable-menu-item" href="http://www.operantsolar.com" onclick="setGateway('SN530'); return false;">SN530 Nadendla</a>               
                 <a class="dropdown-item mbr-editable-menu-item" href="http://www.operantsolar.com" onclick="setGateway('SN531'); return false;">SN531 Ferrara</a>                
         <!------------------------------------------------------------------->
@@ -74,7 +76,9 @@
                 <a class="dropdown-item mbr-editable-menu-item" href="http://www.operantsolar.com" onclick="setTarget('SN521'); return false;">SN520 Palmer</a>
                 <a class="dropdown-item mbr-editable-menu-item" href="http://www.operantsolar.com" onclick="setTarget('SN523'); return false;">SN523 Buffo</a>
                 <a class="dropdown-item mbr-editable-menu-item" href="http://www.operantsolar.com" onclick="setTarget('SN524'); return false;">SN524 Yamasaki</a> 
+                <a class="dropdown-item mbr-editable-menu-item" href="http://www.operantsolar.com" onclick="setTarget('SN527'); return false;">SN527 Galli</a> 
                 <a class="dropdown-item mbr-editable-menu-item" href="http://www.operantsolar.com" onclick="setTarget('SN528'); return false;">SN528 Gibson</a>   
+                <a class="dropdown-item mbr-editable-menu-item" href="http://www.operantsolar.com" onclick="setTarget('SN529'); return false;">SN529 Clapper</a>   
                 <a class="dropdown-item mbr-editable-menu-item" href="http://www.operantsolar.com" onclick="setTarget('SN530'); return false;">SN530 Nadendla</a>                
                 <a class="dropdown-item mbr-editable-menu-item" href="http://www.operantsolar.com" onclick="setTarget('SN531'); return false;">SN531 Ferrara</a>                
         <!------------------------------------------------------------------->
