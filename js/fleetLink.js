@@ -2,9 +2,9 @@
 //Randy King 5/25/2017
 // default Interest with reasonable values
 
-var gateway = "SN517";
-var target = "SN528";
-var sunSpecReg = 0; // as a decimal number, like SunSpec standards
+var gateway = "SN526";
+var target = "SN526";
+var sunSpecReg = 88; // as a decimal number, like SunSpec standards
 var sunSpecLength = 1; // as a decimal number, like SunSpec standards
 var wiFiSSID = "";
 var mapFleetLink;
@@ -18,32 +18,27 @@ var fleetLink = {
     "SN406":{"network":"dev", "locName":"Beckman", "deviceIdHash":"C5F6371C8A03", "deviceID":"5000d8c46a56dd18", "usng":"21896255", "latitude":38.5110833, "longitude":-122.7488806, "agentUrl": "/hxsSiYETEEpd", "baseAddress":49999, "modbusAddress": 100, "marker": null, "nodePath":null, "online":false},
     "SN407":{"network":"dev", "locName":"Sugiyama Inside", "deviceIdHash":"4CA33E88EDAA", "deviceID":"5000d8c46a56ddde", "usng":"21226282", "latitude":38.5135, "longitude":-122.75653, "agentUrl": "/VifAbahCX8ux", "baseAddress":49999, "modbusAddress": 100, "marker": null, "nodePath":null, "online":false},
     //vivint
-    "SN506":{"network":"vivint", "locName":"Vivint 1", "deviceIdHash":"C3B996B9F76C", "deviceID":"5000d8c46a572880", "usng":"15795063", "latitude":38.4038333, "longitude":-122.8190833, "agentUrl": "/oGQ_PBSAUppO", "baseAddress":39999, "modbusAddress": 1, "marker": null, "nodePath":null, "online":false},
-    "SN511":{"network":"vivint", "locName":"Vivint 2 ", "deviceIdHash":"C1B16ADC8E57", "deviceID":"5000d8c46a5728f6", "usng":"15815066", "latitude":38.4041111, "longitude":-122.8189167, "agentUrl": "/4R2NSeUUtys8", "baseAddress":39999, "modbusAddress": 1, "marker": null, "nodePath":null, "online":false},
+    "SN506":{"network":"vivint", "locName":"Vivint 1", "deviceIdHash":"C3B996B9F76C", "deviceID":"5000d8c46a572880", "usng":"15795063", "latitude":38.4038333, "longitude":-122.8190833, "agentUrl": "/oGQ_PBSAUppO", "baseAddress":39999, "modbusAddress": 100, "marker": null, "nodePath":null, "online":false},
+    "SN511":{"network":"vivint", "locName":"Vivint 2 ", "deviceIdHash":"C1B16ADC8E57", "deviceID":"5000d8c46a5728f6", "usng":"15815066", "latitude":38.4041111, "longitude":-122.8189167, "agentUrl": "/4R2NSeUUtys8", "baseAddress":39999, "modbusAddress": 100, "marker": null, "nodePath":null, "online":false},
     "SN513":{"network":"vivint", "locName":"SolarEdge Inverter", "deviceIdHash":"DF04146F1DF0", "deviceID":"5000d8c46a57285e", "usng":"15795070", "latitude":38.40443, "longitude":-122.8190967, "agentUrl": "/ZT8GBL-7RrgD", "baseAddress":39999, "modbusAddress": 1, "marker": null, "nodePath":null, "online":false},
-    "SN514":{"network":"vivint", "locName":"Vivint 3", "deviceIdHash":"00E329B56259", "deviceID":"5000d8c46a572872", "usng":"15705066", "latitude":38.4040556, "longitude":-122.8201667, "agentUrl": "/609atPXTxkX7", "baseAddress":39999, "modbusAddress": 1, "marker": null, "nodePath":null, "online":false},
+    "SN514":{"network":"vivint", "locName":"Vivint 3", "deviceIdHash":"00E329B56259", "deviceID":"5000d8c46a572872", "usng":"15705066", "latitude":38.4040556, "longitude":-122.8201667, "agentUrl": "/609atPXTxkX7", "baseAddress":39999, "modbusAddress": 100, "marker": null, "nodePath":null, "online":false},
     // larkfield
-    "SN503":{"network":"larkfield", "locName":"Henry", "deviceIdHash":"4E562573DBA0", "deviceID":"5000d8c46a572868", "usng":"18166719", "latitude":38.552979, "longitude":-122.791571, "agentUrl": "/tRNE2WbS2CGw", "baseAddress":0, "modbusAddress": 1, "marker": null, "nodePath":null, "online":true},
-   // "SN504":{"network":"larkfield", "locName":"Piero", "deviceIdHash":"B930FA057CB6", "deviceID":"5000d8c46a5728d2", "usng":"17136785", "latitude":38.558938, "longitude":-122.8033373, "agentUrl": "/w8Bdk3n0iWt3", "baseAddress":0, "modbusAddress": 1, "marker": null, "nodePath":null, "online":true},
-    "SN505":{"network":"larkfield", "locName":"Sugiyama2", "deviceIdHash":"BA48D077C2A8", "deviceID":"5000d8c46a57286a", "usng":"21236281", "latitude":38.513395, "longitude":-122.756469, "agentUrl": "/RVKEMRdCLmKj", "baseAddress":0, "modbusAddress": 1, "marker": null, "nodePath":null, "online":true},
-    "SN508":{"network":"larkfield", "locName":"Foster", "deviceIdHash":"730D72A6E22F", "deviceID":"5000d8c46a572874", "usng":"17776661", "latitude":38.547754, "longitude":-122.796043, "agentUrl": "/2866vQYBgUpC", "baseAddress":0, "modbusAddress": 1, "marker": null, "nodePath":null, "online":true},
-    "SN512":{"network":"larkfield", "locName":"Beckman", "deviceIdHash":"4B816CB75142", "deviceID":"5000d8c46a572a90", "usng":"21886253", "latitude":38.510951, "longitude": -122.748958, "agentUrl": "/_ERhHgIiqjx0", "baseAddress":0, "modbusAddress": 100, "marker": null, "nodePath":null, "online":true},
+    "SN503":{"network":"larkfield", "locName":"Henry", "deviceIdHash":"4E562573DBA0", "deviceID":"5000d8c46a572868", "usng":"18166719", "latitude":38.552979, "longitude":-122.791571, "agentUrl": "/tRNE2WbS2CGw", "baseAddress":0, "modbusAddress": 100, "marker": null, "nodePath":null, "online":true},
+    "SN505":{"network":"larkfield", "locName":"Sugiyama2", "deviceIdHash":"BA48D077C2A8", "deviceID":"5000d8c46a57286a", "usng":"21236281", "latitude":38.513395, "longitude":-122.756469, "agentUrl": "/RVKEMRdCLmKj", "baseAddress":0, "modbusAddress": 100, "marker": null, "nodePath":null, "online":true},
+    "SN508":{"network":"larkfield", "locName":"Foster", "deviceIdHash":"730D72A6E22F", "deviceID":"5000d8c46a572874", "usng":"17776661", "latitude":38.547754, "longitude":-122.796043, "agentUrl": "/2866vQYBgUpC", "baseAddress":0, "modbusAddress": 100, "marker": null, "nodePath":null, "online":true},
     "SN516":{"network":"larkfield", "locName":"Sugiyama", "deviceIdHash":"364935E144C5", "deviceID":"5000d8c46a572a5a", "usng":"21226281", "latitude":38.513559, "longitude":-122.756549, "agentUrl": "/m6fnIP8Xwcbx", "baseAddress":50070, "modbusAddress": 100, "marker": null, "nodePath":null, "online":true},
-    "SN517":{"network":"larkfield", "locName":"Shirlie", "deviceIdHash":"73210C7C7368", "deviceID":"5000d8c46a572a40", "usng":"21016306", "latitude":38.515786, "longitude":-122.759001, "agentUrl": "/lfonbmovX8Ak", "baseAddress":0, "modbusAddress": 1, "marker": null, "nodePath":null, "online":true},
-    "SN518":{"network":"larkfield", "locName":"Hermosillo", "deviceIdHash":"45BB2C5D3151", "deviceID":"5000d8c46a5729fa", "usng":"16106798", "latitude":38.560186, "longitude":-122.815174, "agentUrl": "/JPTE9uGlCGQL", "baseAddress":0, "modbusAddress": 1, "marker": null, "nodePath":null, "online":true},
-    "SN519":{"network":"larkfield", "locName":"Kempker", "deviceIdHash":"035E6124319B", "deviceID":"5000d8c46a572a04", "usng":"17996657", "latitude":38.547460, "longitude":-122.793545, "agentUrl": "/sv3PuN3lquKO", "baseAddress":0, "modbusAddress": 1, "marker": null, "nodePath":null, "online":true},
-    //"SN520":{"network":"larkfield", "locName":"Buren", "deviceIdHash":"8C41DCBC3DF2", "deviceID":"5000d8c46a572a84", "usng":"14576664", "latitude":38.548154, "longitude":-122.832752, "agentUrl": "/2IauvU30NdQH", "baseAddress":0, "modbusAddress": 1, "marker": null, "nodePath":null, "online":true},
-    "SN521":{"network":"larkfield", "locName":"Palmer", "deviceIdHash":"35DFD2657C41", "deviceID":"5000d8c46a572a74", "usng":"17756732", "latitude":38.554163, "longitude":-122.796195, "agentUrl": "/LYmDkTTVsD1E", "baseAddress":0, "modbusAddress": 1, "marker": null, "nodePath":null, "online":true},
-    //"SN522":{"network":"larkfield", "locName":"Van Grouw", "deviceIdHash":"9CBABDD00BD5", "deviceID":"5000d8c46a572a68", "usng":"17286817", "latitude":38.561889, "longitude":-122.801555, "agentUrl": "/QCxFKECTRdBH", "baseAddress":0, "modbusAddress": 1, "marker": null, "nodePath":null, "online":true},
-    "SN523":{"network":"larkfield", "locName":"Buffo", "deviceIdHash":"BB2A0BFDC8FC", "deviceID":"5000d8c46a5729e6", "usng":"16386739", "latitude":38.554853, "longitude":-122.811906, "agentUrl": "/jYthi-aNvlv6", "baseAddress":0, "modbusAddress": 1, "marker": null, "nodePath":null, "online":true},
-    "SN524":{"network":"larkfield", "locName":"Yamasaki", "deviceIdHash":"022676CEA2C8", "deviceID":"5000d8c46a572a70", "usng":"16426752", "latitude":38.555988, "longitude":-122.811517, "agentUrl": "/NTLnl40ofe9Y", "baseAddress":0, "modbusAddress": 1, "marker": null, "nodePath":null, "online":true},
-    "SN525":{"network":"larkfield", "locName":"Galli", "deviceIdHash":"F44B236DC495", "deviceID":"5000d8c46a572a38", "usng":"18166731", "latitude":38.554040, "longitude":-122.791583, "agentUrl": "/fbBV8K1Y_FLN", "baseAddress":0, "modbusAddress": 1, "marker": null, "nodePath":null, "online":true},
-    "SN526":{"network":"larkfield", "locName":"Clapper", "deviceIdHash":"4B816CB75142", "deviceID":"5000d8c46a572a90", "usng":"16576784", "latitude":38.558927, "longitude":-122.809762, "agentUrl": "/_ERhHgIiqjx0", "baseAddress":0, "modbusAddress": 1, "marker": null, "nodePath":null, "online":true},
-    //"SN527":{"network":"larkfield", "locName":"Galli", "deviceIdHash":"E18F79FBF4D0", "deviceID":"5000d8c46a572a38", "usng":"18166731", "latitude":38.554040, "longitude":-122.791583, "agentUrl": "/t02E8X0S0Kl6", "baseAddress":0, "modbusAddress": 1, "marker": null, "nodePath":null, "online":true},
-    "SN528":{"network":"larkfield", "locName":"Gibson", "deviceIdHash":"F5ED514678B2", "deviceID":"5000d8c46a572a58", "usng":"21416258", "latitude":38.511400, "longitude":-122.754315, "agentUrl": "/aQTyLRwIHjYn", "baseAddress":0, "modbusAddress": 1, "marker": null, "nodePath":null, "online":true},
-    "SN529":{"network":"larkfield", "locName":"Clapper", "deviceIdHash":"BC4AD7B8D7B2", "deviceID":"5000d8c46a572a7a", "usng":"16576784", "latitude":38.558927, "longitude": -122.809762, "agentUrl": "/TjIP9SXEzEGb", "baseAddress":0, "modbusAddress": 1, "marker": null, "nodePath":null, "online":true},    
-    "SN530":{"network":"larkfield", "locName":"Nadendla", "deviceIdHash":"2EB55A0B48F4", "deviceID":"5000d8c46a572a12", "usng":"17616705", "latitude":38.551712, "longitude":-122.79779, "agentUrl": "/r7-wVnF8nV9b", "baseAddress":0, "modbusAddress": 1, "marker": null, "nodePath":null, "online":true},
-    "SN531":{"network":"larkfield", "locName":"Ferrara", "deviceIdHash":"A9D4A224043D", "deviceID":"5000d8c46a572a4c", "usng":"21246285", "latitude":38.513862, "longitude":-122.756289, "agentUrl": "/lgWdhq_T9EsC", "baseAddress":0, "modbusAddress": 1, "marker": null, "nodePath":null, "online":true}
+    "SN517":{"network":"larkfield", "locName":"Shirlie", "deviceIdHash":"73210C7C7368", "deviceID":"5000d8c46a572a40", "usng":"21016306", "latitude":38.515786, "longitude":-122.759001, "agentUrl": "/lfonbmovX8Ak", "baseAddress":0, "modbusAddress": 100, "marker": null, "nodePath":null, "online":true},
+    "SN518":{"network":"larkfield", "locName":"Hermosillo", "deviceIdHash":"45BB2C5D3151", "deviceID":"5000d8c46a5729fa", "usng":"16106798", "latitude":38.560186, "longitude":-122.815174, "agentUrl": "/JPTE9uGlCGQL", "baseAddress":0, "modbusAddress": 100, "marker": null, "nodePath":null, "online":true},
+    "SN519":{"network":"larkfield", "locName":"Kempker", "deviceIdHash":"035E6124319B", "deviceID":"5000d8c46a572a04", "usng":"17996657", "latitude":38.547460, "longitude":-122.793545, "agentUrl": "/sv3PuN3lquKO", "baseAddress":0, "modbusAddress": 100, "marker": null, "nodePath":null, "online":true},
+    "SN521":{"network":"larkfield", "locName":"Palmer", "deviceIdHash":"35DFD2657C41", "deviceID":"5000d8c46a572a74", "usng":"17756732", "latitude":38.554163, "longitude":-122.796195, "agentUrl": "/LYmDkTTVsD1E", "baseAddress":0, "modbusAddress": 100, "marker": null, "nodePath":null, "online":true},
+    "SN523":{"network":"larkfield", "locName":"Buffo", "deviceIdHash":"BB2A0BFDC8FC", "deviceID":"5000d8c46a5729e6", "usng":"16386739", "latitude":38.554853, "longitude":-122.811906, "agentUrl": "/jYthi-aNvlv6", "baseAddress":0, "modbusAddress": 100, "marker": null, "nodePath":null, "online":true},
+    "SN524":{"network":"larkfield", "locName":"Yamasaki", "deviceIdHash":"022676CEA2C8", "deviceID":"5000d8c46a572a70", "usng":"16426752", "latitude":38.555988, "longitude":-122.811517, "agentUrl": "/NTLnl40ofe9Y", "baseAddress":0, "modbusAddress": 100, "marker": null, "nodePath":null, "online":true},
+    "SN525":{"network":"larkfield", "locName":"Galli", "deviceIdHash":"F44B236DC495", "deviceID":"5000d8c46a572a38", "usng":"18166731", "latitude":38.554040, "longitude":-122.791583, "agentUrl": "/fbBV8K1Y_FLN", "baseAddress":0, "modbusAddress": 100, "marker": null, "nodePath":null, "online":true},
+    "SN526":{"network":"larkfield", "locName":"Beckman", "deviceIdHash":"4B816CB75142", "deviceID":"5000d8c46a572a90", "usng":"21886253", "latitude":38.510951, "longitude":-122.748958, "agentUrl": "/_ERhHgIiqjx0", "baseAddress":49999, "modbusAddress": 100, "marker": null, "nodePath":null, "online":true},
+    "SN528":{"network":"larkfield", "locName":"Gibson", "deviceIdHash":"F5ED514678B2", "deviceID":"5000d8c46a572a58", "usng":"21416258", "latitude":38.511400, "longitude":-122.754315, "agentUrl": "/aQTyLRwIHjYn", "baseAddress":0, "modbusAddress": 100, "marker": null, "nodePath":null, "online":true},
+    "SN529":{"network":"larkfield", "locName":"Clapper", "deviceIdHash":"BC4AD7B8D7B2", "deviceID":"5000d8c46a572a7a", "usng":"16576784", "latitude":38.558927, "longitude": -122.809762, "agentUrl": "/TjIP9SXEzEGb", "baseAddress":0, "modbusAddress": 100, "marker": null, "nodePath":null, "online":true},    
+    "SN530":{"network":"larkfield", "locName":"Nadendla", "deviceIdHash":"2EB55A0B48F4", "deviceID":"5000d8c46a572a12", "usng":"17616705", "latitude":38.551712, "longitude":-122.79779, "agentUrl": "/r7-wVnF8nV9b", "baseAddress":0, "modbusAddress": 100, "marker": null, "nodePath":null, "online":true},
+    "SN531":{"network":"larkfield", "locName":"Ferrara", "deviceIdHash":"A9D4A224043D", "deviceID":"5000d8c46a572a4c", "usng":"21246285", "latitude":38.513862, "longitude":-122.756289, "agentUrl": "/lgWdhq_T9EsC", "baseAddress":0, "modbusAddress": 100, "marker": null, "nodePath":null, "online":true}
 };
 
 var interest = {
@@ -107,12 +102,12 @@ var displayFactors = {
             setGateway('SN513');      
             readSunSpec('Mn');  
         } else if (rb.value == "larkfield"){
-            setTarget('SN523');
-            setGateway('SN523');    
+            setTarget('SN526');
+            setGateway('SN526');    
             readSunSpec('Mn');  
         } else {
-            setTarget('SN402');
-            setGateway('SN402');        
+            setTarget('SN526');
+            setGateway('SN526');        
             readSunSpec('Mn');  
         }
     }
@@ -277,6 +272,8 @@ function formatData(rawData, interest){
 
     // remove any leading or trailing numbers (esp Modbus)    
     var cleanData = rawData.substring(displayFactors.firstDataChar, displayFactors.lastDataChar + 1);
+    consoloe.log("Returned data = " + cleanData);
+
     // convert to decimal if hex
     switch(displayFactors.dataFormat){
         case 'hex':
@@ -796,7 +793,18 @@ function readSunSpec(sunSpecName){
             displayFactors.offsetFactor = 0;
             displayFactors.unitString = 'A';
             displayFactors.displayName = "Phase C AC Current";
-            break;                
+            break;          
+        case "M_AC_Current_SF":
+            sunSpecReg = 69 + 7;
+            sunSpecLength = 1;
+            displayFactors.firstDataChar = 6;
+            displayFactors.lastDataChar = 9;
+            displayFactors.dataFormat = 'hex';
+            displayFactors.scaleFactor = 1;
+            displayFactors.offsetFactor = 0;
+            displayFactors.unitString = '';
+            displayFactors.displayName = "AC Current Scale Factor";
+            break;        
     //================================================================================
     // METER VOLTAGE
     //================================================================================
@@ -920,7 +928,7 @@ function readSunSpec(sunSpecName){
             displayFactors.firstDataChar = 6;
             displayFactors.lastDataChar = 9;
             displayFactors.dataFormat = 'hex';
-            displayFactors.scaleFactor = 10;
+            displayFactors.scaleFactor = 100;
             displayFactors.offsetFactor = 0;
             displayFactors.unitString = 'W';
             displayFactors.displayName = "Total Real Power(sum of active phases)";
@@ -931,7 +939,7 @@ function readSunSpec(sunSpecName){
             displayFactors.firstDataChar = 6;
             displayFactors.lastDataChar = 9;
             displayFactors.dataFormat = 'hex';
-            displayFactors.scaleFactor = 10;
+            displayFactors.scaleFactor = 100;
             displayFactors.offsetFactor = 0;
             displayFactors.unitString = 'W';
             displayFactors.displayName = "Phase A AC Real Power";
@@ -942,7 +950,7 @@ function readSunSpec(sunSpecName){
             displayFactors.firstDataChar = 6;
             displayFactors.lastDataChar = 9;
             displayFactors.dataFormat = 'hex';
-            displayFactors.scaleFactor = 10;
+            displayFactors.scaleFactor = 100;
             displayFactors.offsetFactor = 0;
             displayFactors.unitString = 'W';
             displayFactors.displayName = "Phase B AC Real Power";
@@ -953,11 +961,22 @@ function readSunSpec(sunSpecName){
             displayFactors.firstDataChar = 6;
             displayFactors.lastDataChar = 9;
             displayFactors.dataFormat = 'hex';
-            displayFactors.scaleFactor = 10;
+            displayFactors.scaleFactor = 100;
             displayFactors.offsetFactor = 0;
             displayFactors.unitString = 'W';
             displayFactors.displayName = "Phase C AC Real Power";
             break;
+        case "M_AC_Power_SF":
+            sunSpecReg = 69 + 23;
+            sunSpecLength = 1;
+            displayFactors.firstDataChar = 6;
+            displayFactors.lastDataChar = 9;
+            displayFactors.dataFormat = 'hex';
+            displayFactors.scaleFactor = 1;
+            displayFactors.offsetFactor = 0;
+            displayFactors.unitString = 'SF';
+            displayFactors.displayName = "M_AC_Power_SF";
+            break;            
     //================================================================================
     // METER POWER
     //================================================================================
@@ -1065,7 +1084,7 @@ function readSunSpec(sunSpecName){
             displayFactors.firstDataChar = 6;
             displayFactors.lastDataChar = 9;
             displayFactors.dataFormat = 'hex';
-            displayFactors.scaleFactor = 1;
+            displayFactors.scaleFactor = .001;
             displayFactors.offsetFactor = 0;
             displayFactors.unitString = '';
             displayFactors.displayName = "Average Power Factor(average of active phases)";
@@ -1076,7 +1095,7 @@ function readSunSpec(sunSpecName){
             displayFactors.firstDataChar = 6;
             displayFactors.lastDataChar = 9;
             displayFactors.dataFormat = 'hex';
-            displayFactors.scaleFactor = 1;
+            displayFactors.scaleFactor = .001;
             displayFactors.offsetFactor = 0;
             displayFactors.unitString = '';
             displayFactors.displayName = "Phase A Power Factor";
@@ -1087,7 +1106,7 @@ function readSunSpec(sunSpecName){
             displayFactors.firstDataChar = 6;
             displayFactors.lastDataChar = 9;
             displayFactors.dataFormat = 'hex';
-            displayFactors.scaleFactor = 1;
+            displayFactors.scaleFactor = .001;
             displayFactors.offsetFactor = 0;
             displayFactors.unitString = '';
             displayFactors.displayName = "Phase B Power Factor";
@@ -1098,11 +1117,22 @@ function readSunSpec(sunSpecName){
             displayFactors.firstDataChar = 6;
             displayFactors.lastDataChar = 9;
             displayFactors.dataFormat = 'hex';
-            displayFactors.scaleFactor = 1;
+            displayFactors.scaleFactor = .001;
             displayFactors.offsetFactor = 0;
             displayFactors.unitString = '';
             displayFactors.displayName = "Phase C Power Factor";
             break;
+        case "M_AC_PF_SF":
+            sunSpecReg = 69 + 38;
+            sunSpecLength = 1;
+            displayFactors.firstDataChar = 6;
+            displayFactors.lastDataChar = 9;
+            displayFactors.dataFormat = 'hex';
+            displayFactors.scaleFactor = 1;
+            displayFactors.offsetFactor = 0;
+            displayFactors.unitString = 'SF';
+            displayFactors.displayName = "AC Power Factor Scale Factor";
+            break;            
     //================================================================================
     // METER ACCUMULATED REAL ENERGY
     //================================================================================
